@@ -156,52 +156,6 @@
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
-        },
-        {
-          "_postman_id": "2fcd3bdf-87c9-54ff-479e-3fe6cfc21386",
-          "name": "/organization/<string:organization_name>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4cc9ca5c-835d-4f91-9155-d7cf7fb2e7a7",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Organization updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"organization_name\": \"new_test_o\"\n}"
-            },
-            "url": "{{url}}/organization/test_o",
-            "description": "Register a new user supplying a \"username\" and \"password\""
-          },
-          "response": []
         }
       ]
     },
@@ -244,6 +198,52 @@
         },
         "url": "{{url}}/auth",
         "description": "Authenticate providing a \"username\" and \"password\".  Endpoint returns and access_token."
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "2fcd3bdf-87c9-54ff-479e-3fe6cfc21386",
+      "name": "/organization/<string:organization_name>",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4cc9ca5c-835d-4f91-9155-d7cf7fb2e7a7",
+            "type": "text/javascript",
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "tests[\"Success message returned\"] = jsonData.message === \"Organization updated successfully.\";",
+              "",
+              "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+              "",
+              "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+              "",
+              "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+              "",
+              "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "JWT {{access_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"organization_name\": \"new_test_o\"\n}"
+        },
+        "url": "{{url}}/organization/test_o",
+        "description": "Register a new user supplying a \"username\" and \"password\""
       },
       "response": []
     },
