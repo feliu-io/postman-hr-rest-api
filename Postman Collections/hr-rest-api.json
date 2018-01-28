@@ -549,49 +549,50 @@
       "_postman_id": "c738837c-5bf5-a57d-6cba-90fc41bb4cb3",
       "name": "Authentication",
       "description": "",
-      "item": []
-    },
-    {
-      "_postman_id": "db1db7a7-179b-ea84-9b27-35d56b3be2ee",
-      "name": "{{url}}/auth",
-      "event": [
+      "item": [
         {
-          "listen": "test",
-          "script": {
-            "id": "b8c177cb-c02a-44ae-8bbf-9b2f65f21d29",
-            "type": "text/javascript",
-            "exec": [
-              "var jsonData = JSON.parse(responseBody);",
-              "",
-              "postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);",
-              "",
-              "tests[\"Access token not empty\"] = jsonData.access_token;",
-              "",
-              "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-              "",
-              "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
-              "",
-              "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-            ]
-          }
+          "_postman_id": "db1db7a7-179b-ea84-9b27-35d56b3be2ee",
+          "name": "{{url}}/auth",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b8c177cb-c02a-44ae-8bbf-9b2f65f21d29",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);",
+                  "",
+                  "tests[\"Access token not empty\"] = jsonData.access_token;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"jfeliu\",\n  \"password\": \"1234\"\n}"
+            },
+            "url": "{{url}}/auth",
+            "description": "Authenticate providing a \"username\" and \"password\".  Endpoint returns and access_token."
+          },
+          "response": []
         }
-      ],
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"username\": \"jfeliu\",\n  \"password\": \"1234\"\n}"
-        },
-        "url": "{{url}}/auth",
-        "description": "Authenticate providing a \"username\" and \"password\".  Endpoint returns and access_token."
-      },
-      "response": []
+      ]
     }
   ]
 }
