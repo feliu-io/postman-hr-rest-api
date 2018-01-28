@@ -833,6 +833,52 @@
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
+        },
+        {
+          "_postman_id": "c4505d4a-42d2-509e-bd65-a24ef4828f6a",
+          "name": "/department/<string:username>/<int:organization_id> copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ea86f6ff-f4be-4645-bbf4-eaf737a13bc9",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now active.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/department/new_test_d/{{organization_id}}",
+            "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
         }
       ]
     }
