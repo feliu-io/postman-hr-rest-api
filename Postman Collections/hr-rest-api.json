@@ -298,6 +298,12 @@
       ]
     },
     {
+      "_postman_id": "c6c3433b-24f9-8881-bd1f-2bd41288a90c",
+      "name": "User Resource",
+      "description": "",
+      "item": []
+    },
+    {
       "_postman_id": "db1db7a7-179b-ea84-9b27-35d56b3be2ee",
       "name": "{{url}}/auth",
       "event": [
