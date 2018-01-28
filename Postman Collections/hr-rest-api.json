@@ -749,10 +749,12 @@
             {
               "listen": "test",
               "script": {
+                "id": "f49c66c0-2703-44ac-a87c-0e5b4624b693",
+                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"User is now inactive.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now inactive.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -761,9 +763,7 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                ],
-                "id": "f087140c-7a58-4c89-8cc4-0367d0945db3",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -783,7 +783,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/user/new_test_u",
+            "url": "{{url}}/department/test_d/{{organization_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
