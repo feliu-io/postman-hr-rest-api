@@ -7,6 +7,12 @@
   },
   "item": [
     {
+      "_postman_id": "82ce3d51-121c-a3e6-3835-31995818c765",
+      "name": "Organization Resource",
+      "description": "",
+      "item": []
+    },
+    {
       "_postman_id": "db1db7a7-179b-ea84-9b27-35d56b3be2ee",
       "name": "{{url}}/auth",
       "event": [
