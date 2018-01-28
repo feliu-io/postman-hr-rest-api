@@ -546,6 +546,12 @@
       ]
     },
     {
+      "_postman_id": "c738837c-5bf5-a57d-6cba-90fc41bb4cb3",
+      "name": "Authentication",
+      "description": "",
+      "item": []
+    },
+    {
       "_postman_id": "db1db7a7-179b-ea84-9b27-35d56b3be2ee",
       "name": "{{url}}/auth",
       "event": [
