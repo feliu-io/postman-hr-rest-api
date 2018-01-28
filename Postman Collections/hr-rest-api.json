@@ -795,10 +795,12 @@
             {
               "listen": "test",
               "script": {
+                "id": "ea86f6ff-f4be-4645-bbf4-eaf737a13bc9",
+                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"User is now active.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now active.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -807,9 +809,7 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                ],
-                "id": "41ed679a-9686-4ad8-bba2-dd05ac44b49a",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -829,7 +829,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_user/new_test_u",
+            "url": "{{url}}/department/new_test_d/{{organization_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
