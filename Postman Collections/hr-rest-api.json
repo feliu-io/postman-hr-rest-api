@@ -795,8 +795,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "ea86f6ff-f4be-4645-bbf4-eaf737a13bc9",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -809,7 +807,9 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                ]
+                ],
+                "id": "ea86f6ff-f4be-4645-bbf4-eaf737a13bc9",
+                "type": "text/javascript"
               }
             }
           ],
@@ -829,7 +829,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/department/new_test_d/{{organization_id}}",
+            "url": "{{url}}/activate_department/new_test_d/{{organization_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
