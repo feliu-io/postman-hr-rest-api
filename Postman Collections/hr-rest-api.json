@@ -163,16 +163,16 @@
             {
               "listen": "test",
               "script": {
-                "id": "bff92c34-18c1-4757-81a6-2dda4ca93c4f",
+                "id": "c6231465-3b10-4cc8-bf55-310a7e013d63",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
                   "tests[\"organizations contains 2 items\"] = jsonData.organizations.length === 2;",
                   "",
-                  "tests[\"organization first item is test_o\"] = jsonData.organizations[0].organization_name === \"test_o\";",
+                  "tests[\"test_o in organization list\"] = jsonData.organizations[0].organization_name === \"test_o\" || \"Nuvanz\";",
                   "",
-                  "tests[\"organization second item is Nuvanz\"] = jsonData.organizations[1].organization_name === \"Nuvanz\";",
+                  "tests[\"Nuvanz in organization list\"] = jsonData.organizations[1].organization_name === \"test_o\" || \"Nuvanz\";",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
