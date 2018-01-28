@@ -606,12 +606,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "6238ee91-be85-4d57-a8da-0effe7ee39f8",
+                "id": "0d3c1f9b-23cc-47df-9ba7-66b1c8b059c8",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"User created successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
@@ -638,7 +638,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"username\": \"test_u\", \n  \"password\": \"test_p\",\n  \"email\": \"test_u@test_o.com\",\n  \"organization_id\": {{organization_id}},\n  \"is_super\": true,\n  \"is_owner\": true,\n  \"is_active\": true\n}"
+              "raw": "{\n  \"department\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
             },
             "url": "{{url}}/user",
             "description": "Register a new user supplying a \"username\" and \"password\""
