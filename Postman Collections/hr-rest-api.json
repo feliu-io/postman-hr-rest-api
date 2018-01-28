@@ -652,18 +652,14 @@
             {
               "listen": "test",
               "script": {
+                "id": "7097e9e4-a888-4c25-93fa-2dd65fe869b9",
+                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
                   "tests[\"is_active is true\"] = jsonData.is_active;",
                   "",
-                  "tests[\"is_owner is true\"] = jsonData.is_owner;",
-                  "",
-                  "tests[\"is_super is true\"] = jsonData.is_super;",
-                  "",
-                  "tests[\"username is test_u\"] = jsonData.username === \"test_u\";",
-                  "",
-                  "tests[\"email is test_u@test_o.com\"] = jsonData.email === \"test_u@test_o.com\";",
+                  "tests[\"department_name is test_d\"] = jsonData.department_name === \"test_d\";",
                   "",
                   "tests[\"organization_id is correct\"] = jsonData.organization_id === parseInt(environment.organization_id);",
                   "",
@@ -674,9 +670,7 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                ],
-                "id": "aaee50d7-44fb-4ad3-86f3-cf551faadca0",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -696,7 +690,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/user/test_u",
+            "url": "{{url}}/department/test_d/{{organization_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
