@@ -638,7 +638,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
             },
             "url": "{{url}}/department",
             "description": "Register a new user supplying a \"username\" and \"password\""
