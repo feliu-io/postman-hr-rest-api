@@ -358,8 +358,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "6238ee91-be85-4d57-a8da-0effe7ee39f8",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -372,7 +370,9 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                ]
+                ],
+                "id": "6238ee91-be85-4d57-a8da-0effe7ee39f8",
+                "type": "text/javascript"
               }
             }
           ],
