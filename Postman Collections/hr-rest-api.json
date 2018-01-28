@@ -702,10 +702,12 @@
             {
               "listen": "test",
               "script": {
+                "id": "0c52bdb1-01aa-4034-9e5a-ec1f86fc62ab",
+                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"User updated successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Department updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -715,9 +717,7 @@
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\"",
                   ""
-                ],
-                "id": "8af82bea-1691-41c0-8a9a-1ccb1cdafb79",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -735,9 +735,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"username\": \"new_test_u\", \n  \"password\": \"1234\",\n  \"email\": \"new_test_u@test_o.com\",\n  \"organization_id\": {{organization_id}},\n  \"is_super\": true,\n  \"is_owner\": true\n}"
+              "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
             },
-            "url": "{{url}}/user/test_u",
+            "url": "{{url}}/department/test_d/{{organization_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
