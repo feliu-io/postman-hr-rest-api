@@ -591,6 +591,53 @@
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
+        },
+        {
+          "_postman_id": "a9333133-a7b6-7001-a638-440b812c9325",
+          "name": "/user/<string:username> copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"User updated successfully.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\"",
+                  ""
+                ],
+                "id": "8af82bea-1691-41c0-8a9a-1ccb1cdafb79",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"new_test_u\", \n  \"password\": \"1234\",\n  \"email\": \"new_test_u@test_o.com\",\n  \"organization_id\": {{organization_id}},\n  \"is_super\": true,\n  \"is_owner\": true\n}"
+            },
+            "url": "{{url}}/user/test_u",
+            "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
         }
       ]
     },
