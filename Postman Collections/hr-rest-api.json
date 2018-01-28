@@ -496,6 +496,52 @@
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
+        },
+        {
+          "_postman_id": "95f7fbb8-4449-a9f9-3314-684955029c98",
+          "name": "/activate_user/<string:username>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "41ed679a-9686-4ad8-bba2-dd05ac44b49a",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"User is now active.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/activate_user/new_test_u",
+            "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
         }
       ]
     },
@@ -538,52 +584,6 @@
         },
         "url": "{{url}}/auth",
         "description": "Authenticate providing a \"username\" and \"password\".  Endpoint returns and access_token."
-      },
-      "response": []
-    },
-    {
-      "_postman_id": "95f7fbb8-4449-a9f9-3314-684955029c98",
-      "name": "/activate_user/<string:username>",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "41ed679a-9686-4ad8-bba2-dd05ac44b49a",
-            "type": "text/javascript",
-            "exec": [
-              "var jsonData = JSON.parse(responseBody);",
-              "",
-              "tests[\"Success message returned\"] = jsonData.message === \"User is now active.\";",
-              "",
-              "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-              "",
-              "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-              "",
-              "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
-              "",
-              "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "PUT",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          },
-          {
-            "key": "Authorization",
-            "value": "JWT {{access_token}}"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
-        "url": "{{url}}/activate_user/new_test_u",
-        "description": "Register a new user supplying a \"username\" and \"password\""
       },
       "response": []
     }
