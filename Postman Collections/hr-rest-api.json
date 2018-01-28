@@ -591,7 +591,14 @@
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
-        },
+        }
+      ]
+    },
+    {
+      "_postman_id": "ef6f3129-d74a-a314-4acb-fea4a25a8f96",
+      "name": "Department Resource",
+      "description": "",
+      "item": [
         {
           "_postman_id": "35417a48-6f68-bc4d-6b46-112b06d4ff13",
           "name": "/user copy",
@@ -639,12 +646,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "ef6f3129-d74a-a314-4acb-fea4a25a8f96",
-      "name": "Department Resource",
-      "description": "",
-      "item": []
     }
   ]
 }
