@@ -601,7 +601,7 @@
       "item": [
         {
           "_postman_id": "35417a48-6f68-bc4d-6b46-112b06d4ff13",
-          "name": "/user copy",
+          "name": "/department",
           "event": [
             {
               "listen": "test",
