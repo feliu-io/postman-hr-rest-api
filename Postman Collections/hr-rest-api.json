@@ -796,7 +796,7 @@
         },
         {
           "_postman_id": "028e7122-2482-6d95-c29d-a6d5bc42283a",
-          "name": "/activate_user/<string:username> copy",
+          "name": "/department/<string:username>/<int:organization_id>",
           "event": [
             {
               "listen": "test",
