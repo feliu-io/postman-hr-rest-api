@@ -848,16 +848,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "c6231465-3b10-4cc8-bf55-310a7e013d63",
+                "id": "6f90b829-e4ef-4d64-a9fb-3a2b7ca68f77",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"organizations contains 2 items\"] = jsonData.organizations.length === 2;",
-                  "",
-                  "tests[\"test_o in organization list\"] = jsonData.organizations[0].organization_name === \"test_o\" || \"Nuvanz\";",
-                  "",
-                  "tests[\"Nuvanz in organization list\"] = jsonData.organizations[1].organization_name === \"test_o\" || \"Nuvanz\";",
+                  "tests[\"marital_statuses contains 5 items\"] = jsonData.marital_statuses.length === 5;",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
@@ -886,7 +882,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/organizations",
+            "url": "{{url}}/marital_statuses",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
