@@ -843,7 +843,7 @@
       "item": [
         {
           "_postman_id": "70ae2031-72c9-9e6f-a695-d6fdbbb5ac90",
-          "name": "/organizations copy",
+          "name": "marital_statuses",
           "event": [
             {
               "listen": "test",
