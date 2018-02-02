@@ -12,6 +12,13 @@
       "description": "",
       "item": [
         {
+          "_postman_id": "d16bf889-c628-6099-e4f6-f3ab39c14b88",
+          "name": "employment_position",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "db1db7a7-179b-ea84-9b27-35d56b3be2ee",
           "name": "{{url}}/auth",
           "event": [
