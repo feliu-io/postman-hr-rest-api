@@ -883,7 +883,7 @@
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
             "url": "{{url}}/marital_statuses",
-            "description": "Register a new user supplying a \"username\" and \"password\""
+            "description": ""
           },
           "response": []
         }
