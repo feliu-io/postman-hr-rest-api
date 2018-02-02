@@ -294,7 +294,7 @@
               "raw": ""
             },
             "url": "{{url}}/organization/new_test_o",
-            "description": "Register a new user supplying a \"username\" and \"password\""
+            "description": ""
           },
           "response": []
         },
