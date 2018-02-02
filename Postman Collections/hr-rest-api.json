@@ -1001,12 +1001,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "0c52bdb1-01aa-4034-9e5a-ec1f86fc62ab",
+                "id": "3b44c53a-2040-4e81-bd30-b32e4ef1de54",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department updated successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Employment position updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -1034,9 +1034,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
+              "raw": "{\n  \"position_name_feminine\": \"new_test_e_p_f\",\n  \"position_name_masculine\": \"new_test_e_p_m\",\n  \"minimum_hourly_wage\": 2.00,\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
             },
-            "url": "{{url}}/department/test_d/{{organization_id}}",
+            "url": "{{url}}/employment_position/test_e_p_m/{{organization_id}}",
             "description": ""
           },
           "response": []
