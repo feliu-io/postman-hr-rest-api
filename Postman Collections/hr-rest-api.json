@@ -1043,7 +1043,7 @@
         },
         {
           "_postman_id": "0ce00139-3713-5441-2532-9ffce8b8efe5",
-          "name": "/department/<string:department_name>/<int:organization_id> copy",
+          "name": "/employment_position/<string:department_name>/<int:organization_id>",
           "event": [
             {
               "listen": "test",
@@ -1083,7 +1083,7 @@
               "raw": ""
             },
             "url": "{{url}}/department/new_test_d/{{organization_id}}",
-            "description": "Register a new user supplying a \"username\" and \"password\""
+            "description": ""
           },
           "response": []
         },
