@@ -542,7 +542,7 @@
               "raw": ""
             },
             "url": "{{url}}/user/new_test_u",
-            "description": "Register a new user supplying a \"username\" and \"password\""
+            "description": ""
           },
           "response": []
         },
