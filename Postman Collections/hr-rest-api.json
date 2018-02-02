@@ -248,7 +248,7 @@
               "raw": "{\n  \"organization_name\": \"new_test_o\"\n}"
             },
             "url": "{{url}}/organization/test_o",
-            "description": "Register a new user supplying a \"username\" and \"password\""
+            "description": ""
           },
           "response": []
         },
