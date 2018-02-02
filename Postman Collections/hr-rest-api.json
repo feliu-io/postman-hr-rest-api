@@ -901,12 +901,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "0d3c1f9b-23cc-47df-9ba7-66b1c8b059c8",
+                "id": "5720710b-207c-4f8b-ae92-d79f64ab05f2",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Employment position created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
@@ -933,9 +933,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+              "raw": "{\n  \"position_name_feminine\": \"test_e_p_f\",\n  \"position_name_masculine\": \"test_e_p_m\",\n  \"minimum_hourly_wage\": 1.00,\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
             },
-            "url": "{{url}}/department",
+            "url": "{{url}}/employment_position",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
