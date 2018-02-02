@@ -947,14 +947,18 @@
             {
               "listen": "test",
               "script": {
-                "id": "7097e9e4-a888-4c25-93fa-2dd65fe869b9",
+                "id": "440580c6-54a1-438e-99f0-285a6ab9e061",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
                   "tests[\"is_active is true\"] = jsonData.is_active;",
                   "",
-                  "tests[\"department_name is test_d\"] = jsonData.department_name === \"test_d\";",
+                  "tests[\"position_name_feminine is test_e_p_f\"] = jsonData.position_name_feminine === \"test_e_p_f\";",
+                  "",
+                  "tests[\"position_name_masculine is test_e_p_m\"] = jsonData.position_name_masculine === \"test_e_p_m\";",
+                  "",
+                  "tests[\"minimum_hourly_wage is 1.00\"] = jsonData.minimum_hourly_wage === 1.00;",
                   "",
                   "tests[\"organization_id is correct\"] = jsonData.organization_id === parseInt(environment.organization_id);",
                   "",
@@ -985,7 +989,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/department/test_d/{{organization_id}}",
+            "url": "{{url}}/employment_position/test_e_p_f/2",
             "description": ""
           },
           "response": []
