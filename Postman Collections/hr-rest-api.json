@@ -996,7 +996,7 @@
         },
         {
           "_postman_id": "3024d200-ff9a-dc75-e7c0-c8b0949f9004",
-          "name": "/employment_position/<string:department_name>/<int:organization_id>",
+          "name": "/employment_position/<string:position_name>/<int:organization_id>",
           "event": [
             {
               "listen": "test",
