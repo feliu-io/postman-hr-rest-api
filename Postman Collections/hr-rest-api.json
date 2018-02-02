@@ -942,7 +942,7 @@
         },
         {
           "_postman_id": "56a3fc61-78f4-1255-a22b-9269139561a9",
-          "name": "/department/<string:department_name>/<int:organization_id> copy",
+          "name": "/employment_position/<string:position_name>/<int:organization_id>",
           "event": [
             {
               "listen": "test",
@@ -986,7 +986,7 @@
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
             "url": "{{url}}/department/test_d/{{organization_id}}",
-            "description": "Register a new user supplying a \"username\" and \"password\""
+            "description": ""
           },
           "response": []
         },
