@@ -843,7 +843,7 @@
       "item": [
         {
           "_postman_id": "9e85c207-68ca-ab9d-1fe4-024dec6b6c73",
-          "name": "/shift",
+          "name": "/shift (rotating)",
           "event": [
             {
               "listen": "test",
