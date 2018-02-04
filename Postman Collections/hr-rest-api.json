@@ -1483,12 +1483,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "f1b7a4e4-c751-4df5-9e25-9b6b228094c7",
+                "id": "f1d90cbc-76c1-4dd4-b1ad-e6173c4ffa5f",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Shiftt is now inactive.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Shift is now inactive.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
