@@ -1147,12 +1147,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "0d3c1f9b-23cc-47df-9ba7-66b1c8b059c8",
+                "id": "92fc38b3-9964-4267-8748-3772f1e678aa",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Shift created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
@@ -1179,9 +1179,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+              "raw": "{\n  \"shift_name\": \"test_s_r\",\n  \"weekly_hours\": 48,\n  \"is_rotating\": true,\n  \"payment_period\": \"Quincenal\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"rotation_start_hour\": \"06:00:00\",\n  \"rotation_end_hour\": \"21:00:00\"\n}"
             },
-            "url": "{{url}}/department",
+            "url": "{{url}}/shift",
             "description": null
           },
           "response": []
