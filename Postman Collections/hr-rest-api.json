@@ -1298,7 +1298,7 @@
         },
         {
           "_postman_id": "ef759934-8df6-d7a4-7bc8-7b27fe6cb31c",
-          "name": "/shift/<string:shift_name>/<int:organization_id> (rotating) copy",
+          "name": "/shift/<string:shift_name>/<int:organization_id> (fixed)",
           "event": [
             {
               "listen": "test",
