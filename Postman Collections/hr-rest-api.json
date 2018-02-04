@@ -986,7 +986,7 @@
         },
         {
           "_postman_id": "958a005e-cc0a-9a7b-8f6d-55450cb52369",
-          "name": "/department/<string:department_name>/<int:organization_id>",
+          "name": "/shift/<string:shift_name>/<int:organization_id>",
           "event": [
             {
               "listen": "test",
