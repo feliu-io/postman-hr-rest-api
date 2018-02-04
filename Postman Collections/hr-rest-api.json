@@ -1483,12 +1483,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "f49c66c0-2703-44ac-a87c-0e5b4624b693",
+                "id": "f1b7a4e4-c751-4df5-9e25-9b6b228094c7",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now inactive.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Shiftt is now inactive.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -1517,7 +1517,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/department/new_test_d/{{organization_id}}",
+            "url": "{{url}}/shift/new_test_s_r/{{organization_id}}",
             "description": null
           },
           "response": []
