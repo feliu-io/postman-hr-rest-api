@@ -842,253 +842,6 @@
       "description": "",
       "item": [
         {
-          "_postman_id": "d16bf889-c628-6099-e4f6-f3ab39c14b88",
-          "name": "EmploymentPosition Resource",
-          "description": "",
-          "item": [
-            {
-              "_postman_id": "3bdca440-abd2-643b-cd5d-88e37c53362c",
-              "name": "/employment_position",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "5720710b-207c-4f8b-ae92-d79f64ab05f2",
-                    "type": "text/javascript",
-                    "exec": [
-                      "var jsonData = JSON.parse(responseBody);",
-                      "",
-                      "tests[\"Success message returned\"] = jsonData.message === \"Employment position created successfully.\";",
-                      "",
-                      "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                      "",
-                      "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                      "",
-                      "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
-                      "",
-                      "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                    ]
-                  }
-                }
-              ],
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Authorization",
-                    "value": "JWT {{access_token}}"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"position_name_feminine\": \"test_e_p_f\",\n  \"position_name_masculine\": \"test_e_p_m\",\n  \"minimum_hourly_wage\": 1.00,\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
-                },
-                "url": "{{url}}/employment_position",
-                "description": "Register a new user supplying a \"username\" and \"password\""
-              },
-              "response": []
-            },
-            {
-              "_postman_id": "56a3fc61-78f4-1255-a22b-9269139561a9",
-              "name": "/employment_position/<string:position_name>/<int:organization_id>",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "256ebfde-999f-4675-8069-f7647bd816d9",
-                    "type": "text/javascript",
-                    "exec": [
-                      "var jsonData = JSON.parse(responseBody);",
-                      "",
-                      "tests[\"is_active is true\"] = jsonData.is_active;",
-                      "",
-                      "tests[\"position_name_feminine is test_e_p_f\"] = jsonData.position_name_feminine === \"test_e_p_f\";",
-                      "",
-                      "tests[\"position_name_masculine is test_e_p_m\"] = jsonData.position_name_masculine === \"test_e_p_m\";",
-                      "",
-                      "tests[\"minimum_hourly_wage is 1.00\"] = jsonData.minimum_hourly_wage === \"1.0000\";",
-                      "",
-                      "tests[\"organization_id is correct\"] = jsonData.organization_id === parseInt(environment.organization_id);",
-                      "",
-                      "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                      "",
-                      "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                      "",
-                      "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
-                      "",
-                      "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                    ]
-                  }
-                }
-              ],
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Authorization",
-                    "value": "JWT {{access_token}}"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
-                },
-                "url": "{{url}}/employment_position/test_e_p_f/{{organization_id}}",
-                "description": ""
-              },
-              "response": []
-            },
-            {
-              "_postman_id": "3024d200-ff9a-dc75-e7c0-c8b0949f9004",
-              "name": "/employment_position/<string:position_name>/<int:organization_id>",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "3b44c53a-2040-4e81-bd30-b32e4ef1de54",
-                    "type": "text/javascript",
-                    "exec": [
-                      "var jsonData = JSON.parse(responseBody);",
-                      "",
-                      "tests[\"Success message returned\"] = jsonData.message === \"Employment position updated successfully.\";",
-                      "",
-                      "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                      "",
-                      "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                      "",
-                      "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
-                      "",
-                      "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\"",
-                      ""
-                    ]
-                  }
-                }
-              ],
-              "request": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Authorization",
-                    "value": "JWT {{access_token}}"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"position_name_feminine\": \"new_test_e_p_f\",\n  \"position_name_masculine\": \"new_test_e_p_m\",\n  \"minimum_hourly_wage\": 2.00,\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
-                },
-                "url": "{{url}}/employment_position/test_e_p_m/{{organization_id}}",
-                "description": ""
-              },
-              "response": []
-            },
-            {
-              "_postman_id": "0ce00139-3713-5441-2532-9ffce8b8efe5",
-              "name": "/employment_position/<string:position_name>/<int:organization_id>",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "d14c007a-fc67-40dd-938f-6f463564a27e",
-                    "type": "text/javascript",
-                    "exec": [
-                      "var jsonData = JSON.parse(responseBody);",
-                      "",
-                      "tests[\"Success message returned\"] = jsonData.message === \"Employment position is now inactive.\";",
-                      "",
-                      "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                      "",
-                      "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                      "",
-                      "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
-                      "",
-                      "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                    ]
-                  }
-                }
-              ],
-              "request": {
-                "method": "DELETE",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Authorization",
-                    "value": "JWT {{access_token}}"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
-                "url": "{{url}}/employment_position/new_test_e_p_f/{{organization_id}}",
-                "description": ""
-              },
-              "response": []
-            },
-            {
-              "_postman_id": "0e435f79-f0d6-e414-e353-a417eafe82c1",
-              "name": "/activate_employment_position/<string:position_name>/<int:organization_id>",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "id": "58925aaa-13b4-420e-a01a-5dbbf959fb76",
-                    "type": "text/javascript",
-                    "exec": [
-                      "var jsonData = JSON.parse(responseBody);",
-                      "",
-                      "tests[\"Success message returned\"] = jsonData.message === \"Employment position is now active.\";",
-                      "",
-                      "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                      "",
-                      "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                      "",
-                      "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
-                      "",
-                      "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                    ]
-                  }
-                }
-              ],
-              "request": {
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Authorization",
-                    "value": "JWT {{access_token}}"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
-                "url": "{{url}}/activate_employment_position/new_test_e_p_f/{{organization_id}}",
-                "description": ""
-              },
-              "response": []
-            }
-          ],
-          "_postman_isSubFolder": true
-        },
-        {
           "_postman_id": "141d3246-79d0-56bc-4d41-3e4d3feb2b6f",
           "name": "MaritalStatus Resource",
           "description": "",
@@ -1420,6 +1173,252 @@
             },
             "url": "{{url}}/activate_department/new_test_d/{{organization_id}}",
             "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "d16bf889-c628-6099-e4f6-f3ab39c14b88",
+      "name": "EmploymentPosition Resource",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "3bdca440-abd2-643b-cd5d-88e37c53362c",
+          "name": "/employment_position",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5720710b-207c-4f8b-ae92-d79f64ab05f2",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Employment position created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"position_name_feminine\": \"test_e_p_f\",\n  \"position_name_masculine\": \"test_e_p_m\",\n  \"minimum_hourly_wage\": 1.00,\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+            },
+            "url": "{{url}}/employment_position",
+            "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "56a3fc61-78f4-1255-a22b-9269139561a9",
+          "name": "/employment_position/<string:position_name>/<int:organization_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "256ebfde-999f-4675-8069-f7647bd816d9",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"is_active is true\"] = jsonData.is_active;",
+                  "",
+                  "tests[\"position_name_feminine is test_e_p_f\"] = jsonData.position_name_feminine === \"test_e_p_f\";",
+                  "",
+                  "tests[\"position_name_masculine is test_e_p_m\"] = jsonData.position_name_masculine === \"test_e_p_m\";",
+                  "",
+                  "tests[\"minimum_hourly_wage is 1.00\"] = jsonData.minimum_hourly_wage === \"1.0000\";",
+                  "",
+                  "tests[\"organization_id is correct\"] = jsonData.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/employment_position/test_e_p_f/{{organization_id}}",
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3024d200-ff9a-dc75-e7c0-c8b0949f9004",
+          "name": "/employment_position/<string:position_name>/<int:organization_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3b44c53a-2040-4e81-bd30-b32e4ef1de54",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Employment position updated successfully.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\"",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"position_name_feminine\": \"new_test_e_p_f\",\n  \"position_name_masculine\": \"new_test_e_p_m\",\n  \"minimum_hourly_wage\": 2.00,\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+            },
+            "url": "{{url}}/employment_position/test_e_p_m/{{organization_id}}",
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0ce00139-3713-5441-2532-9ffce8b8efe5",
+          "name": "/employment_position/<string:position_name>/<int:organization_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d14c007a-fc67-40dd-938f-6f463564a27e",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Employment position is now inactive.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/employment_position/new_test_e_p_f/{{organization_id}}",
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0e435f79-f0d6-e414-e353-a417eafe82c1",
+          "name": "/activate_employment_position/<string:position_name>/<int:organization_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "58925aaa-13b4-420e-a01a-5dbbf959fb76",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Employment position is now active.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/activate_employment_position/new_test_e_p_f/{{organization_id}}",
+            "description": ""
           },
           "response": []
         }
