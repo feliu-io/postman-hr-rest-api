@@ -1529,10 +1529,12 @@
             {
               "listen": "test",
               "script": {
+                "id": "647df6f5-f274-4b59-afab-a44efdaa4333",
+                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now active.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Shift is now active.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -1541,9 +1543,7 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                ],
-                "id": "ea86f6ff-f4be-4645-bbf4-eaf737a13bc9",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -1563,7 +1563,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_department/new_test_d/{{organization_id}}",
+            "url": "{{url}}/activate_shift/new_test_s_r/{{organization_id}}",
             "description": null
           },
           "response": []
