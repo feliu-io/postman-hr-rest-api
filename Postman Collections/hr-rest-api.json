@@ -1389,12 +1389,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "0c52bdb1-01aa-4034-9e5a-ec1f86fc62ab",
+                "id": "7b00aab5-daa4-4975-b381-27fa581d6e18",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department updated successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Shift updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -1422,9 +1422,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
+              "raw": "{\n  \"shift_name\": \"new_test_s_r\",\n  \"weekly_hours\": 44,\n  \"is_rotating\": true,\n  \"payment_period\": \"Semanal\",\n  \"break_length\": \"01:00:00\",\n  \"is_break_included_in_shift\": true,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"rotation_start_hour\": \"00:00:00\",\n  \"rotation_end_hour\": \"15:00:00\"\n}"
             },
-            "url": "{{url}}/department/test_d/{{organization_id}}",
+            "url": "{{url}}/shift/test_s_r/{{organization_id}}",
             "description": null
           },
           "response": []
