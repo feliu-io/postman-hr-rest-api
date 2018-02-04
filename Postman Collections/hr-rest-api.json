@@ -888,6 +888,52 @@
           "response": []
         },
         {
+          "_postman_id": "43a45165-c5f8-109b-073c-9db860c76ead",
+          "name": "/shift copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0d3c1f9b-23cc-47df-9ba7-66b1c8b059c8",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+            },
+            "url": "{{url}}/department",
+            "description": null
+          },
+          "response": []
+        },
+        {
           "_postman_id": "3738738b-92b9-df35-aa75-e7653c720e39",
           "name": "/shift/<string:shift_name>/<int:organization_id>",
           "event": [
@@ -1072,52 +1118,6 @@
               "raw": ""
             },
             "url": "{{url}}/activate_department/new_test_d/{{organization_id}}",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "43a45165-c5f8-109b-073c-9db860c76ead",
-          "name": "/shift copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "0d3c1f9b-23cc-47df-9ba7-66b1c8b059c8",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
-            },
-            "url": "{{url}}/department",
             "description": null
           },
           "response": []
