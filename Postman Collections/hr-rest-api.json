@@ -871,7 +871,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_department/new_test_d/{{organization_id}}",
+            "url": "{{url}}/activate_department/new_test_d",
             "description": ""
           },
           "response": []
