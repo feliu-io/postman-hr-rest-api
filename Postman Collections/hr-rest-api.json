@@ -1605,7 +1605,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_shift/new_test_s_r/{{organization_id}}",
+            "url": "{{url}}/activate_shift/new_test_s_r",
             "description": null
           },
           "response": []
