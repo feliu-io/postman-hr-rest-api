@@ -1559,7 +1559,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/shift/new_test_s_r/{{organization_id}}",
+            "url": "{{url}}/shift/new_test_s_r",
             "description": null
           },
           "response": []
