@@ -1566,7 +1566,7 @@
         },
         {
           "_postman_id": "9c567ad4-5440-e6d8-54c8-8b183d1b10ae",
-          "name": "/activate_shift/<string:shift_name>/<int:organization_id>",
+          "name": "/activate_shift/<string:shift_name>",
           "event": [
             {
               "listen": "test",
