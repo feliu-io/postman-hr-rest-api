@@ -594,7 +594,7 @@
         },
         {
           "_postman_id": "17928f30-6273-ce16-fa76-46acf0ed68d9",
-          "name": "{{url}}/auth (test_u)",
+          "name": "{{url}}/auth (new_test_u)",
           "event": [
             {
               "listen": "test",
