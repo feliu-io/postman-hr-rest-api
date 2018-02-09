@@ -1124,7 +1124,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/employment_position/new_test_e_p_f/{{organization_id}}",
+            "url": "{{url}}/employment_position/new_test_e_p_f",
             "description": ""
           },
           "response": []
