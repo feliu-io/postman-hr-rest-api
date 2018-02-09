@@ -779,7 +779,7 @@
               "mode": "raw",
               "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
             },
-            "url": "{{url}}/department/test_d/{{organization_id}}",
+            "url": "{{url}}/department/test_d",
             "description": ""
           },
           "response": []
