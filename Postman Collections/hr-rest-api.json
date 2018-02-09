@@ -1031,7 +1031,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/employment_position/test_e_p_f/{{organization_id}}",
+            "url": "{{url}}/employment_position/test_e_p_f",
             "description": ""
           },
           "response": []
