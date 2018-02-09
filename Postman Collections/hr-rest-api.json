@@ -825,7 +825,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/department/new_test_d/{{organization_id}}",
+            "url": "{{url}}/department/new_test_d",
             "description": ""
           },
           "response": []
