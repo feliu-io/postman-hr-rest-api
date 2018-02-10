@@ -599,7 +599,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b8c177cb-c02a-44ae-8bbf-9b2f65f21d29",
+                "id": "d19e5bd7-fa2a-4c3f-8391-095b9f7c1507",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -608,7 +608,7 @@
                   "",
                   "tests[\"Access token not empty\"] = jsonData.access_token;",
                   "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
