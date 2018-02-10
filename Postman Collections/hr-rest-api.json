@@ -1624,12 +1624,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "0d3c1f9b-23cc-47df-9ba7-66b1c8b059c8",
+                "id": "0d19dc8d-ddcd-47df-aafe-0cdf583b4cbb",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Employee created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
@@ -1656,9 +1656,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+              "raw": "{\n  \"first_name\": \"f_n\",\n  \"second_name\": \"s_n\",\n  \"first_surname\": \"f_sn\",\n  \"second_surname\": \"s_sn\",\n  \"national_id_number\": \"1-11-111\",\n  \"is_panamanian\": true,\n  \"date_of_birth\": \"01-31-2000\",\n  \"gender\": \"Hombre\",\n  \"address\": \"Panamá\",\n  \"home_phone\": \"222-2222\",\n  \"mobile_phone\": \"6666-6666\",\n  \"email\": \"f_n@f_sn.com\",\n  \"type_of_contract\": \"Definido\",\n  \"employment_date\": \"01-01-2018\",\n  \"contract_expiration_date\": \"01-31-2018\",\n  \"termination_date\": \"01-15-2018\",\n  \"termination_reason\": \"Período de Prueba\",\n  \"salary_per_payment_period\": \"104.00\",\n  \"representation_expenses_per_payment_period\": \"0\",\n  \"payment_method\": \"ACH\",\n  \"is_active\": true,\n  \"marital_status_id\": 1,\n  \"department_id\": {{department_id}},\n  \"position_id\": {{position_id}},\n  \"shift_id\": {{shift_id}}\n}"
             },
-            "url": "{{url}}/department",
+            "url": "{{url}}/employee",
             "description": null
           },
           "response": []
