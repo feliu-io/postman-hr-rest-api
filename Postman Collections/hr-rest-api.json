@@ -1619,7 +1619,7 @@
       "item": [
         {
           "_postman_id": "030a9b38-dd86-4bcd-74f4-ff5b8b718574",
-          "name": "/department copy",
+          "name": "/employee",
           "event": [
             {
               "listen": "test",
