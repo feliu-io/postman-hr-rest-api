@@ -1285,10 +1285,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "5a1ae6c6-8d5f-405f-8fdb-4d42134d940d",
+                "id": "3cae9a55-40e2-487e-add7-d06559046c07",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"shift_id\", jsonData.id);",
                   "",
                   "tests[\"shift_name is test_s_r\"] = jsonData.shift_name === \"test_s_r\";",
                   "",
