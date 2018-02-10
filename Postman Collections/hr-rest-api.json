@@ -694,10 +694,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "7097e9e4-a888-4c25-93fa-2dd65fe869b9",
+                "id": "63206c2e-5af9-45a0-80ff-2594d4f6e018",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"department_id\", jsonData.id);",
                   "",
                   "tests[\"is_active is true\"] = jsonData.is_active;",
                   "",
