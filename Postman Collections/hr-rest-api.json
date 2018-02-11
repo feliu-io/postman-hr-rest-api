@@ -127,10 +127,10 @@
             {
               "listen": "test",
               "script": {
+                "id": "1a22855b-4c2d-4238-8df7-6caf58787490",
+                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable(\"organization_id\", jsonData.id);",
                   "",
                   "tests[\"is_active is true\"] = jsonData.is_active;",
                   "",
@@ -143,9 +143,7 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                ],
-                "id": "46c8ca5f-bab0-488a-8bd2-66fd7b803306",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
