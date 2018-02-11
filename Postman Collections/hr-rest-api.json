@@ -1809,7 +1809,7 @@
         },
         {
           "_postman_id": "7e4a7d43-5042-d645-9099-00311afba277",
-          "name": "/department/<string:department_name> copy",
+          "name": "/employee/<id:employee_id>",
           "event": [
             {
               "listen": "test",
