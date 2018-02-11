@@ -1676,7 +1676,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "8fa29891-9084-4fcc-8050-e402a0af579f",
+                "id": "82db49b8-c689-41dd-88bb-66090b65549e",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -1690,6 +1690,8 @@
                   "tests[\"second_surname is s_sn\"] = jsonData.second_surname === \"s_sn\";",
                   "",
                   "tests[\"national_id_number is 1-11-111\"] = jsonData.national_id_number === \"1-11-111\";",
+                  "",
+                  "tests[\"is_panamanian is true\"] = jsonData.is_panamanian;",
                   "",
                   "tests[\"date_of_birth is 2000-01-31\"] = jsonData.date_of_birth === \"2000-01-31\";",
                   "",
@@ -1756,7 +1758,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/employee/1",
+            "url": "{{url}}/employee/{{employee_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
