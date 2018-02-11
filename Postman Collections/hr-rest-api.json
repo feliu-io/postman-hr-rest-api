@@ -833,52 +833,6 @@
           "response": []
         },
         {
-          "_postman_id": "ff0d9c53-4f2b-4204-2315-c3ab8d31fe39",
-          "name": "/department/<string:department_name> copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f49c66c0-2703-44ac-a87c-0e5b4624b693",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now inactive.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/department/new_test_d",
-            "description": null
-          },
-          "response": []
-        },
-        {
           "_postman_id": "028e7122-2482-6d95-c29d-a6d5bc42283a",
           "name": "/activate_department/<string:department_name>",
           "event": [
@@ -1804,6 +1758,52 @@
             },
             "url": "{{url}}/employee/1",
             "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ff0d9c53-4f2b-4204-2315-c3ab8d31fe39",
+          "name": "/department/<string:department_name> copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f49c66c0-2703-44ac-a87c-0e5b4624b693",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now inactive.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/department/new_test_d",
+            "description": null
           },
           "response": []
         }
