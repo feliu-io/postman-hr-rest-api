@@ -67,20 +67,34 @@
             {
               "listen": "test",
               "script": {
-                "id": "c3343367-5e13-462f-9f62-299717721824",
+                "id": "5e6fb8a9-9787-4147-ad78-f9328b682897",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
+                  "postman.setEnvironmentVariable(\"organization_id\", jsonData.organization.id);",
+                  "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Organization created successfully.\";",
+                  "",
+                  "tests['is_active is true'] = jsonData.organization.is_active;",
+                  "",
+                  "tests['organization_name is test_o'] = jsonData.organization.organization_name === \"test_o\";",
+                  "",
+                  "tests['departments is empty list'] = jsonData.organization.departments.length === 0;",
+                  "",
+                  "tests['shifts is empty list'] = jsonData.organization.shifts.length === 0;",
+                  "",
+                  "tests['app_users is empty list'] = jsonData.organization.app_users.length === 0;",
+                  "",
+                  "tests['employment_positions is empty list'] = jsonData.organization.employment_positions.length === 0;",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
