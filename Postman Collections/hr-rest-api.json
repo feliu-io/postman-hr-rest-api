@@ -1861,10 +1861,12 @@
             {
               "listen": "test",
               "script": {
+                "id": "655bdc0e-18c4-4b0b-bc19-6f2843b239d7",
+                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now active.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Employee is now active.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -1873,9 +1875,7 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
-                ],
-                "id": "ea86f6ff-f4be-4645-bbf4-eaf737a13bc9",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -1895,7 +1895,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_department/new_test_d",
+            "url": "{{url}}/activate_employee/{{employee_id}}",
             "description": null
           },
           "response": []
