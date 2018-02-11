@@ -1630,10 +1630,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "0d19dc8d-ddcd-47df-aafe-0cdf583b4cbb",
+                "id": "3fba142e-d7e2-476c-a00d-3a1c2e93c9e0",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"employee_id\", jsonData.id);",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Employee created successfully.\";",
                   "",
