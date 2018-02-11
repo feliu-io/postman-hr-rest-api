@@ -1763,7 +1763,7 @@
         },
         {
           "_postman_id": "ff0d9c53-4f2b-4204-2315-c3ab8d31fe39",
-          "name": "/department/<string:department_name> copy",
+          "name": "/employee/<int:employee_id>",
           "event": [
             {
               "listen": "test",
