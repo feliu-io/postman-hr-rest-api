@@ -649,7 +649,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d19e5bd7-fa2a-4c3f-8391-095b9f7c1507",
+                "id": "d356ca52-98c4-4045-a46a-1005a4f33afd",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -660,9 +660,9 @@
                   "",
                   "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -680,7 +680,7 @@
               "raw": "{\n  \"username\": \"new_test_u\",\n  \"password\": \"1234\"\n}"
             },
             "url": "{{url}}/auth",
-            "description": null
+            "description": ""
           },
           "response": []
         }
@@ -2565,7 +2565,7 @@
         },
         {
           "_postman_id": "1765c379-57f6-3256-43f0-930b217a4308",
-          "name": "/emergency_contact/<int:contact_id> copy",
+          "name": "/health_permit/<int:permit_id>",
           "event": [
             {
               "listen": "test",
