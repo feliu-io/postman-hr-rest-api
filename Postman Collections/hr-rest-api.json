@@ -2288,52 +2288,6 @@
             "description": null
           },
           "response": []
-        },
-        {
-          "_postman_id": "5f9e319e-8b57-eaf8-4c79-d9edd8fe0325",
-          "name": "/employee/<int:employee_id> copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "61f2bce6-fb33-46bc-920c-00e47b4d350a",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Employee is now inactive.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/employee/{{employee_id}}",
-            "description": null
-          },
-          "response": []
         }
       ]
     },
@@ -2493,6 +2447,52 @@
             },
             "url": "{{url}}/employee/{{employee_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5f9e319e-8b57-eaf8-4c79-d9edd8fe0325",
+          "name": "/employee/<int:employee_id> copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61f2bce6-fb33-46bc-920c-00e47b4d350a",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Employee is now inactive.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/employee/{{employee_id}}",
+            "description": null
           },
           "response": []
         }
