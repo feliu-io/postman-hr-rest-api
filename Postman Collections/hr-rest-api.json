@@ -630,7 +630,7 @@
         },
         {
           "_postman_id": "17928f30-6273-ce16-fa76-46acf0ed68d9",
-          "name": "/auth (new_test_u)",
+          "name": "{{url}}/auth (new_test_u)",
           "event": [
             {
               "listen": "test",
@@ -684,30 +684,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "f0449b78-3323-475e-a051-52115fc92051",
+                "id": "0d3c1f9b-23cc-47df-9ba7-66b1c8b059c8",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "postman.setEnvironmentVariable(\"department_id\", jsonData.department.id);",
-                  "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
-                  "",
-                  "tests['department_name is test_d'] = jsonData.department.department_name === \"test_d\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
-                  "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
-                  "",
-                  "tests['employees is empty list'] = jsonData.department.employees.length === 0;",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -740,10 +730,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "037f3f47-f14a-4788-8034-eea9dbfea3db",
+                "id": "63206c2e-5af9-45a0-80ff-2594d4f6e018",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"department_id\", jsonData.id);",
                   "",
                   "tests[\"is_active is true\"] = jsonData.is_active;",
                   "",
@@ -755,9 +747,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -790,16 +782,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "f312f36d-8b00-42d1-afc2-c64043db5b2b",
+                "id": "0c52bdb1-01aa-4034-9e5a-ec1f86fc62ab",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
-                  "",
-                  "tests['department_name is new_test_d'] = jsonData.department.department_name === \"new_test_d\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Department updated successfully.\";",
                   "",
@@ -807,9 +793,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\"",
                   ""
                 ]
               }
@@ -843,7 +829,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f731f551-cfd9-4af2-8642-6ba25845409f",
+                "id": "f49c66c0-2703-44ac-a87c-0e5b4624b693",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -854,9 +840,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -889,8 +875,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "473c2e7d-24df-4e53-a259-0f88961300d6",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -900,10 +884,12 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                ],
+                "id": "ea86f6ff-f4be-4645-bbf4-eaf737a13bc9",
+                "type": "text/javascript"
               }
             }
           ],
@@ -937,7 +923,7 @@
       "item": [
         {
           "_postman_id": "70ae2031-72c9-9e6f-a695-d6fdbbb5ac90",
-          "name": "/marital_statuses",
+          "name": "marital_statuses",
           "event": [
             {
               "listen": "test",
@@ -995,34 +981,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "72fd68a4-60a6-4919-ae8a-846a67dc80a2",
+                "id": "5720710b-207c-4f8b-ae92-d79f64ab05f2",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable(\"department_id\", jsonData.employment_position.id);",
-                  "",
-                  "tests['is_active is true'] = jsonData.employment_position.is_active;",
-                  "",
-                  "tests['position_name_feminine is test_e_p_f'] = jsonData.employment_position.position_name_feminine === \"test_e_p_f\";",
-                  "",
-                  "tests['position_name_masculine is test_e_p_f'] = jsonData.employment_position.position_name_masculine === \"test_e_p_m\";",
-                  "",
-                  "tests['minimum_hourly_wage is 1.00'] = jsonData.employment_position.minimum_hourly_wage === \"1.0000\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.employment_position.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests['employees is empty list'] = jsonData.employment_position.employees.length === 0;",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Employment position created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -1055,10 +1027,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "98491db8-caac-440c-b146-882ea2fceb83",
+                "id": "535dd323-a806-4f39-a569-1222c0f72019",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"position_id\", jsonData.id);",
                   "",
                   "tests[\"is_active is true\"] = jsonData.is_active;",
                   "",
@@ -1074,9 +1048,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -1109,22 +1083,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "3bf28f5c-bd1f-446e-b737-70d7e9b6d2cf",
+                "id": "3b44c53a-2040-4e81-bd30-b32e4ef1de54",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests['is_active is true'] = jsonData.employment_position.is_active;",
-                  "",
-                  "tests['position_name_feminine is new_test_e_p_f'] = jsonData.employment_position.position_name_feminine === \"new_test_e_p_f\";",
-                  "",
-                  "tests['position_name_masculine is new_test_e_p_m'] = jsonData.employment_position.position_name_masculine === \"new_test_e_p_m\";",
-                  "",
-                  "tests['minimum_hourly_wage is 2.00'] = jsonData.employment_position.minimum_hourly_wage === \"2.0000\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.employment_position.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests['employees is empty list'] = jsonData.employment_position.employees.length === 0;",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Employment position updated successfully.\";",
                   "",
@@ -1132,9 +1094,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\"",
                   ""
                 ]
               }
@@ -1168,7 +1130,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2d584182-6332-449f-b6fa-4fa0b2fe37e7",
+                "id": "d14c007a-fc67-40dd-938f-6f463564a27e",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -1179,9 +1141,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -1214,7 +1176,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "be328f55-91c1-45e8-899c-94170c0b07cc",
+                "id": "58925aaa-13b4-420e-a01a-5dbbf959fb76",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -1225,9 +1187,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -1267,44 +1229,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "3471e4fc-09ae-4430-b274-d5ff075ec8fa",
+                "id": "92fc38b3-9964-4267-8748-3772f1e678aa",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable(\"shift_id\", jsonData.shift.id);",
-                  "",
-                  "tests[\"shift_name is test_s_r\"] = jsonData.shift.shift_name === \"test_s_r\";",
-                  "",
-                  "tests[\"weekly_hours is 48\"] = jsonData.shift.weekly_hours === \"48.0\";",
-                  "",
-                  "tests[\"is_rotating is true\"] = jsonData.shift.is_rotating;",
-                  "",
-                  "tests[\"payment_period is Quincenal\"] = jsonData.shift.payment_period === \"Quincenal\";",
-                  "",
-                  "tests[\"break_length is 00:30:00\"] = jsonData.shift.break_length === \"00:30:00\";",
-                  "",
-                  "tests[\"is_break_included_in_shift is false\"] = !jsonData.shift.is_break_included_in_shift;",
-                  "",
-                  "tests[\"rotation_start_hour is 06:00:00\"] = jsonData.shift.rotation_start_hour === \"06:00:00\";",
-                  "",
-                  "tests[\"rotation_end_hour is 21:00:00\"] = jsonData.shift.rotation_end_hour === \"21:00:00\";",
-                  "",
-                  "tests[\"is_active is true\"] = jsonData.shift.is_active;",
-                  "",
-                  "tests[\"organization_id is correct\"] = jsonData.shift.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests['employees is empty list'] = jsonData.shift.employees.length === 0;",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Shift created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -1337,68 +1275,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "992ca487-7b3a-4a8c-bb6d-9174a202366a",
+                "id": "bb02b8a0-5ce2-4d5d-9fed-d0d9837e37e9",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable(\"shift_id\", jsonData.shift.id);",
-                  "",
-                  "tests[\"shift_name is test_s_f\"] = jsonData.shift.shift_name === \"test_s_f\";",
-                  "",
-                  "tests[\"weekly_hours is 44\"] = jsonData.shift.weekly_hours === \"44.0\";",
-                  "",
-                  "tests[\"is_rotating is false\"] = !jsonData.shift.is_rotating;",
-                  "",
-                  "tests[\"payment_period is Quincenal\"] = jsonData.shift.payment_period === \"Quincenal\";",
-                  "",
-                  "tests[\"break_length is 00:30:00\"] = jsonData.shift.break_length === \"00:30:00\";",
-                  "",
-                  "tests[\"is_break_included_in_shift is false\"] = !jsonData.shift.is_break_included_in_shift;",
-                  "",
-                  "tests[\"rest_day is Domingo\"] = jsonData.shift.rest_day === \"Domingo\";",
-                  "",
-                  "tests[\"fixed_start_hour is 08:00:00\"] = jsonData.shift.fixed_start_hour_monday === \"08:00:00\" &&",
-                  "                                        jsonData.shift.fixed_start_hour_tuesday === \"08:00:00\" &&",
-                  "                                        jsonData.shift.fixed_start_hour_wednesday === \"08:00:00\" &&",
-                  "                                        jsonData.shift.fixed_start_hour_thursday === \"08:00:00\" &&",
-                  "                                        jsonData.shift.fixed_start_hour_friday === \"08:00:00\" &&",
-                  "                                        jsonData.shift.fixed_start_hour_saturday === \"08:00:00\";",
-                  "",
-                  "tests[\"fixed_start_break_hour is 12:00:00\"] = jsonData.shift.fixed_start_break_hour_monday === \"12:00:00\" &&",
-                  "                                              jsonData.shift.fixed_start_break_hour_tuesday === \"12:00:00\" &&",
-                  "                                              jsonData.shift.fixed_start_break_hour_wednesday === \"12:00:00\" &&",
-                  "                                              jsonData.shift.fixed_start_break_hour_thursday === \"12:00:00\" &&",
-                  "                                              jsonData.shift.fixed_start_break_hour_friday === \"12:00:00\";",
-                  "",
-                  "tests[\"fixed_end_break_hour is 12:30:00\"] = jsonData.shift.fixed_end_break_hour_monday === \"12:30:00\" &&",
-                  "                                            jsonData.shift.fixed_end_break_hour_tuesday === \"12:30:00\" &&",
-                  "                                            jsonData.shift.fixed_end_break_hour_wednesday === \"12:30:00\" &&",
-                  "                                            jsonData.shift.fixed_end_break_hour_thursday === \"12:30:00\" &&",
-                  "                                            jsonData.shift.fixed_end_break_hour_friday === \"12:30:00\";",
-                  "",
-                  "tests[\"fixed_end_hour is 16:30:00\"] = jsonData.shift.fixed_end_hour_monday === \"16:30:00\" &&",
-                  "                                      jsonData.shift.fixed_end_hour_tuesday === \"16:30:00\" &&",
-                  "                                      jsonData.shift.fixed_end_hour_wednesday === \"16:30:00\" &&",
-                  "                                      jsonData.shift.fixed_end_hour_thursday === \"16:30:00\" &&",
-                  "                                      jsonData.shift.fixed_end_hour_friday === \"16:30:00\" &&",
-                  "                                      jsonData.shift.fixed_end_hour_saturday === \"12:00:00\";",
-                  "",
-                  "tests[\"is_active is true\"] = jsonData.shift.is_active;",
-                  "",
-                  "tests[\"organization_id is correct\"] = jsonData.shift.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests['employees is empty list'] = jsonData.shift.employees.length === 0;",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Shift created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -1431,10 +1321,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "e79b3e41-1834-401e-9563-d02015c3db90",
+                "id": "3cae9a55-40e2-487e-add7-d06559046c07",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"shift_id\", jsonData.id);",
                   "",
                   "tests[\"shift_name is test_s_r\"] = jsonData.shift_name === \"test_s_r\";",
                   "",
@@ -1460,9 +1352,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -1495,7 +1387,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "37858133-077f-4c2f-a232-6edee2637593",
+                "id": "3d7fa059-a666-490d-b538-55df51dffc75",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -1509,8 +1401,6 @@
                   "tests[\"payment_period is Quincenal\"] = jsonData.payment_period === \"Quincenal\";",
                   "",
                   "tests[\"break_length is 00:30:00\"] = jsonData.break_length === \"00:30:00\";",
-                  "",
-                  "tests[\"rest_day is Domingo\"] = jsonData.shift.rest_day === \"Domingo\";",
                   "",
                   "tests[\"is_break_included_in_shift is false\"] = !jsonData.is_break_included_in_shift;",
                   "",
@@ -1548,9 +1438,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -1583,32 +1473,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "a8681aff-9387-4abc-96b1-a6a3fe4cd7c0",
+                "id": "7b00aab5-daa4-4975-b381-27fa581d6e18",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"shift_name is new_test_s_r\"] = jsonData.shift.shift_name === \"new_test_s_r\";",
-                  "",
-                  "tests[\"weekly_hours is 44\"] = jsonData.shift.weekly_hours === \"44.0\";",
-                  "",
-                  "tests[\"is_rotating is true\"] = jsonData.shift.is_rotating;",
-                  "",
-                  "tests[\"payment_period is Semanal\"] = jsonData.shift.payment_period === \"Semanal\";",
-                  "",
-                  "tests[\"break_length is 01:00:00\"] = jsonData.shift.break_length === \"01:00:00\";",
-                  "",
-                  "tests[\"is_break_included_in_shift is true\"] = jsonData.shift.is_break_included_in_shift;",
-                  "",
-                  "tests[\"rotation_start_hour is 00:00:00\"] = jsonData.shift.rotation_start_hour === \"00:00:00\";",
-                  "",
-                  "tests[\"rotation_end_hour is 15:00:00\"] = jsonData.shift.rotation_end_hour === \"15:00:00\";",
-                  "",
-                  "tests[\"is_active is true\"] = jsonData.shift.is_active;",
-                  "",
-                  "tests[\"organization_id is correct\"] = jsonData.shift.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests['employees is empty list'] = jsonData.shift.employees.length === 0;",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Shift updated successfully.\";",
                   "",
@@ -1616,9 +1484,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\"",
                   ""
                 ]
               }
