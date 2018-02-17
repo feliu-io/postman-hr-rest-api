@@ -2233,6 +2233,107 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "d439995c-031e-4828-f0c6-0cd23d6d21b6",
+          "name": "/employee/<id:employee_id> copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "921e3cd6-1b63-49b0-aa79-6df30c7f4cd1",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"health_permit_type is Blanco\"] = jsonData.health_permit.health_permit_type === \"Blanco\";",
+                  "",
+                  "tests[\"issue_date is 2018-01-31\"] = jsonData.health_permit.issue_date === \"2018-01-31\";",
+                  "",
+                  "tests[\"expiration_date is 2019-01-31\"] = jsonData.health_permit.expiration_date === \"2019-01-31\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.health_permit.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Health permit updated successfully.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"health_permit_type\": \"Blanco\",\r\n    \"issue_date\": \"2018-01-31\",\r\n    \"expiration_date\": \"2019-01-31\",\r\n    \"employee_id\": 1\r\n}"
+            },
+            "url": "{{url}}/health_permit/{{permit_id}}",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5f9e319e-8b57-eaf8-4c79-d9edd8fe0325",
+          "name": "/employee/<int:employee_id> copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "61f2bce6-fb33-46bc-920c-00e47b4d350a",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Employee is now inactive.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/employee/{{employee_id}}",
+            "description": null
+          },
+          "response": []
         }
       ]
     },
