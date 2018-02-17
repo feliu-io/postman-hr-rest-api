@@ -1337,20 +1337,68 @@
             {
               "listen": "test",
               "script": {
-                "id": "bb02b8a0-5ce2-4d5d-9fed-d0d9837e37e9",
+                "id": "992ca487-7b3a-4a8c-bb6d-9174a202366a",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"shift_id\", jsonData.shift.id);",
+                  "",
+                  "tests[\"shift_name is test_s_f\"] = jsonData.shift.shift_name === \"test_s_f\";",
+                  "",
+                  "tests[\"weekly_hours is 44\"] = jsonData.shift.weekly_hours === \"44.0\";",
+                  "",
+                  "tests[\"is_rotating is false\"] = !jsonData.shift.is_rotating;",
+                  "",
+                  "tests[\"payment_period is Quincenal\"] = jsonData.shift.payment_period === \"Quincenal\";",
+                  "",
+                  "tests[\"break_length is 00:30:00\"] = jsonData.shift.break_length === \"00:30:00\";",
+                  "",
+                  "tests[\"is_break_included_in_shift is false\"] = !jsonData.shift.is_break_included_in_shift;",
+                  "",
+                  "tests[\"rest_day is Domingo\"] = jsonData.shift.rest_day === \"Domingo\";",
+                  "",
+                  "tests[\"fixed_start_hour is 08:00:00\"] = jsonData.shift.fixed_start_hour_monday === \"08:00:00\" &&",
+                  "                                        jsonData.shift.fixed_start_hour_tuesday === \"08:00:00\" &&",
+                  "                                        jsonData.shift.fixed_start_hour_wednesday === \"08:00:00\" &&",
+                  "                                        jsonData.shift.fixed_start_hour_thursday === \"08:00:00\" &&",
+                  "                                        jsonData.shift.fixed_start_hour_friday === \"08:00:00\" &&",
+                  "                                        jsonData.shift.fixed_start_hour_saturday === \"08:00:00\";",
+                  "",
+                  "tests[\"fixed_start_break_hour is 12:00:00\"] = jsonData.shift.fixed_start_break_hour_monday === \"12:00:00\" &&",
+                  "                                              jsonData.shift.fixed_start_break_hour_tuesday === \"12:00:00\" &&",
+                  "                                              jsonData.shift.fixed_start_break_hour_wednesday === \"12:00:00\" &&",
+                  "                                              jsonData.shift.fixed_start_break_hour_thursday === \"12:00:00\" &&",
+                  "                                              jsonData.shift.fixed_start_break_hour_friday === \"12:00:00\";",
+                  "",
+                  "tests[\"fixed_end_break_hour is 12:30:00\"] = jsonData.shift.fixed_end_break_hour_monday === \"12:30:00\" &&",
+                  "                                            jsonData.shift.fixed_end_break_hour_tuesday === \"12:30:00\" &&",
+                  "                                            jsonData.shift.fixed_end_break_hour_wednesday === \"12:30:00\" &&",
+                  "                                            jsonData.shift.fixed_end_break_hour_thursday === \"12:30:00\" &&",
+                  "                                            jsonData.shift.fixed_end_break_hour_friday === \"12:30:00\";",
+                  "",
+                  "tests[\"fixed_end_hour is 16:30:00\"] = jsonData.shift.fixed_end_hour_monday === \"16:30:00\" &&",
+                  "                                      jsonData.shift.fixed_end_hour_tuesday === \"16:30:00\" &&",
+                  "                                      jsonData.shift.fixed_end_hour_wednesday === \"16:30:00\" &&",
+                  "                                      jsonData.shift.fixed_end_hour_thursday === \"16:30:00\" &&",
+                  "                                      jsonData.shift.fixed_end_hour_friday === \"16:30:00\" &&",
+                  "                                      jsonData.shift.fixed_end_hour_saturday === \"12:00:00\";",
+                  "",
+                  "tests[\"is_active is true\"] = jsonData.shift.is_active;",
+                  "",
+                  "tests[\"organization_id is correct\"] = jsonData.shift.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "tests['employees is empty list'] = jsonData.shift.employees.length === 0;",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Shift created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -1383,12 +1431,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "3cae9a55-40e2-487e-add7-d06559046c07",
+                "id": "e79b3e41-1834-401e-9563-d02015c3db90",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable(\"shift_id\", jsonData.id);",
                   "",
                   "tests[\"shift_name is test_s_r\"] = jsonData.shift_name === \"test_s_r\";",
                   "",
@@ -1414,9 +1460,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -1449,7 +1495,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3d7fa059-a666-490d-b538-55df51dffc75",
+                "id": "37858133-077f-4c2f-a232-6edee2637593",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -1463,6 +1509,8 @@
                   "tests[\"payment_period is Quincenal\"] = jsonData.payment_period === \"Quincenal\";",
                   "",
                   "tests[\"break_length is 00:30:00\"] = jsonData.break_length === \"00:30:00\";",
+                  "",
+                  "tests[\"rest_day is Domingo\"] = jsonData.shift.rest_day === \"Domingo\";",
                   "",
                   "tests[\"is_break_included_in_shift is false\"] = !jsonData.is_break_included_in_shift;",
                   "",
@@ -1500,9 +1548,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -1535,10 +1583,32 @@
             {
               "listen": "test",
               "script": {
-                "id": "7b00aab5-daa4-4975-b381-27fa581d6e18",
+                "id": "a8681aff-9387-4abc-96b1-a6a3fe4cd7c0",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"shift_name is new_test_s_r\"] = jsonData.shift.shift_name === \"new_test_s_r\";",
+                  "",
+                  "tests[\"weekly_hours is 44\"] = jsonData.shift.weekly_hours === \"44.0\";",
+                  "",
+                  "tests[\"is_rotating is true\"] = jsonData.shift.is_rotating;",
+                  "",
+                  "tests[\"payment_period is Semanal\"] = jsonData.shift.payment_period === \"Semanal\";",
+                  "",
+                  "tests[\"break_length is 01:00:00\"] = jsonData.shift.break_length === \"01:00:00\";",
+                  "",
+                  "tests[\"is_break_included_in_shift is true\"] = jsonData.shift.is_break_included_in_shift;",
+                  "",
+                  "tests[\"rotation_start_hour is 00:00:00\"] = jsonData.shift.rotation_start_hour === \"00:00:00\";",
+                  "",
+                  "tests[\"rotation_end_hour is 15:00:00\"] = jsonData.shift.rotation_end_hour === \"15:00:00\";",
+                  "",
+                  "tests[\"is_active is true\"] = jsonData.shift.is_active;",
+                  "",
+                  "tests[\"organization_id is correct\"] = jsonData.shift.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "tests['employees is empty list'] = jsonData.shift.employees.length === 0;",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Shift updated successfully.\";",
                   "",
@@ -1546,9 +1616,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\"",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
