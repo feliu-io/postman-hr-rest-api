@@ -2457,12 +2457,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "61f2bce6-fb33-46bc-920c-00e47b4d350a",
+                "id": "0f0a5b5e-1178-420a-bfc8-4c4f348d9a4a",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Employee is now inactive.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact deleted.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -2491,7 +2491,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/employee/{{employee_id}}",
+            "url": "{{url}}/emergency_contact/{{contact_id}}",
             "description": null
           },
           "response": []
