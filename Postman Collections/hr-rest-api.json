@@ -2570,20 +2570,16 @@
             {
               "listen": "test",
               "script": {
-                "id": "d8b3a093-771d-49c0-913d-7e975c06cc92",
+                "id": "814f2374-5708-4f49-9c36-d84aa6d06236",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"first_name is f_n\"] = jsonData.first_name === \"f_n\";",
+                  "tests[\"health_permit_type is Verde\"] = jsonData.health_permit_type === \"Verde\";",
                   "",
-                  "tests[\"last_name is s_n\"] = jsonData.last_name === \"l_n\";",
+                  "tests[\"issue_date is 2018-01-01\"] = jsonData.issue_date === \"2018-01-01\";",
                   "",
-                  "tests[\"home_phone is 111-1111\"] = jsonData.home_phone === \"111-1111\";",
-                  "",
-                  "tests[\"work_phone is 222-2222\"] = jsonData.work_phone === \"222-2222\";",
-                  "",
-                  "tests[\"mobile_phone is 6666-6666\"] = jsonData.mobile_phone === \"6666-6666\";",
+                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.expiration_date === \"2019-01-01\";",
                   "",
                   "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
                   "",
@@ -2614,7 +2610,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
+            "url": "{{url}}/health_permit/{{permit_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
