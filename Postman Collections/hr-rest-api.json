@@ -2230,7 +2230,7 @@
               "raw": ""
             },
             "url": "{{url}}/activate_employee/{{employee_id}}",
-            "description": null
+            "description": ""
           },
           "response": []
         }
