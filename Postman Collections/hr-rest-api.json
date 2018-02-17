@@ -956,7 +956,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d938d105-ceb9-45a0-b9ab-9ebe1dae0e7e",
+                "id": "6f90b829-e4ef-4d64-a9fb-3a2b7ca68f77",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -967,9 +967,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -1064,7 +1064,7 @@
         },
         {
           "_postman_id": "56a3fc61-78f4-1255-a22b-9269139561a9",
-          "name": "/employment_position/<string:position_name>",
+          "name": "/employment_position/<string:position_name>/<int:organization_id>",
           "event": [
             {
               "listen": "test",
@@ -1434,7 +1434,7 @@
               "raw": "{\n  \"shift_name\": \"test_s_f\",\n  \"weekly_hours\": 44,\n  \"is_rotating\": false,\n  \"payment_period\": \"Quincenal\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"fixed_start_hour_monday\": \"08:00:00\",\n  \"fixed_start_break_hour_monday\": \"12:00:00\",\n  \"fixed_end_break_hour_monday\": \"12:30:00\",\n  \"fixed_end_hour_monday\": \"16:30:00\",\n  \"fixed_start_hour_tuesday\": \"08:00:00\",\n  \"fixed_start_break_hour_tuesday\": \"12:00:00\",\n  \"fixed_end_break_hour_tuesday\": \"12:30:00\",\n  \"fixed_end_hour_tuesday\": \"16:30:00\",\n  \"fixed_start_hour_wednesday\": \"08:00:00\",\n  \"fixed_start_break_hour_wednesday\": \"12:00:00\",\n  \"fixed_end_break_hour_wednesday\": \"12:30:00\",\n  \"fixed_end_hour_wednesday\": \"16:30:00\",\n  \"fixed_start_hour_thursday\": \"08:00:00\",\n  \"fixed_start_break_hour_thursday\": \"12:00:00\",\n  \"fixed_end_break_hour_thursday\": \"12:30:00\",\n  \"fixed_end_hour_thursday\": \"16:30:00\",\n  \"fixed_start_hour_friday\": \"08:00:00\",\n  \"fixed_start_break_hour_friday\": \"12:00:00\",\n  \"fixed_end_break_hour_friday\": \"12:30:00\",\n  \"fixed_end_hour_friday\": \"16:30:00\",\n  \"fixed_start_hour_saturday\": \"08:00:00\",\n  \"fixed_end_hour_saturday\": \"12:00:00\",\n  \"rest_day\": \"Domingo\"\n}"
             },
             "url": "{{url}}/shift",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -1655,7 +1655,7 @@
               "raw": "{\n  \"shift_name\": \"new_test_s_r\",\n  \"weekly_hours\": 44,\n  \"is_rotating\": true,\n  \"payment_period\": \"Semanal\",\n  \"break_length\": \"01:00:00\",\n  \"is_break_included_in_shift\": true,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"rotation_start_hour\": \"00:00:00\",\n  \"rotation_end_hour\": \"15:00:00\"\n}"
             },
             "url": "{{url}}/shift/test_s_r",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -1750,7 +1750,7 @@
               "raw": "{\n  \"shift_name\": \"test_s_f\",\n  \"weekly_hours\": 48,\n  \"is_rotating\": false,\n  \"payment_period\": \"Diario\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"fixed_start_hour_sunday\": \"09:00:00\",\n  \"fixed_start_break_hour_sunday\": \"13:00:00\",\n  \"fixed_end_break_hour_sunday\": \"13:30:00\",\n  \"fixed_end_hour_sunday\": \"17:30:00\",\n  \"fixed_start_hour_monday\": \"09:00:00\",\n  \"fixed_start_break_hour_monday\": \"13:00:00\",\n  \"fixed_end_break_hour_monday\": \"13:30:00\",\n  \"fixed_end_hour_monday\": \"17:30:00\",\n  \"fixed_start_hour_tuesday\": \"09:00:00\",\n  \"fixed_start_break_hour_tuesday\": \"13:00:00\",\n  \"fixed_end_break_hour_tuesday\": \"13:30:00\",\n  \"fixed_end_hour_tuesday\": \"17:30:00\",\n  \"fixed_start_hour_wednesday\": \"09:00:00\",\n  \"fixed_start_break_hour_wednesday\": \"13:00:00\",\n  \"fixed_end_break_hour_wednesday\": \"13:30:00\",\n  \"fixed_end_hour_wednesday\": \"17:30:00\",\n  \"fixed_start_hour_thursday\": \"09:00:00\",\n  \"fixed_start_break_hour_thursday\": \"13:00:00\",\n  \"fixed_end_break_hour_thursday\": \"13:30:00\",\n  \"fixed_end_hour_thursday\": \"17:30:00\",\n  \"fixed_start_hour_friday\": \"09:00:00\",\n  \"fixed_start_break_hour_friday\": \"13:00:00\",\n  \"fixed_end_break_hour_friday\": \"13:30:00\",\n  \"fixed_end_hour_friday\": \"17:30:00\",\n  \"fixed_start_hour_saturday\": null,\n  \"fixed_end_hour_saturday\": null,\n  \"rest_day\": \"Sábado\"\n}"
             },
             "url": "{{url}}/shift/test_s_f",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -2138,7 +2138,7 @@
               "raw": "{\n  \"first_name\": \"new_f_n\",\n  \"second_name\": \"new_s_n\",\n  \"first_surname\": \"new_f_sn\",\n  \"second_surname\": \"new_s_sn\",\n  \"national_id_number\": \"N-1-11-111\",\n  \"is_panamanian\": false,\n  \"date_of_birth\": \"01-31-2001\",\n  \"gender\": \"Mujer\",\n  \"address\": \"Chiriquí\",\n  \"home_phone\": \"333-3333\",\n  \"mobile_phone\": \"6666-7777\",\n  \"email\": \"new_f_n@new_f_sn.com\",\n  \"type_of_contract\": \"Indefinido\",\n  \"employment_date\": \"01-01-2019\",\n  \"contract_expiration_date\": \"01-31-2019\",\n  \"termination_date\": \"01-15-2019\",\n  \"termination_reason\": \"Renuncia\",\n  \"salary_per_payment_period\": \"208.00\",\n  \"representation_expenses_per_payment_period\": \"100\",\n  \"payment_method\": \"Cheque\",\n  \"is_active\": true,\n  \"marital_status_id\": 2,\n  \"department_id\": {{department_id}},\n  \"position_id\": {{position_id}},\n  \"shift_id\": {{shift_id}}\n}"
             },
             "url": "{{url}}/employee/{{employee_id}}",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -2418,7 +2418,7 @@
         },
         {
           "_postman_id": "5f9e319e-8b57-eaf8-4c79-d9edd8fe0325",
-          "name": "/emergency_contact/<int:contact_id>",
+          "name": "/employee/<int:employee_id> copy",
           "event": [
             {
               "listen": "test",
@@ -2458,7 +2458,7 @@
               "raw": ""
             },
             "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": ""
+            "description": null
           },
           "response": []
         }
@@ -2634,7 +2634,7 @@
         },
         {
           "_postman_id": "821e304c-b809-84c6-6914-c3da09c96fb4",
-          "name": "/health_permit/<int:permit_id>",
+          "name": "/emergency_contact/<int:contact_id> copy",
           "event": [
             {
               "listen": "test",
@@ -2674,23 +2674,23 @@
               "raw": ""
             },
             "url": "{{url}}/health_permit/{{permit_id}}",
-            "description": ""
+            "description": null
           },
           "response": []
         },
         {
           "_postman_id": "76121e34-afcc-c53c-0591-a3ebc24fc78a",
-          "name": "/health_permit/<int:permit_id>",
+          "name": "/passport/<int:passport_id> copy",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "0fe7b582-7a8f-4736-bb9f-2eb4f89bac21",
+                "id": "5cbebca8-888e-47f5-aa8c-f13abafebadb",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Health permit deleted.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Passport deleted.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -2719,8 +2719,8 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/health_permit/{{permit_id}}",
-            "description": ""
+            "url": "{{url}}/passport/{{passport_id}}",
+            "description": null
           },
           "response": []
         }
@@ -2898,7 +2898,7 @@
         },
         {
           "_postman_id": "732f5d9d-f079-97b0-f3f8-01535d940bee",
-          "name": "/passport/<int:passport_id>",
+          "name": "/health_permit/<int:permit_id> copy",
           "event": [
             {
               "listen": "test",
@@ -2948,8 +2948,8 @@
               "mode": "raw",
               "raw": "{\r\n    \"passport_number\": \"654321\",\r\n    \"issue_date\": \"2018-01-31\",\r\n    \"expiration_date\": \"2019-01-11\",\r\n    \"employee_id\": 1,\r\n    \"country_id\": 2\r\n}"
             },
-            "url": "{{url}}/passport/{{passport_id}}",
-            "description": ""
+            "url": "{{url}}/emergency_contact/{{contact_id}}",
+            "description": null
           },
           "response": []
         },
