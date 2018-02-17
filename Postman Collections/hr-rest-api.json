@@ -2634,7 +2634,7 @@
         },
         {
           "_postman_id": "821e304c-b809-84c6-6914-c3da09c96fb4",
-          "name": "/emergency_contact/<int:contact_id> copy",
+          "name": "/health_permit/<int:permit_id>",
           "event": [
             {
               "listen": "test",
@@ -2674,7 +2674,7 @@
               "raw": ""
             },
             "url": "{{url}}/health_permit/{{permit_id}}",
-            "description": null
+            "description": ""
           },
           "response": []
         },
