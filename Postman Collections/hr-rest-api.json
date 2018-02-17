@@ -1509,7 +1509,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "37858133-077f-4c2f-a232-6edee2637593",
+                "id": "6ff033f4-4af0-4aac-829a-ad1c1a1354d9",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -1524,7 +1524,7 @@
                   "",
                   "tests[\"break_length is 00:30:00\"] = jsonData.break_length === \"00:30:00\";",
                   "",
-                  "tests[\"rest_day is Domingo\"] = jsonData.shift.rest_day === \"Domingo\";",
+                  "tests[\"rest_day is Domingo\"] = jsonData.rest_day === \"Domingo\";",
                   "",
                   "tests[\"is_break_included_in_shift is false\"] = !jsonData.is_break_included_in_shift;",
                   "",
