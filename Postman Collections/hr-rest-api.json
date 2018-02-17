@@ -2495,7 +2495,14 @@
             "description": null
           },
           "response": []
-        },
+        }
+      ]
+    },
+    {
+      "_postman_id": "3acbe7d4-3df5-1648-4ffd-11efcded2d43",
+      "name": "HealthPermit",
+      "description": "",
+      "item": [
         {
           "_postman_id": "f1850786-b236-75a4-5d79-92d7b180d846",
           "name": "emergency_contact copy",
@@ -2557,12 +2564,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "3acbe7d4-3df5-1648-4ffd-11efcded2d43",
-      "name": "HealthPermit",
-      "description": "",
-      "item": []
     }
   ]
 }
