@@ -13,12 +13,12 @@
       "item": [
         {
           "_postman_id": "db1db7a7-179b-ea84-9b27-35d56b3be2ee",
-          "name": "{{url}}/auth",
+          "name": "/auth",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "6ab993e6-c6a1-4f01-98f5-1581d98956ba",
+                "id": "d4973b10-7875-462d-8ac6-0d1c6ec9681f",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -29,9 +29,9 @@
                   "",
                   "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -2303,7 +2303,7 @@
         },
         {
           "_postman_id": "ec975174-77fc-8bbd-a6cf-2b67396a3547",
-          "name": "/employee/<int:employee_id> copy",
+          "name": "/emergency_contact/<int:contact_id>",
           "event": [
             {
               "listen": "test",
@@ -2352,7 +2352,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/employee/{{employee_id}}",
+            "url": "{{url}}/emergency_contact/{{contact_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
