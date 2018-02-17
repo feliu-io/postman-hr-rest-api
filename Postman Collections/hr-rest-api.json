@@ -2950,6 +2950,52 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "f7fca6c0-3221-c5c7-c417-13eab75c4424",
+          "name": "/health_permit/<int:permit_id> copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0f0a5b5e-1178-420a-bfc8-4c4f348d9a4a",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact deleted.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/emergency_contact/{{contact_id}}",
+            "description": null
+          },
+          "response": []
         }
       ]
     }
