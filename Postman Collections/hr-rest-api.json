@@ -843,7 +843,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f731f551-cfd9-4af2-8642-6ba25845409f",
+                "id": "f49c66c0-2703-44ac-a87c-0e5b4624b693",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -854,9 +854,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -889,8 +889,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "473c2e7d-24df-4e53-a259-0f88961300d6",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -900,10 +898,12 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                ],
+                "id": "ea86f6ff-f4be-4645-bbf4-eaf737a13bc9",
+                "type": "text/javascript"
               }
             }
           ],
