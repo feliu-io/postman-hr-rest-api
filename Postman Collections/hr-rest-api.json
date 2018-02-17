@@ -2230,7 +2230,7 @@
               "raw": ""
             },
             "url": "{{url}}/activate_employee/{{employee_id}}",
-            "description": ""
+            "description": null
           },
           "response": []
         }
@@ -2303,7 +2303,7 @@
         },
         {
           "_postman_id": "ec975174-77fc-8bbd-a6cf-2b67396a3547",
-          "name": "/emergency_contact/<int:contact_id>",
+          "name": "/employee/<int:employee_id> copy",
           "event": [
             {
               "listen": "test",
@@ -2352,7 +2352,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
+            "url": "{{url}}/employee/{{employee_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
