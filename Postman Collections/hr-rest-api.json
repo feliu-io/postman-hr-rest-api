@@ -2776,12 +2776,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "d938d105-ceb9-45a0-b9ab-9ebe1dae0e7e",
+                "id": "10e94a78-f53e-442a-9894-0cecc5826525",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"marital_statuses contains 5 items\"] = jsonData.marital_statuses.length === 5;",
+                  "tests[\"countries contains 17 items\"] = jsonData.countries.length === 17;",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
@@ -2810,8 +2810,8 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/marital_statuses",
-            "description": null
+            "url": "{{url}}/countries",
+            "description": ""
           },
           "response": []
         }
