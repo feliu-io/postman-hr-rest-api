@@ -13,12 +13,12 @@
       "item": [
         {
           "_postman_id": "db1db7a7-179b-ea84-9b27-35d56b3be2ee",
-          "name": "{{url}}/auth",
+          "name": "/auth",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "6ab993e6-c6a1-4f01-98f5-1581d98956ba",
+                "id": "d4973b10-7875-462d-8ac6-0d1c6ec9681f",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -29,9 +29,9 @@
                   "",
                   "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -1340,7 +1340,7 @@
               "raw": "{\n  \"shift_name\": \"test_s_r\",\n  \"weekly_hours\": 48,\n  \"is_rotating\": true,\n  \"payment_period\": \"Quincenal\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"rotation_start_hour\": \"06:00:00\",\n  \"rotation_end_hour\": \"21:00:00\"\n}"
             },
             "url": "{{url}}/shift",
-            "description": null
+            "description": ""
           },
           "response": []
         },
@@ -2184,7 +2184,7 @@
               "raw": ""
             },
             "url": "{{url}}/employee/{{employee_id}}",
-            "description": null
+            "description": ""
           },
           "response": []
         },
@@ -2230,7 +2230,7 @@
               "raw": ""
             },
             "url": "{{url}}/activate_employee/{{employee_id}}",
-            "description": null
+            "description": ""
           },
           "response": []
         }
@@ -2303,7 +2303,7 @@
         },
         {
           "_postman_id": "ec975174-77fc-8bbd-a6cf-2b67396a3547",
-          "name": "/employee/<int:employee_id> copy",
+          "name": "/emergency_contact/<int:contact_id>",
           "event": [
             {
               "listen": "test",
@@ -2352,7 +2352,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/employee/{{employee_id}}",
+            "url": "{{url}}/emergency_contact/{{contact_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
@@ -2412,7 +2412,7 @@
               "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"last_name\": \"new_l_n\",\r\n    \"home_phone\": \"333-3333\",\r\n    \"work_phone\": \"444-4444\",\r\n    \"mobile_phone\": \"6666-7777\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
             "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": null
+            "description": ""
           },
           "response": []
         },
@@ -2471,7 +2471,7 @@
       "item": [
         {
           "_postman_id": "f1850786-b236-75a4-5d79-92d7b180d846",
-          "name": "emergency_contact copy",
+          "name": "/health_permit",
           "event": [
             {
               "listen": "test",
@@ -2521,7 +2521,7 @@
               "raw": "{\r\n    \"health_permit_type\": \"Verde\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1\r\n}"
             },
             "url": "{{url}}/health_permit",
-            "description": null
+            "description": ""
           },
           "response": []
         },
@@ -2579,7 +2579,7 @@
         },
         {
           "_postman_id": "d439995c-031e-4828-f0c6-0cd23d6d21b6",
-          "name": "/employee/<id:employee_id> copy",
+          "name": "/health_permit/<int:permit_id>",
           "event": [
             {
               "listen": "test",
@@ -2628,7 +2628,7 @@
               "raw": "{\r\n    \"health_permit_type\": \"Blanco\",\r\n    \"issue_date\": \"2018-01-31\",\r\n    \"expiration_date\": \"2019-01-31\",\r\n    \"employee_id\": 1\r\n}"
             },
             "url": "{{url}}/health_permit/{{permit_id}}",
-            "description": null
+            "description": ""
           },
           "response": []
         },
@@ -2786,7 +2786,7 @@
       "item": [
         {
           "_postman_id": "d0669b91-7ea3-59e8-7f2c-03f7506ceea5",
-          "name": "/health_permit copy",
+          "name": "/passport",
           "event": [
             {
               "listen": "test",
@@ -2838,13 +2838,13 @@
               "raw": "{\r\n    \"passport_number\": \"123456\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1,\r\n    \"country_id\": 1\r\n}"
             },
             "url": "{{url}}/passport",
-            "description": null
+            "description": ""
           },
           "response": []
         },
         {
           "_postman_id": "f2dc7ed6-0d19-61bc-0118-8f4c4e519c1a",
-          "name": "/health_permit/<int:permit_id> copy",
+          "name": "/passport/<int:passport_id>",
           "event": [
             {
               "listen": "test",
@@ -2891,7 +2891,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
+            "url": "{{url}}/passport/{{passport_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
@@ -2955,7 +2955,7 @@
         },
         {
           "_postman_id": "f7fca6c0-3221-c5c7-c417-13eab75c4424",
-          "name": "/health_permit/<int:permit_id> copy",
+          "name": "/passport/<int:passport_id>",
           "event": [
             {
               "listen": "test",
@@ -2994,8 +2994,8 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": null
+            "url": "{{url}}/passport/{{passport_id}}",
+            "description": ""
           },
           "response": []
         }
