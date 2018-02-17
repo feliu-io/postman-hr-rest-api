@@ -484,10 +484,22 @@
             {
               "listen": "test",
               "script": {
-                "id": "8af82bea-1691-41c0-8a9a-1ccb1cdafb79",
+                "id": "762315c6-f143-4ed7-b2ee-f40a5ab8d145",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests['is_active is true'] = jsonData.user.is_active;",
+                  "",
+                  "tests['is_super is true'] = jsonData.user.is_super;",
+                  "",
+                  "tests['is_owner is true'] = jsonData.user.is_owner;",
+                  "",
+                  "tests['email is new_test_u@test_o.com'] = jsonData.user.email === \"new_test_u@test_o.com\";",
+                  "",
+                  "tests['username is new_test_u'] = jsonData.user.username === \"new_test_u\";",
+                  "",
+                  "tests['organization_id is correct'] = jsonData.user.organization_id === parseInt(environment.organization_id);",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"User updated successfully.\";",
                   "",
@@ -495,9 +507,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\"",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
@@ -531,7 +543,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f087140c-7a58-4c89-8cc4-0367d0945db3",
+                "id": "5faa8371-b6fa-4dce-a040-e9fede62506c",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -542,9 +554,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
