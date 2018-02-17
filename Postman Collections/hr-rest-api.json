@@ -2717,20 +2717,28 @@
           "response": []
         },
         {
-          "_postman_id": "76121e34-afcc-c53c-0591-a3ebc24fc78a",
-          "name": "/passport/<int:passport_id> copy",
+          "_postman_id": "f2dc7ed6-0d19-61bc-0118-8f4c4e519c1a",
+          "name": "/health_permit/<int:permit_id> copy",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "5cbebca8-888e-47f5-aa8c-f13abafebadb",
+                "id": "09c0f980-512a-4b30-bb41-395a50866dde",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Passport deleted.\";",
+                  "tests[\"passport_number is 123456\"] = jsonData.passport_number === \"123456\";",
                   "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "tests[\"issue_date is 2018-01-01\"] = jsonData.issue_date === \"2018-01-01\";",
+                  "",
+                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.expiration_date === \"2019-01-01\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"country_id is correct\"] = jsonData.country_id ===  1;",
+                  "",
+                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
@@ -2742,7 +2750,7 @@
             }
           ],
           "request": {
-            "method": "DELETE",
+            "method": "GET",
             "header": [
               {
                 "key": "Content-Type",
@@ -2755,9 +2763,65 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/passport/{{passport_id}}",
+            "url": "{{url}}/emergency_contact/{{contact_id}}",
+            "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d0669b91-7ea3-59e8-7f2c-03f7506ceea5",
+          "name": "/health_permit copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1f76623d-a430-4b4b-b262-c8d23696a4a5",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"permit_id\", jsonData.health_permit.id);",
+                  "",
+                  "tests[\"health_permit_type is Verde\"] = jsonData.health_permit.health_permit_type === \"Verde\";",
+                  "",
+                  "tests[\"issue_date is 2018-01-01\"] = jsonData.health_permit.issue_date === \"2018-01-01\";",
+                  "",
+                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.health_permit.expiration_date === \"2019-01-01\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.health_permit.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Health permit created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"health_permit_type\": \"Verde\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1\r\n}"
+            },
+            "url": "{{url}}/health_permit",
             "description": null
           },
           "response": []
@@ -2922,118 +2986,6 @@
             },
             "url": "{{url}}/emergency_contact/{{contact_id}}",
             "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d0669b91-7ea3-59e8-7f2c-03f7506ceea5",
-          "name": "/health_permit copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "75fc408a-a79e-4a6b-9841-ac016d03b3ec",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable(\"passport_id\", jsonData.passport.id);",
-                  "",
-                  "tests[\"passport_number is 123456\"] = jsonData.passport.passport_number === \"123456\";",
-                  "",
-                  "tests[\"issue_date is 2018-01-01\"] = jsonData.passport.issue_date === \"2018-01-01\";",
-                  "",
-                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.passport.expiration_date === \"2019-01-01\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.passport.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"country_id is correct\"] = jsonData.passport.country_id ===  1;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Passport created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"passport_number\": \"123456\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1,\r\n    \"country_id\": 1\r\n}"
-            },
-            "url": "{{url}}/passport",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "f2dc7ed6-0d19-61bc-0118-8f4c4e519c1a",
-          "name": "/health_permit/<int:permit_id> copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "09c0f980-512a-4b30-bb41-395a50866dde",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"passport_number is 123456\"] = jsonData.passport_number === \"123456\";",
-                  "",
-                  "tests[\"issue_date is 2018-01-01\"] = jsonData.issue_date === \"2018-01-01\";",
-                  "",
-                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.expiration_date === \"2019-01-01\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"country_id is correct\"] = jsonData.country_id ===  1;",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
         }
