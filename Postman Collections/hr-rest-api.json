@@ -2396,52 +2396,6 @@
           "response": []
         },
         {
-          "_postman_id": "5f9e319e-8b57-eaf8-4c79-d9edd8fe0325",
-          "name": "/employee/<int:employee_id> copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "0f0a5b5e-1178-420a-bfc8-4c4f348d9a4a",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact deleted.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": null
-          },
-          "response": []
-        },
-        {
           "_postman_id": "c4ed860c-d647-cffe-ab33-deeca57db56e",
           "name": "/emergency_contact/<id:contact_id> copy",
           "event": [
@@ -2501,8 +2455,8 @@
           "response": []
         },
         {
-          "_postman_id": "821e304c-b809-84c6-6914-c3da09c96fb4",
-          "name": "/emergency_contact/<int:contact_id> copy",
+          "_postman_id": "5f9e319e-8b57-eaf8-4c79-d9edd8fe0325",
+          "name": "/employee/<int:employee_id> copy",
           "event": [
             {
               "listen": "test",
@@ -2720,6 +2674,52 @@
               "raw": "{\r\n    \"health_permit_type\": \"Blanco\",\r\n    \"issue_date\": \"2018-01-31\",\r\n    \"expiration_date\": \"2019-01-31\",\r\n    \"employee_id\": 1\r\n}"
             },
             "url": "{{url}}/health_permit/{{permit_id}}",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "821e304c-b809-84c6-6914-c3da09c96fb4",
+          "name": "/emergency_contact/<int:contact_id> copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0f0a5b5e-1178-420a-bfc8-4c4f348d9a4a",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact deleted.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/emergency_contact/{{contact_id}}",
             "description": null
           },
           "response": []
