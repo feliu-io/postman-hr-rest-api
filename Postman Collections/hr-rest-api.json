@@ -2471,7 +2471,7 @@
       "item": [
         {
           "_postman_id": "f1850786-b236-75a4-5d79-92d7b180d846",
-          "name": "emergency_contact copy",
+          "name": "/health_permit",
           "event": [
             {
               "listen": "test",
@@ -2521,7 +2521,7 @@
               "raw": "{\r\n    \"health_permit_type\": \"Verde\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1\r\n}"
             },
             "url": "{{url}}/health_permit",
-            "description": null
+            "description": ""
           },
           "response": []
         },
@@ -2844,7 +2844,7 @@
         },
         {
           "_postman_id": "f2dc7ed6-0d19-61bc-0118-8f4c4e519c1a",
-          "name": "/health_permit/<int:permit_id> copy",
+          "name": "/passport/<int:passport_id>",
           "event": [
             {
               "listen": "test",
@@ -2891,7 +2891,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
+            "url": "{{url}}/passport/{{passport_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
