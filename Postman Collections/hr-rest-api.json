@@ -2725,7 +2725,7 @@
       "item": [
         {
           "_postman_id": "1a14ca08-cb10-1c41-9518-d11bf4661d31",
-          "name": "marital_statuses copy",
+          "name": "/countries",
           "event": [
             {
               "listen": "test",
