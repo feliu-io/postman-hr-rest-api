@@ -589,7 +589,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "41ed679a-9686-4ad8-bba2-dd05ac44b49a",
+                "id": "eb4c5aaf-da34-48d7-bf72-9db68a730168",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -600,9 +600,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -630,7 +630,7 @@
         },
         {
           "_postman_id": "17928f30-6273-ce16-fa76-46acf0ed68d9",
-          "name": "{{url}}/auth (new_test_u)",
+          "name": "/auth (new_test_u)",
           "event": [
             {
               "listen": "test",
@@ -684,20 +684,30 @@
             {
               "listen": "test",
               "script": {
-                "id": "0d3c1f9b-23cc-47df-9ba7-66b1c8b059c8",
+                "id": "f0449b78-3323-475e-a051-52115fc92051",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
+                  "postman.setEnvironmentVariable(\"department_id\", jsonData.department.id);",
+                  "",
+                  "tests['is_active is true'] = jsonData.department.is_active;",
+                  "",
+                  "tests['department_name is test_d'] = jsonData.department.department_name === \"test_d\";",
+                  "",
+                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
+                  "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
+                  "",
+                  "tests['employees is empty list'] = jsonData.department.employees.length === 0;",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
