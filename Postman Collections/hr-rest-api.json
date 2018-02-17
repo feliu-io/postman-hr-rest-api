@@ -2717,28 +2717,26 @@
           "response": []
         },
         {
-          "_postman_id": "4bc18fcd-0158-71f3-eaab-7b0ad32c244a",
+          "_postman_id": "f2dc7ed6-0d19-61bc-0118-8f4c4e519c1a",
           "name": "/health_permit/<int:permit_id> copy",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "d8b3a093-771d-49c0-913d-7e975c06cc92",
+                "id": "09c0f980-512a-4b30-bb41-395a50866dde",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"first_name is f_n\"] = jsonData.first_name === \"f_n\";",
+                  "tests[\"passport_number is 123456\"] = jsonData.passport_number === \"123456\";",
                   "",
-                  "tests[\"last_name is s_n\"] = jsonData.last_name === \"l_n\";",
+                  "tests[\"issue_date is 2018-01-01\"] = jsonData.issue_date === \"2018-01-01\";",
                   "",
-                  "tests[\"home_phone is 111-1111\"] = jsonData.home_phone === \"111-1111\";",
-                  "",
-                  "tests[\"work_phone is 222-2222\"] = jsonData.work_phone === \"222-2222\";",
-                  "",
-                  "tests[\"mobile_phone is 6666-6666\"] = jsonData.mobile_phone === \"6666-6666\";",
+                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.expiration_date === \"2019-01-01\";",
                   "",
                   "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"country_id is correct\"] = jsonData.country_id ===  1;",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
@@ -2888,6 +2886,111 @@
               "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
             "url": "{{url}}/emergency_contact",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "732f5d9d-f079-97b0-f3f8-01535d940bee",
+          "name": "/health_permit/<int:permit_id> copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "fbf48ed6-78a9-40ef-a272-405f57bd57ea",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"first_name is new_f_n\"] = jsonData.emergency_contact.first_name === \"new_f_n\";",
+                  "",
+                  "tests[\"last_name is new_l_n\"] = jsonData.emergency_contact.last_name === \"new_l_n\";",
+                  "",
+                  "tests[\"home_phone is 333-3333\"] = jsonData.emergency_contact.home_phone === \"333-3333\";",
+                  "",
+                  "tests[\"work_phone is 444-4444\"] = jsonData.emergency_contact.work_phone === \"444-4444\";",
+                  "",
+                  "tests[\"mobile_phone is 6666-7777\"] = jsonData.emergency_contact.mobile_phone === \"6666-7777\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.emergency_contact.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact updated successfully.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"last_name\": \"new_l_n\",\r\n    \"home_phone\": \"333-3333\",\r\n    \"work_phone\": \"444-4444\",\r\n    \"mobile_phone\": \"6666-7777\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
+            },
+            "url": "{{url}}/emergency_contact/{{contact_id}}",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f7fca6c0-3221-c5c7-c417-13eab75c4424",
+          "name": "/health_permit/<int:permit_id> copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0f0a5b5e-1178-420a-bfc8-4c4f348d9a4a",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact deleted.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/emergency_contact/{{contact_id}}",
             "description": null
           },
           "response": []
