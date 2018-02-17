@@ -13,12 +13,12 @@
       "item": [
         {
           "_postman_id": "db1db7a7-179b-ea84-9b27-35d56b3be2ee",
-          "name": "/auth",
+          "name": "{{url}}/auth",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "d4973b10-7875-462d-8ac6-0d1c6ec9681f",
+                "id": "6ab993e6-c6a1-4f01-98f5-1581d98956ba",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -29,9 +29,9 @@
                   "",
                   "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -122,7 +122,7 @@
         },
         {
           "_postman_id": "0f3d3798-cebb-1222-4777-fc1e63574fbc",
-          "name": "/organization/<string:organization_name>",
+          "name": "/organization/<string:name>",
           "event": [
             {
               "listen": "test",
@@ -649,7 +649,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d356ca52-98c4-4045-a46a-1005a4f33afd",
+                "id": "d19e5bd7-fa2a-4c3f-8391-095b9f7c1507",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -660,9 +660,9 @@
                   "",
                   "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -680,7 +680,7 @@
               "raw": "{\n  \"username\": \"new_test_u\",\n  \"password\": \"1234\"\n}"
             },
             "url": "{{url}}/auth",
-            "description": ""
+            "description": null
           },
           "response": []
         }
@@ -956,7 +956,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d938d105-ceb9-45a0-b9ab-9ebe1dae0e7e",
+                "id": "6f90b829-e4ef-4d64-a9fb-3a2b7ca68f77",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -967,9 +967,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -1064,7 +1064,7 @@
         },
         {
           "_postman_id": "56a3fc61-78f4-1255-a22b-9269139561a9",
-          "name": "/employment_position/<string:position_name>",
+          "name": "/employment_position/<string:position_name>/<int:organization_id>",
           "event": [
             {
               "listen": "test",
@@ -1340,7 +1340,7 @@
               "raw": "{\n  \"shift_name\": \"test_s_r\",\n  \"weekly_hours\": 48,\n  \"is_rotating\": true,\n  \"payment_period\": \"Quincenal\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"rotation_start_hour\": \"06:00:00\",\n  \"rotation_end_hour\": \"21:00:00\"\n}"
             },
             "url": "{{url}}/shift",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -1434,7 +1434,7 @@
               "raw": "{\n  \"shift_name\": \"test_s_f\",\n  \"weekly_hours\": 44,\n  \"is_rotating\": false,\n  \"payment_period\": \"Quincenal\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"fixed_start_hour_monday\": \"08:00:00\",\n  \"fixed_start_break_hour_monday\": \"12:00:00\",\n  \"fixed_end_break_hour_monday\": \"12:30:00\",\n  \"fixed_end_hour_monday\": \"16:30:00\",\n  \"fixed_start_hour_tuesday\": \"08:00:00\",\n  \"fixed_start_break_hour_tuesday\": \"12:00:00\",\n  \"fixed_end_break_hour_tuesday\": \"12:30:00\",\n  \"fixed_end_hour_tuesday\": \"16:30:00\",\n  \"fixed_start_hour_wednesday\": \"08:00:00\",\n  \"fixed_start_break_hour_wednesday\": \"12:00:00\",\n  \"fixed_end_break_hour_wednesday\": \"12:30:00\",\n  \"fixed_end_hour_wednesday\": \"16:30:00\",\n  \"fixed_start_hour_thursday\": \"08:00:00\",\n  \"fixed_start_break_hour_thursday\": \"12:00:00\",\n  \"fixed_end_break_hour_thursday\": \"12:30:00\",\n  \"fixed_end_hour_thursday\": \"16:30:00\",\n  \"fixed_start_hour_friday\": \"08:00:00\",\n  \"fixed_start_break_hour_friday\": \"12:00:00\",\n  \"fixed_end_break_hour_friday\": \"12:30:00\",\n  \"fixed_end_hour_friday\": \"16:30:00\",\n  \"fixed_start_hour_saturday\": \"08:00:00\",\n  \"fixed_end_hour_saturday\": \"12:00:00\",\n  \"rest_day\": \"Domingo\"\n}"
             },
             "url": "{{url}}/shift",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -1655,7 +1655,7 @@
               "raw": "{\n  \"shift_name\": \"new_test_s_r\",\n  \"weekly_hours\": 44,\n  \"is_rotating\": true,\n  \"payment_period\": \"Semanal\",\n  \"break_length\": \"01:00:00\",\n  \"is_break_included_in_shift\": true,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"rotation_start_hour\": \"00:00:00\",\n  \"rotation_end_hour\": \"15:00:00\"\n}"
             },
             "url": "{{url}}/shift/test_s_r",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -1750,7 +1750,7 @@
               "raw": "{\n  \"shift_name\": \"test_s_f\",\n  \"weekly_hours\": 48,\n  \"is_rotating\": false,\n  \"payment_period\": \"Diario\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"fixed_start_hour_sunday\": \"09:00:00\",\n  \"fixed_start_break_hour_sunday\": \"13:00:00\",\n  \"fixed_end_break_hour_sunday\": \"13:30:00\",\n  \"fixed_end_hour_sunday\": \"17:30:00\",\n  \"fixed_start_hour_monday\": \"09:00:00\",\n  \"fixed_start_break_hour_monday\": \"13:00:00\",\n  \"fixed_end_break_hour_monday\": \"13:30:00\",\n  \"fixed_end_hour_monday\": \"17:30:00\",\n  \"fixed_start_hour_tuesday\": \"09:00:00\",\n  \"fixed_start_break_hour_tuesday\": \"13:00:00\",\n  \"fixed_end_break_hour_tuesday\": \"13:30:00\",\n  \"fixed_end_hour_tuesday\": \"17:30:00\",\n  \"fixed_start_hour_wednesday\": \"09:00:00\",\n  \"fixed_start_break_hour_wednesday\": \"13:00:00\",\n  \"fixed_end_break_hour_wednesday\": \"13:30:00\",\n  \"fixed_end_hour_wednesday\": \"17:30:00\",\n  \"fixed_start_hour_thursday\": \"09:00:00\",\n  \"fixed_start_break_hour_thursday\": \"13:00:00\",\n  \"fixed_end_break_hour_thursday\": \"13:30:00\",\n  \"fixed_end_hour_thursday\": \"17:30:00\",\n  \"fixed_start_hour_friday\": \"09:00:00\",\n  \"fixed_start_break_hour_friday\": \"13:00:00\",\n  \"fixed_end_break_hour_friday\": \"13:30:00\",\n  \"fixed_end_hour_friday\": \"17:30:00\",\n  \"fixed_start_hour_saturday\": null,\n  \"fixed_end_hour_saturday\": null,\n  \"rest_day\": \"Sábado\"\n}"
             },
             "url": "{{url}}/shift/test_s_f",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -1796,7 +1796,7 @@
               "raw": ""
             },
             "url": "{{url}}/shift/new_test_s_r",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -1807,7 +1807,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d0d7e371-68c4-44dd-bd6d-cc03b2067006",
+                "id": "647df6f5-f274-4b59-afab-a44efdaa4333",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -1818,9 +1818,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
                 ]
               }
             }
@@ -1842,7 +1842,7 @@
               "raw": ""
             },
             "url": "{{url}}/activate_shift/new_test_s_r",
-            "description": ""
+            "description": null
           },
           "response": []
         }
@@ -1947,7 +1947,7 @@
               "raw": "{\n  \"first_name\": \"f_n\",\n  \"second_name\": \"s_n\",\n  \"first_surname\": \"f_sn\",\n  \"second_surname\": \"s_sn\",\n  \"national_id_number\": \"1-11-111\",\n  \"is_panamanian\": true,\n  \"date_of_birth\": \"01-31-2000\",\n  \"gender\": \"Hombre\",\n  \"address\": \"Panamá\",\n  \"home_phone\": \"222-2222\",\n  \"mobile_phone\": \"6666-6666\",\n  \"email\": \"f_n@f_sn.com\",\n  \"type_of_contract\": \"Definido\",\n  \"employment_date\": \"01-01-2018\",\n  \"contract_expiration_date\": \"01-31-2018\",\n  \"termination_date\": \"01-15-2018\",\n  \"termination_reason\": \"Período de Prueba\",\n  \"salary_per_payment_period\": \"104.00\",\n  \"representation_expenses_per_payment_period\": \"0\",\n  \"payment_method\": \"ACH\",\n  \"is_active\": true,\n  \"marital_status_id\": 1,\n  \"department_id\": {{department_id}},\n  \"position_id\": {{position_id}},\n  \"shift_id\": {{shift_id}}\n}"
             },
             "url": "{{url}}/employee",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -2138,7 +2138,7 @@
               "raw": "{\n  \"first_name\": \"new_f_n\",\n  \"second_name\": \"new_s_n\",\n  \"first_surname\": \"new_f_sn\",\n  \"second_surname\": \"new_s_sn\",\n  \"national_id_number\": \"N-1-11-111\",\n  \"is_panamanian\": false,\n  \"date_of_birth\": \"01-31-2001\",\n  \"gender\": \"Mujer\",\n  \"address\": \"Chiriquí\",\n  \"home_phone\": \"333-3333\",\n  \"mobile_phone\": \"6666-7777\",\n  \"email\": \"new_f_n@new_f_sn.com\",\n  \"type_of_contract\": \"Indefinido\",\n  \"employment_date\": \"01-01-2019\",\n  \"contract_expiration_date\": \"01-31-2019\",\n  \"termination_date\": \"01-15-2019\",\n  \"termination_reason\": \"Renuncia\",\n  \"salary_per_payment_period\": \"208.00\",\n  \"representation_expenses_per_payment_period\": \"100\",\n  \"payment_method\": \"Cheque\",\n  \"is_active\": true,\n  \"marital_status_id\": 2,\n  \"department_id\": {{department_id}},\n  \"position_id\": {{position_id}},\n  \"shift_id\": {{shift_id}}\n}"
             },
             "url": "{{url}}/employee/{{employee_id}}",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -2184,7 +2184,7 @@
               "raw": ""
             },
             "url": "{{url}}/employee/{{employee_id}}",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -2230,7 +2230,7 @@
               "raw": ""
             },
             "url": "{{url}}/activate_employee/{{employee_id}}",
-            "description": ""
+            "description": null
           },
           "response": []
         }
@@ -2248,30 +2248,68 @@
             {
               "listen": "test",
               "script": {
-                "id": "7ddcf7f3-c793-4645-bf5c-70443b19ed66",
+                "id": "81d06f0e-221f-4a35-a36e-4be9364d30a1",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "postman.setEnvironmentVariable(\"contact_id\", jsonData.emergency_contact.id);",
+                  "postman.setEnvironmentVariable(\"employee_id\", jsonData.employee.id);",
                   "",
-                  "tests[\"first_name is f_n\"] = jsonData.emergency_contact.first_name === \"f_n\";",
+                  "tests[\"first_name is f_n\"] = jsonData.employee.first_name === \"f_n\";",
                   "",
-                  "tests[\"last_name is s_n\"] = jsonData.emergency_contact.last_name === \"l_n\";",
+                  "tests[\"second_name is s_n\"] = jsonData.employee.second_name === \"s_n\";",
                   "",
-                  "tests[\"home_phone is 111-1111\"] = jsonData.emergency_contact.home_phone === \"111-1111\";",
+                  "tests[\"first_surname is f_sn\"] = jsonData.employee.first_surname === \"f_sn\";",
                   "",
-                  "tests[\"work_phone is 222-2222\"] = jsonData.emergency_contact.work_phone === \"222-2222\";",
+                  "tests[\"second_surname is s_sn\"] = jsonData.employee.second_surname === \"s_sn\";",
                   "",
-                  "tests[\"mobile_phone is 6666-6666\"] = jsonData.emergency_contact.mobile_phone === \"6666-6666\";",
+                  "tests[\"gender is Hombre\"] = jsonData.employee.gender === \"Hombre\";",
                   "",
-                  "tests[\"employee_id is correct\"] = jsonData.emergency_contact.employee_id ===  parseInt(environment.employee_id);",
+                  "tests[\"is_panamanian is true\"] = jsonData.employee.is_panamanian;",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact created successfully.\";",
+                  "tests[\"national_id_number is 1-11-111\"] = jsonData.employee.national_id_number === \"1-11-111\";",
+                  "",
+                  "tests[\"date_of_birth is 2000-01-31\"] = jsonData.employee.date_of_birth === \"2000-01-31\";",
+                  "",
+                  "tests[\"address is Panamá\"] = jsonData.employee.address === \"Panamá\";",
+                  "",
+                  "tests[\"home_phone is 222-2222\"] = jsonData.employee.home_phone === \"222-2222\";",
+                  "",
+                  "tests[\"mobile_phone is 6666-6666\"] = jsonData.employee.mobile_phone === \"6666-6666\";",
+                  "",
+                  "tests[\"email is f_n@f_sn.com\"] = jsonData.employee.email === \"f_n@f_sn.com\";",
+                  "",
+                  "tests[\"type_of_contract is Definido\"] = jsonData.employee.type_of_contract === \"Definido\";",
+                  "",
+                  "tests[\"payment_method is ACH\"] = jsonData.employee.payment_method === \"ACH\";",
+                  "",
+                  "tests[\"salary_per_payment_period is 104.00\"] = jsonData.employee.salary_per_payment_period === \"104.00\";",
+                  "",
+                  "tests[\"representation_expenses_per_payment_period is 0.00\"] = jsonData.employee.representation_expenses_per_payment_period === \"0.00\";",
+                  "",
+                  "tests[\"employment_date is 2018-01-01\"] = jsonData.employee.employment_date === \"2018-01-01\";",
+                  "",
+                  "tests[\"contract_expiration_date is 2018-01-31\"] = jsonData.employee.contract_expiration_date === \"2018-01-31\";",
+                  "",
+                  "tests[\"termination_date is 2018-01-15\"] = jsonData.employee.termination_date === \"2018-01-15\";",
+                  "",
+                  "tests[\"termination_reason is Período de Prueba\"] = jsonData.employee.termination_reason === \"Período de Prueba\";",
+                  "",
+                  "tests[\"is_active is true\"] = jsonData.employee.is_active;",
+                  "",
+                  "tests[\"position_id is correct\"] = jsonData.employee.position_id === parseInt(environment.position_id);",
+                  "",
+                  "tests[\"department_id is correct\"] = jsonData.employee.department_id === parseInt(environment.department_id);",
+                  "",
+                  "tests[\"marital_status_id is correct\"] = jsonData.employee.marital_status_id === 1;",
+                  "",
+                  "tests[\"shift_id is correct\"] = jsonData.employee.shift_id === parseInt(environment.shift_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Employee created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
@@ -2294,16 +2332,16 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
+              "raw": "{\n  \"first_name\": \"f_n\",\n  \"second_name\": \"s_n\",\n  \"first_surname\": \"f_sn\",\n  \"second_surname\": \"s_sn\",\n  \"national_id_number\": \"1-11-111\",\n  \"is_panamanian\": true,\n  \"date_of_birth\": \"01-31-2000\",\n  \"gender\": \"Hombre\",\n  \"address\": \"Panamá\",\n  \"home_phone\": \"222-2222\",\n  \"mobile_phone\": \"6666-6666\",\n  \"email\": \"f_n@f_sn.com\",\n  \"type_of_contract\": \"Definido\",\n  \"employment_date\": \"01-01-2018\",\n  \"contract_expiration_date\": \"01-31-2018\",\n  \"termination_date\": \"01-15-2018\",\n  \"termination_reason\": \"Período de Prueba\",\n  \"salary_per_payment_period\": \"104.00\",\n  \"representation_expenses_per_payment_period\": \"0\",\n  \"payment_method\": \"ACH\",\n  \"is_active\": true,\n  \"marital_status_id\": 1,\n  \"department_id\": {{department_id}},\n  \"position_id\": {{position_id}},\n  \"shift_id\": {{shift_id}}\n}"
             },
-            "url": "{{url}}/emergency_contact",
-            "description": ""
+            "url": "{{url}}/employee",
+            "description": null
           },
           "response": []
         },
         {
           "_postman_id": "ec975174-77fc-8bbd-a6cf-2b67396a3547",
-          "name": "/emergency_contact/<int:contact_id>",
+          "name": "/employee/<int:employee_id> copy",
           "event": [
             {
               "listen": "test",
@@ -2352,7 +2390,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
+            "url": "{{url}}/employee/{{employee_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
@@ -2412,13 +2450,13 @@
               "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"last_name\": \"new_l_n\",\r\n    \"home_phone\": \"333-3333\",\r\n    \"work_phone\": \"444-4444\",\r\n    \"mobile_phone\": \"6666-7777\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
             "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": ""
+            "description": null
           },
           "response": []
         },
         {
           "_postman_id": "5f9e319e-8b57-eaf8-4c79-d9edd8fe0325",
-          "name": "/emergency_contact/<int:contact_id>",
+          "name": "/employee/<int:employee_id> copy",
           "event": [
             {
               "listen": "test",
@@ -2458,7 +2496,7 @@
               "raw": ""
             },
             "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": ""
+            "description": null
           },
           "response": []
         }
@@ -2471,7 +2509,7 @@
       "item": [
         {
           "_postman_id": "f1850786-b236-75a4-5d79-92d7b180d846",
-          "name": "/health_permit",
+          "name": "emergency_contact copy",
           "event": [
             {
               "listen": "test",
@@ -2521,13 +2559,13 @@
               "raw": "{\r\n    \"health_permit_type\": \"Verde\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1\r\n}"
             },
             "url": "{{url}}/health_permit",
-            "description": ""
+            "description": null
           },
           "response": []
         },
         {
           "_postman_id": "1765c379-57f6-3256-43f0-930b217a4308",
-          "name": "/health_permit/<int:permit_id>",
+          "name": "/emergency_contact/<int:contact_id> copy",
           "event": [
             {
               "listen": "test",
@@ -2579,7 +2617,7 @@
         },
         {
           "_postman_id": "d439995c-031e-4828-f0c6-0cd23d6d21b6",
-          "name": "/health_permit/<int:permit_id>",
+          "name": "/employee/<id:employee_id> copy",
           "event": [
             {
               "listen": "test",
@@ -2628,13 +2666,13 @@
               "raw": "{\r\n    \"health_permit_type\": \"Blanco\",\r\n    \"issue_date\": \"2018-01-31\",\r\n    \"expiration_date\": \"2019-01-31\",\r\n    \"employee_id\": 1\r\n}"
             },
             "url": "{{url}}/health_permit/{{permit_id}}",
-            "description": ""
+            "description": null
           },
           "response": []
         },
         {
           "_postman_id": "821e304c-b809-84c6-6914-c3da09c96fb4",
-          "name": "/health_permit/<int:permit_id>",
+          "name": "/emergency_contact/<int:contact_id> copy",
           "event": [
             {
               "listen": "test",
@@ -2674,37 +2712,50 @@
               "raw": ""
             },
             "url": "{{url}}/health_permit/{{permit_id}}",
-            "description": ""
+            "description": null
           },
           "response": []
         },
         {
-          "_postman_id": "76121e34-afcc-c53c-0591-a3ebc24fc78a",
-          "name": "/health_permit/<int:permit_id>",
+          "_postman_id": "732f5d9d-f079-97b0-f3f8-01535d940bee",
+          "name": "/health_permit/<int:permit_id> copy",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "0fe7b582-7a8f-4736-bb9f-2eb4f89bac21",
+                "id": "fbf48ed6-78a9-40ef-a272-405f57bd57ea",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Health permit deleted.\";",
+                  "tests[\"first_name is new_f_n\"] = jsonData.emergency_contact.first_name === \"new_f_n\";",
                   "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "tests[\"last_name is new_l_n\"] = jsonData.emergency_contact.last_name === \"new_l_n\";",
+                  "",
+                  "tests[\"home_phone is 333-3333\"] = jsonData.emergency_contact.home_phone === \"333-3333\";",
+                  "",
+                  "tests[\"work_phone is 444-4444\"] = jsonData.emergency_contact.work_phone === \"444-4444\";",
+                  "",
+                  "tests[\"mobile_phone is 6666-7777\"] = jsonData.emergency_contact.mobile_phone === \"6666-7777\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.emergency_contact.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact updated successfully.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
+                  ""
                 ]
               }
             }
           ],
           "request": {
-            "method": "DELETE",
+            "method": "PUT",
             "header": [
               {
                 "key": "Content-Type",
@@ -2717,10 +2768,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"last_name\": \"new_l_n\",\r\n    \"home_phone\": \"333-3333\",\r\n    \"work_phone\": \"444-4444\",\r\n    \"mobile_phone\": \"6666-7777\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
-            "url": "{{url}}/health_permit/{{permit_id}}",
-            "description": ""
+            "url": "{{url}}/emergency_contact/{{contact_id}}",
+            "description": null
           },
           "response": []
         }
@@ -2738,12 +2789,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "10e94a78-f53e-442a-9894-0cecc5826525",
+                "id": "d938d105-ceb9-45a0-b9ab-9ebe1dae0e7e",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"countries contains 17 items\"] = jsonData.countries.length === 17;",
+                  "tests[\"marital_statuses contains 5 items\"] = jsonData.marital_statuses.length === 5;",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
@@ -2772,8 +2823,8 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/countries",
-            "description": ""
+            "url": "{{url}}/marital_statuses",
+            "description": null
           },
           "response": []
         }
@@ -2785,30 +2836,32 @@
       "description": "",
       "item": [
         {
-          "_postman_id": "d0669b91-7ea3-59e8-7f2c-03f7506ceea5",
-          "name": "/passport",
+          "_postman_id": "a2cceda2-ff3f-ea86-ca6d-8deccc79ea90",
+          "name": "health_permit copy",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "75fc408a-a79e-4a6b-9841-ac016d03b3ec",
+                "id": "7ddcf7f3-c793-4645-bf5c-70443b19ed66",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "postman.setEnvironmentVariable(\"passport_id\", jsonData.passport.id);",
+                  "postman.setEnvironmentVariable(\"contact_id\", jsonData.emergency_contact.id);",
                   "",
-                  "tests[\"passport_number is 123456\"] = jsonData.passport.passport_number === \"123456\";",
+                  "tests[\"first_name is f_n\"] = jsonData.emergency_contact.first_name === \"f_n\";",
                   "",
-                  "tests[\"issue_date is 2018-01-01\"] = jsonData.passport.issue_date === \"2018-01-01\";",
+                  "tests[\"last_name is s_n\"] = jsonData.emergency_contact.last_name === \"l_n\";",
                   "",
-                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.passport.expiration_date === \"2019-01-01\";",
+                  "tests[\"home_phone is 111-1111\"] = jsonData.emergency_contact.home_phone === \"111-1111\";",
                   "",
-                  "tests[\"employee_id is correct\"] = jsonData.passport.employee_id ===  parseInt(environment.employee_id);",
+                  "tests[\"work_phone is 222-2222\"] = jsonData.emergency_contact.work_phone === \"222-2222\";",
                   "",
-                  "tests[\"country_id is correct\"] = jsonData.passport.country_id ===  1;",
+                  "tests[\"mobile_phone is 6666-6666\"] = jsonData.emergency_contact.mobile_phone === \"6666-6666\";",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Passport created successfully.\";",
+                  "tests[\"employee_id is correct\"] = jsonData.emergency_contact.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
@@ -2835,34 +2888,36 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"passport_number\": \"123456\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1,\r\n    \"country_id\": 1\r\n}"
+              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
-            "url": "{{url}}/passport",
-            "description": ""
+            "url": "{{url}}/emergency_contact",
+            "description": null
           },
           "response": []
         },
         {
-          "_postman_id": "f2dc7ed6-0d19-61bc-0118-8f4c4e519c1a",
-          "name": "/passport/<int:passport_id>",
+          "_postman_id": "4bc18fcd-0158-71f3-eaab-7b0ad32c244a",
+          "name": "/health_permit/<int:permit_id> copy",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "09c0f980-512a-4b30-bb41-395a50866dde",
+                "id": "d8b3a093-771d-49c0-913d-7e975c06cc92",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"passport_number is 123456\"] = jsonData.passport_number === \"123456\";",
+                  "tests[\"first_name is f_n\"] = jsonData.first_name === \"f_n\";",
                   "",
-                  "tests[\"issue_date is 2018-01-01\"] = jsonData.issue_date === \"2018-01-01\";",
+                  "tests[\"last_name is s_n\"] = jsonData.last_name === \"l_n\";",
                   "",
-                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.expiration_date === \"2019-01-01\";",
+                  "tests[\"home_phone is 111-1111\"] = jsonData.home_phone === \"111-1111\";",
+                  "",
+                  "tests[\"work_phone is 222-2222\"] = jsonData.work_phone === \"222-2222\";",
+                  "",
+                  "tests[\"mobile_phone is 6666-6666\"] = jsonData.mobile_phone === \"6666-6666\";",
                   "",
                   "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"country_id is correct\"] = jsonData.country_id ===  1;",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
@@ -2891,111 +2946,8 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/passport/{{passport_id}}",
+            "url": "{{url}}/emergency_contact/{{contact_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "732f5d9d-f079-97b0-f3f8-01535d940bee",
-          "name": "/passport/<int:passport_id>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a059c2e4-ce46-490a-9f0f-338b9e093a62",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"passport_number is 654321\"] = jsonData.passport.passport_number === \"654321\";",
-                  "",
-                  "tests[\"issue_date is 2018-01-31\"] = jsonData.passport.issue_date === \"2018-01-31\";",
-                  "",
-                  "tests[\"expiration_date is 2019-01-31\"] = jsonData.passport.expiration_date === \"2019-01-31\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.passport.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"country_id is correct\"] = jsonData.passport.country_id ===  2;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Passport updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"passport_number\": \"654321\",\r\n    \"issue_date\": \"2018-01-31\",\r\n    \"expiration_date\": \"2019-01-11\",\r\n    \"employee_id\": 1,\r\n    \"country_id\": 2\r\n}"
-            },
-            "url": "{{url}}/passport/{{passport_id}}",
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "f7fca6c0-3221-c5c7-c417-13eab75c4424",
-          "name": "/passport/<int:passport_id>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "5cbebca8-888e-47f5-aa8c-f13abafebadb",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Passport deleted.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/passport/{{passport_id}}",
-            "description": ""
           },
           "response": []
         }
