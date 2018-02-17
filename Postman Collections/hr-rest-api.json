@@ -1064,7 +1064,7 @@
         },
         {
           "_postman_id": "56a3fc61-78f4-1255-a22b-9269139561a9",
-          "name": "/employment_position/<string:position_name>",
+          "name": "/employment_position/<string:position_name>/<int:organization_id>",
           "event": [
             {
               "listen": "test",
@@ -1655,7 +1655,7 @@
               "raw": "{\n  \"shift_name\": \"new_test_s_r\",\n  \"weekly_hours\": 44,\n  \"is_rotating\": true,\n  \"payment_period\": \"Semanal\",\n  \"break_length\": \"01:00:00\",\n  \"is_break_included_in_shift\": true,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"rotation_start_hour\": \"00:00:00\",\n  \"rotation_end_hour\": \"15:00:00\"\n}"
             },
             "url": "{{url}}/shift/test_s_r",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -1750,7 +1750,7 @@
               "raw": "{\n  \"shift_name\": \"test_s_f\",\n  \"weekly_hours\": 48,\n  \"is_rotating\": false,\n  \"payment_period\": \"Diario\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"fixed_start_hour_sunday\": \"09:00:00\",\n  \"fixed_start_break_hour_sunday\": \"13:00:00\",\n  \"fixed_end_break_hour_sunday\": \"13:30:00\",\n  \"fixed_end_hour_sunday\": \"17:30:00\",\n  \"fixed_start_hour_monday\": \"09:00:00\",\n  \"fixed_start_break_hour_monday\": \"13:00:00\",\n  \"fixed_end_break_hour_monday\": \"13:30:00\",\n  \"fixed_end_hour_monday\": \"17:30:00\",\n  \"fixed_start_hour_tuesday\": \"09:00:00\",\n  \"fixed_start_break_hour_tuesday\": \"13:00:00\",\n  \"fixed_end_break_hour_tuesday\": \"13:30:00\",\n  \"fixed_end_hour_tuesday\": \"17:30:00\",\n  \"fixed_start_hour_wednesday\": \"09:00:00\",\n  \"fixed_start_break_hour_wednesday\": \"13:00:00\",\n  \"fixed_end_break_hour_wednesday\": \"13:30:00\",\n  \"fixed_end_hour_wednesday\": \"17:30:00\",\n  \"fixed_start_hour_thursday\": \"09:00:00\",\n  \"fixed_start_break_hour_thursday\": \"13:00:00\",\n  \"fixed_end_break_hour_thursday\": \"13:30:00\",\n  \"fixed_end_hour_thursday\": \"17:30:00\",\n  \"fixed_start_hour_friday\": \"09:00:00\",\n  \"fixed_start_break_hour_friday\": \"13:00:00\",\n  \"fixed_end_break_hour_friday\": \"13:30:00\",\n  \"fixed_end_hour_friday\": \"17:30:00\",\n  \"fixed_start_hour_saturday\": null,\n  \"fixed_end_hour_saturday\": null,\n  \"rest_day\": \"Sábado\"\n}"
             },
             "url": "{{url}}/shift/test_s_f",
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -2418,7 +2418,7 @@
         },
         {
           "_postman_id": "5f9e319e-8b57-eaf8-4c79-d9edd8fe0325",
-          "name": "/emergency_contact/<int:contact_id>",
+          "name": "/employee/<int:employee_id> copy",
           "event": [
             {
               "listen": "test",
@@ -2458,7 +2458,7 @@
               "raw": ""
             },
             "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": ""
+            "description": null
           },
           "response": []
         }
