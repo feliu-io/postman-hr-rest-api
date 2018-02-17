@@ -2715,6 +2715,60 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "f2dc7ed6-0d19-61bc-0118-8f4c4e519c1a",
+          "name": "/health_permit/<int:permit_id> copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "09c0f980-512a-4b30-bb41-395a50866dde",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"passport_number is 123456\"] = jsonData.passport_number === \"123456\";",
+                  "",
+                  "tests[\"issue_date is 2018-01-01\"] = jsonData.issue_date === \"2018-01-01\";",
+                  "",
+                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.expiration_date === \"2019-01-01\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"country_id is correct\"] = jsonData.country_id ===  1;",
+                  "",
+                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/emergency_contact/{{contact_id}}",
+            "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
         }
       ]
     },
@@ -2776,6 +2830,66 @@
       "name": "Passport",
       "description": "",
       "item": [
+        {
+          "_postman_id": "a2cceda2-ff3f-ea86-ca6d-8deccc79ea90",
+          "name": "health_permit copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7ddcf7f3-c793-4645-bf5c-70443b19ed66",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"contact_id\", jsonData.emergency_contact.id);",
+                  "",
+                  "tests[\"first_name is f_n\"] = jsonData.emergency_contact.first_name === \"f_n\";",
+                  "",
+                  "tests[\"last_name is s_n\"] = jsonData.emergency_contact.last_name === \"l_n\";",
+                  "",
+                  "tests[\"home_phone is 111-1111\"] = jsonData.emergency_contact.home_phone === \"111-1111\";",
+                  "",
+                  "tests[\"work_phone is 222-2222\"] = jsonData.emergency_contact.work_phone === \"222-2222\";",
+                  "",
+                  "tests[\"mobile_phone is 6666-6666\"] = jsonData.emergency_contact.mobile_phone === \"6666-6666\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.emergency_contact.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
+            },
+            "url": "{{url}}/emergency_contact",
+            "description": null
+          },
+          "response": []
+        },
         {
           "_postman_id": "732f5d9d-f079-97b0-f3f8-01535d940bee",
           "name": "/health_permit/<int:permit_id> copy",
@@ -2840,12 +2954,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "5cbebca8-888e-47f5-aa8c-f13abafebadb",
+                "id": "0f0a5b5e-1178-420a-bfc8-4c4f348d9a4a",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Passport deleted.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact deleted.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -2875,164 +2989,6 @@
               "raw": ""
             },
             "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d0669b91-7ea3-59e8-7f2c-03f7506ceea5",
-          "name": "/health_permit copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "75fc408a-a79e-4a6b-9841-ac016d03b3ec",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable(\"passport_id\", jsonData.passport.id);",
-                  "",
-                  "tests[\"passport_number is 123456\"] = jsonData.passport.passport_number === \"123456\";",
-                  "",
-                  "tests[\"issue_date is 2018-01-01\"] = jsonData.passport.issue_date === \"2018-01-01\";",
-                  "",
-                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.passport.expiration_date === \"2019-01-01\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.passport.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"country_id is correct\"] = jsonData.passport.country_id ===  1;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Passport created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"passport_number\": \"123456\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1,\r\n    \"country_id\": 1\r\n}"
-            },
-            "url": "{{url}}/passport",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "f2dc7ed6-0d19-61bc-0118-8f4c4e519c1a",
-          "name": "/health_permit/<int:permit_id> copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "09c0f980-512a-4b30-bb41-395a50866dde",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"passport_number is 123456\"] = jsonData.passport_number === \"123456\";",
-                  "",
-                  "tests[\"issue_date is 2018-01-01\"] = jsonData.issue_date === \"2018-01-01\";",
-                  "",
-                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.expiration_date === \"2019-01-01\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"country_id is correct\"] = jsonData.country_id ===  1;",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": "Register a new user supplying a \"username\" and \"password\""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "76121e34-afcc-c53c-0591-a3ebc24fc78a",
-          "name": "/passport/<int:passport_id> copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "5cbebca8-888e-47f5-aa8c-f13abafebadb",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Passport deleted.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/passport/{{passport_id}}",
             "description": null
           },
           "response": []
