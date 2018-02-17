@@ -2955,7 +2955,7 @@
         },
         {
           "_postman_id": "f7fca6c0-3221-c5c7-c417-13eab75c4424",
-          "name": "/health_permit/<int:permit_id> copy",
+          "name": "/passport/<int:passport_id>",
           "event": [
             {
               "listen": "test",
@@ -2994,8 +2994,8 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": null
+            "url": "{{url}}/passport/{{passport_id}}",
+            "description": ""
           },
           "response": []
         }
