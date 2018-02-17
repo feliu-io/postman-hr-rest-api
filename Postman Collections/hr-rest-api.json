@@ -1796,7 +1796,7 @@
               "raw": ""
             },
             "url": "{{url}}/shift/new_test_s_r",
-            "description": null
+            "description": ""
           },
           "response": []
         },
@@ -1807,7 +1807,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "647df6f5-f274-4b59-afab-a44efdaa4333",
+                "id": "d0d7e371-68c4-44dd-bd6d-cc03b2067006",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -1818,9 +1818,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -1842,7 +1842,7 @@
               "raw": ""
             },
             "url": "{{url}}/activate_shift/new_test_s_r",
-            "description": null
+            "description": ""
           },
           "response": []
         }
@@ -2138,7 +2138,7 @@
               "raw": "{\n  \"first_name\": \"new_f_n\",\n  \"second_name\": \"new_s_n\",\n  \"first_surname\": \"new_f_sn\",\n  \"second_surname\": \"new_s_sn\",\n  \"national_id_number\": \"N-1-11-111\",\n  \"is_panamanian\": false,\n  \"date_of_birth\": \"01-31-2001\",\n  \"gender\": \"Mujer\",\n  \"address\": \"Chiriquí\",\n  \"home_phone\": \"333-3333\",\n  \"mobile_phone\": \"6666-7777\",\n  \"email\": \"new_f_n@new_f_sn.com\",\n  \"type_of_contract\": \"Indefinido\",\n  \"employment_date\": \"01-01-2019\",\n  \"contract_expiration_date\": \"01-31-2019\",\n  \"termination_date\": \"01-15-2019\",\n  \"termination_reason\": \"Renuncia\",\n  \"salary_per_payment_period\": \"208.00\",\n  \"representation_expenses_per_payment_period\": \"100\",\n  \"payment_method\": \"Cheque\",\n  \"is_active\": true,\n  \"marital_status_id\": 2,\n  \"department_id\": {{department_id}},\n  \"position_id\": {{position_id}},\n  \"shift_id\": {{shift_id}}\n}"
             },
             "url": "{{url}}/employee/{{employee_id}}",
-            "description": null
+            "description": ""
           },
           "response": []
         },
@@ -2634,7 +2634,7 @@
         },
         {
           "_postman_id": "821e304c-b809-84c6-6914-c3da09c96fb4",
-          "name": "/emergency_contact/<int:contact_id> copy",
+          "name": "/health_permit/<int:permit_id>",
           "event": [
             {
               "listen": "test",
@@ -2674,7 +2674,7 @@
               "raw": ""
             },
             "url": "{{url}}/health_permit/{{permit_id}}",
-            "description": null
+            "description": ""
           },
           "response": []
         },
