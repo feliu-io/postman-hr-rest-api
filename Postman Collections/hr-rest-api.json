@@ -2184,7 +2184,7 @@
               "raw": ""
             },
             "url": "{{url}}/employee/{{employee_id}}",
-            "description": null
+            "description": ""
           },
           "response": []
         },
