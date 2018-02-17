@@ -740,12 +740,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "63206c2e-5af9-45a0-80ff-2594d4f6e018",
+                "id": "037f3f47-f14a-4788-8034-eea9dbfea3db",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable(\"department_id\", jsonData.id);",
                   "",
                   "tests[\"is_active is true\"] = jsonData.is_active;",
                   "",
@@ -757,9 +755,9 @@
                   "",
                   "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\")",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
