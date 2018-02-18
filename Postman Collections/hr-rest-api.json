@@ -2461,6 +2461,66 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "47bb45bc-663e-d7d4-4867-1c11353f97b3",
+          "name": "/emergency_contact",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"contact_id\", jsonData.emergency_contact.id);",
+                  "",
+                  "tests[\"first_name is f_n\"] = jsonData.emergency_contact.first_name === \"f_n\";",
+                  "",
+                  "tests[\"last_name is s_n\"] = jsonData.emergency_contact.last_name === \"l_n\";",
+                  "",
+                  "tests[\"home_phone is 111-1111\"] = jsonData.emergency_contact.home_phone === \"111-1111\";",
+                  "",
+                  "tests[\"work_phone is 222-2222\"] = jsonData.emergency_contact.work_phone === \"222-2222\";",
+                  "",
+                  "tests[\"mobile_phone is 6666-6666\"] = jsonData.emergency_contact.mobile_phone === \"6666-6666\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.emergency_contact.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ],
+                "id": "7ddcf7f3-c793-4645-bf5c-70443b19ed66",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
+            },
+            "url": "{{url}}/emergency_contact",
+            "description": null
+          },
+          "response": []
         }
       ]
     },
@@ -2726,13 +2786,11 @@
         },
         {
           "_postman_id": "37291dc4-cf18-18f9-133f-8fab22f4aad3",
-          "name": "/health_permit copy",
+          "name": "/health_permit",
           "event": [
             {
               "listen": "test",
               "script": {
-                "id": "1f76623d-a430-4b4b-b262-c8d23696a4a5",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -2755,7 +2813,9 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
+                ],
+                "id": "1f76623d-a430-4b4b-b262-c8d23696a4a5",
+                "type": "text/javascript"
               }
             }
           ],
@@ -2776,7 +2836,7 @@
               "raw": "{\r\n    \"health_permit_type\": \"Verde\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1\r\n}"
             },
             "url": "{{url}}/health_permit",
-            "description": null
+            "description": ""
           },
           "response": []
         }
@@ -3054,6 +3114,64 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "14dfc0ba-ba73-0f17-dd79-89a54072168e",
+          "name": "/passport",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"passport_id\", jsonData.passport.id);",
+                  "",
+                  "tests[\"passport_number is 123456\"] = jsonData.passport.passport_number === \"123456\";",
+                  "",
+                  "tests[\"issue_date is 2018-01-01\"] = jsonData.passport.issue_date === \"2018-01-01\";",
+                  "",
+                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.passport.expiration_date === \"2019-01-01\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.passport.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"country_id is correct\"] = jsonData.passport.country_id ===  1;",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Passport created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ],
+                "id": "75fc408a-a79e-4a6b-9841-ac016d03b3ec",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"passport_number\": \"123456\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1,\r\n    \"country_id\": 1\r\n}"
+            },
+            "url": "{{url}}/passport",
+            "description": null
+          },
+          "response": []
         }
       ]
     },
@@ -3264,6 +3382,60 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "b7ce0d12-37f6-6bfe-2a35-4fabb5b54a18",
+          "name": "/uniform_item",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"item_id\", jsonData.uniform_item.id);",
+                  "",
+                  "tests['item_name is test_u_i'] = jsonData.uniform_item.item_name === \"test_u_i\";",
+                  "",
+                  "tests['organization_id is correct'] = jsonData.uniform_item.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform item created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ],
+                "id": "b43c2b85-9830-4b74-858f-b8a8eb05c82b",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"item_name\": \"test_u_i\",\n  \"organization_id\": {{organization_id}}\n}"
+            },
+            "url": "{{url}}/uniform_item",
+            "description": null
+          },
+          "response": []
         }
       ]
     },
@@ -3279,8 +3451,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "9d406c28-a1d3-4ec9-a5e7-8fe4507597d6",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -3301,7 +3471,9 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
+                ],
+                "id": "9d406c28-a1d3-4ec9-a5e7-8fe4507597d6",
+                "type": "text/javascript"
               }
             }
           ],
@@ -3322,7 +3494,7 @@
               "raw": "{\n  \"size_description\": \"test_u_s\",\n  \"uniform_item_id\": {{item_id}}\n}"
             },
             "url": "{{url}}/uniform_size",
-            "description": null
+            "description": ""
           },
           "response": []
         },
@@ -3333,8 +3505,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "e18d743c-c920-458b-b642-f99c0885277a",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -3351,7 +3521,9 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
+                ],
+                "id": "e18d743c-c920-458b-b642-f99c0885277a",
+                "type": "text/javascript"
               }
             }
           ],
@@ -3383,8 +3555,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "b497c358-9924-4c79-971c-5d1ee5cef3e7",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -3404,7 +3574,9 @@
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
-                ]
+                ],
+                "id": "b497c358-9924-4c79-971c-5d1ee5cef3e7",
+                "type": "text/javascript"
               }
             }
           ],
@@ -3425,7 +3597,7 @@
               "raw": "{\n  \"size_description\": \"new_test_u_s\", \n  \"uniform_item_id\": {{item_id}}\n}"
             },
             "url": "{{url}}/uniform_size/{{size_id}}",
-            "description": null
+            "description": ""
           },
           "response": []
         },
@@ -3436,8 +3608,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "edbb5036-4802-4260-93f5-37b29d1be007",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -3450,7 +3620,9 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
+                ],
+                "id": "edbb5036-4802-4260-93f5-37b29d1be007",
+                "type": "text/javascript"
               }
             }
           ],
@@ -3471,6 +3643,60 @@
               "raw": ""
             },
             "url": "{{url}}/uniform_size/{{size_id}}",
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "286dd6f2-1f4f-9005-8b70-abe6ff3c4c3f",
+          "name": "/uniform_size",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"size_id\", jsonData.uniform_size.id);",
+                  "",
+                  "tests['size_description is test_u_s'] = jsonData.uniform_size.size_description === \"test_u_s\";",
+                  "",
+                  "tests['uniform_item_id is correct'] = jsonData.uniform_size.uniform_item_id === parseInt(environment.item_id);",
+                  "",
+                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_size.uniform_sizes.length === 0;",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform size created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ],
+                "id": "9d406c28-a1d3-4ec9-a5e7-8fe4507597d6",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"size_description\": \"test_u_s\",\n  \"uniform_item_id\": {{item_id}}\n}"
+            },
+            "url": "{{url}}/uniform_size",
             "description": null
           },
           "response": []
