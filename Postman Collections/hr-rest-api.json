@@ -3375,7 +3375,7 @@
         },
         {
           "_postman_id": "fb03220b-06c9-509d-facd-60c8065b5af4",
-          "name": "/uniform_item/<id:item_id>",
+          "name": "/uniform_size/<id:size_id>",
           "event": [
             {
               "listen": "test",
