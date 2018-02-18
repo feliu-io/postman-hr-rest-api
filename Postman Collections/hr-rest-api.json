@@ -3380,12 +3380,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "c7808781-6b60-4ca6-9420-820bc18d3153",
+                "id": "edbb5036-4802-4260-93f5-37b29d1be007",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform item deleted.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform size deleted.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -3414,7 +3414,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/uniform_item/{{item_id}}",
+            "url": "{{url}}/uniform_size/{{size_id}}",
             "description": null
           },
           "response": []
