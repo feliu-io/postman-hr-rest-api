@@ -3067,7 +3067,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "ba58b43e-c269-4ff8-a0ab-587e94f6cbbe",
+                "id": "9d0d3aa9-f170-43d3-998c-5b127d7ef042",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -3076,7 +3076,7 @@
                   "",
                   "tests[\"organization_id is correct\"] = jsonData.organization_id === parseInt(environment.organization_id);",
                   "",
-                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
+                  "tests['uniform_sizes is empty list'] = jsonData.uniform_sizes.length === 0;",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
