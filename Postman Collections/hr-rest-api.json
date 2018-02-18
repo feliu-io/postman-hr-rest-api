@@ -3226,8 +3226,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "c7808781-6b60-4ca6-9420-820bc18d3153",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -3240,7 +3238,9 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
+                ],
+                "id": "c7808781-6b60-4ca6-9420-820bc18d3153",
+                "type": "text/javascript"
               }
             }
           ],
@@ -3261,7 +3261,7 @@
               "raw": ""
             },
             "url": "{{url}}/uniform_item/{{item_id}}",
-            "description": null
+            "description": ""
           },
           "response": []
         }
