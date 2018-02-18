@@ -3117,18 +3117,18 @@
             {
               "listen": "test",
               "script": {
-                "id": "f312f36d-8b00-42d1-afc2-c64043db5b2b",
+                "id": "98dd56bc-aad2-423f-9fc3-af4fc4a34669",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
+                  "tests['item_name is new_test_u_i'] = jsonData.uniform_item.item_name === \"new_test_u_i\";",
                   "",
-                  "tests['department_name is new_test_d'] = jsonData.department.department_name === \"new_test_d\";",
+                  "tests['organization_id is correct'] = jsonData.uniform_item.organization_id === parseInt(environment.organization_id);",
                   "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
+                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department updated successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform item updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -3156,9 +3156,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
+              "raw": "{\n  \"item_name\": \"new_test_u_i\", \n  \"organization_id\": {{organization_id}}\n}"
             },
-            "url": "{{url}}/department/test_d",
+            "url": "{{url}}/uniform_item/{{item_id}}",
             "description": null
           },
           "response": []
