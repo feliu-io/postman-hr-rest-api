@@ -3385,7 +3385,7 @@
         },
         {
           "_postman_id": "b7ce0d12-37f6-6bfe-2a35-4fabb5b54a18",
-          "name": "/uniform_item copy",
+          "name": "/uniform_item",
           "event": [
             {
               "listen": "test",
