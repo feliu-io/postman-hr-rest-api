@@ -3123,8 +3123,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "9d0d3aa9-f170-43d3-998c-5b127d7ef042",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -3141,7 +3139,9 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
+                ],
+                "id": "9d0d3aa9-f170-43d3-998c-5b127d7ef042",
+                "type": "text/javascript"
               }
             }
           ],
@@ -3173,8 +3173,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "f81c6e39-d38e-493b-81a4-7304e374edfc",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -3194,7 +3192,9 @@
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
-                ]
+                ],
+                "id": "f81c6e39-d38e-493b-81a4-7304e374edfc",
+                "type": "text/javascript"
               }
             }
           ],
@@ -3215,7 +3215,7 @@
               "raw": "{\n  \"item_name\": \"new_test_u_i\", \n  \"organization_id\": {{organization_id}}\n}"
             },
             "url": "{{url}}/uniform_item/{{item_id}}",
-            "description": null
+            "description": ""
           },
           "response": []
         },
@@ -3279,8 +3279,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "9d406c28-a1d3-4ec9-a5e7-8fe4507597d6",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -3301,7 +3299,9 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
+                ],
+                "id": "9d406c28-a1d3-4ec9-a5e7-8fe4507597d6",
+                "type": "text/javascript"
               }
             }
           ],
@@ -3322,7 +3322,7 @@
               "raw": "{\n  \"size_description\": \"test_u_s\",\n  \"uniform_item_id\": {{item_id}}\n}"
             },
             "url": "{{url}}/uniform_size",
-            "description": null
+            "description": ""
           },
           "response": []
         },
@@ -3333,8 +3333,6 @@
             {
               "listen": "test",
               "script": {
-                "id": "e18d743c-c920-458b-b642-f99c0885277a",
-                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -3351,7 +3349,9 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
+                ],
+                "id": "e18d743c-c920-458b-b642-f99c0885277a",
+                "type": "text/javascript"
               }
             }
           ],
