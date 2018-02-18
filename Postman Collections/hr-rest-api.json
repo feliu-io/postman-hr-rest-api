@@ -3204,7 +3204,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/uniform_item/new_test_u_i",
+            "url": "{{url}}/uniform_item/{{item_id}}",
             "description": null
           },
           "response": []
