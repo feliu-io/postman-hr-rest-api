@@ -3218,7 +3218,7 @@
       "item": [
         {
           "_postman_id": "bebca2e5-363a-b028-c05a-e7578c2bb832",
-          "name": "/uniform_item",
+          "name": "/uniform_size",
           "event": [
             {
               "listen": "test",
