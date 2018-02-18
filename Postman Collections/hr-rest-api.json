@@ -3213,7 +3213,7 @@
     },
     {
       "_postman_id": "afdc7848-b47c-5bac-0c43-3fe03ac47ba0",
-      "name": "UniformItem copy",
+      "name": "UniformSize",
       "description": "",
       "item": [
         {
@@ -3418,6 +3418,28 @@
             "description": null
           },
           "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "50e417ec-5d2c-4eba-b213-29ff642dbf1c",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "df7cf08c-11af-4cba-9882-be890289158c",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
         }
       ]
     }
