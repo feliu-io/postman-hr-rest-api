@@ -3732,7 +3732,7 @@
       "item": [
         {
           "_postman_id": "eb900835-4714-1537-8b63-84bb20138cd4",
-          "name": "/uniform_item",
+          "name": "/uniform_requirement",
           "event": [
             {
               "listen": "test",
