@@ -3223,20 +3223,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "e55fb4be-0e3c-4167-ab31-ee291c93b483",
+                "id": "9d406c28-a1d3-4ec9-a5e7-8fe4507597d6",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "postman.setEnvironmentVariable(\"item_id\", jsonData.uniform_item.id);",
+                  "postman.setEnvironmentVariable(\"size_id\", jsonData.uniform_size.id);",
                   "",
-                  "tests['item_name is test_u_i'] = jsonData.uniform_item.item_name === \"test_u_i\";",
+                  "tests['size_description is test_u_s'] = jsonData.uniform_size.size_description === \"test_u_s\";",
                   "",
-                  "tests['organization_id is correct'] = jsonData.uniform_item.organization_id === parseInt(environment.organization_id);",
+                  "tests['uniform_item_id is correct'] = jsonData.uniform_size.uniform_item_id === parseInt(environment.item_id);",
                   "",
-                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
+                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_size.uniform_sizes.length === 0;",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform item created successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform size created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
@@ -3263,9 +3263,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"item_name\": \"test_u_i\",\n  \"organization_id\": {{organization_id}}\n}"
+              "raw": "{\n  \"size_description\": \"test_u_s\",\n  \"uniform_item_id\": {{item_id}}\n}"
             },
-            "url": "{{url}}/uniform_item",
+            "url": "{{url}}/uniform_size",
             "description": null
           },
           "response": []
