@@ -748,6 +748,62 @@
           "response": []
         },
         {
+          "_postman_id": "d54920ec-7955-c138-eb6d-05ececf7f845",
+          "name": "/department copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f0449b78-3323-475e-a051-52115fc92051",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"department_id\", jsonData.department.id);",
+                  "",
+                  "tests['is_active is true'] = jsonData.department.is_active;",
+                  "",
+                  "tests['department_name is test_d'] = jsonData.department.department_name === \"test_d\";",
+                  "",
+                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
+                  "",
+                  "tests['employees is empty list'] = jsonData.department.employees.length === 0;",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+            },
+            "url": "{{url}}/department",
+            "description": null
+          },
+          "response": []
+        },
+        {
           "_postman_id": "b870d091-0544-17fc-10cd-fa0a5337b543",
           "name": "/department/<string:department_name>",
           "event": [
@@ -939,62 +995,6 @@
             },
             "url": "{{url}}/activate_department/new_test_d",
             "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d54920ec-7955-c138-eb6d-05ececf7f845",
-          "name": "/department copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f0449b78-3323-475e-a051-52115fc92051",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable(\"department_id\", jsonData.department.id);",
-                  "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
-                  "",
-                  "tests['department_name is test_d'] = jsonData.department.department_name === \"test_d\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
-                  "",
-                  "tests['employees is empty list'] = jsonData.department.employees.length === 0;",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
-            },
-            "url": "{{url}}/department",
-            "description": null
           },
           "response": []
         }
