@@ -3210,12 +3210,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "8fffadca-cf97-2443-97eb-911cd0a3c435",
-      "name": "UniformSize",
-      "description": "",
-      "item": []
     }
   ]
 }
