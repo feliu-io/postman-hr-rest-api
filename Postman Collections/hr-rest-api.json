@@ -3210,6 +3210,216 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "afdc7848-b47c-5bac-0c43-3fe03ac47ba0",
+      "name": "UniformItem copy",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "bebca2e5-363a-b028-c05a-e7578c2bb832",
+          "name": "/uniform_item",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e55fb4be-0e3c-4167-ab31-ee291c93b483",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"item_id\", jsonData.uniform_item.id);",
+                  "",
+                  "tests['item_name is test_u_i'] = jsonData.uniform_item.item_name === \"test_u_i\";",
+                  "",
+                  "tests['organization_id is correct'] = jsonData.uniform_item.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform item created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"item_name\": \"test_u_i\",\n  \"organization_id\": {{organization_id}}\n}"
+            },
+            "url": "{{url}}/uniform_item",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ff7de1bd-7916-3d0c-073a-532fa7433d6f",
+          "name": "/uniform_item/<int:item_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ba58b43e-c269-4ff8-a0ab-587e94f6cbbe",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"item_name is test_u_i\"] = jsonData.item_name === \"test_u_i\";",
+                  "",
+                  "tests[\"organization_id is correct\"] = jsonData.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
+                  "",
+                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/uniform_item/{{item_id}}",
+            "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5e31d4b0-50d2-1680-3f42-bf83dee59cca",
+          "name": "/uniform_item/<id:item_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "98dd56bc-aad2-423f-9fc3-af4fc4a34669",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests['item_name is new_test_u_i'] = jsonData.uniform_item.item_name === \"new_test_u_i\";",
+                  "",
+                  "tests['organization_id is correct'] = jsonData.uniform_item.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform item updated successfully.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"item_name\": \"new_test_u_i\", \n  \"organization_id\": {{organization_id}}\n}"
+            },
+            "url": "{{url}}/uniform_item/{{item_id}}",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fb03220b-06c9-509d-facd-60c8065b5af4",
+          "name": "/uniform_item/<id:item_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c7808781-6b60-4ca6-9420-820bc18d3153",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform item deleted.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/uniform_item/{{item_id}}",
+            "description": null
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
