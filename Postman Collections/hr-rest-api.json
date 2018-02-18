@@ -3067,16 +3067,16 @@
             {
               "listen": "test",
               "script": {
-                "id": "037f3f47-f14a-4788-8034-eea9dbfea3db",
+                "id": "ba58b43e-c269-4ff8-a0ab-587e94f6cbbe",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"is_active is true\"] = jsonData.is_active;",
-                  "",
-                  "tests[\"department_name is test_d\"] = jsonData.department_name === \"test_d\";",
+                  "tests[\"item_name is test_u_i\"] = jsonData.item_name === \"test_u_i\";",
                   "",
                   "tests[\"organization_id is correct\"] = jsonData.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
@@ -3105,7 +3105,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/department/test_d",
+            "url": "{{url}}/uniform_item/{{item_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
