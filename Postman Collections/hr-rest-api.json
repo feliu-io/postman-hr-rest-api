@@ -3013,7 +3013,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e55fb4be-0e3c-4167-ab31-ee291c93b483",
+                "id": "b43c2b85-9830-4b74-858f-b8a8eb05c82b",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -3024,7 +3024,7 @@
                   "",
                   "tests['organization_id is correct'] = jsonData.uniform_item.organization_id === parseInt(environment.organization_id);",
                   "",
-                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
+                  "tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Uniform item created successfully.\";",
                   "",
