@@ -3008,7 +3008,7 @@
       "item": [
         {
           "_postman_id": "d54920ec-7955-c138-eb6d-05ececf7f845",
-          "name": "/department copy",
+          "name": "/uniform_item",
           "event": [
             {
               "listen": "test",
