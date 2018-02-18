@@ -3889,7 +3889,7 @@
         },
         {
           "_postman_id": "316d0543-91bf-e1d4-a4c2-cc5646970cb8",
-          "name": "/uniform_item/<id:item_id>",
+          "name": "/uniform_requirement/<id:requirement_id>",
           "event": [
             {
               "listen": "test",
