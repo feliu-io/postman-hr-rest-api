@@ -3114,7 +3114,7 @@
         },
         {
           "_postman_id": "969f2fa1-cb71-9f5e-823e-60cee7425194",
-          "name": "/department/<string:department_name> copy",
+          "name": "/uniform_item/<id:item_id>",
           "event": [
             {
               "listen": "test",
