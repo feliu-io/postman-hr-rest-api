@@ -3327,18 +3327,18 @@
             {
               "listen": "test",
               "script": {
-                "id": "98dd56bc-aad2-423f-9fc3-af4fc4a34669",
+                "id": "b497c358-9924-4c79-971c-5d1ee5cef3e7",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests['item_name is new_test_u_i'] = jsonData.uniform_item.item_name === \"new_test_u_i\";",
+                  "tests['size_description is new_test_u_i'] = jsonData.uniform_size.size_description === \"new_test_u_s\";",
                   "",
-                  "tests['organization_id is correct'] = jsonData.uniform_item.organization_id === parseInt(environment.organization_id);",
+                  "tests['uniform_item_id is correct'] = jsonData.uniform_size.uniform_item_id === parseInt(environment.item_id);",
                   "",
-                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
+                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_size.uniform_sizes.length === 0;",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform item updated successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform size updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -3366,9 +3366,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"item_name\": \"new_test_u_i\", \n  \"organization_id\": {{organization_id}}\n}"
+              "raw": "{\n  \"size_description\": \"new_test_u_s\", \n  \"uniform_item_id\": {{item_id}}\n}"
             },
-            "url": "{{url}}/uniform_item/{{item_id}}",
+            "url": "{{url}}/uniform_size/{{size_id}}",
             "description": null
           },
           "response": []
