@@ -3986,6 +3986,60 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "d36b1542-fd43-d7a0-5605-e59c7dd0aaab",
+          "name": "/uniform_requirement copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"item_id\", jsonData.uniform_item.id);",
+                  "",
+                  "tests['item_name is test_u_i'] = jsonData.uniform_item.item_name === \"test_u_i\";",
+                  "",
+                  "tests['organization_id is correct'] = jsonData.uniform_item.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform item created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ],
+                "id": "b43c2b85-9830-4b74-858f-b8a8eb05c82b",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"item_name\": \"test_u_i\",\n  \"organization_id\": {{organization_id}}\n}"
+            },
+            "url": "{{url}}/uniform_item",
+            "description": null
+          },
+          "response": []
         }
       ]
     }
