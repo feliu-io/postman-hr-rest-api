@@ -3505,12 +3505,14 @@
             {
               "listen": "test",
               "script": {
+                "id": "72ba9fa7-c3fe-4468-974c-89e97fe1decf",
+                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "postman.setEnvironmentVariable(\"size_id\", jsonData.uniform_size.id);",
+                  "postman.setEnvironmentVariable(\"size_id_2\", jsonData.uniform_size.id);",
                   "",
-                  "tests['size_description is test_u_s'] = jsonData.uniform_size.size_description === \"test_u_s\";",
+                  "tests['size_description is test_u_s_2'] = jsonData.uniform_size.size_description === \"test_u_s_2\";",
                   "",
                   "tests['uniform_item_id is correct'] = jsonData.uniform_size.uniform_item_id === parseInt(environment.item_id);",
                   "",
@@ -3525,9 +3527,7 @@
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ],
-                "id": "9d406c28-a1d3-4ec9-a5e7-8fe4507597d6",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -3545,7 +3545,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"size_description\": \"test_u_s\",\n  \"uniform_item_id\": {{item_id}}\n}"
+              "raw": "{\n  \"size_description\": \"test_u_s_2\",\n  \"uniform_item_id\": {{item_id}}\n}"
             },
             "url": "{{url}}/uniform_size",
             "description": null
