@@ -3895,16 +3895,18 @@
             {
               "listen": "test",
               "script": {
+                "id": "c936f2cb-0fe9-49f6-bb11-15c69ddfb9d2",
+                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests['item_name is new_test_u_i'] = jsonData.uniform_item.item_name === \"new_test_u_i\";",
+                  "tests['employee_id is correct'] = jsonData.uniform_requirement.organization_id === parseInt(environment.employee_id);",
                   "",
-                  "tests['organization_id is correct'] = jsonData.uniform_item.organization_id === parseInt(environment.organization_id);",
+                  "tests['uniform_item_id is correct'] = jsonData.uniform_requirement.uniform_item_id === parseInt(environment.item_id);",
                   "",
-                  "tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
+                  "tests['uniform_size_id is correct'] = jsonData.uniform_requirement.uniform_size_id === parseInt(environment.size_id_2);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform item updated successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform requirement updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -3914,9 +3916,7 @@
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
-                ],
-                "id": "f81c6e39-d38e-493b-81a4-7304e374edfc",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -3934,9 +3934,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"item_name\": \"new_test_u_i\", \n  \"organization_id\": {{organization_id}}\n}"
+              "raw": "{\n  \"employee_id\": {{employee_id}},\n  \"uniform_item_id\": {{item_id}},\n  \"uniform_size_id\": {{size_id_2}}\n}"
             },
-            "url": "{{url}}/uniform_item/{{item_id}}",
+            "url": "{{url}}/uniform_requirement/{{irequirement_id}}",
             "description": null
           },
           "response": []
