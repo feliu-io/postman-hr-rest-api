@@ -3994,14 +3994,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "757f8615-62df-4504-8d4c-d473f1daaeea",
+                "id": "8f1e3d1b-f2be-4fdd-a307-34cad22ce5d7",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
                   "postman.setEnvironmentVariable(\"requirement_id\", jsonData.uniform_requirement.id);",
                   "",
-                  "tests['employee_id is correct'] = jsonData.uniform_requirement.organization_id === parseInt(environment.employee_id);",
+                  "tests['employee_id is correct'] = jsonData.uniform_requirement.employee_id === parseInt(environment.employee_id);",
                   "",
                   "tests['uniform_item_id is correct'] = jsonData.uniform_requirement.uniform_item_id === parseInt(environment.item_id);",
                   "",
