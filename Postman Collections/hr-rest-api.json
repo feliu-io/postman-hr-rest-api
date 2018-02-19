@@ -3845,12 +3845,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "c60841f6-19ad-44f6-84b7-212cfdc4fac3",
+                "id": "8953da01-5b50-4a65-9e28-5b8a42a0e895",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests['employee_id is correct'] = jsonData.organization_id === parseInt(environment.employee_id);",
+                  "tests['employee_id is correct'] = jsonData.employee_id === parseInt(environment.employee_id);",
                   "",
                   "tests['uniform_item_id is correct'] = jsonData.uniform_item_id === parseInt(environment.item_id);",
                   "",
