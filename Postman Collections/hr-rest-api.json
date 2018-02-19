@@ -3895,12 +3895,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "c936f2cb-0fe9-49f6-bb11-15c69ddfb9d2",
+                "id": "7582e5bf-739d-4bfb-bf2a-278a8e9526f9",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests['employee_id is correct'] = jsonData.uniform_requirement.organization_id === parseInt(environment.employee_id);",
+                  "tests['employee_id is correct'] = jsonData.uniform_requirement.employee_id === parseInt(environment.employee_id);",
                   "",
                   "tests['uniform_item_id is correct'] = jsonData.uniform_requirement.uniform_item_id === parseInt(environment.item_id);",
                   "",
