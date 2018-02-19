@@ -3839,60 +3839,6 @@
           "response": []
         },
         {
-          "_postman_id": "fbb6b836-f938-80fa-ab12-6ec9ccb8f89a",
-          "name": "/uniform_requirement copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "757f8615-62df-4504-8d4c-d473f1daaeea",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable(\"requirement_id\", jsonData.uniform_requirement.id);",
-                  "",
-                  "tests['employee_id is correct'] = jsonData.uniform_requirement.organization_id === parseInt(environment.employee_id);",
-                  "",
-                  "tests['uniform_item_id is correct'] = jsonData.uniform_requirement.uniform_item_id === parseInt(environment.item_id);",
-                  "",
-                  "tests['uniform_size_id is correct'] = jsonData.uniform_requirement.uniform_size_id === parseInt(environment.size_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform requirement created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"employee_id\": {{employee_id}},\n  \"uniform_item_id\": {{item_id}},\n  \"uniform_size_id\": {{size_id}}\n}"
-            },
-            "url": "{{url}}/uniform_requirement",
-            "description": null
-          },
-          "response": []
-        },
-        {
           "_postman_id": "a36abfdc-6de4-6ce6-9362-0cfc4e3df8e7",
           "name": "/uniform_requirement/<int:requirement_id>",
           "event": [
@@ -4037,6 +3983,60 @@
               "raw": ""
             },
             "url": "{{url}}/uniform_requirement/{{requirement_id}}",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fbb6b836-f938-80fa-ab12-6ec9ccb8f89a",
+          "name": "/uniform_requirement copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "757f8615-62df-4504-8d4c-d473f1daaeea",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"requirement_id\", jsonData.uniform_requirement.id);",
+                  "",
+                  "tests['employee_id is correct'] = jsonData.uniform_requirement.organization_id === parseInt(environment.employee_id);",
+                  "",
+                  "tests['uniform_item_id is correct'] = jsonData.uniform_requirement.uniform_item_id === parseInt(environment.item_id);",
+                  "",
+                  "tests['uniform_size_id is correct'] = jsonData.uniform_requirement.uniform_size_id === parseInt(environment.size_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform requirement created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"employee_id\": {{employee_id}},\n  \"uniform_item_id\": {{item_id}},\n  \"uniform_size_id\": {{size_id}}\n}"
+            },
+            "url": "{{url}}/uniform_requirement",
             "description": null
           },
           "response": []
