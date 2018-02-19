@@ -3936,7 +3936,7 @@
               "mode": "raw",
               "raw": "{\n  \"employee_id\": {{employee_id}},\n  \"uniform_item_id\": {{item_id}},\n  \"uniform_size_id\": {{size_id_2}}\n}"
             },
-            "url": "{{url}}/uniform_requirement/{{irequirement_id}}",
+            "url": "{{url}}/uniform_requirement/{{requirement_id}}",
             "description": null
           },
           "response": []
