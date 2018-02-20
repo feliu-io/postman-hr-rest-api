@@ -4277,12 +4277,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "f731f551-cfd9-4af2-8642-6ba25845409f",
+                "id": "77f53cfd-b54a-4d4d-b5e1-5de71a723953",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now inactive.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Bank account is now inactive.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -4311,7 +4311,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/department/new_test_d",
+            "url": "{{url}}/bank_account/{{account_id}}",
             "description": null
           },
           "response": []
