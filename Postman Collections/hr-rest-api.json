@@ -4055,16 +4055,16 @@
             {
               "listen": "test",
               "script": {
-                "id": "d938d105-ceb9-45a0-b9ab-9ebe1dae0e7e",
+                "id": "d4ca519d-891d-4b57-be63-6944838d7dab",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"marital_statuses contains 5 items\"] = jsonData.marital_statuses.length === 5;",
+                  "tests[\"banks contains 17 items\"] = jsonData.banks.length === 46;",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
@@ -4089,7 +4089,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/marital_statuses",
+            "url": "{{url}}/banks",
             "description": null
           },
           "response": []
