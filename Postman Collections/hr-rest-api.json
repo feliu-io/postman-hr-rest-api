@@ -4220,16 +4220,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "f312f36d-8b00-42d1-afc2-c64043db5b2b",
+                "id": "62e723dc-0eaa-4e78-b4c0-f7b7461b7345",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
+                  "tests['is_active is true'] = jsonData.bank_account.is_active;",
                   "",
-                  "tests['department_name is new_test_d'] = jsonData.department.department_name === \"new_test_d\";",
+                  "tests['account_number is 4321'] = jsonData.bank_account.account_number === \"4321\";",
                   "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
+                  "tests['account_type is Ahorro'] = jsonData.bank_account.account_type === \"Ahorro\";",
+                  "",
+                  "tests['employee_id is correct'] = jsonData.bank_account.employee_id === parseInt(environment.employee_id);",
+                  "",
+                  "tests['bank_id is correct'] = jsonData.bank_account.bank_id === 2;",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Department updated successfully.\";",
                   "",
@@ -4259,9 +4263,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
+              "raw": "{\n  \"account_number\": \"4321\",\n  \"account_type\": \"Ahorro\",\n  \"is_active\": true,\n  \"employee_id\": {{employee_id}},\n  \"bank_id\": 2\n}"
             },
-            "url": "{{url}}/department/test_d",
+            "url": "{{url}}/bank_account/{{account_id}}",
             "description": null
           },
           "response": []
