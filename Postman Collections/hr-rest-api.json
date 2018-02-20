@@ -4220,7 +4220,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "62e723dc-0eaa-4e78-b4c0-f7b7461b7345",
+                "id": "05e3975f-8746-4f5f-906e-004e5b0e6b03",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -4235,11 +4235,11 @@
                   "",
                   "tests['bank_id is correct'] = jsonData.bank_account.bank_id === 2;",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department updated successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Bank account updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
