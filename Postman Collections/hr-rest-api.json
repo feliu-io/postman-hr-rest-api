@@ -4159,7 +4159,7 @@
         },
         {
           "_postman_id": "0e9d64ae-b648-ee11-5e2b-70417dd2dd14",
-          "name": "/department/<string:department_name>",
+          "name": "/bank_account/<int:account_id>",
           "event": [
             {
               "listen": "test",
