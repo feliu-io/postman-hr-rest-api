@@ -4103,7 +4103,7 @@
       "item": [
         {
           "_postman_id": "5c27964b-7035-aa62-33e3-ed8892d07694",
-          "name": "/department",
+          "name": "/bank_account",
           "event": [
             {
               "listen": "test",
