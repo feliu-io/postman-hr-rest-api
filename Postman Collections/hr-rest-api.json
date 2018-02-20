@@ -4323,12 +4323,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "473c2e7d-24df-4e53-a259-0f88961300d6",
+                "id": "175ca05d-21ed-44b8-9730-e8c6e9b9afa0",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now active.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Bank account is now active.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -4357,7 +4357,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_department/new_test_d",
+            "url": "{{url}}/activate_bank_account/{{account_id}}",
             "description": null
           },
           "response": []
