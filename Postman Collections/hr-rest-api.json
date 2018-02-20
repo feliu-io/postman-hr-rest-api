@@ -4050,7 +4050,7 @@
       "item": [
         {
           "_postman_id": "edf80b82-500a-469b-30ac-eae825a1240d",
-          "name": "/marital_statuses",
+          "name": "/bank_account",
           "event": [
             {
               "listen": "test",
