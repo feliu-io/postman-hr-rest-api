@@ -4108,22 +4108,24 @@
             {
               "listen": "test",
               "script": {
-                "id": "f0449b78-3323-475e-a051-52115fc92051",
+                "id": "53112ca2-87aa-434c-8239-78430230ce69",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "postman.setEnvironmentVariable(\"department_id\", jsonData.department.id);",
+                  "postman.setEnvironmentVariable(\"account_id\", jsonData.bank_account.id);",
                   "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
+                  "tests['is_active is true'] = jsonData.bank_account.is_active;",
                   "",
-                  "tests['department_name is test_d'] = jsonData.department.department_name === \"test_d\";",
+                  "tests['account_number is 1234'] = jsonData.bank_account.account_number === \"1234\";",
                   "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
+                  "tests['account_type is Corriente'] = jsonData.bank_account.account_type === \"Corriente\";",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
+                  "tests['employee_id is correct'] = jsonData.bank_account.employee_id === parseInt(environment.employee_id);",
                   "",
-                  "tests['employees is empty list'] = jsonData.department.employees.length === 0;",
+                  "tests['bank_id is correct'] = jsonData.bank_account.bank_id === 1;",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Bank account created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
@@ -4150,9 +4152,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+              "raw": "{\n  \"account_number\": \"1234\",\n  \"account_type\": \"Corriente\",\n  \"is_active\": true,\n  \"employee_id\": {{employee_id}},\n  \"bank_id\": 1\n}"
             },
-            "url": "{{url}}/department",
+            "url": "{{url}}/bank_account",
             "description": null
           },
           "response": []
