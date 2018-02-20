@@ -4209,7 +4209,7 @@
         },
         {
           "_postman_id": "e7b51580-5d36-c9ac-274b-0a5a51ad46ba",
-          "name": "/department/<string:department_name>",
+          "name": "/bank_account/<int:account_id>",
           "event": [
             {
               "listen": "test",
