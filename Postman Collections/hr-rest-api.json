@@ -998,59 +998,6 @@
       ]
     },
     {
-      "_postman_id": "a3d81439-d8a1-7553-e21b-9d19eda37fca",
-      "name": "MaritalStatus Resource copy",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "a2b88521-9b65-f5bd-a684-af8c20494c85",
-          "name": "/marital_statuses",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d938d105-ceb9-45a0-b9ab-9ebe1dae0e7e",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"marital_statuses contains 5 items\"] = jsonData.marital_statuses.length === 5;",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/marital_statuses",
-            "description": null
-          },
-          "response": []
-        }
-      ]
-    },
-    {
       "_postman_id": "d16bf889-c628-6099-e4f6-f3ab39c14b88",
       "name": "EmploymentPosition Resource",
       "description": "",
@@ -4411,6 +4358,59 @@
               "raw": ""
             },
             "url": "{{url}}/activate_bank_account/{{account_id}}",
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "a3d81439-d8a1-7553-e21b-9d19eda37fca",
+      "name": "MaritalStatus Resource copy",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "a2b88521-9b65-f5bd-a684-af8c20494c85",
+          "name": "/marital_statuses",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d938d105-ceb9-45a0-b9ab-9ebe1dae0e7e",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"marital_statuses contains 5 items\"] = jsonData.marital_statuses.length === 5;",
+                  "",
+                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/marital_statuses",
             "description": null
           },
           "response": []
