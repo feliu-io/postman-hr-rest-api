@@ -4371,7 +4371,7 @@
       "item": [
         {
           "_postman_id": "a2b88521-9b65-f5bd-a684-af8c20494c85",
-          "name": "/marital_statuses",
+          "name": "/family_relations",
           "event": [
             {
               "listen": "test",
