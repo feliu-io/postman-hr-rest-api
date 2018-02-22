@@ -4720,7 +4720,7 @@
         },
         {
           "_postman_id": "73a1926e-d2ed-f7e4-17ea-c74497d893f8",
-          "name": "/schedule/<string:department_name>",
+          "name": "/schedule/<int:schedule_id>",
           "event": [
             {
               "listen": "test",
