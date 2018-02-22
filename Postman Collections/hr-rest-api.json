@@ -4664,7 +4664,7 @@
       "item": [
         {
           "_postman_id": "76756fba-9f7d-a865-96ff-d2c717c4cbd3",
-          "name": "/department",
+          "name": "/schedule",
           "event": [
             {
               "listen": "test",
