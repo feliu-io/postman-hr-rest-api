@@ -4616,12 +4616,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "0f0a5b5e-1178-420a-bfc8-4c4f348d9a4a",
+                "id": "c2d5bfb9-e36f-4682-92da-a4a5fa96b80e",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact deleted.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent contact deleted.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -4650,7 +4650,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
+            "url": "{{url}}/dependent/{{dependent_id}}",
             "description": null
           },
           "response": []
