@@ -4866,52 +4866,6 @@
             "description": null
           },
           "response": []
-        },
-        {
-          "_postman_id": "b5d3805b-f37d-2cd1-d033-80f2dcc3bd00",
-          "name": "/activate_department/<string:department_name>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "473c2e7d-24df-4e53-a259-0f88961300d6",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now active.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/activate_department/new_test_d",
-            "description": null
-          },
-          "response": []
         }
       ]
     }
