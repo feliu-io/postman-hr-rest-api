@@ -4616,12 +4616,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "c2d5bfb9-e36f-4682-92da-a4a5fa96b80e",
+                "id": "5fc9358f-4d14-4119-9643-4e2a8c461cc7",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent contact deleted.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent deleted.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
