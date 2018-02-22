@@ -4823,7 +4823,7 @@
         },
         {
           "_postman_id": "de00b203-08b2-bd57-4cbc-300e1af99e7a",
-          "name": "/schedule/<string:department_name>",
+          "name": "/schedule/<int:schedule_id>",
           "event": [
             {
               "listen": "test",
