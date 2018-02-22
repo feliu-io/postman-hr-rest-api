@@ -4365,6 +4365,59 @@
       ]
     },
     {
+      "_postman_id": "a3d81439-d8a1-7553-e21b-9d19eda37fca",
+      "name": "FamilyRelation Resource",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "a2b88521-9b65-f5bd-a684-af8c20494c85",
+          "name": "/family_relations",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "46c9ac83-d9b0-42b3-9db4-f48b37a48f20",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"family_relations contains 5 items\"] = jsonData.family_relations.length === 6;",
+                  "",
+                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/family_relations",
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "_postman_id": "f9dd89a7-53f3-a9f0-b586-4d5973fd772e",
       "name": "EmergencyContact Resource copy",
       "description": "",
@@ -4646,59 +4699,6 @@
               "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
             "url": "{{url}}/emergency_contact",
-            "description": null
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "_postman_id": "a3d81439-d8a1-7553-e21b-9d19eda37fca",
-      "name": "FamilyRelation Resource",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "a2b88521-9b65-f5bd-a684-af8c20494c85",
-          "name": "/family_relations",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "46c9ac83-d9b0-42b3-9db4-f48b37a48f20",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"family_relations contains 5 items\"] = jsonData.family_relations.length === 6;",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/family_relations",
             "description": null
           },
           "response": []
