@@ -4911,12 +4911,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "84b1f36f-288f-6851-a452-5a3761d2d7ab",
-      "name": "Delete All Data",
-      "description": "",
-      "item": []
     }
   ]
 }
