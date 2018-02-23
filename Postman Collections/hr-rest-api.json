@@ -4769,18 +4769,16 @@
             {
               "listen": "test",
               "script": {
-                "id": "f312f36d-8b00-42d1-afc2-c64043db5b2b",
+                "id": "66be00bf-b20d-4d42-8ea8-092c3ebc7cfe",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
+                  "tests['start_date is 2018-01-31'] = jsonData.schedule.start_date === \"2018-01-31\";",
                   "",
-                  "tests['department_name is new_test_d'] = jsonData.department.department_name === \"new_test_d\";",
+                  "tests['department_id is correct'] = jsonData.schedule.department_id === parseInt(environment.department_id);",
                   "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department updated successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -4788,8 +4786,7 @@
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
-                  ""
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -4808,9 +4805,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
+              "raw": "{\n  \"start_date\": \"2018-01-31\",\n  \"department_id\": {{department_id}}\n}"
             },
-            "url": "{{url}}/department/test_d",
+            "url": "{{url}}/schedule/{{schedule_id}}",
             "description": null
           },
           "response": []
