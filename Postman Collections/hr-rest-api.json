@@ -4669,22 +4669,18 @@
             {
               "listen": "test",
               "script": {
-                "id": "f0449b78-3323-475e-a051-52115fc92051",
+                "id": "808c2510-fc67-48a7-965e-0510d57e8fce",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "postman.setEnvironmentVariable(\"department_id\", jsonData.department.id);",
+                  "postman.setEnvironmentVariable(\"schedule_id\", jsonData.schedule.id);",
                   "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
+                  "tests['start_date is 2018-01-01'] = jsonData.schedule.start_date === \"2018-01-01\";",
                   "",
-                  "tests['department_name is test_d'] = jsonData.department.department_name === \"test_d\";",
+                  "tests['department_id is correct'] = jsonData.schedule.department_id === parseInt(environment.department_id);",
                   "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
-                  "",
-                  "tests['employees is empty list'] = jsonData.department.employees.length === 0;",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
@@ -4711,9 +4707,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+              "raw": "{\n  \"start_date\": \"2018-01-01\",\n  \"department_id\": {{department_id}}\n}"
             },
-            "url": "{{url}}/department",
+            "url": "{{url}}/schedule",
             "description": null
           },
           "response": []
