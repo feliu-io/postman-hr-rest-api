@@ -4860,7 +4860,7 @@
         },
         {
           "_postman_id": "0b6d3d21-a83b-53c4-65dd-1a3ead0e8b56",
-          "name": "/schedule copy",
+          "name": "/schedule",
           "event": [
             {
               "listen": "test",
