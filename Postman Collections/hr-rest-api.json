@@ -4819,12 +4819,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "f731f551-cfd9-4af2-8642-6ba25845409f",
+                "id": "7a0d0c9e-0f02-44d0-a27d-924835ae13af",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now inactive.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule deleted.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -4853,7 +4853,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/department/new_test_d",
+            "url": "{{url}}/schedule/{{schedule_id}}",
             "description": null
           },
           "response": []
