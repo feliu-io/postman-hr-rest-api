@@ -845,7 +845,7 @@
               "mode": "raw",
               "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
             },
-            "url": "{{url}}/department/test_d",
+            "url": "{{url}}/department/{{department_id}}",
             "description": ""
           },
           "response": []
