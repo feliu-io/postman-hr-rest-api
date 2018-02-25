@@ -324,7 +324,7 @@
         },
         {
           "_postman_id": "f3c15a6f-c85c-e2f2-124e-6a0bbc2cc576",
-          "name": "/activate_organization/<string:organization_name>",
+          "name": "/activate_organization/<int:organization_id>",
           "event": [
             {
               "listen": "test",
