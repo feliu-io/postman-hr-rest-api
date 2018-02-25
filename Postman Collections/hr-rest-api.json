@@ -363,7 +363,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_organization/new_test_o",
+            "url": "{{url}}/activate_organization/{{organization_id}}",
             "description": ""
           },
           "response": []
