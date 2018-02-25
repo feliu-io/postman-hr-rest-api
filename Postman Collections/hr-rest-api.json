@@ -937,7 +937,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_department/new_test_d",
+            "url": "{{url}}/activate_department/{{department_id}}",
             "description": ""
           },
           "response": []
