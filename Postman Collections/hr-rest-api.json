@@ -852,7 +852,7 @@
         },
         {
           "_postman_id": "059115d9-8572-8880-6baf-cd9ecbc0f29b",
-          "name": "/department/<string:department_name>",
+          "name": "/department/<int:department_id>",
           "event": [
             {
               "listen": "test",
