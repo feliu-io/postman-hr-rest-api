@@ -271,7 +271,7 @@
               "mode": "raw",
               "raw": "{\n  \"organization_name\": \"new_test_o\"\n}"
             },
-            "url": "{{url}}/organization/test_o",
+            "url": "{{url}}/organization/{{organization_id}}",
             "description": ""
           },
           "response": []
