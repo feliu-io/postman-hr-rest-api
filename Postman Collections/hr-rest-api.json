@@ -317,7 +317,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/organization/new_test_o",
+            "url": "{{url}}/organization/{{organization_id}}",
             "description": ""
           },
           "response": []
