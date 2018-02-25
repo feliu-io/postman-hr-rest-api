@@ -163,7 +163,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/organization/test_o",
+            "url": "{{url}}/organization/{{organization_id}}",
             "description": ""
           },
           "response": []
