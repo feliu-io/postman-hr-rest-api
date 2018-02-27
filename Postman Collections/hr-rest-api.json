@@ -1216,7 +1216,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/employment_position/new_test_e_p_f",
+            "url": "{{url}}/employment_position/{{position_id}}",
             "description": ""
           },
           "response": []
