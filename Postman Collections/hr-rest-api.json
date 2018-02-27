@@ -1262,7 +1262,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_employment_position/new_test_e_p_f",
+            "url": "{{url}}/activate_employment_position/{{position_id}}",
             "description": ""
           },
           "response": []
