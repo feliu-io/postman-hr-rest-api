@@ -1009,12 +1009,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "72fd68a4-60a6-4919-ae8a-846a67dc80a2",
+                "id": "a7c49904-3c6d-4a09-b669-f620398535a4",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "postman.setEnvironmentVariable(\"department_id\", jsonData.employment_position.id);",
+                  "postman.setEnvironmentVariable(\"position_id\", jsonData.employment_position.id);",
                   "",
                   "tests['is_active is true'] = jsonData.employment_position.is_active;",
                   "",
