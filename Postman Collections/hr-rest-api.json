@@ -1795,7 +1795,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/shift/new_test_s_r",
+            "url": "{{url}}/shift/{{shift_r_id}}",
             "description": ""
           },
           "response": []
