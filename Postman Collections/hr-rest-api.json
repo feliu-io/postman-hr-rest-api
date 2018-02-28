@@ -1592,7 +1592,7 @@
         },
         {
           "_postman_id": "61c6d54d-b920-5b5c-f1b6-e3b294728c10",
-          "name": "/shift/<id:shift_id> (rotating)",
+          "name": "/shift/<int:shift_id> (rotating)",
           "event": [
             {
               "listen": "test",
