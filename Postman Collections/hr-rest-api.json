@@ -1654,7 +1654,7 @@
               "mode": "raw",
               "raw": "{\n  \"shift_name\": \"new_test_s_r\",\n  \"weekly_hours\": 44,\n  \"is_rotating\": true,\n  \"payment_period\": \"Semanal\",\n  \"break_length\": \"01:00:00\",\n  \"is_break_included_in_shift\": true,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"rotation_start_hour\": \"00:00:00\",\n  \"rotation_end_hour\": \"15:00:00\"\n}"
             },
-            "url": "{{url}}/shift/test_s_r",
+            "url": "{{url}}/shift/{{shift_r_id}}",
             "description": ""
           },
           "response": []
