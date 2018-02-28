@@ -1841,7 +1841,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_shift/new_test_s_r",
+            "url": "{{url}}/activate_shift/{{shift_r_id}}",
             "description": ""
           },
           "response": []
