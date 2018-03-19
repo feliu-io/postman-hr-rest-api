@@ -3224,6 +3224,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "26df6820-5657-4a4c-b989-01061a914023",
+                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -3231,14 +3233,12 @@
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ],
-                "id": "c7808781-6b60-4ca6-9420-820bc18d3153",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
