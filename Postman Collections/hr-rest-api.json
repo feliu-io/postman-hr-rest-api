@@ -1097,7 +1097,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3bf28f5c-bd1f-446e-b737-70d7e9b6d2cf",
+                "id": "06f0bb75-b562-4d84-add2-5457c55602e3",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -1112,13 +1112,11 @@
                   "",
                   "tests['organization_id is correct'] = jsonData.employment_position.organization_id === parseInt(environment.organization_id);",
                   "",
-                  "tests['employees is empty list'] = jsonData.employment_position.employees.length === 0;",
-                  "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Employment position updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
