@@ -3059,7 +3059,7 @@
         },
         {
           "_postman_id": "b0304a92-fe00-4b9c-a947-619647006d45",
-          "name": "/passport Copy",
+          "name": "/passport",
           "event": [
             {
               "listen": "test",
