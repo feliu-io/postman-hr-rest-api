@@ -1916,7 +1916,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "be92fa39-4f60-4ad7-8886-2ef1a47ea38f",
+                "id": "68dfe717-5450-4514-b397-a6d71db5b93d",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -1969,7 +1969,7 @@
                   "",
                   "tests[\"position_id is correct\"] = jsonData.position_id === parseInt(environment.position_id);",
                   "",
-                  "tests[\"shift_id is correct \"] = jsonData.shift_id === parseInt(environment.shift_id);",
+                  "tests[\"shift_id is correct \"] = jsonData.shift_id === parseInt(environment.shift_r_id);",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
