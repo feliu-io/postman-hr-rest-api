@@ -2010,7 +2010,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "4d0ab9e2-0cf3-4a76-9a03-cd99c858f5f6",
+                "id": "907a7c24-2ac3-40ac-84f5-5fdb56c98973",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -2063,7 +2063,7 @@
                   "",
                   "tests[\"marital_status_id is correct\"] = jsonData.employee.marital_status_id === 2;",
                   "",
-                  "tests[\"shift_id is correct\"] = jsonData.employee.shift_id === parseInt(environment.shift_id);",
+                  "tests[\"shift_id is correct\"] = jsonData.employee.shift_id === parseInt(environment.shift_f_id);",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Employee updated successfully.\";",
                   "",
