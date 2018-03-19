@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "hr-rest-api",
     "_postman_id": "a4a73626-d959-0177-81ec-a8b83907436b",
+    "name": "hr-rest-api",
     "description": "RESTful-API for human resources app",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
@@ -48,8 +48,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\",\n  \"password\": \"1234\"\n}"
             },
-            "url": "{{url}}/auth",
-            "description": ""
+            "url": "{{url}}/auth"
           },
           "response": []
         }
@@ -115,8 +114,7 @@
               "mode": "raw",
               "raw": "{\n  \"organization_name\": \"test_o\", \n  \"is_active\": true\n}"
             },
-            "url": "{{url}}/organization",
-            "description": ""
+            "url": "{{url}}/organization"
           },
           "response": []
         },
@@ -163,8 +161,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/organization/{{organization_id}}",
-            "description": ""
+            "url": "{{url}}/organization/{{organization_id}}"
           },
           "response": []
         },
@@ -213,8 +210,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/organizations",
-            "description": ""
+            "url": "{{url}}/organizations"
           },
           "response": []
         },
@@ -225,7 +221,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "bf17426e-70ae-4cc2-8f2f-e4877f591683",
+                "id": "ecbda1bb-6033-4133-8a1f-0a40621551be",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -235,14 +231,6 @@
                   "tests['is_active is true'] = jsonData.organization.is_active;",
                   "",
                   "tests['organization_name is new_est_o'] = jsonData.organization.organization_name === \"new_test_o\";",
-                  "",
-                  "tests['departments is empty list'] = jsonData.organization.departments.length === 0;",
-                  "",
-                  "tests['shifts is empty list'] = jsonData.organization.shifts.length === 0;",
-                  "",
-                  "tests['app_users is empty list'] = jsonData.organization.app_users.length === 0;",
-                  "",
-                  "tests['employment_positions is empty list'] = jsonData.organization.employment_positions.length === 0;",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -271,8 +259,7 @@
               "mode": "raw",
               "raw": "{\n  \"organization_name\": \"new_test_o\"\n}"
             },
-            "url": "{{url}}/organization/{{organization_id}}",
-            "description": ""
+            "url": "{{url}}/organization/{{organization_id}}"
           },
           "response": []
         },
@@ -317,8 +304,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/organization/{{organization_id}}",
-            "description": ""
+            "url": "{{url}}/organization/{{organization_id}}"
           },
           "response": []
         },
@@ -363,8 +349,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_organization/{{organization_id}}",
-            "description": ""
+            "url": "{{url}}/activate_organization/{{organization_id}}"
           },
           "response": []
         }
@@ -430,8 +415,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"test_u\", \n  \"password\": \"test_p\",\n  \"email\": \"test_u@test_o.com\",\n  \"organization_id\": {{organization_id}},\n  \"is_super\": true,\n  \"is_owner\": true,\n  \"is_active\": true\n}"
             },
-            "url": "{{url}}/user",
-            "description": ""
+            "url": "{{url}}/user"
           },
           "response": []
         },
@@ -545,8 +529,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"new_test_u\", \n  \"password\": \"1234\",\n  \"email\": \"new_test_u@test_o.com\",\n  \"organization_id\": {{organization_id}},\n  \"is_super\": true,\n  \"is_owner\": true\n}"
             },
-            "url": "{{url}}/user/test_u",
-            "description": ""
+            "url": "{{url}}/user/test_u"
           },
           "response": []
         },
@@ -591,8 +574,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/user/new_test_u",
-            "description": ""
+            "url": "{{url}}/user/new_test_u"
           },
           "response": []
         },
@@ -637,8 +619,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_user/new_test_u",
-            "description": ""
+            "url": "{{url}}/activate_user/new_test_u"
           },
           "response": []
         },
@@ -679,8 +660,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"new_test_u\",\n  \"password\": \"1234\"\n}"
             },
-            "url": "{{url}}/auth",
-            "description": ""
+            "url": "{{url}}/auth"
           },
           "response": []
         }
@@ -742,8 +722,7 @@
               "mode": "raw",
               "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
             },
-            "url": "{{url}}/department",
-            "description": ""
+            "url": "{{url}}/department"
           },
           "response": []
         },
@@ -845,8 +824,7 @@
               "mode": "raw",
               "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
             },
-            "url": "{{url}}/department/{{department_id}}",
-            "description": ""
+            "url": "{{url}}/department/{{department_id}}"
           },
           "response": []
         },
@@ -891,8 +869,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/department/{{department_id}}",
-            "description": ""
+            "url": "{{url}}/department/{{department_id}}"
           },
           "response": []
         },
@@ -937,8 +914,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_department/{{department_id}}",
-            "description": ""
+            "url": "{{url}}/activate_department/{{department_id}}"
           },
           "response": []
         }
@@ -990,8 +966,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/marital_statuses",
-            "description": ""
+            "url": "{{url}}/marital_statuses"
           },
           "response": []
         }
@@ -1111,8 +1086,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/employment_position/{{position_id}}",
-            "description": ""
+            "url": "{{url}}/employment_position/{{position_id}}"
           },
           "response": []
         },
@@ -1170,8 +1144,7 @@
               "mode": "raw",
               "raw": "{\n  \"position_name_feminine\": \"new_test_e_p_f\",\n  \"position_name_masculine\": \"new_test_e_p_m\",\n  \"minimum_hourly_wage\": 2.00,\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
             },
-            "url": "{{url}}/employment_position/{{position_id}}",
-            "description": ""
+            "url": "{{url}}/employment_position/{{position_id}}"
           },
           "response": []
         },
@@ -1216,8 +1189,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/employment_position/{{position_id}}",
-            "description": ""
+            "url": "{{url}}/employment_position/{{position_id}}"
           },
           "response": []
         },
@@ -1262,8 +1234,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_employment_position/{{position_id}}",
-            "description": ""
+            "url": "{{url}}/activate_employment_position/{{position_id}}"
           },
           "response": []
         }
@@ -1339,8 +1310,7 @@
               "mode": "raw",
               "raw": "{\n  \"shift_name\": \"test_s_r\",\n  \"weekly_hours\": 48,\n  \"is_rotating\": true,\n  \"payment_period\": \"Quincenal\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"rotation_start_hour\": \"06:00:00\",\n  \"rotation_end_hour\": \"21:00:00\"\n}"
             },
-            "url": "{{url}}/shift",
-            "description": ""
+            "url": "{{url}}/shift"
           },
           "response": []
         },
@@ -1433,8 +1403,7 @@
               "mode": "raw",
               "raw": "{\n  \"shift_name\": \"test_s_f\",\n  \"weekly_hours\": 44,\n  \"is_rotating\": false,\n  \"payment_period\": \"Quincenal\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"fixed_start_hour_monday\": \"08:00:00\",\n  \"fixed_start_break_hour_monday\": \"12:00:00\",\n  \"fixed_end_break_hour_monday\": \"12:30:00\",\n  \"fixed_end_hour_monday\": \"16:30:00\",\n  \"fixed_start_hour_tuesday\": \"08:00:00\",\n  \"fixed_start_break_hour_tuesday\": \"12:00:00\",\n  \"fixed_end_break_hour_tuesday\": \"12:30:00\",\n  \"fixed_end_hour_tuesday\": \"16:30:00\",\n  \"fixed_start_hour_wednesday\": \"08:00:00\",\n  \"fixed_start_break_hour_wednesday\": \"12:00:00\",\n  \"fixed_end_break_hour_wednesday\": \"12:30:00\",\n  \"fixed_end_hour_wednesday\": \"16:30:00\",\n  \"fixed_start_hour_thursday\": \"08:00:00\",\n  \"fixed_start_break_hour_thursday\": \"12:00:00\",\n  \"fixed_end_break_hour_thursday\": \"12:30:00\",\n  \"fixed_end_hour_thursday\": \"16:30:00\",\n  \"fixed_start_hour_friday\": \"08:00:00\",\n  \"fixed_start_break_hour_friday\": \"12:00:00\",\n  \"fixed_end_break_hour_friday\": \"12:30:00\",\n  \"fixed_end_hour_friday\": \"16:30:00\",\n  \"fixed_start_hour_saturday\": \"08:00:00\",\n  \"fixed_end_hour_saturday\": \"12:00:00\",\n  \"rest_day\": \"Domingo\"\n}"
             },
-            "url": "{{url}}/shift",
-            "description": ""
+            "url": "{{url}}/shift"
           },
           "response": []
         },
@@ -1654,8 +1623,7 @@
               "mode": "raw",
               "raw": "{\n  \"shift_name\": \"new_test_s_r\",\n  \"weekly_hours\": 44,\n  \"is_rotating\": true,\n  \"payment_period\": \"Semanal\",\n  \"break_length\": \"01:00:00\",\n  \"is_break_included_in_shift\": true,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"rotation_start_hour\": \"00:00:00\",\n  \"rotation_end_hour\": \"15:00:00\"\n}"
             },
-            "url": "{{url}}/shift/{{shift_r_id}}",
-            "description": ""
+            "url": "{{url}}/shift/{{shift_r_id}}"
           },
           "response": []
         },
@@ -1681,7 +1649,7 @@
                   "",
                   "tests[\"break_length is 00:30:00\"] = jsonData.shift.break_length === \"00:30:00\";",
                   "",
-                  "tests[\"rest_day is Sábado\"] = jsonData.shift.rest_day === \"Sábado\";",
+                  "tests[\"rest_day is S\u00e1bado\"] = jsonData.shift.rest_day === \"S\u00e1bado\";",
                   "",
                   "tests[\"is_break_included_in_shift is false\"] = !jsonData.shift.is_break_included_in_shift;",
                   "",
@@ -1747,10 +1715,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"shift_name\": \"test_s_f\",\n  \"weekly_hours\": 48,\n  \"is_rotating\": false,\n  \"payment_period\": \"Diario\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"fixed_start_hour_sunday\": \"09:00:00\",\n  \"fixed_start_break_hour_sunday\": \"13:00:00\",\n  \"fixed_end_break_hour_sunday\": \"13:30:00\",\n  \"fixed_end_hour_sunday\": \"17:30:00\",\n  \"fixed_start_hour_monday\": \"09:00:00\",\n  \"fixed_start_break_hour_monday\": \"13:00:00\",\n  \"fixed_end_break_hour_monday\": \"13:30:00\",\n  \"fixed_end_hour_monday\": \"17:30:00\",\n  \"fixed_start_hour_tuesday\": \"09:00:00\",\n  \"fixed_start_break_hour_tuesday\": \"13:00:00\",\n  \"fixed_end_break_hour_tuesday\": \"13:30:00\",\n  \"fixed_end_hour_tuesday\": \"17:30:00\",\n  \"fixed_start_hour_wednesday\": \"09:00:00\",\n  \"fixed_start_break_hour_wednesday\": \"13:00:00\",\n  \"fixed_end_break_hour_wednesday\": \"13:30:00\",\n  \"fixed_end_hour_wednesday\": \"17:30:00\",\n  \"fixed_start_hour_thursday\": \"09:00:00\",\n  \"fixed_start_break_hour_thursday\": \"13:00:00\",\n  \"fixed_end_break_hour_thursday\": \"13:30:00\",\n  \"fixed_end_hour_thursday\": \"17:30:00\",\n  \"fixed_start_hour_friday\": \"09:00:00\",\n  \"fixed_start_break_hour_friday\": \"13:00:00\",\n  \"fixed_end_break_hour_friday\": \"13:30:00\",\n  \"fixed_end_hour_friday\": \"17:30:00\",\n  \"fixed_start_hour_saturday\": null,\n  \"fixed_end_hour_saturday\": null,\n  \"rest_day\": \"Sábado\"\n}"
+              "raw": "{\n  \"shift_name\": \"test_s_f\",\n  \"weekly_hours\": 48,\n  \"is_rotating\": false,\n  \"payment_period\": \"Diario\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organization_id}},\n  \"fixed_start_hour_sunday\": \"09:00:00\",\n  \"fixed_start_break_hour_sunday\": \"13:00:00\",\n  \"fixed_end_break_hour_sunday\": \"13:30:00\",\n  \"fixed_end_hour_sunday\": \"17:30:00\",\n  \"fixed_start_hour_monday\": \"09:00:00\",\n  \"fixed_start_break_hour_monday\": \"13:00:00\",\n  \"fixed_end_break_hour_monday\": \"13:30:00\",\n  \"fixed_end_hour_monday\": \"17:30:00\",\n  \"fixed_start_hour_tuesday\": \"09:00:00\",\n  \"fixed_start_break_hour_tuesday\": \"13:00:00\",\n  \"fixed_end_break_hour_tuesday\": \"13:30:00\",\n  \"fixed_end_hour_tuesday\": \"17:30:00\",\n  \"fixed_start_hour_wednesday\": \"09:00:00\",\n  \"fixed_start_break_hour_wednesday\": \"13:00:00\",\n  \"fixed_end_break_hour_wednesday\": \"13:30:00\",\n  \"fixed_end_hour_wednesday\": \"17:30:00\",\n  \"fixed_start_hour_thursday\": \"09:00:00\",\n  \"fixed_start_break_hour_thursday\": \"13:00:00\",\n  \"fixed_end_break_hour_thursday\": \"13:30:00\",\n  \"fixed_end_hour_thursday\": \"17:30:00\",\n  \"fixed_start_hour_friday\": \"09:00:00\",\n  \"fixed_start_break_hour_friday\": \"13:00:00\",\n  \"fixed_end_break_hour_friday\": \"13:30:00\",\n  \"fixed_end_hour_friday\": \"17:30:00\",\n  \"fixed_start_hour_saturday\": null,\n  \"fixed_end_hour_saturday\": null,\n  \"rest_day\": \"S\u00e1bado\"\n}"
             },
-            "url": "{{url}}/shift/{{shift_f_id}}",
-            "description": ""
+            "url": "{{url}}/shift/{{shift_f_id}}"
           },
           "response": []
         },
@@ -1795,8 +1762,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/shift/{{shift_r_id}}",
-            "description": ""
+            "url": "{{url}}/shift/{{shift_r_id}}"
           },
           "response": []
         },
@@ -1841,8 +1807,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_shift/{{shift_r_id}}",
-            "description": ""
+            "url": "{{url}}/activate_shift/{{shift_r_id}}"
           },
           "response": []
         }
@@ -1883,7 +1848,7 @@
                   "",
                   "tests[\"date_of_birth is 2000-01-31\"] = jsonData.employee.date_of_birth === \"2000-01-31\";",
                   "",
-                  "tests[\"address is Panamá\"] = jsonData.employee.address === \"Panamá\";",
+                  "tests[\"address is Panam\u00e1\"] = jsonData.employee.address === \"Panam\u00e1\";",
                   "",
                   "tests[\"home_phone is 222-2222\"] = jsonData.employee.home_phone === \"222-2222\";",
                   "",
@@ -1905,7 +1870,7 @@
                   "",
                   "tests[\"termination_date is 2018-01-15\"] = jsonData.employee.termination_date === \"2018-01-15\";",
                   "",
-                  "tests[\"termination_reason is Período de Prueba\"] = jsonData.employee.termination_reason === \"Período de Prueba\";",
+                  "tests[\"termination_reason is Per\u00edodo de Prueba\"] = jsonData.employee.termination_reason === \"Per\u00edodo de Prueba\";",
                   "",
                   "tests[\"is_active is true\"] = jsonData.employee.is_active;",
                   "",
@@ -1944,10 +1909,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"first_name\": \"f_n\",\n  \"second_name\": \"s_n\",\n  \"first_surname\": \"f_sn\",\n  \"second_surname\": \"s_sn\",\n  \"national_id_number\": \"1-11-111\",\n  \"is_panamanian\": true,\n  \"date_of_birth\": \"01-31-2000\",\n  \"gender\": \"Hombre\",\n  \"address\": \"Panamá\",\n  \"home_phone\": \"222-2222\",\n  \"mobile_phone\": \"6666-6666\",\n  \"email\": \"f_n@f_sn.com\",\n  \"type_of_contract\": \"Definido\",\n  \"employment_date\": \"01-01-2018\",\n  \"contract_expiration_date\": \"01-31-2018\",\n  \"termination_date\": \"01-15-2018\",\n  \"termination_reason\": \"Período de Prueba\",\n  \"salary_per_payment_period\": \"104.00\",\n  \"representation_expenses_per_payment_period\": \"0\",\n  \"payment_method\": \"ACH\",\n  \"is_active\": true,\n  \"marital_status_id\": 1,\n  \"department_id\": {{department_id}},\n  \"position_id\": {{position_id}},\n  \"shift_id\": {{shift_id}}\n}"
+              "raw": "{\n  \"first_name\": \"f_n\",\n  \"second_name\": \"s_n\",\n  \"first_surname\": \"f_sn\",\n  \"second_surname\": \"s_sn\",\n  \"national_id_number\": \"1-11-111\",\n  \"is_panamanian\": true,\n  \"date_of_birth\": \"01-31-2000\",\n  \"gender\": \"Hombre\",\n  \"address\": \"Panam\u00e1\",\n  \"home_phone\": \"222-2222\",\n  \"mobile_phone\": \"6666-6666\",\n  \"email\": \"f_n@f_sn.com\",\n  \"type_of_contract\": \"Definido\",\n  \"employment_date\": \"01-01-2018\",\n  \"contract_expiration_date\": \"01-31-2018\",\n  \"termination_date\": \"01-15-2018\",\n  \"termination_reason\": \"Per\u00edodo de Prueba\",\n  \"salary_per_payment_period\": \"104.00\",\n  \"representation_expenses_per_payment_period\": \"0\",\n  \"payment_method\": \"ACH\",\n  \"is_active\": true,\n  \"marital_status_id\": 1,\n  \"department_id\": {{department_id}},\n  \"position_id\": {{position_id}},\n  \"shift_id\": {{shift_id}}\n}"
             },
-            "url": "{{url}}/employee",
-            "description": ""
+            "url": "{{url}}/employee"
           },
           "response": []
         },
@@ -1979,7 +1943,7 @@
                   "",
                   "tests[\"gender is Hombre\"] = jsonData.gender === \"Hombre\";",
                   "",
-                  "tests[\"address is Panamá\"] = jsonData.address === \"Panamá\";",
+                  "tests[\"address is Panam\u00e1\"] = jsonData.address === \"Panam\u00e1\";",
                   "",
                   "tests[\"home_phone is 222-2222\"] = jsonData.home_phone === \"222-2222\";",
                   "",
@@ -1995,7 +1959,7 @@
                   "",
                   "tests[\"termination_date is 2018-01-15\"] = jsonData.termination_date === \"2018-01-15\";",
                   "",
-                  "tests[\"termination_reason is Período de Prueba\"] = jsonData.termination_reason === \"Período de Prueba\";",
+                  "tests[\"termination_reason is Per\u00edodo de Prueba\"] = jsonData.termination_reason === \"Per\u00edodo de Prueba\";",
                   "",
                   "tests[\"salary_per_payment_period is 104.00\"] = jsonData.salary_per_payment_period === \"104.00\";",
                   "",
@@ -2073,7 +2037,7 @@
                   "",
                   "tests[\"date_of_birth is 2001-01-31\"] = jsonData.employee.date_of_birth === \"2001-01-31\";",
                   "",
-                  "tests[\"address is Chiriquí\"] = jsonData.employee.address === \"Chiriquí\";",
+                  "tests[\"address is Chiriqu\u00ed\"] = jsonData.employee.address === \"Chiriqu\u00ed\";",
                   "",
                   "tests[\"home_phone is 333-3333\"] = jsonData.employee.home_phone === \"333-3333\";",
                   "",
@@ -2135,10 +2099,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"first_name\": \"new_f_n\",\n  \"second_name\": \"new_s_n\",\n  \"first_surname\": \"new_f_sn\",\n  \"second_surname\": \"new_s_sn\",\n  \"national_id_number\": \"N-1-11-111\",\n  \"is_panamanian\": false,\n  \"date_of_birth\": \"01-31-2001\",\n  \"gender\": \"Mujer\",\n  \"address\": \"Chiriquí\",\n  \"home_phone\": \"333-3333\",\n  \"mobile_phone\": \"6666-7777\",\n  \"email\": \"new_f_n@new_f_sn.com\",\n  \"type_of_contract\": \"Indefinido\",\n  \"employment_date\": \"01-01-2019\",\n  \"contract_expiration_date\": \"01-31-2019\",\n  \"termination_date\": \"01-15-2019\",\n  \"termination_reason\": \"Renuncia\",\n  \"salary_per_payment_period\": \"208.00\",\n  \"representation_expenses_per_payment_period\": \"100\",\n  \"payment_method\": \"Cheque\",\n  \"is_active\": true,\n  \"marital_status_id\": 2,\n  \"department_id\": {{department_id}},\n  \"position_id\": {{position_id}},\n  \"shift_id\": {{shift_id}}\n}"
+              "raw": "{\n  \"first_name\": \"new_f_n\",\n  \"second_name\": \"new_s_n\",\n  \"first_surname\": \"new_f_sn\",\n  \"second_surname\": \"new_s_sn\",\n  \"national_id_number\": \"N-1-11-111\",\n  \"is_panamanian\": false,\n  \"date_of_birth\": \"01-31-2001\",\n  \"gender\": \"Mujer\",\n  \"address\": \"Chiriqu\u00ed\",\n  \"home_phone\": \"333-3333\",\n  \"mobile_phone\": \"6666-7777\",\n  \"email\": \"new_f_n@new_f_sn.com\",\n  \"type_of_contract\": \"Indefinido\",\n  \"employment_date\": \"01-01-2019\",\n  \"contract_expiration_date\": \"01-31-2019\",\n  \"termination_date\": \"01-15-2019\",\n  \"termination_reason\": \"Renuncia\",\n  \"salary_per_payment_period\": \"208.00\",\n  \"representation_expenses_per_payment_period\": \"100\",\n  \"payment_method\": \"Cheque\",\n  \"is_active\": true,\n  \"marital_status_id\": 2,\n  \"department_id\": {{department_id}},\n  \"position_id\": {{position_id}},\n  \"shift_id\": {{shift_id}}\n}"
             },
-            "url": "{{url}}/employee/{{employee_id}}",
-            "description": ""
+            "url": "{{url}}/employee/{{employee_id}}"
           },
           "response": []
         },
@@ -2183,8 +2146,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/employee/{{employee_id}}",
-            "description": ""
+            "url": "{{url}}/employee/{{employee_id}}"
           },
           "response": []
         },
@@ -2229,8 +2191,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_employee/{{employee_id}}",
-            "description": ""
+            "url": "{{url}}/activate_employee/{{employee_id}}"
           },
           "response": []
         }
@@ -2296,8 +2257,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
-            "url": "{{url}}/emergency_contact",
-            "description": ""
+            "url": "{{url}}/emergency_contact"
           },
           "response": []
         },
@@ -2411,8 +2371,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"last_name\": \"new_l_n\",\r\n    \"home_phone\": \"333-3333\",\r\n    \"work_phone\": \"444-4444\",\r\n    \"mobile_phone\": \"6666-7777\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": ""
+            "url": "{{url}}/emergency_contact/{{contact_id}}"
           },
           "response": []
         },
@@ -2457,8 +2416,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/emergency_contact/{{contact_id}}",
-            "description": ""
+            "url": "{{url}}/emergency_contact/{{contact_id}}"
           },
           "response": []
         },
@@ -2517,8 +2475,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
-            "url": "{{url}}/emergency_contact",
-            "description": null
+            "url": "{{url}}/emergency_contact"
           },
           "response": []
         }
@@ -2580,8 +2537,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"health_permit_type\": \"Verde\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1\r\n}"
             },
-            "url": "{{url}}/health_permit",
-            "description": ""
+            "url": "{{url}}/health_permit"
           },
           "response": []
         },
@@ -2687,8 +2643,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"health_permit_type\": \"Blanco\",\r\n    \"issue_date\": \"2018-01-31\",\r\n    \"expiration_date\": \"2019-01-31\",\r\n    \"employee_id\": 1\r\n}"
             },
-            "url": "{{url}}/health_permit/{{permit_id}}",
-            "description": ""
+            "url": "{{url}}/health_permit/{{permit_id}}"
           },
           "response": []
         },
@@ -2733,8 +2688,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/health_permit/{{permit_id}}",
-            "description": ""
+            "url": "{{url}}/health_permit/{{permit_id}}"
           },
           "response": []
         },
@@ -2779,8 +2733,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/health_permit/{{permit_id}}",
-            "description": ""
+            "url": "{{url}}/health_permit/{{permit_id}}"
           },
           "response": []
         },
@@ -2835,8 +2788,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"health_permit_type\": \"Verde\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1\r\n}"
             },
-            "url": "{{url}}/health_permit",
-            "description": ""
+            "url": "{{url}}/health_permit"
           },
           "response": []
         }
@@ -2888,8 +2840,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/countries",
-            "description": ""
+            "url": "{{url}}/countries"
           },
           "response": []
         }
@@ -2953,8 +2904,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"passport_number\": \"123456\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1,\r\n    \"country_id\": 1\r\n}"
             },
-            "url": "{{url}}/passport",
-            "description": ""
+            "url": "{{url}}/passport"
           },
           "response": []
         },
@@ -3064,8 +3014,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"passport_number\": \"654321\",\r\n    \"issue_date\": \"2018-01-31\",\r\n    \"expiration_date\": \"2019-01-31\",\r\n    \"employee_id\": 1,\r\n    \"country_id\": 2\r\n}"
             },
-            "url": "{{url}}/passport/{{passport_id}}",
-            "description": ""
+            "url": "{{url}}/passport/{{passport_id}}"
           },
           "response": []
         },
@@ -3110,8 +3059,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/passport/{{passport_id}}",
-            "description": ""
+            "url": "{{url}}/passport/{{passport_id}}"
           },
           "response": []
         },
@@ -3168,8 +3116,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"passport_number\": \"123456\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1,\r\n    \"country_id\": 1\r\n}"
             },
-            "url": "{{url}}/passport",
-            "description": null
+            "url": "{{url}}/passport"
           },
           "response": []
         }
@@ -3229,8 +3176,7 @@
               "mode": "raw",
               "raw": "{\n  \"item_name\": \"test_u_i\",\n  \"organization_id\": {{organization_id}}\n}"
             },
-            "url": "{{url}}/uniform_item",
-            "description": null
+            "url": "{{url}}/uniform_item"
           },
           "response": []
         },
@@ -3332,8 +3278,7 @@
               "mode": "raw",
               "raw": "{\n  \"item_name\": \"new_test_u_i\", \n  \"organization_id\": {{organization_id}}\n}"
             },
-            "url": "{{url}}/uniform_item/{{item_id}}",
-            "description": ""
+            "url": "{{url}}/uniform_item/{{item_id}}"
           },
           "response": []
         },
@@ -3378,8 +3323,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/uniform_item/{{item_id}}",
-            "description": ""
+            "url": "{{url}}/uniform_item/{{item_id}}"
           },
           "response": []
         },
@@ -3432,8 +3376,7 @@
               "mode": "raw",
               "raw": "{\n  \"item_name\": \"test_u_i\",\n  \"organization_id\": {{organization_id}}\n}"
             },
-            "url": "{{url}}/uniform_item",
-            "description": null
+            "url": "{{url}}/uniform_item"
           },
           "response": []
         }
@@ -3493,8 +3436,7 @@
               "mode": "raw",
               "raw": "{\n  \"size_description\": \"test_u_s\",\n  \"uniform_item_id\": {{item_id}}\n}"
             },
-            "url": "{{url}}/uniform_size",
-            "description": ""
+            "url": "{{url}}/uniform_size"
           },
           "response": []
         },
@@ -3547,8 +3489,7 @@
               "mode": "raw",
               "raw": "{\n  \"size_description\": \"test_u_s_2\",\n  \"uniform_item_id\": {{item_id}}\n}"
             },
-            "url": "{{url}}/uniform_size",
-            "description": null
+            "url": "{{url}}/uniform_size"
           },
           "response": []
         },
@@ -3650,8 +3591,7 @@
               "mode": "raw",
               "raw": "{\n  \"size_description\": \"new_test_u_s\", \n  \"uniform_item_id\": {{item_id}}\n}"
             },
-            "url": "{{url}}/uniform_size/{{size_id}}",
-            "description": ""
+            "url": "{{url}}/uniform_size/{{size_id}}"
           },
           "response": []
         },
@@ -3696,8 +3636,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/uniform_size/{{size_id}}",
-            "description": ""
+            "url": "{{url}}/uniform_size/{{size_id}}"
           },
           "response": []
         },
@@ -3750,8 +3689,7 @@
               "mode": "raw",
               "raw": "{\n  \"size_description\": \"test_u_s\",\n  \"uniform_item_id\": {{item_id}}\n}"
             },
-            "url": "{{url}}/uniform_size",
-            "description": null
+            "url": "{{url}}/uniform_size"
           },
           "response": []
         }
@@ -3833,8 +3771,7 @@
               "mode": "raw",
               "raw": "{\n  \"employee_id\": {{employee_id}},\n  \"uniform_item_id\": {{item_id}},\n  \"uniform_size_id\": {{size_id}}\n}"
             },
-            "url": "{{url}}/uniform_requirement",
-            "description": null
+            "url": "{{url}}/uniform_requirement"
           },
           "response": []
         },
@@ -3936,8 +3873,7 @@
               "mode": "raw",
               "raw": "{\n  \"employee_id\": {{employee_id}},\n  \"uniform_item_id\": {{item_id}},\n  \"uniform_size_id\": {{size_id_2}}\n}"
             },
-            "url": "{{url}}/uniform_requirement/{{requirement_id}}",
-            "description": null
+            "url": "{{url}}/uniform_requirement/{{requirement_id}}"
           },
           "response": []
         },
@@ -3982,8 +3918,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/uniform_requirement/{{requirement_id}}",
-            "description": null
+            "url": "{{url}}/uniform_requirement/{{requirement_id}}"
           },
           "response": []
         },
@@ -4036,8 +3971,7 @@
               "mode": "raw",
               "raw": "{\n  \"employee_id\": {{employee_id}},\n  \"uniform_item_id\": {{item_id}},\n  \"uniform_size_id\": {{size_id}}\n}"
             },
-            "url": "{{url}}/uniform_requirement",
-            "description": null
+            "url": "{{url}}/uniform_requirement"
           },
           "response": []
         }
@@ -4089,8 +4023,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/banks",
-            "description": null
+            "url": "{{url}}/banks"
           },
           "response": []
         }
@@ -4154,8 +4087,7 @@
               "mode": "raw",
               "raw": "{\n  \"account_number\": \"1234\",\n  \"account_type\": \"Corriente\",\n  \"is_active\": true,\n  \"employee_id\": {{employee_id}},\n  \"bank_id\": 1\n}"
             },
-            "url": "{{url}}/bank_account",
-            "description": null
+            "url": "{{url}}/bank_account"
           },
           "response": []
         },
@@ -4265,8 +4197,7 @@
               "mode": "raw",
               "raw": "{\n  \"account_number\": \"4321\",\n  \"account_type\": \"Ahorro\",\n  \"is_active\": true,\n  \"employee_id\": {{employee_id}},\n  \"bank_id\": 2\n}"
             },
-            "url": "{{url}}/bank_account/{{account_id}}",
-            "description": null
+            "url": "{{url}}/bank_account/{{account_id}}"
           },
           "response": []
         },
@@ -4311,8 +4242,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/bank_account/{{account_id}}",
-            "description": null
+            "url": "{{url}}/bank_account/{{account_id}}"
           },
           "response": []
         },
@@ -4357,8 +4287,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_bank_account/{{account_id}}",
-            "description": null
+            "url": "{{url}}/activate_bank_account/{{account_id}}"
           },
           "response": []
         }
@@ -4410,8 +4339,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/family_relations",
-            "description": null
+            "url": "{{url}}/family_relations"
           },
           "response": []
         }
@@ -4481,8 +4409,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"second_name\": \"s_n\",\r\n    \"first_surname\": \"f_sn\",\r\n    \"second_surname\": \"s_sn\",\r\n    \"gender\": \"Mujer\",\r\n    \"date_of_birth\": \"2018-01-01\",\r\n    \"employee_id\": {{employee_id}},\r\n    \"family_relation_id\": 1\r\n}"
             },
-            "url": "{{url}}/dependent",
-            "description": null
+            "url": "{{url}}/dependent"
           },
           "response": []
         },
@@ -4604,8 +4531,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"second_name\": \"new_s_n\",\r\n    \"first_surname\": \"new_f_sn\",\r\n    \"second_surname\": \"new_s_sn\",\r\n    \"gender\": \"Hombre\",\r\n    \"date_of_birth\": \"2018-01-31\",\r\n    \"employee_id\": {{employee_id}},\r\n    \"family_relation_id\": 2\r\n}"
             },
-            "url": "{{url}}/dependent/{{dependent_id}}",
-            "description": null
+            "url": "{{url}}/dependent/{{dependent_id}}"
           },
           "response": []
         },
@@ -4650,8 +4576,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/dependent/{{dependent_id}}",
-            "description": null
+            "url": "{{url}}/dependent/{{dependent_id}}"
           },
           "response": []
         }
@@ -4709,8 +4634,7 @@
               "mode": "raw",
               "raw": "{\n  \"start_date\": \"2018-01-01\",\n  \"department_id\": {{department_id}}\n}"
             },
-            "url": "{{url}}/schedule",
-            "description": null
+            "url": "{{url}}/schedule"
           },
           "response": []
         },
@@ -4807,8 +4731,7 @@
               "mode": "raw",
               "raw": "{\n  \"start_date\": \"2018-01-31\",\n  \"department_id\": {{department_id}}\n}"
             },
-            "url": "{{url}}/schedule/{{schedule_id}}",
-            "description": null
+            "url": "{{url}}/schedule/{{schedule_id}}"
           },
           "response": []
         },
@@ -4853,8 +4776,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/schedule/{{schedule_id}}",
-            "description": null
+            "url": "{{url}}/schedule/{{schedule_id}}"
           },
           "response": []
         },
@@ -4905,8 +4827,7 @@
               "mode": "raw",
               "raw": "{\n  \"start_date\": \"2018-01-01\",\n  \"department_id\": {{department_id}}\n}"
             },
-            "url": "{{url}}/schedule",
-            "description": null
+            "url": "{{url}}/schedule"
           },
           "response": []
         }
