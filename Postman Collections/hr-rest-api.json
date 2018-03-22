@@ -4900,7 +4900,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "67bb3cfe-1223-4418-963e-7c13c49868cd",
+                "id": "0a5a31ce-7861-4748-b8f2-367745276ef3",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -4953,7 +4953,7 @@
                   "",
                   "tests['schedule_id is correct'] = jsonData.schedule_detail.schedule_id === parseInt(environment.schedule_id);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule created successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule detail created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
