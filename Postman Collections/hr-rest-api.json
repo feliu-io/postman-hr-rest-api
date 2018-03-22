@@ -4887,6 +4887,257 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "e311d835-63a8-4155-a8d7-aeba654c2e1d",
+      "name": "Schedule Resource Copy",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "49edd0f3-cabb-4b22-884a-1a57c1a1728f",
+          "name": "/schedule",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "808c2510-fc67-48a7-965e-0510d57e8fce",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"schedule_id\", jsonData.schedule.id);",
+                  "",
+                  "tests['start_date is 2018-01-01'] = jsonData.schedule.start_date === \"2018-01-01\";",
+                  "",
+                  "tests['department_id is correct'] = jsonData.schedule.department_id === parseInt(environment.department_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start_date\": \"2018-01-01\",\n  \"department_id\": {{department_id}}\n}"
+            },
+            "url": "{{url}}/schedule"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0f80220e-bcca-45a0-bf84-e0b6bfd86741",
+          "name": "/schedule/<int:schedule_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0954265a-bd88-4dd3-82a1-f369fc646757",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests['start_date is 2018-01-01'] = jsonData.start_date === \"2018-01-01\";",
+                  "",
+                  "tests['department_id is correct'] = jsonData.department_id === parseInt(environment.department_id);",
+                  "",
+                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/schedule/{{schedule_id}}",
+            "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "58b18112-60e3-4050-a193-4dbf6eb3b313",
+          "name": "/schedule/<int:schedule_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "51e20255-81a2-47ef-8fb9-d492c8b77f62",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests['start_date is 2018-01-31'] = jsonData.schedule.start_date === \"2018-01-31\";",
+                  "",
+                  "tests['department_id is correct'] = jsonData.schedule.department_id === parseInt(environment.department_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule updated successfully.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start_date\": \"2018-01-31\",\n  \"department_id\": {{department_id}}\n}"
+            },
+            "url": "{{url}}/schedule/{{schedule_id}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f2320a78-cbc9-48fb-a14a-8d6067a65dea",
+          "name": "/schedule/<int:schedule_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c44c52d5-130b-4007-8bc6-1d5569fe7e4e",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule deleted.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/schedule/{{schedule_id}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d87859af-d7cf-450a-bdbf-d6eba76a3b47",
+          "name": "/schedule",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "808c2510-fc67-48a7-965e-0510d57e8fce",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"schedule_id\", jsonData.schedule.id);",
+                  "",
+                  "tests['start_date is 2018-01-01'] = jsonData.schedule.start_date === \"2018-01-01\";",
+                  "",
+                  "tests['department_id is correct'] = jsonData.schedule.department_id === parseInt(environment.department_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start_date\": \"2018-01-01\",\n  \"department_id\": {{department_id}}\n}"
+            },
+            "url": "{{url}}/schedule"
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
