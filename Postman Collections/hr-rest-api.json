@@ -4695,7 +4695,7 @@
         },
         {
           "_postman_id": "73a1926e-d2ed-f7e4-17ea-c74497d893f8",
-          "name": "/schedule/<int:schedule_id>",
+          "name": "/schedule_detail/<int:detail_id>",
           "event": [
             {
               "listen": "test",
