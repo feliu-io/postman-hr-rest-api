@@ -5174,12 +5174,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "c44c52d5-130b-4007-8bc6-1d5569fe7e4e",
+                "id": "bab65df4-f303-4bbb-8e4f-3871cee52f44",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule deleted.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule detail deleted.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -5208,7 +5208,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/schedule/{{schedule_id}}"
+            "url": "{{url}}/schedule_detail/{{schedule_detail_id}}"
           },
           "response": []
         }
