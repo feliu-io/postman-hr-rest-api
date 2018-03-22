@@ -5085,7 +5085,7 @@
         },
         {
           "_postman_id": "f2320a78-cbc9-48fb-a14a-8d6067a65dea",
-          "name": "/schedule/<int:schedule_id>",
+          "name": "/schedule_detail/<int:detail_id>",
           "event": [
             {
               "listen": "test",
