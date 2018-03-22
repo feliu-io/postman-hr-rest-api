@@ -4895,7 +4895,7 @@
       "item": [
         {
           "_postman_id": "49edd0f3-cabb-4b22-884a-1a57c1a1728f",
-          "name": "/schedule",
+          "name": "/schedule_detail",
           "event": [
             {
               "listen": "test",
