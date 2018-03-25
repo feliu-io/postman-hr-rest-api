@@ -5372,14 +5372,16 @@
             {
               "listen": "test",
               "script": {
-                "id": "0954265a-bd88-4dd3-82a1-f369fc646757",
+                "id": "4424c0ef-243a-4b1f-b2bb-fd58da270981",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests['start_date is 2018-01-01'] = jsonData.start_date === \"2018-01-01\";",
+                  "tests['payment_date is 2018-01-01'] = jsonData.payment_date === \"2018-01-01\";",
                   "",
-                  "tests['department_id is correct'] = jsonData.department_id === parseInt(environment.department_id);",
+                  "tests['document_number is 1234-abc'] = jsonData.document_number === \"1234-abc\";",
+                  "",
+                  "tests['employee_id is correct'] = jsonData.employee_id === parseInt(environment.employee_id);",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
@@ -5408,7 +5410,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/schedule/{{schedule_id}}",
+            "url": "{{url}}/payment/{{payment_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
