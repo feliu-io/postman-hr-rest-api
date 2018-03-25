@@ -5319,18 +5319,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "808c2510-fc67-48a7-965e-0510d57e8fce",
+                "id": "f3ced619-ef09-4c5f-8c4a-268daec9d326",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "postman.setEnvironmentVariable(\"schedule_id\", jsonData.schedule.id);",
+                  "postman.setEnvironmentVariable(\"payment_id\", jsonData.payment.id);",
                   "",
-                  "tests['start_date is 2018-01-01'] = jsonData.schedule.start_date === \"2018-01-01\";",
+                  "tests['payment_date is 2018-01-01'] = jsonData.payment.payment_date === \"2018-01-01\";",
                   "",
-                  "tests['department_id is correct'] = jsonData.schedule.department_id === parseInt(environment.department_id);",
+                  "tests['document_number is 1234-abc'] = jsonData.payment.payment_date === \"1234-abc\";",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule created successfully.\";",
+                  "tests['employee_id is correct'] = jsonData.payment.employee_id === parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Payment created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
@@ -5357,9 +5359,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"start_date\": \"2018-01-01\",\n  \"department_id\": {{department_id}}\n}"
+              "raw": "{\r\n    \"payment_date\": \"2018-01-01\",\r\n    \"document_number\": \"1234-abc\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
-            "url": "{{url}}/schedule"
+            "url": "{{url}}/payment"
           },
           "response": []
         },
