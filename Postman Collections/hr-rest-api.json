@@ -5422,16 +5422,18 @@
             {
               "listen": "test",
               "script": {
-                "id": "51e20255-81a2-47ef-8fb9-d492c8b77f62",
+                "id": "d84ba171-9c84-45e8-ae13-04c52e114df3",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests['start_date is 2018-01-31'] = jsonData.schedule.start_date === \"2018-01-31\";",
+                  "tests['payment_date is 2018-02-01'] = jsonData.payment.payment_date === \"2018-02-01\";",
                   "",
-                  "tests['department_id is correct'] = jsonData.schedule.department_id === parseInt(environment.department_id);",
+                  "tests['document_number is 1234-def'] = jsonData.payment.document_number === \"1234-def\";",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule updated successfully.\";",
+                  "tests['employee_id is correct'] = jsonData.payment.employee_id === parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Payment updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -5458,9 +5460,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"start_date\": \"2018-01-31\",\n  \"department_id\": {{department_id}}\n}"
+              "raw": "{\r\n    \"payment_date\": \"2018-02-01\",\r\n    \"document_number\": \"1234-def\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
-            "url": "{{url}}/schedule/{{schedule_id}}"
+            "url": "{{url}}/payment/{{payment_id}}"
           },
           "response": []
         },
