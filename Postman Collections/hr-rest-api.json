@@ -5314,7 +5314,7 @@
       "item": [
         {
           "_postman_id": "c1660d7d-d051-4703-9e24-0971285b8ce4",
-          "name": "/schedule",
+          "name": "/payment",
           "event": [
             {
               "listen": "test",
