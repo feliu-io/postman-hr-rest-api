@@ -5319,7 +5319,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f3ced619-ef09-4c5f-8c4a-268daec9d326",
+                "id": "4a299a1b-c87e-418c-bbcf-868888120bd8",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -5328,7 +5328,7 @@
                   "",
                   "tests['payment_date is 2018-01-01'] = jsonData.payment.payment_date === \"2018-01-01\";",
                   "",
-                  "tests['document_number is 1234-abc'] = jsonData.payment.payment_date === \"1234-abc\";",
+                  "tests['document_number is 1234-abc'] = jsonData.payment.document_number === \"1234-abc\";",
                   "",
                   "tests['employee_id is correct'] = jsonData.payment.employee_id === parseInt(environment.employee_id);",
                   "",
