@@ -5578,22 +5578,26 @@
             {
               "listen": "test",
               "script": {
-                "id": "f0449b78-3323-475e-a051-52115fc92051",
+                "id": "56bffa26-dc1d-495b-bd42-a4a2fa3716dc",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "postman.setEnvironmentVariable(\"department_id\", jsonData.department.id);",
+                  "postman.setEnvironmentVariable(\"creditor_id\", jsonData.creditor.id);",
                   "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
+                  "tests['is_active is true'] = jsonData.creditor.is_active;",
                   "",
-                  "tests['department_name is test_d'] = jsonData.department.department_name === \"test_d\";",
+                  "tests['creditor_name is test_cr'] = jsonData.creditor.creditor_name === \"test_cr\";",
                   "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
+                  "tests['phone_number is 123-4567'] = jsonData.creditor.phone_number === \"123-4567\";",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
+                  "tests['eamil is test@test_cr.com'] = jsonData.creditor.email === \"test@test_cr.com\";",
                   "",
-                  "tests['employees is empty list'] = jsonData.department.employees.length === 0;",
+                  "tests['organization_id is correct'] = jsonData.creditor.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Creditor created successfully.\";",
+                  "",
+                  "/*tests['deductions is empty list'] = jsonData.creditor.deductions.length === 0;*/",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
@@ -5620,9 +5624,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+              "raw": "{\n  \"creditor_name\": \"test_cr\",\n  \"phone_number\": \"123-4567\",\n  \"email\": \"test@test_cr.com\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
             },
-            "url": "{{url}}/department"
+            "url": "{{url}}/creditor"
           },
           "response": []
         },
