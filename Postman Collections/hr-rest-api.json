@@ -921,260 +921,6 @@
       ]
     },
     {
-      "_postman_id": "a3e98d90-4d8a-48eb-abc3-9b143421574f",
-      "name": "Department Resource Copy",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "3290c15e-c5b6-4fc2-9d83-87165989200f",
-          "name": "/department",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f0449b78-3323-475e-a051-52115fc92051",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable(\"department_id\", jsonData.department.id);",
-                  "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
-                  "",
-                  "tests['department_name is test_d'] = jsonData.department.department_name === \"test_d\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
-                  "",
-                  "tests['employees is empty list'] = jsonData.department.employees.length === 0;",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
-            },
-            "url": "{{url}}/department"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "0a923561-4442-490e-9d43-ae0fb1525960",
-          "name": "/department/<int:department_id>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "5dc05816-b7e7-4a0b-9842-cfa7a0635690",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"is_active is true\"] = jsonData.is_active;",
-                  "",
-                  "tests[\"department_name is test_d\"] = jsonData.department_name === \"test_d\";",
-                  "",
-                  "tests[\"organization_id is correct\"] = jsonData.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/department/{{department_id}}",
-            "description": "Register a new user supplying a \"username\" and \"password\""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "588793d0-d5ae-4c16-9768-af1e5e464def",
-          "name": "/department/<int:department_id>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "cafd19ff-ef6a-46ce-9ca2-6bf95689c76e",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
-                  "",
-                  "tests['department_name is new_test_d'] = jsonData.department.department_name === \"new_test_d\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
-            },
-            "url": "{{url}}/department/{{department_id}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "93345221-3b8d-4113-9366-23ad9d5cdff9",
-          "name": "/department/<int:department_id>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a1e28ccf-f702-42be-8daf-1b93fb757684",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now inactive.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/department/{{department_id}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e437130d-a8af-4614-8486-a4ad694bdc18",
-          "name": "/activate_department/<int:department_id>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "16d6fade-fb69-4f2d-b199-dc069c82b029",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now active.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/activate_department/{{department_id}}"
-          },
-          "response": []
-        }
-      ]
-    },
-    {
       "_postman_id": "141d3246-79d0-56bc-4d41-3e4d3feb2b6f",
       "name": "MaritalStatus Resource",
       "description": "",
@@ -5815,6 +5561,260 @@
               "raw": "{\r\n    \"payment_date\": \"2018-01-01\",\r\n    \"document_number\": \"1234-abc\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
             "url": "{{url}}/payment"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "a3e98d90-4d8a-48eb-abc3-9b143421574f",
+      "name": "Creditor Resource",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "3290c15e-c5b6-4fc2-9d83-87165989200f",
+          "name": "/creditor",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f0449b78-3323-475e-a051-52115fc92051",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"department_id\", jsonData.department.id);",
+                  "",
+                  "tests['is_active is true'] = jsonData.department.is_active;",
+                  "",
+                  "tests['department_name is test_d'] = jsonData.department.department_name === \"test_d\";",
+                  "",
+                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
+                  "",
+                  "tests['employees is empty list'] = jsonData.department.employees.length === 0;",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+            },
+            "url": "{{url}}/department"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0a923561-4442-490e-9d43-ae0fb1525960",
+          "name": "/creditor/<int:creditor_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5dc05816-b7e7-4a0b-9842-cfa7a0635690",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"is_active is true\"] = jsonData.is_active;",
+                  "",
+                  "tests[\"department_name is test_d\"] = jsonData.department_name === \"test_d\";",
+                  "",
+                  "tests[\"organization_id is correct\"] = jsonData.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/department/{{department_id}}",
+            "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "588793d0-d5ae-4c16-9768-af1e5e464def",
+          "name": "/department/<int:department_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cafd19ff-ef6a-46ce-9ca2-6bf95689c76e",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests['is_active is true'] = jsonData.department.is_active;",
+                  "",
+                  "tests['department_name is new_test_d'] = jsonData.department.department_name === \"new_test_d\";",
+                  "",
+                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Department updated successfully.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
+            },
+            "url": "{{url}}/department/{{department_id}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "93345221-3b8d-4113-9366-23ad9d5cdff9",
+          "name": "/department/<int:department_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a1e28ccf-f702-42be-8daf-1b93fb757684",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now inactive.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/department/{{department_id}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e437130d-a8af-4614-8486-a4ad694bdc18",
+          "name": "/activate_department/<int:department_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "16d6fade-fb69-4f2d-b199-dc069c82b029",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now active.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/activate_department/{{department_id}}"
           },
           "response": []
         }
