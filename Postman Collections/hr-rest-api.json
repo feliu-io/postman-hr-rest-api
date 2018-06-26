@@ -5747,12 +5747,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "a1e28ccf-f702-42be-8daf-1b93fb757684",
+                "id": "2b339cc1-3f55-4e64-88e5-930fb8f5b639",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now inactive.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Creditor is now inactive.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -5781,7 +5781,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/department/{{department_id}}"
+            "url": "{{url}}/creditor/{{creditor_id}}"
           },
           "response": []
         },
