@@ -5691,18 +5691,22 @@
             {
               "listen": "test",
               "script": {
-                "id": "cafd19ff-ef6a-46ce-9ca2-6bf95689c76e",
+                "id": "fa2dc79c-3b9b-472d-b101-b19c2f698d5a",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
+                  "tests['is_active is true'] = jsonData.creditor.is_active;",
                   "",
-                  "tests['department_name is new_test_d'] = jsonData.department.department_name === \"new_test_d\";",
+                  "tests['creditor_name is new_test_cr'] = jsonData.creditor.creditor_name === \"new_test_cr\";",
                   "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
+                  "tests['phone_number is 456-7890'] = jsonData.creditor.phone_number === \"456-7890\";",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department updated successfully.\";",
+                  "tests['eamil is test@new_test_cr.com'] = jsonData.creditor.email === \"test@new_test_cr.com\";",
+                  "",
+                  "tests['organization_id is correct'] = jsonData.creditor.organization_id === parseInt(environment.organization_id);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Creditor updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -5730,9 +5734,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
+              "raw": "{\n  \"creditor_name\": \"new_test_cr\",\n  \"phone_number\": \"456-7890\",\n  \"email\": \"test@new_test_cr.com\",\n  \"organization_id\": {{organization_id}}\n}"
             },
-            "url": "{{url}}/department/{{department_id}}"
+            "url": "{{url}}/creditor/{{creditor_id}}"
           },
           "response": []
         },
