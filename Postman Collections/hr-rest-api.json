@@ -5730,7 +5730,7 @@
         },
         {
           "_postman_id": "93345221-3b8d-4113-9366-23ad9d5cdff9",
-          "name": "/department/<int:department_id>",
+          "name": "/creditor/<int:creditor_id>",
           "event": [
             {
               "listen": "test",
