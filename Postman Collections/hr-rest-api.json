@@ -5637,14 +5637,18 @@
             {
               "listen": "test",
               "script": {
-                "id": "5dc05816-b7e7-4a0b-9842-cfa7a0635690",
+                "id": "fbc62900-9e22-4894-b0a8-eb00e7f64b8e",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
                   "tests[\"is_active is true\"] = jsonData.is_active;",
                   "",
-                  "tests[\"department_name is test_d\"] = jsonData.department_name === \"test_d\";",
+                  "tests['creditor_name is test_cr'] = jsonData.creditor_name === \"test_cr\";",
+                  "",
+                  "tests['phone_number is 123-4567'] = jsonData.phone_number === \"123-4567\";",
+                  "",
+                  "tests['eamil is test@test_cr.com'] = jsonData.email === \"test@test_cr.com\";",
                   "",
                   "tests[\"organization_id is correct\"] = jsonData.organization_id === parseInt(environment.organization_id);",
                   "",
@@ -5675,7 +5679,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/department/{{department_id}}",
+            "url": "{{url}}/creditor/{{creditor_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
