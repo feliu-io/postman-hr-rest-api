@@ -5573,7 +5573,7 @@
       "item": [
         {
           "_postman_id": "3290c15e-c5b6-4fc2-9d83-87165989200f",
-          "name": "/department",
+          "name": "/creditor",
           "event": [
             {
               "listen": "test",
