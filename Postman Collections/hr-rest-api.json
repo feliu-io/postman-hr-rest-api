@@ -5568,12 +5568,12 @@
     },
     {
       "_postman_id": "a3e98d90-4d8a-48eb-abc3-9b143421574f",
-      "name": "Creditor Resource",
+      "name": "Department Resource Copy",
       "description": "",
       "item": [
         {
           "_postman_id": "3290c15e-c5b6-4fc2-9d83-87165989200f",
-          "name": "/creditor",
+          "name": "/department",
           "event": [
             {
               "listen": "test",
