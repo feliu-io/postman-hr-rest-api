@@ -5792,12 +5792,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "16d6fade-fb69-4f2d-b199-dc069c82b029",
+                "id": "72255428-0555-4e68-9bf6-7fde1744e058",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now active.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Creditor is now active.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -5826,7 +5826,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_department/{{department_id}}"
+            "url": "{{url}}/activate_creditor/{{creditor_id}}"
           },
           "response": []
         }
