@@ -6074,12 +6074,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "72255428-0555-4e68-9bf6-7fde1744e058",
+                "id": "4bbfb8d1-3b5d-4ddf-bd9f-51b96bb73c0e",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Creditor is now active.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction is now active.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -6108,7 +6108,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_creditor/{{creditor_id}}"
+            "url": "{{url}}/activate_deduction/{{deduction_id}}"
           },
           "response": []
         }
