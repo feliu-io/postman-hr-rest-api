@@ -5829,51 +5829,6 @@
             "url": "{{url}}/activate_creditor/{{creditor_id}}"
           },
           "response": []
-        },
-        {
-          "_postman_id": "0a7b6ed2-6788-4ac6-9dfd-b348828d6f0b",
-          "name": "/activate_creditor/<int:creditor_id> Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "72255428-0555-4e68-9bf6-7fde1744e058",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Creditor is now active.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/activate_creditor/{{creditor_id}}"
-          },
-          "response": []
         }
       ]
     },
@@ -6109,6 +6064,51 @@
               "raw": ""
             },
             "url": "{{url}}/dependent/{{dependent_id}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0a7b6ed2-6788-4ac6-9dfd-b348828d6f0b",
+          "name": "/activate_creditor/<int:creditor_id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "72255428-0555-4e68-9bf6-7fde1744e058",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Creditor is now active.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/activate_creditor/{{creditor_id}}"
           },
           "response": []
         }
