@@ -5839,7 +5839,7 @@
       "item": [
         {
           "_postman_id": "28811a4e-3684-48e8-b2eb-9da7d1e552e3",
-          "name": "/dependent",
+          "name": "/deduction",
           "event": [
             {
               "listen": "test",
