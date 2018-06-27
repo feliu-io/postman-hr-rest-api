@@ -5907,26 +5907,26 @@
             {
               "listen": "test",
               "script": {
-                "id": "058d26ea-b94a-4c10-b71c-ce7eb7a8ea0e",
+                "id": "2e8b5810-8036-482f-a694-c435b4efa3da",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"first_name is f_n\"] = jsonData.first_name === \"f_n\";",
+                  "tests[\"start_date is 2018-01-01\"] = jsonData.start_date === \"2018-01-01\";",
                   "",
-                  "tests[\"second_name is s_n\"] = jsonData.second_name === \"s_n\";",
+                  "tests[\"end_date is 2018-01-31\"] = jsonData.end_date === \"2018-01-31\";",
                   "",
-                  "tests[\"first_surname is f_sn\"] = jsonData.first_surname === \"f_sn\";",
+                  "tests[\"deduction_per_payment_period is 123.45\"] = jsonData.deduction_per_payment_period === \"123.45\";",
                   "",
-                  "tests[\"second_surname is s_sn\"] = jsonData.second_surname === \"s_sn\";",
+                  "tests[\"payment_method is Cheque\"] = jsonData.payment_method === \"Cheque\";",
                   "",
-                  "tests[\"gender is Mujer\"] = jsonData.gender === \"Mujer\";",
+                  "tests[\"deduct_in_december is true\"] = jsonData.deduct_in_december;",
                   "",
-                  "tests[\"date_of_birth is 2018-01-01\"] = jsonData.date_of_birth === \"2018-01-01\";",
+                  "tests[\"is_active is true\"] = jsonData.is_active;",
                   "",
                   "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
                   "",
-                  "tests[\"family_relation_id is correct\"] = jsonData.family_relation_id ===  1;",
+                  "tests[\"creditor_id is correct\"] = jsonData.creditor_id ===  1;",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
@@ -5955,7 +5955,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/dependent/{{dependent_id}}",
+            "url": "{{url}}/deduction/{{deduction_id}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
