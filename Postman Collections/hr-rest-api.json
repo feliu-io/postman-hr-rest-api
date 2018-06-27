@@ -5967,26 +5967,26 @@
             {
               "listen": "test",
               "script": {
-                "id": "bea32b65-1941-4112-b199-1ed3d75f40ac",
+                "id": "904459be-bbe2-4af1-83ae-a8a696c44dab",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"first_name is new_f_n\"] = jsonData.dependent.first_name === \"new_f_n\";",
+                  "tests[\"start_date is 2018-02-01\"] = jsonData.deduction.start_date === \"2018-02-01\";",
                   "",
-                  "tests[\"second_name is new_s_n\"] = jsonData.dependent.second_name === \"new_s_n\";",
+                  "tests[\"end_date is 2018-02-28\"] = jsonData.deduction.end_date === \"2018-02-28\";",
                   "",
-                  "tests[\"first_surname is new_f_sn\"] = jsonData.dependent.first_surname === \"new_f_sn\";",
+                  "tests[\"deduction_per_payment_period is 45.67\"] = jsonData.deduction.deduction_per_payment_period === \"45.67\";",
                   "",
-                  "tests[\"second_surname is new_s_sn\"] = jsonData.dependent.second_surname === \"new_s_sn\";",
+                  "tests[\"payment_method is Efectivo\"] = jsonData.deduction.payment_method === \"Efectivo\";",
                   "",
-                  "tests[\"gender is Hombre\"] = jsonData.dependent.gender === \"Hombre\";",
+                  "tests[\"deduct_in_december is fasle\"] = !jsonData.deduction.deduct_in_december;",
                   "",
-                  "tests[\"date_of_birth is 2018-01-31\"] = jsonData.dependent.date_of_birth === \"2018-01-31\";",
+                  "tests[\"is_active is true\"] = jsonData.deduction.is_active;",
                   "",
-                  "tests[\"employee_id is correct\"] = jsonData.dependent.employee_id ===  parseInt(environment.employee_id);",
+                  "tests[\"employee_id is correct\"] = jsonData.deduction.employee_id ===  parseInt(environment.employee_id);",
                   "",
-                  "tests[\"family_relation_id is correct\"] = jsonData.dependent.family_relation_id ===  2;",
+                  "tests[\"creditor_id is correct\"] = jsonData.deduction.creditor_id ===  1;",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Dependent updated successfully.\";",
                   "",
@@ -6016,7 +6016,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"start_date\": \"2018-02-01\",\r\n\t\"end_date\": \"2018-02-28\",\r\n\t\"deduction_per_payment_period\": 45.67,\r\n\t\"payment_method\": \"Efectivo\",\r\n\t\"deduct_in_december\": False,\r\n\t\"is_active\": True,\r\n\t\"employee_id\": {{employee_id}},\r\n\t\"creditor_id\": {{creditor_id}}\r\n}"
+              "raw": "{\r\n\t\"start_date\": \"2018-02-01\",\r\n\t\"end_date\": \"2018-02-28\",\r\n\t\"deduction_per_payment_period\": 45.67,\r\n\t\"payment_method\": \"Efectivo\",\r\n\t\"deduct_in_december\": false,\r\n\t\"is_active\": true,\r\n\t\"employee_id\": {{employee_id}},\r\n\t\"creditor_id\": {{creditor_id}}\r\n}"
             },
             "url": "{{url}}/deduction/{{deduction_id}}"
           },
