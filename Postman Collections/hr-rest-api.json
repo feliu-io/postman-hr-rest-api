@@ -5831,6 +5831,306 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "00d7e036-8d38-44aa-88fc-6810dddd5cd4",
+      "name": "Dependent Resource Copy",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "28811a4e-3684-48e8-b2eb-9da7d1e552e3",
+          "name": "/dependent",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "953ed6c5-4d2a-44ec-a963-cb0a72b0e9ee",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"dependent_id\", jsonData.dependent.id);",
+                  "",
+                  "tests[\"first_name is f_n\"] = jsonData.dependent.first_name === \"f_n\";",
+                  "",
+                  "tests[\"second_name is s_n\"] = jsonData.dependent.second_name === \"s_n\";",
+                  "",
+                  "tests[\"first_surname is f_sn\"] = jsonData.dependent.first_surname === \"f_sn\";",
+                  "",
+                  "tests[\"second_surname is s_sn\"] = jsonData.dependent.second_surname === \"s_sn\";",
+                  "",
+                  "tests[\"gender is Mujer\"] = jsonData.dependent.gender === \"Mujer\";",
+                  "",
+                  "tests[\"date_of_birth is 2018-01-01\"] = jsonData.dependent.date_of_birth === \"2018-01-01\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.dependent.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"family_relation_id is correct\"] = jsonData.dependent.family_relation_id ===  1;",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"second_name\": \"s_n\",\r\n    \"first_surname\": \"f_sn\",\r\n    \"second_surname\": \"s_sn\",\r\n    \"gender\": \"Mujer\",\r\n    \"date_of_birth\": \"2018-01-01\",\r\n    \"employee_id\": {{employee_id}},\r\n    \"family_relation_id\": 1\r\n}"
+            },
+            "url": "{{url}}/dependent"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "01c9997f-304a-4418-bbef-18eb5dce63f5",
+          "name": "/dependent/<int:dependent_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "058d26ea-b94a-4c10-b71c-ce7eb7a8ea0e",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"first_name is f_n\"] = jsonData.first_name === \"f_n\";",
+                  "",
+                  "tests[\"second_name is s_n\"] = jsonData.second_name === \"s_n\";",
+                  "",
+                  "tests[\"first_surname is f_sn\"] = jsonData.first_surname === \"f_sn\";",
+                  "",
+                  "tests[\"second_surname is s_sn\"] = jsonData.second_surname === \"s_sn\";",
+                  "",
+                  "tests[\"gender is Mujer\"] = jsonData.gender === \"Mujer\";",
+                  "",
+                  "tests[\"date_of_birth is 2018-01-01\"] = jsonData.date_of_birth === \"2018-01-01\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"family_relation_id is correct\"] = jsonData.family_relation_id ===  1;",
+                  "",
+                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/dependent/{{dependent_id}}",
+            "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "60b0f9aa-f1f4-49bb-ab7f-3b83f4a88bda",
+          "name": "/dependent/<id:dependent_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bea32b65-1941-4112-b199-1ed3d75f40ac",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"first_name is new_f_n\"] = jsonData.dependent.first_name === \"new_f_n\";",
+                  "",
+                  "tests[\"second_name is new_s_n\"] = jsonData.dependent.second_name === \"new_s_n\";",
+                  "",
+                  "tests[\"first_surname is new_f_sn\"] = jsonData.dependent.first_surname === \"new_f_sn\";",
+                  "",
+                  "tests[\"second_surname is new_s_sn\"] = jsonData.dependent.second_surname === \"new_s_sn\";",
+                  "",
+                  "tests[\"gender is Hombre\"] = jsonData.dependent.gender === \"Hombre\";",
+                  "",
+                  "tests[\"date_of_birth is 2018-01-31\"] = jsonData.dependent.date_of_birth === \"2018-01-31\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.dependent.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"family_relation_id is correct\"] = jsonData.dependent.family_relation_id ===  2;",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent updated successfully.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"second_name\": \"new_s_n\",\r\n    \"first_surname\": \"new_f_sn\",\r\n    \"second_surname\": \"new_s_sn\",\r\n    \"gender\": \"Hombre\",\r\n    \"date_of_birth\": \"2018-01-31\",\r\n    \"employee_id\": {{employee_id}},\r\n    \"family_relation_id\": 2\r\n}"
+            },
+            "url": "{{url}}/dependent/{{dependent_id}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b3272828-0d15-4a21-994e-b7593916357f",
+          "name": "/dependent/<int:dependent_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6f0df6c3-7d2a-43b1-a74a-c1e78ee60b34",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent deleted.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/dependent/{{dependent_id}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "aa9954d9-c066-4bdc-8fb3-79c7c56b782a",
+          "name": "/dependent",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "953ed6c5-4d2a-44ec-a963-cb0a72b0e9ee",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"dependent_id\", jsonData.dependent.id);",
+                  "",
+                  "tests[\"first_name is f_n\"] = jsonData.dependent.first_name === \"f_n\";",
+                  "",
+                  "tests[\"second_name is s_n\"] = jsonData.dependent.second_name === \"s_n\";",
+                  "",
+                  "tests[\"first_surname is f_sn\"] = jsonData.dependent.first_surname === \"f_sn\";",
+                  "",
+                  "tests[\"second_surname is s_sn\"] = jsonData.dependent.second_surname === \"s_sn\";",
+                  "",
+                  "tests[\"gender is Mujer\"] = jsonData.dependent.gender === \"Mujer\";",
+                  "",
+                  "tests[\"date_of_birth is 2018-01-01\"] = jsonData.dependent.date_of_birth === \"2018-01-01\";",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.dependent.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"family_relation_id is correct\"] = jsonData.dependent.family_relation_id ===  1;",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"second_name\": \"s_n\",\r\n    \"first_surname\": \"f_sn\",\r\n    \"second_surname\": \"s_sn\",\r\n    \"gender\": \"Mujer\",\r\n    \"date_of_birth\": \"2018-01-01\",\r\n    \"employee_id\": {{employee_id}},\r\n    \"family_relation_id\": 1\r\n}"
+            },
+            "url": "{{url}}/dependent"
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
