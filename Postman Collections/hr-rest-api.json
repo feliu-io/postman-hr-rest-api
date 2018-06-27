@@ -6029,12 +6029,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "6f0df6c3-7d2a-43b1-a74a-c1e78ee60b34",
+                "id": "33990e69-60d9-4a32-a9a1-a39218458d45",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent deleted.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction is now inactive.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -6063,7 +6063,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/dependent/{{dependent_id}}"
+            "url": "{{url}}/deduction/{{deduction_id}}"
           },
           "response": []
         },
