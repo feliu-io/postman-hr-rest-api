@@ -6024,7 +6024,7 @@
         },
         {
           "_postman_id": "b3272828-0d15-4a21-994e-b7593916357f",
-          "name": "/dependent/<int:dependent_id>",
+          "name": "/deduction/<int:deduction_id>",
           "event": [
             {
               "listen": "test",
