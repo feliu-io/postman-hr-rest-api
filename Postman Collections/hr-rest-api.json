@@ -5902,7 +5902,7 @@
         },
         {
           "_postman_id": "01c9997f-304a-4418-bbef-18eb5dce63f5",
-          "name": "/dependent/<int:dependent_id>",
+          "name": "/deduction/<int:deduction_id>",
           "event": [
             {
               "listen": "test",
