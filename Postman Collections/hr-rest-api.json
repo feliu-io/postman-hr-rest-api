@@ -6016,9 +6016,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"second_name\": \"new_s_n\",\r\n    \"first_surname\": \"new_f_sn\",\r\n    \"second_surname\": \"new_s_sn\",\r\n    \"gender\": \"Hombre\",\r\n    \"date_of_birth\": \"2018-01-31\",\r\n    \"employee_id\": {{employee_id}},\r\n    \"family_relation_id\": 2\r\n}"
+              "raw": "{\r\n\t\"start_date\": \"2018-02-01\",\r\n\t\"end_date\": \"2018-02-28\",\r\n\t\"deduction_per_payment_period\": 45.67,\r\n\t\"payment_method\": \"Efectivo\",\r\n\t\"deduct_in_december\": False,\r\n\t\"is_active\": True,\r\n\t\"employee_id\": {{employee_id}},\r\n\t\"creditor_id\": {{creditor_id}}\r\n}"
             },
-            "url": "{{url}}/dependent/{{dependent_id}}"
+            "url": "{{url}}/deduction/{{deduction_id}}"
           },
           "response": []
         },
