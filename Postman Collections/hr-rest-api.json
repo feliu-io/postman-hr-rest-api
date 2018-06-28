@@ -6126,30 +6126,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "52361987-e5ad-4939-b9cd-3c753607be13",
+                "id": "a957eb3e-f0cd-473e-9e32-6eacb9c3c05e",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "postman.setEnvironmentVariable(\"deduction_id\", jsonData.deduction.id);",
+                  "postman.setEnvironmentVariable(\"deduction_detail_id\", jsonData.deduction_detail.id);",
                   "",
-                  "tests[\"start_date is 2018-01-01\"] = jsonData.deduction.start_date === \"2018-01-01\";",
+                  "tests[\"deducted_amount is 67.89\"] = jsonData.deduction_detail.deducted_amount === \"67.89\";",
                   "",
-                  "tests[\"end_date is 2018-01-31\"] = jsonData.deduction.end_date === \"2018-01-31\";",
+                  "tests[\"payment_id is correct\"] = jsonData.deduction_detail.payment_id ===  parseInt(environment.payment_id);",
                   "",
-                  "tests[\"deduction_per_payment_period is 123.45\"] = jsonData.deduction.deduction_per_payment_period === \"123.45\";",
+                  "tests[\"deduction_id is correct\"] = jsonData.deduction_detail.deduction_id ===  1;",
                   "",
-                  "tests[\"payment_method is Cheque\"] = jsonData.deduction.payment_method === \"Cheque\";",
-                  "",
-                  "tests[\"deduct_in_december is true\"] = jsonData.deduction.deduct_in_december;",
-                  "",
-                  "tests[\"is_active is true\"] = jsonData.deduction.is_active;",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.deduction.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"creditor_id is correct\"] = jsonData.deduction.creditor_id ===  1;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction created successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction deatil created successfully.\";",
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
@@ -6176,9 +6166,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"start_date\": \"2018-01-01\",\r\n\t\"end_date\": \"2018-01-31\",\r\n\t\"deduction_per_payment_period\": \"123.45\",\r\n\t\"payment_method\": \"Cheque\",\r\n\t\"deduct_in_december\": true,\r\n\t\"is_active\": true,\r\n\t\"employee_id\": {{employee_id}},\r\n\t\"creditor_id\": {{creditor_id}}\r\n}"
+              "raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{payment_id}},\r\n\t\"deduction_id\": {{deduction_id}}\r\n}"
             },
-            "url": "{{url}}/deduction"
+            "url": "{{url}}/deduction_detail"
           },
           "response": []
         },
