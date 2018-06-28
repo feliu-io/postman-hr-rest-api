@@ -6229,28 +6229,18 @@
             {
               "listen": "test",
               "script": {
-                "id": "904459be-bbe2-4af1-83ae-a8a696c44dab",
+                "id": "fe53f2d2-6ce9-49f4-8c39-421e36d93e68",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"start_date is 2018-02-01\"] = jsonData.deduction.start_date === \"2018-02-01\";",
+                  "tests[\"deducted_amount is 89.01\"] = jsonData.deduction_detail.deducted_amount === \"89.01\";",
                   "",
-                  "tests[\"end_date is 2018-02-28\"] = jsonData.deduction.end_date === \"2018-02-28\";",
+                  "tests[\"payment_id is correct\"] = jsonData.deduction_detail.payment_id ===  parseInt(environment.payment_id);",
                   "",
-                  "tests[\"deduction_per_payment_period is 45.67\"] = jsonData.deduction.deduction_per_payment_period === \"45.67\";",
+                  "tests[\"deduction_id is correct\"] = jsonData.deduction_detail.deduction_id ===  1;",
                   "",
-                  "tests[\"payment_method is Efectivo\"] = jsonData.deduction.payment_method === \"Efectivo\";",
-                  "",
-                  "tests[\"deduct_in_december is fasle\"] = !jsonData.deduction.deduct_in_december;",
-                  "",
-                  "tests[\"is_active is true\"] = jsonData.deduction.is_active;",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.deduction.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"creditor_id is correct\"] = jsonData.deduction.creditor_id ===  1;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent updated successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction detail updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
@@ -6278,9 +6268,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"start_date\": \"2018-02-01\",\r\n\t\"end_date\": \"2018-02-28\",\r\n\t\"deduction_per_payment_period\": 45.67,\r\n\t\"payment_method\": \"Efectivo\",\r\n\t\"deduct_in_december\": false,\r\n\t\"is_active\": true,\r\n\t\"employee_id\": {{employee_id}},\r\n\t\"creditor_id\": {{creditor_id}}\r\n}"
+              "raw": "{\r\n\t\"deducted_amount\": \"89.01\",\r\n\t\"payment_id\": {{payment_id}},\r\n\t\"deduction_id\": {{deduction_id}}\r\n}"
             },
-            "url": "{{url}}/deduction/{{deduction_id}}"
+            "url": "{{url}}/deduction_detail/{{detail_id}}"
           },
           "response": []
         },
