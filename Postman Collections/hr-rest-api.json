@@ -6023,6 +6023,51 @@
           "response": []
         },
         {
+          "_postman_id": "e3867b3b-5ba3-4c3a-9a98-a985c60f738f",
+          "name": "/deduction/<int:deduction_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "33990e69-60d9-4a32-a9a1-a39218458d45",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction is now inactive.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/deduction/{{deduction_id}}"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "0a7b6ed2-6788-4ac6-9dfd-b348828d6f0b",
           "name": "/activate_deduction/<int:deduction_id>",
           "event": [
@@ -6254,51 +6299,6 @@
             "body": {
               "mode": "raw",
               "raw": "{\r\n\t\"start_date\": \"2018-02-01\",\r\n\t\"end_date\": \"2018-02-28\",\r\n\t\"deduction_per_payment_period\": 45.67,\r\n\t\"payment_method\": \"Efectivo\",\r\n\t\"deduct_in_december\": false,\r\n\t\"is_active\": true,\r\n\t\"employee_id\": {{employee_id}},\r\n\t\"creditor_id\": {{creditor_id}}\r\n}"
-            },
-            "url": "{{url}}/deduction/{{deduction_id}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e3867b3b-5ba3-4c3a-9a98-a985c60f738f",
-          "name": "/deduction/<int:deduction_id>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "33990e69-60d9-4a32-a9a1-a39218458d45",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction is now inactive.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
             },
             "url": "{{url}}/deduction/{{deduction_id}}"
           },
