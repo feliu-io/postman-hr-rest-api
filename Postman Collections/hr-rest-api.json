@@ -6184,7 +6184,7 @@
         },
         {
           "_postman_id": "af5fea21-c578-44ca-a408-762b4ef48028",
-          "name": "/deduction_detail/<int:deduction_id>",
+          "name": "/deduction_detail/<int:detail_id>",
           "event": [
             {
               "listen": "test",
