@@ -5967,7 +5967,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "904459be-bbe2-4af1-83ae-a8a696c44dab",
+                "id": "26039d0b-cc87-47d5-b2d7-021a08f70794",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -5988,7 +5988,7 @@
                   "",
                   "tests[\"creditor_id is correct\"] = jsonData.deduction.creditor_id ===  1;",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent updated successfully.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction updated successfully.\";",
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
