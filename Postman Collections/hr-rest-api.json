@@ -6113,6 +6113,288 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "ba70221a-599a-42ab-aeec-9ca00b2f92dd",
+      "name": "Deduction Resource Copy",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2b6fedf1-d14d-4b27-bbb8-1bb6ce927c4c",
+          "name": "/deduction",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "52361987-e5ad-4939-b9cd-3c753607be13",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "postman.setEnvironmentVariable(\"deduction_id\", jsonData.deduction.id);",
+                  "",
+                  "tests[\"start_date is 2018-01-01\"] = jsonData.deduction.start_date === \"2018-01-01\";",
+                  "",
+                  "tests[\"end_date is 2018-01-31\"] = jsonData.deduction.end_date === \"2018-01-31\";",
+                  "",
+                  "tests[\"deduction_per_payment_period is 123.45\"] = jsonData.deduction.deduction_per_payment_period === \"123.45\";",
+                  "",
+                  "tests[\"payment_method is Cheque\"] = jsonData.deduction.payment_method === \"Cheque\";",
+                  "",
+                  "tests[\"deduct_in_december is true\"] = jsonData.deduction.deduct_in_december;",
+                  "",
+                  "tests[\"is_active is true\"] = jsonData.deduction.is_active;",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.deduction.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"creditor_id is correct\"] = jsonData.deduction.creditor_id ===  1;",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction created successfully.\";",
+                  "",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"start_date\": \"2018-01-01\",\r\n\t\"end_date\": \"2018-01-31\",\r\n\t\"deduction_per_payment_period\": \"123.45\",\r\n\t\"payment_method\": \"Cheque\",\r\n\t\"deduct_in_december\": true,\r\n\t\"is_active\": true,\r\n\t\"employee_id\": {{employee_id}},\r\n\t\"creditor_id\": {{creditor_id}}\r\n}"
+            },
+            "url": "{{url}}/deduction"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "af5fea21-c578-44ca-a408-762b4ef48028",
+          "name": "/deduction/<int:deduction_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2e8b5810-8036-482f-a694-c435b4efa3da",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"start_date is 2018-01-01\"] = jsonData.start_date === \"2018-01-01\";",
+                  "",
+                  "tests[\"end_date is 2018-01-31\"] = jsonData.end_date === \"2018-01-31\";",
+                  "",
+                  "tests[\"deduction_per_payment_period is 123.45\"] = jsonData.deduction_per_payment_period === \"123.45\";",
+                  "",
+                  "tests[\"payment_method is Cheque\"] = jsonData.payment_method === \"Cheque\";",
+                  "",
+                  "tests[\"deduct_in_december is true\"] = jsonData.deduct_in_december;",
+                  "",
+                  "tests[\"is_active is true\"] = jsonData.is_active;",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"creditor_id is correct\"] = jsonData.creditor_id ===  1;",
+                  "",
+                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/deduction/{{deduction_id}}",
+            "description": "Register a new user supplying a \"username\" and \"password\""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3f218b3e-adf4-4c2d-b3b4-03378a3515b5",
+          "name": "/deduction/<id:deduction_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "904459be-bbe2-4af1-83ae-a8a696c44dab",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"start_date is 2018-02-01\"] = jsonData.deduction.start_date === \"2018-02-01\";",
+                  "",
+                  "tests[\"end_date is 2018-02-28\"] = jsonData.deduction.end_date === \"2018-02-28\";",
+                  "",
+                  "tests[\"deduction_per_payment_period is 45.67\"] = jsonData.deduction.deduction_per_payment_period === \"45.67\";",
+                  "",
+                  "tests[\"payment_method is Efectivo\"] = jsonData.deduction.payment_method === \"Efectivo\";",
+                  "",
+                  "tests[\"deduct_in_december is fasle\"] = !jsonData.deduction.deduct_in_december;",
+                  "",
+                  "tests[\"is_active is true\"] = jsonData.deduction.is_active;",
+                  "",
+                  "tests[\"employee_id is correct\"] = jsonData.deduction.employee_id ===  parseInt(environment.employee_id);",
+                  "",
+                  "tests[\"creditor_id is correct\"] = jsonData.deduction.creditor_id ===  1;",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent updated successfully.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"start_date\": \"2018-02-01\",\r\n\t\"end_date\": \"2018-02-28\",\r\n\t\"deduction_per_payment_period\": 45.67,\r\n\t\"payment_method\": \"Efectivo\",\r\n\t\"deduct_in_december\": false,\r\n\t\"is_active\": true,\r\n\t\"employee_id\": {{employee_id}},\r\n\t\"creditor_id\": {{creditor_id}}\r\n}"
+            },
+            "url": "{{url}}/deduction/{{deduction_id}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e3867b3b-5ba3-4c3a-9a98-a985c60f738f",
+          "name": "/deduction/<int:deduction_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "33990e69-60d9-4a32-a9a1-a39218458d45",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction is now inactive.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/deduction/{{deduction_id}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f383c635-92d9-4fd0-98f1-d42be481d4b0",
+          "name": "/activate_deduction/<int:deduction_id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4bbfb8d1-3b5d-4ddf-bd9f-51b96bb73c0e",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction is now active.\";",
+                  "",
+                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/activate_deduction/{{deduction_id}}"
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
