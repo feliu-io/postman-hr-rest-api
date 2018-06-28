@@ -6121,7 +6121,7 @@
       "item": [
         {
           "_postman_id": "2b6fedf1-d14d-4b27-bbb8-1bb6ce927c4c",
-          "name": "/deduction",
+          "name": "/deduction_detail",
           "event": [
             {
               "listen": "test",
