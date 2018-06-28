@@ -6281,12 +6281,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "33990e69-60d9-4a32-a9a1-a39218458d45",
+                "id": "5bd09fe0-f593-4656-9c86-17e5184e66c7",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction is now inactive.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction detail is now inactive.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
@@ -6315,7 +6315,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/deduction/{{deduction_id}}"
+            "url": "{{url}}/deduction_detail/{{detail_id}}"
           },
           "response": []
         }
