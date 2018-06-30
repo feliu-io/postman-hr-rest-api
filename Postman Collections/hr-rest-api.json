@@ -5907,7 +5907,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3d54c75c-0603-4d90-bbb8-6c912825d7b5",
+                "id": "fd68c16e-7b30-4aa2-9685-53c7c450156a",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -5926,7 +5926,7 @@
                   "",
                   "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
                   "",
-                  "tests[\"creditor_id is correct\"] = jsonData.creditor_id ===  1;",
+                  "tests[\"creditor_id is correct\"] = jsonData.creditor_id ===  parseInt(environment.creditor_id);",
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
