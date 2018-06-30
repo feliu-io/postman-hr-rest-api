@@ -4797,7 +4797,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "94058a6b-0ed2-4c52-a3fe-a40c1c7f1500",
+                "id": "c44c52d5-130b-4007-8bc6-1d5569fe7e4e",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -4806,7 +4806,7 @@
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
@@ -4842,7 +4842,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f724d244-f234-4b61-aae7-3e96a03a36c0",
+                "id": "808c2510-fc67-48a7-965e-0510d57e8fce",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -4857,7 +4857,7 @@
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
@@ -4900,7 +4900,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d11189d3-60f1-470f-928a-fecfe389e3d0",
+                "id": "8e75d693-3c08-4e03-890b-6110b2ee9fb7",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -4957,7 +4957,7 @@
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
@@ -4993,7 +4993,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3303ae1c-2d6e-4755-879c-35b75b9d0e26",
+                "id": "0a1f9de9-3e19-440b-8809-1ea4c1a90336",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -5046,7 +5046,7 @@
                   "",
                   "tests[\"Successful GET request\"] = responseCode.code === 200;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
@@ -5083,7 +5083,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "38ae8afe-f476-47b3-8ea3-30297d4f2e5c",
+                "id": "9e51fb54-940d-49b3-8fa7-daf99503dce7",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -5138,7 +5138,7 @@
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
