@@ -6229,7 +6229,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "fe53f2d2-6ce9-49f4-8c39-421e36d93e68",
+                "id": "8273552c-dd49-4e1d-9982-409f085156c7",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -6244,7 +6244,7 @@
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
