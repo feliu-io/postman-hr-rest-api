@@ -2693,7 +2693,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "4cd43c36-921a-44f2-832c-e206b1030468",
+                "id": "a9d1f807-3168-4ae1-a6da-c132d572ee6a",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -2702,7 +2702,7 @@
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
@@ -2738,6 +2738,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "750d4543-cfa2-4d2b-b3ba-a3101989fc28",
+                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -2755,14 +2757,12 @@
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ],
-                "id": "1f76623d-a430-4b4b-b262-c8d23696a4a5",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
