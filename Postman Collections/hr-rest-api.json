@@ -5513,7 +5513,7 @@
         },
         {
           "_postman_id": "80148611-ad26-40b5-ab45-1a63cac5594b",
-          "name": "/payment Copy",
+          "name": "/payment",
           "event": [
             {
               "listen": "test",
