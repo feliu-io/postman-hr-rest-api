@@ -2376,7 +2376,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "30f47158-ec11-405a-a73e-f5e65d376566",
+                "id": "71d09c42-9212-4c32-a971-260332c8aa26",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -2385,7 +2385,7 @@
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
