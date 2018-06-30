@@ -6315,7 +6315,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/deduction_detail/{{detail_id}}"
+            "url": "{{url}}/deduction_detail/{{deduction_detail_id}}"
           },
           "response": []
         }
