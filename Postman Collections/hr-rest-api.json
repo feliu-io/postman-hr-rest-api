@@ -3639,6 +3639,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "cd54326c-ab9b-4353-ab20-98990adcc4ba",
+                "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
@@ -3654,14 +3656,12 @@
                   "",
                   "tests[\"Successful POST request\"] = responseCode.code === 201;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
                   "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ],
-                "id": "9d406c28-a1d3-4ec9-a5e7-8fe4507597d6",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
