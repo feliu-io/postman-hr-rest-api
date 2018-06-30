@@ -2594,7 +2594,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "7e1aa5c7-b585-4fcc-b9ef-3dc011c5211a",
+                "id": "f30a4d8c-3d34-4518-a9f2-174c2ac85960",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -2611,7 +2611,7 @@
                   "",
                   "tests[\"Successful PUT request\"] = responseCode.code === 200;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
@@ -2693,7 +2693,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "4cd43c36-921a-44f2-832c-e206b1030468",
+                "id": "a9d1f807-3168-4ae1-a6da-c132d572ee6a",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -2702,7 +2702,7 @@
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
                   "",
                   "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
                   "",
