@@ -6229,7 +6229,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "8273552c-dd49-4e1d-9982-409f085156c7",
+                "id": "c31249d6-b3a6-4b10-9cd8-3bbf6219401b",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
@@ -6238,7 +6238,7 @@
                   "",
                   "tests[\"payment_id is correct\"] = jsonData.deduction_detail.payment_id ===  parseInt(environment.payment_id);",
                   "",
-                  "tests[\"deduction_id is correct\"] = jsonData.deduction_detail.deduction_id ===  1;",
+                  "tests[\"deduction_id is correct\"] = jsonData.deduction_detail.deduction_id ===  parseInt(environment.deduction_id);",
                   "",
                   "tests[\"Success message returned\"] = jsonData.message === \"Deduction detail updated successfully.\";",
                   "",
