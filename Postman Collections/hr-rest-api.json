@@ -6281,12 +6281,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "c3ba96b8-8b58-4214-8b8d-8aadc2308c7f",
+                "id": "f1a19853-8d03-497b-bbb7-9d24d878defc",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction detail is now inactive.\";",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction detail deleted.\";",
                   "",
                   "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
                   "",
