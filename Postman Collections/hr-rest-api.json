@@ -6270,7 +6270,7 @@
               "mode": "raw",
               "raw": "{\r\n\t\"deducted_amount\": \"89.01\",\r\n\t\"payment_id\": {{payment_id}},\r\n\t\"deduction_id\": {{deduction_id}}\r\n}"
             },
-            "url": "{{url}}/deduction_detail/{{detail_id}}"
+            "url": "{{url}}/deduction_detail/{{deduction_detail_id}}"
           },
           "response": []
         },
