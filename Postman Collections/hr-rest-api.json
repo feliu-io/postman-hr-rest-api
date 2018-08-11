@@ -346,20 +346,27 @@
             {
               "listen": "test",
               "script": {
-                "id": "c7152a2b-88c2-4bc5-853c-03ba941d723e",
+                "id": "cd6d9e06-32e6-48ae-af28-5fa74f924e7c",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var responseTime = pm.environment.get(\"responseTime\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Organization is now active.\";",
+                  "pm.test(\"Response time is less than \" + responseTime, function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(parseInt(responseTime));",
+                  "});",
                   "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "pm.test(\"Status code is 200\", function() {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Content-Type is application/json\", function () {",
+                  "    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
+                  "});"
                 ]
               }
             }
@@ -378,9 +385,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\n\t\"is_active\": true\n}"
             },
-            "url": "{{url}}/activate_organization/{{organization_id}}"
+            "url": "{{url}}/activate_organization/{{organizationId}}"
           },
           "response": []
         }
