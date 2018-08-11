@@ -75,7 +75,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "539b4992-1ce7-41e8-b3d1-aa318d8356ae",
+                "id": "a9b96ec1-6381-4c23-99bf-a8037c79f01a",
                 "type": "text/javascript",
                 "exec": [
                   "var responseTime = pm.environment.get(\"responseTime\");",
@@ -97,7 +97,7 @@
                   "    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
                   "});",
                   "",
-                  "pm.environment.set(\"organization_id\", jsonData.record.id);"
+                  "pm.environment.set(\"organizationId\", jsonData.record.id);"
                 ]
               }
             }
