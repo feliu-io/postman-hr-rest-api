@@ -75,27 +75,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "a9b96ec1-6381-4c23-99bf-a8037c79f01a",
+                "id": "fbc087f5-58d5-4010-bcc6-063de4e77b15",
                 "type": "text/javascript",
                 "exec": [
-                  "var responseTime = pm.environment.get(\"responseTime\");",
                   "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Response time is less than \" + responseTime, function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(parseInt(responseTime));",
-                  "});",
-                  "",
-                  "pm.test(\"Status code is 201\", function() {",
-                  "    pm.response.to.have.status(201);",
-                  "});",
-                  "",
-                  "pm.test(\"Content-Type is present\", function () {",
-                  "    pm.response.to.have.header(\"Content-Type\");",
-                  "});",
-                  "",
-                  "pm.test(\"Content-Type is application/json\", function () {",
-                  "    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
-                  "});",
                   "",
                   "pm.environment.set(\"organizationId\", jsonData.record.id);"
                 ]
