@@ -226,27 +226,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "d6c336f3-d036-403b-bc25-c4bf6df91070",
+                "id": "9c4646eb-2555-40df-9003-e1ce9d8fb75b",
                 "type": "text/javascript",
                 "exec": [
-                  "var responseTime = pm.environment.get(\"responseTime\");",
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Response time is less than \" + responseTime, function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(parseInt(responseTime));",
-                  "});",
-                  "",
-                  "pm.test(\"Status code is 200\", function() {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Content-Type is present\", function () {",
-                  "    pm.response.to.have.header(\"Content-Type\");",
-                  "});",
-                  "",
-                  "pm.test(\"Content-Type is application/json\", function () {",
-                  "    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
-                  "});"
+                  ""
                 ]
               }
             }
