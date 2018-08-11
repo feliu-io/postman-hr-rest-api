@@ -18,10 +18,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "243abb6c-9c34-4abd-adc2-edef190cb516",
+                "id": "105cdea8-fc7e-4542-9991-6ce58f051994",
                 "type": "text/javascript",
                 "exec": [
-                  "var responseTime = pm.environment.get(\"responseTime\")",
+                  "var responseTime = pm.environment.get(\"responseTime\");",
                   "var jsonData = pm.response.json();",
                   "",
                   "pm.test(\"Response time is less than \" + responseTime, function () {",
