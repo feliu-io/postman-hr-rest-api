@@ -6282,7 +6282,7 @@
           "});",
           "",
           "pm.test(\"Successful request\", function() {",
-          "    pm.response.to.be.oneOf([200, 201]);",
+          "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
           "});",
           "",
           "pm.test(\"Content-Type is present\", function () {",
