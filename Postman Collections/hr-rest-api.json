@@ -294,20 +294,27 @@
             {
               "listen": "test",
               "script": {
-                "id": "d0b42356-ce1e-45c2-8ad8-94a0609b4de2",
+                "id": "d6c336f3-d036-403b-bc25-c4bf6df91070",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var responseTime = pm.environment.get(\"responseTime\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Organization is now inactive.\";",
+                  "pm.test(\"Response time is less than \" + responseTime, function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(parseInt(responseTime));",
+                  "});",
                   "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "pm.test(\"Status code is 200\", function() {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Content-Type is application/json\", function () {",
+                  "    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
+                  "});"
                 ]
               }
             }
@@ -328,7 +335,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/organization/{{organization_id}}"
+            "url": "{{url}}/organization/{{organizationId}}"
           },
           "response": []
         },
