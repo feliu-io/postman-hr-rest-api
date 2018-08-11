@@ -129,22 +129,32 @@
             {
               "listen": "test",
               "script": {
-                "id": "45919628-737c-4a54-b11b-2f9ecf1bc36a",
+                "id": "8c9681bc-6fee-4829-bae2-b562e1555b93",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var responseTime = pm.environment.get(\"responseTime\");",
+                  "var organizationId = pm.environment.get(\"organizationId\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"is_active is true\"] = jsonData.is_active;",
+                  "pm.test(\"Response time is less than \" + responseTime, function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(parseInt(responseTime));",
+                  "});",
                   "",
-                  "tests[\"organization_name is test_o\"] = jsonData.organization_name === \"test_o\";",
+                  "pm.test(\"Status code is 200\", function() {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
                   "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "pm.test(\"Content-Type is application/json\", function () {",
+                  "    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
+                  "});",
                   "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Organization returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(organizationId);",
+                  "});"
                 ]
               }
             }
@@ -165,7 +175,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/organization/{{organization_id}}"
+            "url": "{{url}}/organization/{{organizationId}}"
           },
           "response": []
         },
