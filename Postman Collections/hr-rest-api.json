@@ -6322,12 +6322,6 @@
       ]
     }
   ],
-  "auth": {
-    "type": "bearer",
-    "bearer": {
-      "token": "JWT {{ access_token }}"
-    }
-  },
   "event": [
     {
       "listen": "prerequest",
