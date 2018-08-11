@@ -186,24 +186,32 @@
             {
               "listen": "test",
               "script": {
-                "id": "5e9c7329-b8b1-48fb-8ff9-a62cc9ef56a9",
+                "id": "f7e1fce3-2fa8-4fc3-863f-f677a7069306",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var responseTime = pm.environment.get(\"responseTime\");",
+                  "var jsonData = pm.response.json();",
+                  "console.log(jsonData.list)",
                   "",
-                  "tests[\"organizations contains 2 items\"] = jsonData.organizations.length === 2;",
+                  "pm.test(\"Response time is less than \" + responseTime, function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(parseInt(responseTime));",
+                  "});",
                   "",
-                  "tests[\"test_o in organization list\"] = jsonData.organizations[0].organization_name === \"test_o\" || \"Nuvanz\";",
+                  "pm.test(\"Status code is 200\", function() {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
                   "",
-                  "tests[\"Nuvanz in organization list\"] = jsonData.organizations[1].organization_name === \"test_o\" || \"Nuvanz\";",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
                   "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
+                  "pm.test(\"Content-Type is application/json\", function () {",
+                  "    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
+                  "});",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Organizations list contains two items\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
+                  "});"
                 ]
               }
             }
