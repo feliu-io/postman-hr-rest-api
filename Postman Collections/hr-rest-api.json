@@ -261,27 +261,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "cd6d9e06-32e6-48ae-af28-5fa74f924e7c",
+                "id": "5f6a59c7-6ad5-4bba-8d92-8785affd9da9",
                 "type": "text/javascript",
                 "exec": [
-                  "var responseTime = pm.environment.get(\"responseTime\");",
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Response time is less than \" + responseTime, function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(parseInt(responseTime));",
-                  "});",
-                  "",
-                  "pm.test(\"Status code is 200\", function() {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Content-Type is present\", function () {",
-                  "    pm.response.to.have.header(\"Content-Type\");",
-                  "});",
-                  "",
-                  "pm.test(\"Content-Type is application/json\", function () {",
-                  "    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
-                  "});"
+                  ""
                 ]
               }
             }
