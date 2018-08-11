@@ -242,11 +242,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "bd552f8d-1e04-49a3-ad82-2144e0c60030",
+                "id": "7a95a021-0d5f-4b7c-b44b-ebeeefc5bdd2",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
                   "var responseTime = pm.environment.get(\"responseTime\");",
                   "var jsonData = pm.response.json();",
                   "",
