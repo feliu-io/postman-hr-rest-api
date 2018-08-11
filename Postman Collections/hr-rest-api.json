@@ -242,24 +242,29 @@
             {
               "listen": "test",
               "script": {
-                "id": "40111210-c4ca-4575-ba08-3da58ce452a8",
+                "id": "bd552f8d-1e04-49a3-ad82-2144e0c60030",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Organization updated successfully.\";",
+                  "var responseTime = pm.environment.get(\"responseTime\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests['is_active is true'] = jsonData.organization.is_active;",
+                  "pm.test(\"Response time is less than \" + responseTime, function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(parseInt(responseTime));",
+                  "});",
                   "",
-                  "tests['organization_name is new_est_o'] = jsonData.organization.organization_name === \"new_test_o\";",
+                  "pm.test(\"Status code is 200\", function() {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
                   "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
+                  "pm.test(\"Content-Type is present\", function () {",
+                  "    pm.response.to.have.header(\"Content-Type\");",
+                  "});",
                   "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Content-Type is application/json\", function () {",
+                  "    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
+                  "});"
                 ]
               }
             }
