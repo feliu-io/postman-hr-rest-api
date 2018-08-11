@@ -186,12 +186,11 @@
             {
               "listen": "test",
               "script": {
-                "id": "f7e1fce3-2fa8-4fc3-863f-f677a7069306",
+                "id": "de0bd4f5-8465-403f-8b6c-205a28d8f7fd",
                 "type": "text/javascript",
                 "exec": [
                   "var responseTime = pm.environment.get(\"responseTime\");",
                   "var jsonData = pm.response.json();",
-                  "console.log(jsonData.list)",
                   "",
                   "pm.test(\"Response time is less than \" + responseTime, function () {",
                   "    pm.expect(pm.response.responseTime).to.be.below(parseInt(responseTime));",
