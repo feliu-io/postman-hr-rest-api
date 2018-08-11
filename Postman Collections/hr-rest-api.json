@@ -1,8 +1,8 @@
 {
   "info": {
     "_postman_id": "a4a73626-d959-0177-81ec-a8b83907436b",
-    "name": "hr-rest-api",
-    "description": "RESTful-API for human resources app",
+    "name": "Nuvanz HR RESTful API",
+    "description": "This collection contains all the endpoints for the nuvanz_hr RESTful API",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item": [
@@ -6320,6 +6320,34 @@
           "response": []
         }
       ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": {
+      "token": "JWT {{ access_token }}"
+    }
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "179262d0-7211-46b7-8637-f3d6e044ffc5",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "af2021d8-1822-459a-b58a-ad33773adef0",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
     }
   ]
 }
