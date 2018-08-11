@@ -213,7 +213,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"organization_name\": \"new_test_o\"\n}"
+              "raw": "{\n  \"organization_name\": \"new_test_o\"\n  \"is_active\": true\n}"
             },
             "url": "{{url}}/organization/{{organizationId}}"
           },
