@@ -303,34 +303,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "c88d3152-a284-421c-a53a-5a441472727c",
+                "id": "711e813a-2f21-4e49-b3e4-420fbc6f9e0f",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"user_id\", jsonData.user.id);",
-                  "",
-                  "tests['is_active is true'] = jsonData.user.is_active;",
-                  "",
-                  "tests['is_super is true'] = jsonData.user.is_super;",
-                  "",
-                  "tests['is_owner is true'] = jsonData.user.is_owner;",
-                  "",
-                  "tests['email is test_u@test_o.com'] = jsonData.user.email === \"test_u@test_o.com\";",
-                  "",
-                  "tests['username is test_u'] = jsonData.user.username === \"test_u\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.user.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"User created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"userId\", jsonData.record.id);"
                 ]
               }
             }
