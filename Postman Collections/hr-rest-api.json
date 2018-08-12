@@ -5003,7 +5003,7 @@
         },
         {
           "_postman_id": "938e1257-f066-4ec7-a13e-fe198b99a83c",
-          "name": "/schedule_details/<int:id> Copy",
+          "name": "/payments/<int:id>",
           "event": [
             {
               "listen": "test",
