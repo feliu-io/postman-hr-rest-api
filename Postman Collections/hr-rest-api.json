@@ -3349,7 +3349,7 @@
         },
         {
           "_postman_id": "1ebf47d0-4d2c-15f2-8353-b1b3322dbdbc",
-          "name": "/activate_bank_account/<int:account_id>",
+          "name": "/activate_bank_account/<int:id>",
           "event": [
             {
               "listen": "test",
