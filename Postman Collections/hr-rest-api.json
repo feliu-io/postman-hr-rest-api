@@ -5043,7 +5043,7 @@
       "item": [
         {
           "_postman_id": "62c399ae-cb60-4807-bd3f-45e0ecb90814",
-          "name": "/deduction_detail",
+          "name": "/payment_detail",
           "event": [
             {
               "listen": "test",
