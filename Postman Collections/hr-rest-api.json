@@ -647,6 +647,45 @@
           "response": []
         },
         {
+          "_postman_id": "ddfff71e-e1e8-40a0-9f17-888858bb1525",
+          "name": "/users Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b6123e92-fbd6-4b79-a4ea-1166328730d1",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Users list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/users"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "a9333133-a7b6-7001-a638-440b812c9325",
           "name": "/department/<int:id>",
           "event": [
@@ -785,45 +824,6 @@
               "raw": ""
             },
             "url": "{{url}}/activate_department/{{department_id}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ddfff71e-e1e8-40a0-9f17-888858bb1525",
-          "name": "/users Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b6123e92-fbd6-4b79-a4ea-1166328730d1",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Users list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/users"
           },
           "response": []
         }
