@@ -4473,7 +4473,7 @@
         },
         {
           "_postman_id": "588793d0-d5ae-4c16-9768-af1e5e464def",
-          "name": "/creditor/<int:creditor_id>",
+          "name": "/creditor/<int:id>",
           "event": [
             {
               "listen": "test",
