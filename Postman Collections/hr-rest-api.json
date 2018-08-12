@@ -5819,7 +5819,7 @@
         },
         {
           "_postman_id": "9f59bdc6-01c8-43ab-b82c-3d620f598851",
-          "name": "/deductions/<int:id> Copy",
+          "name": "/deduction_details/<int:id>",
           "event": [
             {
               "listen": "test",
