@@ -5453,7 +5453,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/dependent/{{dependentId}}"
+            "url": "{{url}}/attendance/{{attendanceId}}"
           },
           "response": []
         }
