@@ -692,26 +692,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "081cb1ae-2cbc-4d91-a074-eeeaa36ab482",
+                "id": "3211fc38-77f9-4566-8328-8ecbd6158220",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
-                  "",
-                  "tests['department_name is new_test_d'] = jsonData.department.department_name === \"new_test_d\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
@@ -731,9 +714,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}}\n}"
+              "raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
             },
-            "url": "{{url}}/department/{{department_id}}"
+            "url": "{{url}}/department/{{departmentId}}"
           },
           "response": []
         },
