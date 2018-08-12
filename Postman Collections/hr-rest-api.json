@@ -2454,20 +2454,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "827874a4-df2e-4e80-abb1-e8136796879c",
+                "id": "212048c5-db38-4308-80fa-f43ebaaefcdb",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"countries contains 17 items\"] = jsonData.countries.length === 17;",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Countries list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(17);",
+                  "});"
                 ]
               }
             }
