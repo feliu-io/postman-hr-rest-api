@@ -5048,12 +5048,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "85094df3-5c46-4a1a-bd45-d916606477d6",
+                "id": "4022a5b5-4819-4bc4-8e75-3204210a82d2",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.environment.set(\"deductionDetailId\", jsonData.record.id);"
+                  "pm.environment.set(\"paymentDetailId\", jsonData.record.id);"
                 ]
               }
             }
@@ -5072,9 +5072,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
+              "raw": "{\r\n\t\"payment_type\": \"Salario Regular\",\r\n\t\"gross_payment\": 1234.56,\r\n\t\"ss_deduction\": 123.45,\r\n\t\"se_deduction\": 12.34,\r\n\t\"isr_deduction\": 1.23,\r\n\t\"payment_id\": {{paymentId}}\r\n}"
             },
-            "url": "{{url}}/deduction_detail"
+            "url": "{{url}}/payment_detail"
           },
           "response": []
         },
