@@ -5775,14 +5775,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "a6f8d30a-01d0-4e5a-b952-c9d49a2e22fa",
+                "id": "607d9e32-8bd0-4593-938a-e6fd2f8603f7",
                 "type": "text/javascript",
                 "exec": [
-                  "var sickNoteId = pm.environment.get(\"sickNoteId\");",
+                  "var absenceAuthorizationId = pm.environment.get(\"absenceAuthorizationId\");",
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Sick note returned is the one requested\", function() {",
-                  "    pm.expect(jsonData.record.id).to.eql(sickNoteId);",
+                  "pm.test(\"Absence authorization returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(absenceAuthorizationId);",
                   "});"
                 ]
               }
@@ -5804,7 +5804,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/sick_note/{{sickNoteId}}"
+            "url": "{{url}}/absence_authorization/{{absenceAuthorizationId}}"
           },
           "response": []
         },
