@@ -4187,26 +4187,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "b21c9d2e-06b3-4bfc-9ed2-0e0fea9c48ce",
+                "id": "4dce7045-c666-4f92-a77a-3fa01255121a",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"schedule_id\", jsonData.schedule.id);",
-                  "",
-                  "tests['start_date is 2018-01-01'] = jsonData.schedule.start_date === \"2018-01-01\";",
-                  "",
-                  "tests['department_id is correct'] = jsonData.schedule.department_id === parseInt(environment.department_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"scheduleId\", jsonData.record.id);"
                 ]
               }
             }
@@ -4225,7 +4211,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"start_date\": \"2018-01-01\",\n  \"department_id\": {{department_id}}\n}"
+              "raw": "{\n  \"start_date\": \"2018-01-01\",\n  \"department_id\": {{departmentId}}\n}"
             },
             "url": "{{url}}/schedule"
           },
