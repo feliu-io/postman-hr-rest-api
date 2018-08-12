@@ -5085,14 +5085,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "75dbbe56-6886-464d-a5a5-e37bb76474ad",
+                "id": "30177649-0d50-41b5-93f9-f5d1bf8ce83e",
                 "type": "text/javascript",
                 "exec": [
-                  "var deductionDetailId = pm.environment.get(\"deductionDetailId\");",
+                  "var paymentDetailId = pm.environment.get(\"paymentDetailId\");",
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Deduction detail returned is the one requested\", function() {",
-                  "    pm.expect(jsonData.record.id).to.eql(deductionDetailId);",
+                  "pm.test(\"Payment detail returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(paymentDetailId);",
                   "});"
                 ]
               }
@@ -5114,7 +5114,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/deduction_detail/{{deductionDetailId}}"
+            "url": "{{url}}/payment_detail/{{paymentDetailId}}"
           },
           "response": []
         },
