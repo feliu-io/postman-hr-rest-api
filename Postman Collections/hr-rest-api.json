@@ -2308,7 +2308,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/passport/{{passport_id}}"
+            "url": "{{url}}/passport/{{passportId}}"
           },
           "response": []
         },
