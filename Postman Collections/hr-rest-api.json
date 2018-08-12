@@ -4278,7 +4278,7 @@
         },
         {
           "_postman_id": "0c4cb23a-e99c-4a6c-89cc-b39be39554f6",
-          "name": "/payment/<int:payment_id>",
+          "name": "/payment/<int:id>",
           "event": [
             {
               "listen": "test",
