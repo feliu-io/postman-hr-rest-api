@@ -1575,20 +1575,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "d776a32d-8020-4b59-876d-5ed2035f4e91",
+                "id": "9060f206-e2af-4c53-bbbc-c34347fa9bfd",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Employee is now active.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -1607,7 +1597,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\n\t\"is_active\": true\n}"
             },
             "url": "{{url}}/activate_employee/{{employeeId}}"
           },
