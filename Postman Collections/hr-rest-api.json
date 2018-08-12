@@ -5079,6 +5079,43 @@
           "response": []
         },
         {
+          "_postman_id": "b74717e9-6562-4888-97ba-c909a676bf8e",
+          "name": "/payment_detail Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4022a5b5-4819-4bc4-8e75-3204210a82d2",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"paymentDetailId\", jsonData.record.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"payment_type\": \"Salario Regular\",\r\n\t\"gross_payment\": 1234.56,\r\n\t\"ss_deduction\": 123.45,\r\n\t\"se_deduction\": 12.34,\r\n\t\"isr_deduction\": 1.23,\r\n\t\"payment_id\": {{paymentId}}\r\n}"
+            },
+            "url": "{{url}}/payment_detail"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "69f0654e-7c5e-4c2d-b08e-3d0e6da4cb81",
           "name": "/payment_detail/<int:id>",
           "event": [
@@ -5261,43 +5298,6 @@
               "raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
             },
             "url": "{{url}}/deduction_detail"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b74717e9-6562-4888-97ba-c909a676bf8e",
-          "name": "/payment_detail Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4022a5b5-4819-4bc4-8e75-3204210a82d2",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.environment.set(\"paymentDetailId\", jsonData.record.id);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"payment_type\": \"Salario Regular\",\r\n\t\"gross_payment\": 1234.56,\r\n\t\"ss_deduction\": 123.45,\r\n\t\"se_deduction\": 12.34,\r\n\t\"isr_deduction\": 1.23,\r\n\t\"payment_id\": {{paymentId}}\r\n}"
-            },
-            "url": "{{url}}/payment_detail"
           },
           "response": []
         }
