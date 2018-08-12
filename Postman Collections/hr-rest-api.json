@@ -4095,13 +4095,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "4c12327e-d890-4bd5-9485-94d8f26ae595",
+                "id": "7c48aaad-2ae0-4070-ae5a-68c570910145",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Uniform requirements list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "pm.test(\"Dependents list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
               }
@@ -4123,7 +4123,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/uniform_requirements/{{employeeId}}"
+            "url": "{{url}}/dependents/{{employeeId}}"
           },
           "response": []
         },
