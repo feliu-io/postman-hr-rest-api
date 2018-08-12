@@ -2572,7 +2572,7 @@
         },
         {
           "_postman_id": "1b37d0b1-1ae9-44ea-ab5d-30ac8ea77265",
-          "name": "/health_permits/<int:id> Copy",
+          "name": "/passports/<int:id>",
           "event": [
             {
               "listen": "test",
