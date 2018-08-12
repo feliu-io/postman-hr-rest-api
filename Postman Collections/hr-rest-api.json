@@ -1803,34 +1803,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "049a76a7-4a44-44ff-8b40-c4eba86a51bd",
+                "id": "618ed58d-665c-4aff-b20f-a2956f6b8e16",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"contact_id\", jsonData.emergency_contact.id);",
-                  "",
-                  "tests[\"first_name is f_n\"] = jsonData.emergency_contact.first_name === \"f_n\";",
-                  "",
-                  "tests[\"last_name is s_n\"] = jsonData.emergency_contact.last_name === \"l_n\";",
-                  "",
-                  "tests[\"home_phone is 111-1111\"] = jsonData.emergency_contact.home_phone === \"111-1111\";",
-                  "",
-                  "tests[\"work_phone is 222-2222\"] = jsonData.emergency_contact.work_phone === \"222-2222\";",
-                  "",
-                  "tests[\"mobile_phone is 6666-6666\"] = jsonData.emergency_contact.mobile_phone === \"6666-6666\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.emergency_contact.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"contactId\", jsonData.record.id);"
                 ]
               }
             }
@@ -1849,7 +1827,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
+              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
             },
             "url": "{{url}}/emergency_contact"
           },
