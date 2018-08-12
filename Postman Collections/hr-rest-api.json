@@ -4283,20 +4283,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "2c976d54-fb9b-4703-9836-99bdd06cac71",
+                "id": "ec261853-83c8-48e3-ab51-3cce5fbb2049",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Payment deleted.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -4317,7 +4307,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/payment/{{payment_id}}"
+            "url": "{{url}}/payment/{{paymentId}}"
           },
           "response": []
         },
