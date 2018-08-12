@@ -3913,38 +3913,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "1dec3dee-9aed-4852-9172-e60d3a8142fc",
+                "id": "21f395e1-ee97-4d8d-b3f8-74f9984fcde0",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"dependent_id\", jsonData.dependent.id);",
-                  "",
-                  "tests[\"first_name is f_n\"] = jsonData.dependent.first_name === \"f_n\";",
-                  "",
-                  "tests[\"second_name is s_n\"] = jsonData.dependent.second_name === \"s_n\";",
-                  "",
-                  "tests[\"first_surname is f_sn\"] = jsonData.dependent.first_surname === \"f_sn\";",
-                  "",
-                  "tests[\"second_surname is s_sn\"] = jsonData.dependent.second_surname === \"s_sn\";",
-                  "",
-                  "tests[\"gender is Mujer\"] = jsonData.dependent.gender === \"Mujer\";",
-                  "",
-                  "tests[\"date_of_birth is 2018-01-01\"] = jsonData.dependent.date_of_birth === \"2018-01-01\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.dependent.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"family_relation_id is correct\"] = jsonData.dependent.family_relation_id ===  1;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"departmentId\", jsonData.record.id);"
                 ]
               }
             }
@@ -3963,7 +3937,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"second_name\": \"s_n\",\r\n    \"first_surname\": \"f_sn\",\r\n    \"second_surname\": \"s_sn\",\r\n    \"gender\": \"Mujer\",\r\n    \"date_of_birth\": \"2018-01-01\",\r\n    \"employee_id\": {{employee_id}},\r\n    \"family_relation_id\": 1\r\n}"
+              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"second_name\": \"s_n\",\r\n    \"first_surname\": \"f_sn\",\r\n    \"second_surname\": \"s_sn\",\r\n    \"gender\": \"Mujer\",\r\n    \"date_of_birth\": \"2018-01-01\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 1\r\n}"
             },
             "url": "{{url}}/dependent"
           },
