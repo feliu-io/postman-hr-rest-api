@@ -2439,6 +2439,45 @@
             "url": "{{url}}/health_permit"
           },
           "response": []
+        },
+        {
+          "_postman_id": "1b37d0b1-1ae9-44ea-ab5d-30ac8ea77265",
+          "name": "/health_permits/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f22c16b4-2210-4802-a1d8-3dfd1f1b4f7b",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Permit list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/health_permits/{{employeeId}}"
+          },
+          "response": []
         }
       ]
     },
