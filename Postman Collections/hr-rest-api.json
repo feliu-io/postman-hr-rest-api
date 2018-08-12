@@ -1239,7 +1239,7 @@
         },
         {
           "_postman_id": "93ef27b8-cec3-44e7-8d37-b0b4393cdc92",
-          "name": "/departments Copy",
+          "name": "/shifts",
           "event": [
             {
               "listen": "test",
