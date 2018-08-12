@@ -5275,7 +5275,7 @@
         },
         {
           "_postman_id": "008598bd-e475-4e72-82ec-ccbcf9ff2198",
-          "name": "/payments/<int:id> Copy",
+          "name": "/creditors",
           "event": [
             {
               "listen": "test",
