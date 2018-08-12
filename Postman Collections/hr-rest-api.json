@@ -3558,36 +3558,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "3c081c9e-1319-42b9-8ca5-d5807ee40072",
+                "id": "b4552dba-d613-4a99-a5bd-386fdcea8f40",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"first_name is new_f_n\"] = jsonData.dependent.first_name === \"new_f_n\";",
-                  "",
-                  "tests[\"second_name is new_s_n\"] = jsonData.dependent.second_name === \"new_s_n\";",
-                  "",
-                  "tests[\"first_surname is new_f_sn\"] = jsonData.dependent.first_surname === \"new_f_sn\";",
-                  "",
-                  "tests[\"second_surname is new_s_sn\"] = jsonData.dependent.second_surname === \"new_s_sn\";",
-                  "",
-                  "tests[\"gender is Hombre\"] = jsonData.dependent.gender === \"Hombre\";",
-                  "",
-                  "tests[\"date_of_birth is 2018-01-31\"] = jsonData.dependent.date_of_birth === \"2018-01-31\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.dependent.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"family_relation_id is correct\"] = jsonData.dependent.family_relation_id ===  2;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
@@ -3607,9 +3580,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"second_name\": \"new_s_n\",\r\n    \"first_surname\": \"new_f_sn\",\r\n    \"second_surname\": \"new_s_sn\",\r\n    \"gender\": \"Hombre\",\r\n    \"date_of_birth\": \"2018-01-31\",\r\n    \"employee_id\": {{employee_id}},\r\n    \"family_relation_id\": 2\r\n}"
+              "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"second_name\": \"new_s_n\",\r\n    \"first_surname\": \"new_f_sn\",\r\n    \"second_surname\": \"new_s_sn\",\r\n    \"gender\": \"Hombre\",\r\n    \"date_of_birth\": \"2018-01-31\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 2\r\n}"
             },
-            "url": "{{url}}/dependent/{{dependent_id}}"
+            "url": "{{url}}/dependent/{{dependentId}}"
           },
           "response": []
         },
