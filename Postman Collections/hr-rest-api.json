@@ -5274,6 +5274,45 @@
           "response": []
         },
         {
+          "_postman_id": "008598bd-e475-4e72-82ec-ccbcf9ff2198",
+          "name": "/payments/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2ff93e33-ad01-48df-8c0f-84a298f3834d",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Payments list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/payments/{{employeeId}}"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "588793d0-d5ae-4c16-9768-af1e5e464def",
           "name": "/creditor/<int:creditor_id>",
           "event": [
@@ -5416,45 +5455,6 @@
               "raw": ""
             },
             "url": "{{url}}/activate_creditor/{{creditor_id}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "008598bd-e475-4e72-82ec-ccbcf9ff2198",
-          "name": "/payments/<int:id> Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2ff93e33-ad01-48df-8c0f-84a298f3834d",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Payments list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/payments/{{employeeId}}"
           },
           "response": []
         }
