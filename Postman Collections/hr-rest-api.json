@@ -3788,24 +3788,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "72b97823-c8be-4043-a527-f571afdd0de0",
+                "id": "52c3bd80-e822-45b0-a3ea-910264539820",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests['start_date is 2018-01-31'] = jsonData.schedule.start_date === \"2018-01-31\";",
-                  "",
-                  "tests['department_id is correct'] = jsonData.schedule.department_id === parseInt(environment.department_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -3826,7 +3812,7 @@
               "mode": "raw",
               "raw": "{\n  \"start_date\": \"2018-01-31\",\n  \"department_id\": {{departmentId}}\n}"
             },
-            "url": "{{url}}/schedule/{{schedule_id}}"
+            "url": "{{url}}/schedule/{{scheduleId}}"
           },
           "response": []
         },
