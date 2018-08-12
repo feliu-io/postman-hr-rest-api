@@ -4500,7 +4500,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"creditor_name\": \"new_test_cr\",\n  \"phone_number\": \"456-7890\",\n  \"email\": \"test@new_test_cr.com\",\n  \"organization_id\": {{organizationId}}\n}"
+              "raw": "{\n  \"creditor_name\": \"new_test_cr\",\n  \"phone_number\": \"456-7890\",\n  \"email\": \"test@new_test_cr.com\",\n  \"is_active\": true,\n  \"organization_id\": {{organizationId}}\n}"
             },
             "url": "{{url}}/creditor/{{creditorId}}"
           },
