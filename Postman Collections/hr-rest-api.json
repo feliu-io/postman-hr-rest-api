@@ -4934,26 +4934,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "c31249d6-b3a6-4b10-9cd8-3bbf6219401b",
+                "id": "44f035f6-4f0b-4b5a-b0fd-3c81f7f5d8f1",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"deducted_amount is 89.01\"] = jsonData.deduction_detail.deducted_amount === \"89.01\";",
-                  "",
-                  "tests[\"payment_id is correct\"] = jsonData.deduction_detail.payment_id ===  parseInt(environment.payment_id);",
-                  "",
-                  "tests[\"deduction_id is correct\"] = jsonData.deduction_detail.deduction_id ===  parseInt(environment.deduction_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction detail updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
@@ -4973,9 +4956,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"deducted_amount\": \"89.01\",\r\n\t\"payment_id\": {{payment_id}},\r\n\t\"deduction_id\": {{deduction_id}}\r\n}"
+              "raw": "{\r\n\t\"deducted_amount\": \"89.01\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
             },
-            "url": "{{url}}/deduction_detail/{{deduction_detail_id}}"
+            "url": "{{url}}/deduction_detail/{{deductionDetailId}}"
           },
           "response": []
         },
