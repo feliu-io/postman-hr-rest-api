@@ -3452,28 +3452,15 @@
             {
               "listen": "test",
               "script": {
-                "id": "799d071d-f4a8-4607-9114-2900a99f36ec",
+                "id": "f3b745b4-cd87-4040-9a66-b82a3471d3c0",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var accountId = pm.environment.get(\"accountId\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests['is_active is true'] = jsonData.is_active;",
-                  "",
-                  "tests['account_number is 1234'] = jsonData.account_number === \"1234\";",
-                  "",
-                  "tests['account_type is Corriente'] = jsonData.account_type === \"Corriente\";",
-                  "",
-                  "tests['employee_id is correct'] = jsonData.employee_id === parseInt(environment.employee_id);",
-                  "",
-                  "tests['bank_id is correct'] = jsonData.bank_id === 1;",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Account returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(accountId);",
+                  "});"
                 ]
               }
             }
@@ -3494,7 +3481,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/bank_account/{{account_id}}",
+            "url": "{{url}}/bank_account/{{accountId}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
