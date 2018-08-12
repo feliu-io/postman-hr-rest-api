@@ -4508,7 +4508,7 @@
         },
         {
           "_postman_id": "93345221-3b8d-4113-9366-23ad9d5cdff9",
-          "name": "/creditor/<int:creditor_id>",
+          "name": "/creditor/<int:id>",
           "event": [
             {
               "listen": "test",
