@@ -327,7 +327,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"username\": \"test_u\", \n  \"password\": \"test_p\",\n  \"email\": \"test_u@test_o.com\",\n  \"organization_id\": {{organization_id}},\n  \"is_super\": true,\n  \"is_owner\": true,\n  \"is_active\": true\n}"
+              "raw": "{\n  \"username\": \"test_u\", \n  \"password\": \"test_p\",\n  \"email\": \"test_u@test_o.com\",\n  \"organization_id\": {{organizationId}},\n  \"is_super\": true,\n  \"is_owner\": true,\n  \"is_active\": true\n}"
             },
             "url": "{{url}}/user"
           },
