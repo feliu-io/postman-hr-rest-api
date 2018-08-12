@@ -5725,6 +5725,236 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "56a6a3fe-86cc-4a48-9fd1-360af4dd09fc",
+      "name": "SickNote Resource Copy",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "05610757-05ea-476a-b802-e14c0722b414",
+          "name": "/sick_note",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8496be67-b034-4ffc-a226-07cab1660092",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"sickNoteId\", jsonData.record.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"sick_note_date\": \"2018-01-01\",\r\n\t\"number_of_hours_requested\": 8,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-02\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+            },
+            "url": "{{url}}/sick_note"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f4ae9171-06fe-47dd-91ed-8deae1f3b5a2",
+          "name": "/sick_note/<int:id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a6f8d30a-01d0-4e5a-b952-c9d49a2e22fa",
+                "type": "text/javascript",
+                "exec": [
+                  "var sickNoteId = pm.environment.get(\"sickNoteId\");",
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Sick note returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(sickNoteId);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/sick_note/{{sickNoteId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "30f001ab-5c3d-40ff-9156-7d5db652873c",
+          "name": "/sick_notes/<int:id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "40d7f230-8677-4c7a-a100-57a85f976c1d",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Sick note list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/sick_notes/{{employeeId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8a647bdf-9912-4c3e-882e-03bc51bae7e8",
+          "name": "/sick_note/<int:id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a6c3e488-e0ad-4ca3-80a8-7bf3d435b65d",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"sick_note_date\": \"2018-01-02\",\r\n\t\"number_of_hours_requested\": 6,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-04\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+            },
+            "url": "{{url}}/sick_note/{{sickNoteId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "bb28a7c1-627b-474f-bd43-7dce83c69637",
+          "name": "/sick_note/<int:id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f7b429ce-9f50-4c68-a6d8-6fa6dd5216f4",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/sick_note/{{sickNoteId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e82ba2f2-5aa6-4460-8258-ff12007b508f",
+          "name": "/sick_note",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8496be67-b034-4ffc-a226-07cab1660092",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"sickNoteId\", jsonData.record.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"sick_note_date\": \"2018-01-01\",\r\n\t\"number_of_hours_requested\": 8,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-02\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+            },
+            "url": "{{url}}/sick_note"
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "event": [
