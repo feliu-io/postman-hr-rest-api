@@ -861,14 +861,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "2f20ec44-a595-485f-8612-bafb3ced328d",
+                "id": "e38949a8-4914-434b-a5ec-06cf998407ef",
                 "type": "text/javascript",
                 "exec": [
-                  "var departmentId = pm.environment.get(\"departmentId\");",
+                  "var positionId = pm.environment.get(\"positionId\");",
                   "var jsonData = pm.response.json();",
                   "",
                   "pm.test(\"Position returned is the one requested\", function() {",
-                  "    pm.expect(jsonData.record.id).to.eql(departmentId);",
+                  "    pm.expect(jsonData.record.id).to.eql(positionId);",
                   "});"
                 ]
               }
