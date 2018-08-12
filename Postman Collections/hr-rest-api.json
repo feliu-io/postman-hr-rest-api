@@ -2633,7 +2633,7 @@
         },
         {
           "_postman_id": "87cd4f32-b476-e1c3-f70e-8feb273e0133",
-          "name": "/uniform_item/<int:item_id>",
+          "name": "/uniform_item/<int:id>",
           "event": [
             {
               "listen": "test",
