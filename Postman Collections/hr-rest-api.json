@@ -509,20 +509,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "1b4f23d6-764f-438b-a579-09f2ede9e8e9",
+                "id": "a89025e8-65b4-437d-836d-707c4599d3e3",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);",
-                  "",
-                  "tests[\"Access token not empty\"] = jsonData.access_token;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"access_token\", jsonData.access_token);"
                 ]
               }
             }
