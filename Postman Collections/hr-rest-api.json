@@ -3055,28 +3055,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "23c64073-cee1-4193-a001-8193822d6ea0",
+                "id": "68a649a8-e318-49c7-bbbe-51cba5d972ba",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"size_id_2\", jsonData.uniform_size.id);",
-                  "",
-                  "tests['size_description is test_u_s_2'] = jsonData.uniform_size.size_description === \"test_u_s_2\";",
-                  "",
-                  "tests['uniform_item_id is correct'] = jsonData.uniform_size.uniform_item_id === parseInt(environment.item_id);",
-                  "",
-                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_size.uniform_sizes.length === 0;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform size created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"sizeId2\", jsonData.record.id);"
                 ]
               }
             }
@@ -3095,7 +3079,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"size_description\": \"test_u_s_2\",\n  \"uniform_item_id\": {{item_id}}\n}"
+              "raw": "{\n  \"size_description\": \"test_u_s_2\",\n  \"uniform_item_id\": {{itemId}}\n}"
             },
             "url": "{{url}}/uniform_size"
           },
