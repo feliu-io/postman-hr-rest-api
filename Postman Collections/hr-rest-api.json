@@ -2059,13 +2059,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "7ee04d82-4152-484a-b7a0-5b4a35021277",
+                "id": "55259dd1-f97f-4ce0-8d7c-3a1e9eb50d97",
                 "type": "text/javascript",
                 "exec": [
                   "var permitId = pm.environment.get(\"permitId\");",
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Shift returned is the one requested\", function() {",
+                  "pm.test(\"Permit returned is the one requested\", function() {",
                   "    pm.expect(jsonData.record.id).to.eql(permitId);",
                   "});"
                 ]
