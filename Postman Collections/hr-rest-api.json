@@ -2054,7 +2054,7 @@
         },
         {
           "_postman_id": "1765c379-57f6-3256-43f0-930b217a4308",
-          "name": "/health_permit/<int:permit_id>",
+          "name": "/health_permit/<int:id>",
           "event": [
             {
               "listen": "test",
