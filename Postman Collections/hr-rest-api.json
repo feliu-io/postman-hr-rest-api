@@ -1242,40 +1242,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "9f8ffb93-fa9f-4479-a5c1-30e9b6147ffd",
+                "id": "a4d2518c-2ffe-4522-a147-784d62394228",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"shift_name is new_test_s_r\"] = jsonData.shift.shift_name === \"new_test_s_r\";",
-                  "",
-                  "tests[\"weekly_hours is 44\"] = jsonData.shift.weekly_hours === \"44.0\";",
-                  "",
-                  "tests[\"is_rotating is true\"] = jsonData.shift.is_rotating;",
-                  "",
-                  "tests[\"payment_period is Semanal\"] = jsonData.shift.payment_period === \"Semanal\";",
-                  "",
-                  "tests[\"break_length is 01:00:00\"] = jsonData.shift.break_length === \"01:00:00\";",
-                  "",
-                  "tests[\"is_break_included_in_shift is true\"] = jsonData.shift.is_break_included_in_shift;",
-                  "",
-                  "tests[\"rotation_start_hour is 00:00:00\"] = jsonData.shift.rotation_start_hour === \"00:00:00\";",
-                  "",
-                  "tests[\"rotation_end_hour is 15:00:00\"] = jsonData.shift.rotation_end_hour === \"15:00:00\";",
-                  "",
-                  "tests[\"is_active is true\"] = jsonData.shift.is_active;",
-                  "",
-                  "tests[\"organization_id is correct\"] = jsonData.shift.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Shift updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
@@ -1297,7 +1266,7 @@
               "mode": "raw",
               "raw": "{\n  \"shift_name\": \"new_test_s_r\",\n  \"weekly_hours\": 44,\n  \"is_rotating\": true,\n  \"payment_period\": \"Semanal\",\n  \"break_length\": \"01:00:00\",\n  \"is_break_included_in_shift\": true,\n  \"is_active\": true,\n  \"organization_id\": {{organizationId}},\n  \"rotation_start_hour\": \"00:00:00\",\n  \"rotation_end_hour\": \"15:00:00\"\n}"
             },
-            "url": "{{url}}/shift/{{shift_r_id}}"
+            "url": "{{url}}/shift/{{shiftRotatingId}}"
           },
           "response": []
         },
