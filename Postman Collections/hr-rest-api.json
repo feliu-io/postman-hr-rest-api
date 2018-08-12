@@ -1733,32 +1733,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "11c9a3f7-597b-409e-a2fb-3eb7f142c257",
+                "id": "68b47a76-0d49-47f0-8677-ff898f2b5f96",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"first_name is new_f_n\"] = jsonData.emergency_contact.first_name === \"new_f_n\";",
-                  "",
-                  "tests[\"last_name is new_l_n\"] = jsonData.emergency_contact.last_name === \"new_l_n\";",
-                  "",
-                  "tests[\"home_phone is 333-3333\"] = jsonData.emergency_contact.home_phone === \"333-3333\";",
-                  "",
-                  "tests[\"work_phone is 444-4444\"] = jsonData.emergency_contact.work_phone === \"444-4444\";",
-                  "",
-                  "tests[\"mobile_phone is 6666-7777\"] = jsonData.emergency_contact.mobile_phone === \"6666-7777\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.emergency_contact.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
@@ -1780,7 +1757,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"last_name\": \"new_l_n\",\r\n    \"home_phone\": \"333-3333\",\r\n    \"work_phone\": \"444-4444\",\r\n    \"mobile_phone\": \"6666-7777\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
             },
-            "url": "{{url}}/emergency_contact/{{contact_id}}"
+            "url": "{{url}}/emergency_contact/{{contactId}}"
           },
           "response": []
         },
