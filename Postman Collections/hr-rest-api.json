@@ -4849,6 +4849,43 @@
           "response": []
         },
         {
+          "_postman_id": "47126eee-ad64-40a6-9d0e-ac76d2bf9b8a",
+          "name": "/deduction_detail Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "85094df3-5c46-4a1a-bd45-d916606477d6",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"deductionDetailId\", jsonData.record.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
+            },
+            "url": "{{url}}/deduction_detail"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "af5fea21-c578-44ca-a408-762b4ef48028",
           "name": "/deduction_detail/<int:id>",
           "event": [
@@ -4994,43 +5031,6 @@
               "raw": ""
             },
             "url": "{{url}}/deduction_detail/{{deductionDetailId}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "47126eee-ad64-40a6-9d0e-ac76d2bf9b8a",
-          "name": "/deduction_detail Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "85094df3-5c46-4a1a-bd45-d916606477d6",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.environment.set(\"deductionDetailId\", jsonData.record.id);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
-            },
-            "url": "{{url}}/deduction_detail"
           },
           "response": []
         }
