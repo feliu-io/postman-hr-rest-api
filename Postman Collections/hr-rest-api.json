@@ -474,20 +474,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "aa8513ed-5da4-4caf-9c8b-0bd89971383f",
+                "id": "c7aad97e-af7b-4abc-a76f-67d0cd189071",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"User is now active.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -508,7 +498,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_user/new_test_u"
+            "url": "{{url}}/activate_user/{{userId}}"
           },
           "response": []
         },
