@@ -1244,13 +1244,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "c73c3e5b-9457-4b71-bc05-a39119ca590d",
+                "id": "2ce79a9c-38ef-42c6-b4ee-914f53b38de8",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Departments list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "pm.test(\"Shifts list contains two item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
               }
@@ -1272,7 +1272,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/departments"
+            "url": "{{url}}/shifts"
           },
           "response": []
         },
