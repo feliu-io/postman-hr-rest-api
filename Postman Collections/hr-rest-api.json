@@ -4128,6 +4128,45 @@
           "response": []
         },
         {
+          "_postman_id": "b3d26bf0-6783-40d8-ac2f-64aad791934a",
+          "name": "/dependents/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7c48aaad-2ae0-4070-ae5a-68c570910145",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Dependents list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/dependents/{{employeeId}}"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "447f9b60-ae40-9d87-1df3-6ae8b01fe3fa",
           "name": "/dependent/<id:dependent_id>",
           "event": [
@@ -4523,45 +4562,6 @@
               "raw": "{\n  \"start_date\": \"2018-01-01\",\n  \"department_id\": {{department_id}}\n}"
             },
             "url": "{{url}}/schedule"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b3d26bf0-6783-40d8-ac2f-64aad791934a",
-          "name": "/dependents/<int:id> Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7c48aaad-2ae0-4070-ae5a-68c570910145",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Dependents list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(2);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/dependents/{{employeeId}}"
           },
           "response": []
         }
