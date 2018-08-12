@@ -2744,26 +2744,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "db155c3d-d4c3-4892-b6bb-9a431f37abf2",
+                "id": "655eb1b9-e8f6-44dc-a4e6-af7af527c59f",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests['size_description is new_test_u_i'] = jsonData.uniform_size.size_description === \"new_test_u_s\";",
-                  "",
-                  "tests['uniform_item_id is correct'] = jsonData.uniform_size.uniform_item_id === parseInt(environment.item_id);",
-                  "",
-                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_size.uniform_sizes.length === 0;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform size updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
@@ -2785,7 +2768,7 @@
               "mode": "raw",
               "raw": "{\n  \"size_description\": \"new_test_u_s\", \n  \"uniform_item_id\": {{itemId}}\n}"
             },
-            "url": "{{url}}/uniform_size/{{size_id}}"
+            "url": "{{url}}/uniform_size/{{sizeId}}"
           },
           "response": []
         },
