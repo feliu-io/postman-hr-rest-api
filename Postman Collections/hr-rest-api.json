@@ -4388,13 +4388,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "7c48aaad-2ae0-4070-ae5a-68c570910145",
+                "id": "6edb8ccf-1602-4628-ac14-d21e3800b14b",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Dependents list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(2);",
+                  "pm.test(\"Schedules list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
               }
@@ -4416,7 +4416,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/dependents/{{employeeId}}"
+            "url": "{{url}}/schedules/{{departmentId}}"
           },
           "response": []
         },
