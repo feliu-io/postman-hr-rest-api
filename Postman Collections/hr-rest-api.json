@@ -2390,7 +2390,7 @@
         },
         {
           "_postman_id": "f2dc7ed6-0d19-61bc-0118-8f4c4e519c1a",
-          "name": "/passport/<int:passport_id>",
+          "name": "/passport/<int:id>",
           "event": [
             {
               "listen": "test",
