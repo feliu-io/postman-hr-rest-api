@@ -2358,12 +2358,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "f047b18a-3508-415c-8b12-a430bf28b2a5",
+                "id": "bf29cacf-dd86-4ff4-99f8-48299ea7b0dd",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.environment.set(\"passpportId\", jsonData.record.id);"
+                  "pm.environment.set(\"passportId\", jsonData.record.id);"
                 ]
               }
             }
