@@ -3990,22 +3990,15 @@
             {
               "listen": "test",
               "script": {
-                "id": "00bc8579-dfd6-4505-961c-e77f8e2efb12",
+                "id": "3a297608-adcb-4b50-948b-0d0534eec941",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var scheduleId = pm.environment.get(\"scheduleId\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests['start_date is 2018-01-01'] = jsonData.start_date === \"2018-01-01\";",
-                  "",
-                  "tests['department_id is correct'] = jsonData.department_id === parseInt(environment.department_id);",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Schedule returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(scheduleId);",
+                  "});"
                 ]
               }
             }
@@ -4026,7 +4019,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/schedule/{{schedule_id}}",
+            "url": "{{url}}/schedule/{{scheduleId}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
