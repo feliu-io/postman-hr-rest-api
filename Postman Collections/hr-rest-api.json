@@ -653,12 +653,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "b6123e92-fbd6-4b79-a4ea-1166328730d1",
+                "id": "c73c3e5b-9457-4b71-bc05-a39119ca590d",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Users list contains one item\", function() {",
+                  "pm.test(\"Departments list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
@@ -681,7 +681,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/users"
+            "url": "{{url}}/departments"
           },
           "response": []
         },
