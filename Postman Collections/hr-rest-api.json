@@ -2908,24 +2908,15 @@
             {
               "listen": "test",
               "script": {
-                "id": "babe0c28-52a8-48fc-9659-c27c7d7c9d97",
+                "id": "902acd1d-c86b-4226-be47-e26b15f7348a",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var sizeId = pm.environment.get(\"sizeId\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"size_description is test_u_s\"] = jsonData.size_description === \"test_u_s\";",
-                  "",
-                  "tests[\"uniform_item_id is correct\"] = jsonData.uniform_item_id === parseInt(environment.item_id);",
-                  "",
-                  "//tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Size returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(sizeId);",
+                  "});"
                 ]
               }
             }
@@ -2946,7 +2937,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/uniform_size/{{size_id}}",
+            "url": "{{url}}/uniform_size/{{sizeId}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
