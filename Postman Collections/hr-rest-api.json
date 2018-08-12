@@ -3735,34 +3735,15 @@
             {
               "listen": "test",
               "script": {
-                "id": "50301a2a-c843-4858-b738-0c5b8aa3f659",
+                "id": "0ae6965c-4629-43ce-b1ca-f6a3051b6e65",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var dependentId = pm.environment.get(\"dependentId\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"first_name is f_n\"] = jsonData.first_name === \"f_n\";",
-                  "",
-                  "tests[\"second_name is s_n\"] = jsonData.second_name === \"s_n\";",
-                  "",
-                  "tests[\"first_surname is f_sn\"] = jsonData.first_surname === \"f_sn\";",
-                  "",
-                  "tests[\"second_surname is s_sn\"] = jsonData.second_surname === \"s_sn\";",
-                  "",
-                  "tests[\"gender is Mujer\"] = jsonData.gender === \"Mujer\";",
-                  "",
-                  "tests[\"date_of_birth is 2018-01-01\"] = jsonData.date_of_birth === \"2018-01-01\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"family_relation_id is correct\"] = jsonData.family_relation_id ===  1;",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Dependent returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(dependentId);",
+                  "});"
                 ]
               }
             }
@@ -3783,7 +3764,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/dependent/{{dependent_id}}",
+            "url": "{{url}}/dependent/{{dependentId}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
