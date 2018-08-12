@@ -4651,7 +4651,7 @@
         },
         {
           "_postman_id": "5a84b9d3-aa2c-487d-b553-500bf22346cb",
-          "name": "/schedules/<int:id> Copy",
+          "name": "/schedule_details/<int:id>",
           "event": [
             {
               "listen": "test",
