@@ -4776,20 +4776,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "de3e2f25-9e84-47e8-a98a-d1ad52f3a97a",
+                "id": "cffe9daf-c376-4f28-b5f9-bc7f5617fddb",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction is now active.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -4808,9 +4798,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\n  \"is_active\": true\n}"
             },
-            "url": "{{url}}/activate_deduction/{{deduction_id}}"
+            "url": "{{url}}/activate_deduction/{{deductionId}}"
           },
           "response": []
         }
