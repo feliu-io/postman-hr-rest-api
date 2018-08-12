@@ -972,20 +972,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "e457a305-f704-44c1-a87b-c0da919c9f4c",
+                "id": "ed58d561-47c4-4b7d-b2d0-744c5b0ebe02",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Employment position is now inactive.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -1006,7 +996,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/employment_position/{{position_id}}"
+            "url": "{{url}}/employment_position/{{positionId}}"
           },
           "response": []
         },
