@@ -5732,6 +5732,45 @@
             "url": "{{url}}/activate_deduction/{{deduction_id}}"
           },
           "response": []
+        },
+        {
+          "_postman_id": "9f59bdc6-01c8-43ab-b82c-3d620f598851",
+          "name": "/deductions/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0f08f29c-e876-4721-87f3-17ca236ac9cc",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Deductions list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/deductions/{{employeeId}}"
+          },
+          "response": []
         }
       ]
     },
