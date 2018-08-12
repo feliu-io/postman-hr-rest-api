@@ -5544,7 +5544,7 @@
         },
         {
           "_postman_id": "ccc4fdc6-7e78-4eb1-a35c-15349bf1c780",
-          "name": "/dependents/<int:id> Copy",
+          "name": "/deductions/<int:id>",
           "event": [
             {
               "listen": "test",
