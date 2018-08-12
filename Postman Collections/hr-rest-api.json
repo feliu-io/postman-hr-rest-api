@@ -3642,6 +3642,45 @@
             "url": "{{url}}/uniform_requirement"
           },
           "response": []
+        },
+        {
+          "_postman_id": "e55c8cae-2142-4a6f-bb81-7613d52149b9",
+          "name": "/uniform_requirements/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4c12327e-d890-4bd5-9485-94d8f26ae595",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Uniform requirements list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/uniform_requirements/{{employeeId}}"
+          },
+          "response": []
         }
       ]
     },
