@@ -5120,7 +5120,7 @@
         },
         {
           "_postman_id": "b62c3187-e8dd-4163-b94f-1a23cbb87ad8",
-          "name": "/deduction_details/<int:id>",
+          "name": "/payment_details/<int:id>",
           "event": [
             {
               "listen": "test",
