@@ -2577,13 +2577,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "f22c16b4-2210-4802-a1d8-3dfd1f1b4f7b",
+                "id": "b2d81d81-379a-4745-adb4-d20ad4890d0f",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Permit list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "pm.test(\"Passport list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
               }
@@ -2605,7 +2605,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/health_permits/{{employeeId}}"
+            "url": "{{url}}/passports/{{employeeId}}"
           },
           "response": []
         },
