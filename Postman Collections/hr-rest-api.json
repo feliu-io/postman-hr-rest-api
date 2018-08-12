@@ -4513,20 +4513,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "84cbdb9c-2aa0-40b6-86dd-0abe06df3c2d",
+                "id": "5771046b-8af0-4003-9390-1d489e55a281",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Creditor is now inactive.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -4547,7 +4537,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/creditor/{{creditor_id}}"
+            "url": "{{url}}/creditor/{{creditorId}}"
           },
           "response": []
         },
