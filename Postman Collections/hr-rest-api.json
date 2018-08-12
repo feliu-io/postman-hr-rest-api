@@ -5545,14 +5545,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "e52141eb-f416-4cae-b73d-116bb6c80be5",
+                "id": "a6f8d30a-01d0-4e5a-b952-c9d49a2e22fa",
                 "type": "text/javascript",
                 "exec": [
-                  "var attendanceId = pm.environment.get(\"attendanceId\");",
+                  "var sickNoteId = pm.environment.get(\"sickNoteId\");",
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Attendance returned is the one requested\", function() {",
-                  "    pm.expect(jsonData.record.id).to.eql(attendanceId);",
+                  "pm.test(\"Sick note returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(sickNoteId);",
                   "});"
                 ]
               }
@@ -5574,7 +5574,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/attendance/{{attendanceId}}"
+            "url": "{{url}}/sick_note/{{sickNoteId}}"
           },
           "response": []
         },
