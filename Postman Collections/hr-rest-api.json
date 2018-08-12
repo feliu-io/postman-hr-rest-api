@@ -1371,7 +1371,7 @@
               "mode": "raw",
               "raw": "{\n\t\"is_active\": true\n}"
             },
-            "url": "{{url}}/activate_shift/{{shift_r_id}}"
+            "url": "{{url}}/activate_shift/{{shiftRotatingId}}"
           },
           "response": []
         }
