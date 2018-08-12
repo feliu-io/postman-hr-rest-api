@@ -2094,30 +2094,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "750d4543-cfa2-4d2b-b3ba-a3101989fc28",
+                "id": "1de5dcd6-84bd-4071-894a-5d9c7c91c6c3",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"permit_id\", jsonData.health_permit.id);",
-                  "",
-                  "tests[\"health_permit_type is Verde\"] = jsonData.health_permit.health_permit_type === \"Verde\";",
-                  "",
-                  "tests[\"issue_date is 2018-01-01\"] = jsonData.health_permit.issue_date === \"2018-01-01\";",
-                  "",
-                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.health_permit.expiration_date === \"2019-01-01\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.health_permit.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Health permit created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"permitId\", jsonData.record.id);"
                 ]
               }
             }
@@ -2136,7 +2118,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"health_permit_type\": \"Verde\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": 1\r\n}"
+              "raw": "{\r\n    \"health_permit_type\": \"Verde\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
             },
             "url": "{{url}}/health_permit"
           },
