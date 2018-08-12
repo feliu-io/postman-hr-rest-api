@@ -2204,7 +2204,7 @@
         },
         {
           "_postman_id": "65e9b8f9-1fe5-48ed-b078-db3734797d45",
-          "name": "/emergency_contacts/<int:id> Copy",
+          "name": "/health_permits/<int:id>",
           "event": [
             {
               "listen": "test",
