@@ -3455,6 +3455,45 @@
           "response": []
         },
         {
+          "_postman_id": "73b8e26c-0889-4f42-ba0d-e97ac45a36b7",
+          "name": "/uniform_sizes/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b2d81d81-379a-4745-adb4-d20ad4890d0f",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Passport list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/passports/{{employeeId}}"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "4a26e66c-d0cf-8449-302c-7a22e9adb3e9",
           "name": "/uniform_requirement/<id:requirement_id>",
           "event": [
@@ -3601,45 +3640,6 @@
               "raw": "{\n  \"employee_id\": {{employee_id}},\n  \"uniform_item_id\": {{item_id}},\n  \"uniform_size_id\": {{size_id}}\n}"
             },
             "url": "{{url}}/uniform_requirement"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "73b8e26c-0889-4f42-ba0d-e97ac45a36b7",
-          "name": "/uniform_sizes/<int:id> Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b2d81d81-379a-4745-adb4-d20ad4890d0f",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Passport list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(2);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/passports/{{employeeId}}"
           },
           "response": []
         }
