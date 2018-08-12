@@ -3461,13 +3461,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "b2d81d81-379a-4745-adb4-d20ad4890d0f",
+                "id": "4c12327e-d890-4bd5-9485-94d8f26ae595",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Passport list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(2);",
+                  "pm.test(\"Uniform requirements list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
               }
@@ -3489,7 +3489,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/passports/{{employeeId}}"
+            "url": "{{url}}/uniform_requirements/{{employeeId}}"
           },
           "response": []
         },
