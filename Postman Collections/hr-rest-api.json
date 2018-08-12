@@ -603,24 +603,15 @@
             {
               "listen": "test",
               "script": {
-                "id": "efd545ad-6e37-4859-9422-c7beca9ff373",
+                "id": "79ebf473-c7dd-4dde-8adc-3a2802d92bc2",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var departmentId = pm.environment.get(\"departmentId\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"is_active is true\"] = jsonData.is_active;",
-                  "",
-                  "tests[\"department_name is test_d\"] = jsonData.department_name === \"test_d\";",
-                  "",
-                  "tests[\"organization_id is correct\"] = jsonData.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Department returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(departmentId);",
+                  "});"
                 ]
               }
             }
@@ -641,7 +632,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/department/{{department_id}}",
+            "url": "{{url}}/department/{{departmentId}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
