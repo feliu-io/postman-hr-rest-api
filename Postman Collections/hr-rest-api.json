@@ -3657,20 +3657,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "b05dfe74-f154-47c0-a514-eae1ce9514f6",
+                "id": "4ea2b6a9-bc6a-4881-839c-cf423c4a9811",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"banks contains 17 items\"] = jsonData.banks.length === 46;",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Banks list contains 46 items\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(46);",
+                  "});"
                 ]
               }
             }
