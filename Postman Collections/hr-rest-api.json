@@ -5280,12 +5280,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "2ff93e33-ad01-48df-8c0f-84a298f3834d",
+                "id": "2cbef3cf-1d8d-4611-b635-b21288576f9f",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Payments list contains one item\", function() {",
+                  "pm.test(\"Creditors list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
@@ -5308,7 +5308,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/payments/{{employeeId}}"
+            "url": "{{url}}/creditors"
           },
           "response": []
         },
