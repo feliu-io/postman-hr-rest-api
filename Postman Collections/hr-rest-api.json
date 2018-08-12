@@ -2781,20 +2781,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "3becb7a3-0ced-44d2-8f6b-5790e27870fe",
+                "id": "677040e7-4947-469f-b9c3-d23daacb3778",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform size deleted.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -2815,7 +2805,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/uniform_size/{{size_id}}"
+            "url": "{{url}}/uniform_size/{{sizeId}}"
           },
           "response": []
         },
