@@ -4929,7 +4929,7 @@
         },
         {
           "_postman_id": "60b0f9aa-f1f4-49bb-ab7f-3b83f4a88bda",
-          "name": "/deduction_detail/<int:detail_id>",
+          "name": "/deduction_detail/<int:id>",
           "event": [
             {
               "listen": "test",
