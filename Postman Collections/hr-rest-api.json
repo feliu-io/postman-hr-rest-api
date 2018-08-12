@@ -4529,7 +4529,7 @@
         },
         {
           "_postman_id": "169692ad-a21e-4cf3-ba9b-6b99368176c5",
-          "name": "/payment/<int:payment_id>",
+          "name": "/payment/<int:id>",
           "event": [
             {
               "listen": "test",
