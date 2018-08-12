@@ -5876,9 +5876,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"sick_note_date\": \"2018-01-02\",\r\n\t\"number_of_hours_requested\": 6,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-04\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+              "raw": "{\r\n\t\"absence_date\": \"2018-01-05\",\r\n\t\"absence_reason\": \"new test absence reason 0\",\r\n\t\"is_payment_authorized\": false,\r\n\t\"authorization_request_date\": \"2018-01-02\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
             },
-            "url": "{{url}}/sick_note/{{sickNoteId}}"
+            "url": "{{url}}/absence_authorization/{{absenceAuthorizationId}}"
           },
           "response": []
         },
