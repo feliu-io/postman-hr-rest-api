@@ -2559,28 +2559,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "1956b7f9-d606-4700-83f6-38f930e11c4a",
+                "id": "65323cb4-36f2-4f26-86b4-2ac0afe4c472",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable(\"item_id\", jsonData.uniform_item.id);",
-                  "",
-                  "tests['item_name is test_u_i'] = jsonData.uniform_item.item_name === \"test_u_i\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.uniform_item.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests['uniform_sizes is empty list'] = jsonData.uniform_item.uniform_sizes.length === 0;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform item created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -2599,7 +2581,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"item_name\": \"test_u_i\",\n  \"organization_id\": {{organization_id}}\n}"
+              "raw": "{\n  \"item_name\": \"test_u_i\",\n  \"organization_id\": {{organizationId}}\n}"
             },
             "url": "{{url}}/uniform_item"
           },
