@@ -4689,45 +4689,6 @@
           "response": []
         },
         {
-          "_postman_id": "938e1257-f066-4ec7-a13e-fe198b99a83c",
-          "name": "/schedule_details/<int:id> Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "28aaf6b6-6ea5-411a-a129-acec9415f24e",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Schedule details list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/schedule_details/{{scheduleId}}"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "58b18112-60e3-4050-a193-4dbf6eb3b313",
           "name": "/schedule_detail/<int:detail_id>",
           "event": [
@@ -5186,6 +5147,45 @@
               "raw": "{\r\n    \"payment_date\": \"2018-01-01\",\r\n    \"document_number\": \"1234-abc\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
             "url": "{{url}}/payment"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "938e1257-f066-4ec7-a13e-fe198b99a83c",
+          "name": "/schedule_details/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "28aaf6b6-6ea5-411a-a129-acec9415f24e",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Schedule details list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/schedule_details/{{scheduleId}}"
           },
           "response": []
         }
