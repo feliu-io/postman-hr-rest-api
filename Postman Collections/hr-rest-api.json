@@ -3775,7 +3775,7 @@
         },
         {
           "_postman_id": "c850b036-17ec-4e25-8a93-44e209a4dd72",
-          "name": "/uniform_requirements/<int:id> Copy",
+          "name": "/bank_accounts/<int:id>",
           "event": [
             {
               "listen": "test",
