@@ -5229,7 +5229,7 @@
         },
         {
           "_postman_id": "b74717e9-6562-4888-97ba-c909a676bf8e",
-          "name": "/payment_detail Copy",
+          "name": "/payment_detail",
           "event": [
             {
               "listen": "test",
