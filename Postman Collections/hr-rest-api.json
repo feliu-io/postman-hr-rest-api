@@ -5037,236 +5037,6 @@
       ]
     },
     {
-      "_postman_id": "9b5cd9f2-2d00-4065-b363-f356618f0c23",
-      "name": "Dependent Resource Copy",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "f1a94287-2466-4bb3-b8e6-6314637e3475",
-          "name": "/dependent",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "39d691a9-ffd7-4734-a146-410fbfd94a57",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.environment.set(\"dependentId\", jsonData.record.id);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"second_name\": \"s_n\",\r\n    \"first_surname\": \"f_sn\",\r\n    \"second_surname\": \"s_sn\",\r\n    \"gender\": \"Mujer\",\r\n    \"date_of_birth\": \"2018-01-01\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 1\r\n}"
-            },
-            "url": "{{url}}/dependent"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "488dbf5c-1cf4-488a-85d6-3fb41d430d6b",
-          "name": "/dependent/<int:id>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "0ae6965c-4629-43ce-b1ca-f6a3051b6e65",
-                "type": "text/javascript",
-                "exec": [
-                  "var dependentId = pm.environment.get(\"dependentId\");",
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Dependent returned is the one requested\", function() {",
-                  "    pm.expect(jsonData.record.id).to.eql(dependentId);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/dependent/{{dependentId}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "27d5df99-9caf-4218-bc87-5a3274d2dcce",
-          "name": "/dependents/<int:id>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7c48aaad-2ae0-4070-ae5a-68c570910145",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Dependents list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(2);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/dependents/{{employeeId}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "fb4e0957-12cd-4e4a-a8e8-54709678e5b1",
-          "name": "/dependent/<int:id>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b4552dba-d613-4a99-a5bd-386fdcea8f40",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"second_name\": \"new_s_n\",\r\n    \"first_surname\": \"new_f_sn\",\r\n    \"second_surname\": \"new_s_sn\",\r\n    \"gender\": \"Hombre\",\r\n    \"date_of_birth\": \"2018-01-31\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 2\r\n}"
-            },
-            "url": "{{url}}/dependent/{{dependentId}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "9ac5d67e-883f-45b2-b4e6-f3e24cdaf794",
-          "name": "/dependent/<int:id>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f7b429ce-9f50-4c68-a6d8-6fa6dd5216f4",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/dependent/{{dependentId}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d62f90c3-4aba-4818-96d6-ee1dd8ac0a1f",
-          "name": "/dependent",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "83ccc470-27ef-4d3d-aff5-25e5b39bf665",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.environment.set(\"dependentId\", jsonData.record.id);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"second_name\": \"s_n\",\r\n    \"first_surname\": \"f_sn\",\r\n    \"second_surname\": \"s_sn\",\r\n    \"gender\": \"Mujer\",\r\n    \"date_of_birth\": \"2018-01-01\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 1\r\n}"
-            },
-            "url": "{{url}}/dependent"
-          },
-          "response": []
-        }
-      ]
-    },
-    {
       "_postman_id": "ba70221a-599a-42ab-aeec-9ca00b2f92dd",
       "name": "DeductionDetail Resource",
       "description": "",
@@ -5491,6 +5261,236 @@
               "raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
             },
             "url": "{{url}}/deduction_detail"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "9b5cd9f2-2d00-4065-b363-f356618f0c23",
+      "name": "Dependent Resource Copy",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "f1a94287-2466-4bb3-b8e6-6314637e3475",
+          "name": "/dependent",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "39d691a9-ffd7-4734-a146-410fbfd94a57",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"dependentId\", jsonData.record.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"second_name\": \"s_n\",\r\n    \"first_surname\": \"f_sn\",\r\n    \"second_surname\": \"s_sn\",\r\n    \"gender\": \"Mujer\",\r\n    \"date_of_birth\": \"2018-01-01\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 1\r\n}"
+            },
+            "url": "{{url}}/dependent"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "488dbf5c-1cf4-488a-85d6-3fb41d430d6b",
+          "name": "/dependent/<int:id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0ae6965c-4629-43ce-b1ca-f6a3051b6e65",
+                "type": "text/javascript",
+                "exec": [
+                  "var dependentId = pm.environment.get(\"dependentId\");",
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Dependent returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(dependentId);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/dependent/{{dependentId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "27d5df99-9caf-4218-bc87-5a3274d2dcce",
+          "name": "/dependents/<int:id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7c48aaad-2ae0-4070-ae5a-68c570910145",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Dependents list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/dependents/{{employeeId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fb4e0957-12cd-4e4a-a8e8-54709678e5b1",
+          "name": "/dependent/<int:id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b4552dba-d613-4a99-a5bd-386fdcea8f40",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"second_name\": \"new_s_n\",\r\n    \"first_surname\": \"new_f_sn\",\r\n    \"second_surname\": \"new_s_sn\",\r\n    \"gender\": \"Hombre\",\r\n    \"date_of_birth\": \"2018-01-31\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 2\r\n}"
+            },
+            "url": "{{url}}/dependent/{{dependentId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "9ac5d67e-883f-45b2-b4e6-f3e24cdaf794",
+          "name": "/dependent/<int:id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f7b429ce-9f50-4c68-a6d8-6fa6dd5216f4",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/dependent/{{dependentId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d62f90c3-4aba-4818-96d6-ee1dd8ac0a1f",
+          "name": "/dependent",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "83ccc470-27ef-4d3d-aff5-25e5b39bf665",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"dependentId\", jsonData.record.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"second_name\": \"s_n\",\r\n    \"first_surname\": \"f_sn\",\r\n    \"second_surname\": \"s_sn\",\r\n    \"gender\": \"Mujer\",\r\n    \"date_of_birth\": \"2018-01-01\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 1\r\n}"
+            },
+            "url": "{{url}}/dependent"
           },
           "response": []
         }
