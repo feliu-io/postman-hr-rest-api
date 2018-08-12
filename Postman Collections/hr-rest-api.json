@@ -5457,6 +5457,45 @@
             "url": "{{url}}/activate_creditor/{{creditor_id}}"
           },
           "response": []
+        },
+        {
+          "_postman_id": "df8df2ef-27db-4273-b687-f50ba370ccff",
+          "name": "/creditors Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2cbef3cf-1d8d-4611-b635-b21288576f9f",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Creditors list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/creditors"
+          },
+          "response": []
         }
       ]
     },
