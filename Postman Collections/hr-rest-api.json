@@ -2766,6 +2766,45 @@
             "url": "{{url}}/passport"
           },
           "response": []
+        },
+        {
+          "_postman_id": "530b8e03-ca16-4b6e-bdab-71bcd144bfbc",
+          "name": "/passports/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b2d81d81-379a-4745-adb4-d20ad4890d0f",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Passport list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/passports/{{employeeId}}"
+          },
+          "response": []
         }
       ]
     },
