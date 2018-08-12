@@ -3774,6 +3774,45 @@
           "response": []
         },
         {
+          "_postman_id": "c850b036-17ec-4e25-8a93-44e209a4dd72",
+          "name": "/uniform_requirements/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4c12327e-d890-4bd5-9485-94d8f26ae595",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Uniform requirements list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/uniform_requirements/{{employeeId}}"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "e7b51580-5d36-c9ac-274b-0a5a51ad46ba",
           "name": "/bank_account/<int:account_id>",
           "event": [
@@ -3916,45 +3955,6 @@
               "raw": ""
             },
             "url": "{{url}}/activate_bank_account/{{account_id}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "c850b036-17ec-4e25-8a93-44e209a4dd72",
-          "name": "/uniform_requirements/<int:id> Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4c12327e-d890-4bd5-9485-94d8f26ae595",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Uniform requirements list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/uniform_requirements/{{employeeId}}"
           },
           "response": []
         }
