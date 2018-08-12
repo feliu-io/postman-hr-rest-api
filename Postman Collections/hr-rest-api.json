@@ -4741,20 +4741,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "7c463662-88e9-413b-84be-48cd11a85dcf",
+                "id": "0e8a780b-2b2c-4ed9-b91e-10d72588a1d5",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction is now inactive.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -4775,7 +4765,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/deduction/{{deduction_id}}"
+            "url": "{{url}}/deduction/{{deductionId}}"
           },
           "response": []
         },
