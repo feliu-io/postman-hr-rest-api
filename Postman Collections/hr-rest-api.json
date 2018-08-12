@@ -5030,34 +5030,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "eba08b85-edf3-4dda-9b71-cc8ba0c45868",
+                "id": "810e72cc-afbd-4ece-8ba9-190d7debcaea",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"creditor_id\", jsonData.creditor.id);",
-                  "",
-                  "tests['is_active is true'] = jsonData.creditor.is_active;",
-                  "",
-                  "tests['creditor_name is test_cr'] = jsonData.creditor.creditor_name === \"test_cr\";",
-                  "",
-                  "tests['phone_number is 123-4567'] = jsonData.creditor.phone_number === \"123-4567\";",
-                  "",
-                  "tests['eamil is test@test_cr.com'] = jsonData.creditor.email === \"test@test_cr.com\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.creditor.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Creditor created successfully.\";",
-                  "",
-                  "/*tests['deductions is empty list'] = jsonData.creditor.deductions.length === 0;*/",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"creditorId\", jsonData.record.id);"
                 ]
               }
             }
@@ -5076,7 +5054,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"creditor_name\": \"test_cr\",\n  \"phone_number\": \"123-4567\",\n  \"email\": \"test@test_cr.com\",\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+              "raw": "{\n  \"creditor_name\": \"test_cr\",\n  \"phone_number\": \"123-4567\",\n  \"email\": \"test@test_cr.com\",\n  \"organization_id\": {{organizationId}},\n  \"is_active\": true\n}"
             },
             "url": "{{url}}/creditor"
           },
