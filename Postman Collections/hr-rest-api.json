@@ -439,20 +439,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "c04d6058-80cc-4fb0-adab-405936b55372",
+                "id": "f4559d65-31f8-45f6-9cbe-dd54728095a7",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"User is now inactive.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -473,7 +463,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/user/new_test_u"
+            "url": "{{url}}/user/{{userId}}"
           },
           "response": []
         },
