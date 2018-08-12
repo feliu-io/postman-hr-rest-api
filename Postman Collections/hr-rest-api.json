@@ -4053,20 +4053,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "34f6a3cd-a4f9-49f7-80ce-ba632bdcc40a",
+                "id": "8b975fe6-cf33-4e28-b3f1-4d3786b612e1",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Schedule detail deleted.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -4087,7 +4077,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/schedule_detail/{{schedule_detail_id}}"
+            "url": "{{url}}/schedule_detail/{{scheduleDetailId}}"
           },
           "response": []
         },
