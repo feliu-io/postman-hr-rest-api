@@ -5394,7 +5394,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b4552dba-d613-4a99-a5bd-386fdcea8f40",
+                "id": "a6c3e488-e0ad-4ca3-80a8-7bf3d435b65d",
                 "type": "text/javascript",
                 "exec": [
                   ""
@@ -5416,9 +5416,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"second_name\": \"new_s_n\",\r\n    \"first_surname\": \"new_f_sn\",\r\n    \"second_surname\": \"new_s_sn\",\r\n    \"gender\": \"Hombre\",\r\n    \"date_of_birth\": \"2018-01-31\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 2\r\n}"
+              "raw": "{\r\n\t\"work_day\": \"2018-01-03\",\r\n\t\"day_start\": \"2018-01-03T06:15:00\",\r\n\t\"break_start\": \"2018-01-03T10:30:00\",\r\n\t\"break_end\": \"2018-01-03T11:00:00\",\r\n\t\"day_end\": \"2018-01-03T13:59:00\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
             },
-            "url": "{{url}}/dependent/{{dependentId}}"
+            "url": "{{url}}/attendance/{{attendanceId}}"
           },
           "response": []
         },
