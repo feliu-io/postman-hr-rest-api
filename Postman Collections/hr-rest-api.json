@@ -1535,7 +1535,7 @@
         },
         {
           "_postman_id": "ff0d9c53-4f2b-4204-2315-c3ab8d31fe39",
-          "name": "/employee/<int:employee_id>",
+          "name": "/employee/<int:id>",
           "event": [
             {
               "listen": "test",
