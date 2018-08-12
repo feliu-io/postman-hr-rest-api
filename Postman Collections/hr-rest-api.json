@@ -5508,12 +5508,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "2976156d-0ece-41b4-847e-e8d3b7008408",
+                "id": "8496be67-b034-4ffc-a226-07cab1660092",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.environment.set(\"attendanceId\", jsonData.record.id);"
+                  "pm.environment.set(\"sickNoteId\", jsonData.record.id);"
                 ]
               }
             }
@@ -5532,9 +5532,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"work_day\": \"2018-01-01\",\r\n\t\"day_start\": \"2018-01-01T06:00:00\",\r\n\t\"break_start\": \"2018-01-01T10:00:00\",\r\n\t\"break_end\": \"2018-01-01T10:30:00\",\r\n\t\"day_end\": \"2018-01-01T14:00:00\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+              "raw": "{\r\n\t\"sick_note_date\": \"2018-01-01\",\r\n\t\"number_of_hours_requested\": 8,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-02\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
             },
-            "url": "{{url}}/attendance"
+            "url": "{{url}}/sick_note"
           },
           "response": []
         },
