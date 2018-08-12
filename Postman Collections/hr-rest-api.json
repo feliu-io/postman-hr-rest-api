@@ -823,34 +823,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "460717ac-8ad1-4730-81a7-f8ea64b94aa2",
+                "id": "19eeca04-dee5-4ec3-92dd-0a3153e9dd37",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"position_id\", jsonData.employment_position.id);",
-                  "",
-                  "tests['is_active is true'] = jsonData.employment_position.is_active;",
-                  "",
-                  "tests['position_name_feminine is test_e_p_f'] = jsonData.employment_position.position_name_feminine === \"test_e_p_f\";",
-                  "",
-                  "tests['position_name_masculine is test_e_p_f'] = jsonData.employment_position.position_name_masculine === \"test_e_p_m\";",
-                  "",
-                  "tests['minimum_hourly_wage is 1.00'] = jsonData.employment_position.minimum_hourly_wage === \"1.0000\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.employment_position.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests['employees is empty list'] = jsonData.employment_position.employees.length === 0;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Employment position created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"positionId\", jsonData.record.id);"
                 ]
               }
             }
