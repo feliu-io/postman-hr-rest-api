@@ -4768,28 +4768,15 @@
             {
               "listen": "test",
               "script": {
-                "id": "e1bb7e93-b53b-48e2-908d-e3b116410532",
+                "id": "39b2f1f2-a164-44a4-a459-007f662d2700",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var paymentId = pm.environment.get(\"paymentId\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"is_active is true\"] = jsonData.is_active;",
-                  "",
-                  "tests['creditor_name is test_cr'] = jsonData.creditor_name === \"test_cr\";",
-                  "",
-                  "tests['phone_number is 123-4567'] = jsonData.phone_number === \"123-4567\";",
-                  "",
-                  "tests['eamil is test@test_cr.com'] = jsonData.email === \"test@test_cr.com\";",
-                  "",
-                  "tests[\"organization_id is correct\"] = jsonData.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Payment returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(paymentId);",
+                  "});"
                 ]
               }
             }
@@ -4810,7 +4797,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/creditor/{{creditor_id}}",
+            "url": "{{url}}/creditor/{{creditorId}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
