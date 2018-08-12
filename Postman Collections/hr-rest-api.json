@@ -5278,12 +5278,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "39d691a9-ffd7-4734-a146-410fbfd94a57",
+                "id": "2976156d-0ece-41b4-847e-e8d3b7008408",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.environment.set(\"dependentId\", jsonData.record.id);"
+                  "pm.environment.set(\"attendanceId\", jsonData.record.id);"
                 ]
               }
             }
@@ -5302,9 +5302,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"second_name\": \"s_n\",\r\n    \"first_surname\": \"f_sn\",\r\n    \"second_surname\": \"s_sn\",\r\n    \"gender\": \"Mujer\",\r\n    \"date_of_birth\": \"2018-01-01\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 1\r\n}"
+              "raw": "{\r\n\t\"work_day\": \"2018-01-01\",\r\n\t\"day_start\": \"2018-01-01T06:00:00\",\r\n\t\"break_start\": \"2018-01-01T10:00:00\",\r\n\t\"break_end\": \"2018-01-01T10:30:00\",\r\n\t\"day_end\": \"2018-01-01T14:00:00\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
             },
-            "url": "{{url}}/dependent"
+            "url": "{{url}}/attendance"
           },
           "response": []
         },
