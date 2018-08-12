@@ -1998,20 +1998,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "35429330-c8e1-4789-abfe-9f27436d5ef5",
+                "id": "bf961efa-2640-4d20-be62-65ffdc462ec2",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Health permit deleted.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < 300;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -2032,7 +2022,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/health_permit/{{permit_id}}"
+            "url": "{{url}}/health_permit/{{permitId}}"
           },
           "response": []
         },
