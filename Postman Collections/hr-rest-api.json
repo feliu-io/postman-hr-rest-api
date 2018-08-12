@@ -4912,7 +4912,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"payment_date\": \"2018-02-01\",\r\n    \"document_number\": \"1234-def\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
+              "raw": "{\r\n    \"payment_date\": \"2018-02-01\",\r\n    \"document_number\": \"1234-def\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
             },
             "url": "{{url}}/payment/{{payment_id}}"
           },
