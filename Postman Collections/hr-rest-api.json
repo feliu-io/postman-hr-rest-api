@@ -5733,7 +5733,7 @@
       "item": [
         {
           "_postman_id": "05610757-05ea-476a-b802-e14c0722b414",
-          "name": "/sick_note",
+          "name": "/absence_authorization",
           "event": [
             {
               "listen": "test",
