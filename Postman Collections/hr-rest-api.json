@@ -391,7 +391,7 @@
         },
         {
           "_postman_id": "1b92a9e9-e47a-d15d-130f-b5f094c60c8f",
-          "name": "/user/<string:username>",
+          "name": "/user/<int:id>",
           "event": [
             {
               "listen": "test",
