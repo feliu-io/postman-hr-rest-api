@@ -4308,7 +4308,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"start_date\": \"2018-01-31\",\n  \"department_id\": {{department_id}}\n}"
+              "raw": "{\n  \"start_date\": \"2018-01-31\",\n  \"department_id\": {{departmentId}}\n}"
             },
             "url": "{{url}}/schedule/{{schedule_id}}"
           },
