@@ -5035,6 +5035,236 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "a4446c21-d9b2-408c-92aa-ed6bc329491c",
+      "name": "DeductionDetail Resource Copy",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "62c399ae-cb60-4807-bd3f-45e0ecb90814",
+          "name": "/deduction_detail",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "85094df3-5c46-4a1a-bd45-d916606477d6",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"deductionDetailId\", jsonData.record.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
+            },
+            "url": "{{url}}/deduction_detail"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "69f0654e-7c5e-4c2d-b08e-3d0e6da4cb81",
+          "name": "/deduction_detail/<int:id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "75dbbe56-6886-464d-a5a5-e37bb76474ad",
+                "type": "text/javascript",
+                "exec": [
+                  "var deductionDetailId = pm.environment.get(\"deductionDetailId\");",
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Deduction detail returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(deductionDetailId);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/deduction_detail/{{deductionDetailId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b62c3187-e8dd-4163-b94f-1a23cbb87ad8",
+          "name": "/deduction_details/<int:id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "93648ce9-c414-4acc-8754-2764051f9042",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Deduction details list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/deduction_details/{{paymentId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "557ad0b4-969e-484b-9e9a-a57dc010ea29",
+          "name": "/deduction_detail/<int:id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "44f035f6-4f0b-4b5a-b0fd-3c81f7f5d8f1",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"deducted_amount\": \"89.01\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
+            },
+            "url": "{{url}}/deduction_detail/{{deductionDetailId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a4d00a65-e752-4a11-b407-bd1fdbce219e",
+          "name": "/deduction_detail/<int:id>",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3c30272b-b575-4687-a901-3953968b9abb",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{url}}/deduction_detail/{{deductionDetailId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "14eca572-a891-4012-9039-18b3c828f6e2",
+          "name": "/deduction_detail",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "85094df3-5c46-4a1a-bd45-d916606477d6",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"deductionDetailId\", jsonData.record.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
+            },
+            "url": "{{url}}/deduction_detail"
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "event": [
