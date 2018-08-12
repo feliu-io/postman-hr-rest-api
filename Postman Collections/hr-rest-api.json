@@ -3751,8 +3751,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/dependent/{{dependentId}}",
-            "description": "Register a new user supplying a \"username\" and \"password\""
+            "url": "{{url}}/dependent/{{dependentId}}"
           },
           "response": []
         },
