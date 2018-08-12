@@ -5549,13 +5549,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "7c48aaad-2ae0-4070-ae5a-68c570910145",
+                "id": "0f08f29c-e876-4721-87f3-17ca236ac9cc",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Dependents list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(2);",
+                  "pm.test(\"Deductions list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
               }
@@ -5577,7 +5577,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/dependents/{{employeeId}}"
+            "url": "{{url}}/deductions/{{employeeId}}"
           },
           "response": []
         },
