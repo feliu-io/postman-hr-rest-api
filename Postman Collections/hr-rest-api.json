@@ -3166,12 +3166,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "b2d81d81-379a-4745-adb4-d20ad4890d0f",
+                "id": "cc2e2c74-c24d-40e9-93da-0e83b89045dc",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Passport list contains one item\", function() {",
+                  "pm.test(\"Uniform sizes list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
@@ -3194,7 +3194,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/passports/{{employeeId}}"
+            "url": "{{url}}/uniform_sizes/{{itemId}}"
           },
           "response": []
         },
