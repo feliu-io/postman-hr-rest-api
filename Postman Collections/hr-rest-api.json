@@ -3617,32 +3617,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "96abd1c5-2314-4b23-adab-0f59f55bbdea",
+                "id": "5d80980e-b892-42ab-9975-66f2b8d2cb12",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"account_id\", jsonData.bank_account.id);",
-                  "",
-                  "tests['is_active is true'] = jsonData.bank_account.is_active;",
-                  "",
-                  "tests['account_number is 1234'] = jsonData.bank_account.account_number === \"1234\";",
-                  "",
-                  "tests['account_type is Corriente'] = jsonData.bank_account.account_type === \"Corriente\";",
-                  "",
-                  "tests['employee_id is correct'] = jsonData.bank_account.employee_id === parseInt(environment.employee_id);",
-                  "",
-                  "tests['bank_id is correct'] = jsonData.bank_account.bank_id === 1;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Bank account created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"accountId\", jsonData.record.id);"
                 ]
               }
             }
@@ -3661,7 +3641,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"account_number\": \"1234\",\n  \"account_type\": \"Corriente\",\n  \"is_active\": true,\n  \"employee_id\": {{employee_id}},\n  \"bank_id\": 1\n}"
+              "raw": "{\n  \"account_number\": \"1234\",\n  \"account_type\": \"Corriente\",\n  \"is_active\": true,\n  \"employee_id\": {{employeeId}},\n  \"bank_id\": 1\n}"
             },
             "url": "{{url}}/bank_account"
           },
