@@ -303,12 +303,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "711e813a-2f21-4e49-b3e4-420fbc6f9e0f",
+                "id": "51939bb4-e6ae-4f1c-a4bd-c45f8a2f0b3c",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.environment.set(\"userId\", jsonData.record.id);"
+                  "pm.environment.set(\"username\", jsonData.record.username);"
                 ]
               }
             }
