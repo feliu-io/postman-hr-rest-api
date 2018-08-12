@@ -5503,7 +5503,7 @@
       "item": [
         {
           "_postman_id": "cc8c6b13-915d-4ae0-b02f-6039eac83ae9",
-          "name": "/attendance",
+          "name": "/sick_note",
           "event": [
             {
               "listen": "test",
