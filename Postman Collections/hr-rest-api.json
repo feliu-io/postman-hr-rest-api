@@ -4999,14 +4999,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "f3b38cb5-2ff7-46f8-88d2-0a8d19b5529b",
+                "id": "b1fe992e-e276-4417-9ca4-c6fa2eeeebfe",
                 "type": "text/javascript",
                 "exec": [
-                  "var creditorId = pm.environment.get(\"creditorId\");",
+                  "var deductionId = pm.environment.get(\"deductionId\");",
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Creditor returned is the one requested\", function() {",
-                  "    pm.expect(jsonData.record.id).to.eql(creditorId);",
+                  "pm.test(\"Deduction returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(deductionId);",
                   "});"
                 ]
               }
@@ -5028,7 +5028,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/deduction/{{deduction_id}}",
+            "url": "{{url}}/deduction/{{deductionId}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
