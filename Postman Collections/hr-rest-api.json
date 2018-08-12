@@ -1610,7 +1610,7 @@
         },
         {
           "_postman_id": "8bb73929-099d-4dff-92c6-19efc201eca4",
-          "name": "/departments Copy",
+          "name": "/employees",
           "event": [
             {
               "listen": "test",
