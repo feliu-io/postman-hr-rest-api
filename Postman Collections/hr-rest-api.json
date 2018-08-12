@@ -2858,12 +2858,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "f22c16b4-2210-4802-a1d8-3dfd1f1b4f7b",
+                "id": "d57712cf-4c5c-4094-9dcf-34ba9fb12bfa",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Permit list contains one item\", function() {",
+                  "pm.test(\"Uniform items list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
@@ -2886,7 +2886,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/health_permits/{{employeeId}}"
+            "url": "{{url}}/uniform_items"
           },
           "response": []
         },
