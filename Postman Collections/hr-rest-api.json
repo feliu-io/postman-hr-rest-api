@@ -5530,28 +5530,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "7e2e491c-7ae4-4fbf-bfbf-ff3f1cba9f5b",
+                "id": "85094df3-5c46-4a1a-bd45-d916606477d6",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"deduction_detail_id\", jsonData.deduction_detail.id);",
-                  "",
-                  "tests[\"deducted_amount is 67.89\"] = jsonData.deduction_detail.deducted_amount === \"67.89\";",
-                  "",
-                  "tests[\"payment_id is correct\"] = jsonData.deduction_detail.payment_id ===  parseInt(environment.payment_id);",
-                  "",
-                  "tests[\"deduction_id is correct\"] = jsonData.deduction_detail.deduction_id ===  parseInt(environment.deduction_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction deatil created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"deductionDetailId\", jsonData.record.id);"
                 ]
               }
             }
@@ -5570,7 +5554,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{payment_id}},\r\n\t\"deduction_id\": {{deduction_id}}\r\n}"
+              "raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
             },
             "url": "{{url}}/deduction_detail"
           },
