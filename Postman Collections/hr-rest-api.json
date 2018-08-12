@@ -3161,7 +3161,7 @@
         },
         {
           "_postman_id": "530b8e03-ca16-4b6e-bdab-71bcd144bfbc",
-          "name": "/passports/<int:id> Copy",
+          "name": "/uniform_sizes/<int:id>",
           "event": [
             {
               "listen": "test",
