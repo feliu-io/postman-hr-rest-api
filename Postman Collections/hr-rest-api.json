@@ -5916,43 +5916,6 @@
             "url": "{{url}}/sick_note/{{sickNoteId}}"
           },
           "response": []
-        },
-        {
-          "_postman_id": "e82ba2f2-5aa6-4460-8258-ff12007b508f",
-          "name": "/sick_note",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "8496be67-b034-4ffc-a226-07cab1660092",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.environment.set(\"sickNoteId\", jsonData.record.id);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"sick_note_date\": \"2018-01-01\",\r\n\t\"number_of_hours_requested\": 8,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-02\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
-            },
-            "url": "{{url}}/sick_note"
-          },
-          "response": []
         }
       ]
     }
