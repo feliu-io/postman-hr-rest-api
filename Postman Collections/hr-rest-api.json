@@ -759,7 +759,7 @@
               "mode": "raw",
               "raw": "{\n\t\"is_active\": true\n}"
             },
-            "url": "{{url}}/activate_department/{{department_id}}"
+            "url": "{{url}}/activate_department/{{departmentId}}"
           },
           "response": []
         }
