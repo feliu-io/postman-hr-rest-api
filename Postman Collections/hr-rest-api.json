@@ -5689,7 +5689,7 @@
         },
         {
           "_postman_id": "a20ea104-9f1f-4d10-bb77-40c302e016db",
-          "name": "/attendance",
+          "name": "/sick_note",
           "event": [
             {
               "listen": "test",
