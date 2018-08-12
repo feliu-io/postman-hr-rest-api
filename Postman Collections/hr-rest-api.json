@@ -1238,6 +1238,45 @@
           "response": []
         },
         {
+          "_postman_id": "93ef27b8-cec3-44e7-8d37-b0b4393cdc92",
+          "name": "/departments Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c73c3e5b-9457-4b71-bc05-a39119ca590d",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Departments list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/departments"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "61c6d54d-b920-5b5c-f1b6-e3b294728c10",
           "name": "/shift/<int:shift_id> (rotating)",
           "event": [
@@ -1482,45 +1521,6 @@
               "raw": ""
             },
             "url": "{{url}}/activate_shift/{{shift_r_id}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "93ef27b8-cec3-44e7-8d37-b0b4393cdc92",
-          "name": "/departments Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c73c3e5b-9457-4b71-bc05-a39119ca590d",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Departments list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/departments"
           },
           "response": []
         }
