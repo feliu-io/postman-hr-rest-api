@@ -18,27 +18,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "105cdea8-fc7e-4542-9991-6ce58f051994",
+                "id": "2a767abd-ffb3-4894-8e9a-494426e27ddb",
                 "type": "text/javascript",
                 "exec": [
-                  "var responseTime = pm.environment.get(\"responseTime\");",
                   "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Response time is less than \" + responseTime, function () {",
-                  "    pm.expect(pm.response.responseTime).to.be.below(parseInt(responseTime));",
-                  "});",
-                  "",
-                  "pm.test(\"Status code is 200\", function() {",
-                  "    pm.response.to.have.status(200);",
-                  "});",
-                  "",
-                  "pm.test(\"Content-Type is present\", function () {",
-                  "    pm.response.to.have.header(\"Content-Type\");",
-                  "});",
-                  "",
-                  "pm.test(\"Content-Type is application/json\", function () {",
-                  "    pm.response.to.be.header(\"Content-Type\", \"application/json\");",
-                  "});",
                   "",
                   "pm.environment.set(\"access_token\", jsonData.access_token);"
                 ]
