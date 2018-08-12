@@ -5815,12 +5815,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "40d7f230-8677-4c7a-a100-57a85f976c1d",
+                "id": "45e8e668-28bc-43f2-a5ec-024805f09279",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Sick note list contains one item\", function() {",
+                  "pm.test(\"Absence authorizations list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
@@ -5843,7 +5843,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/sick_notes/{{employeeId}}"
+            "url": "{{url}}/absence_authorizations/{{employeeId}}"
           },
           "response": []
         },
