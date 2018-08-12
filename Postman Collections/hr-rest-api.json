@@ -494,7 +494,7 @@
         },
         {
           "_postman_id": "95f7fbb8-4449-a9f9-3314-684955029c98",
-          "name": "/activate_user/<string:username>",
+          "name": "/activate_user/<int:id>",
           "event": [
             {
               "listen": "test",
