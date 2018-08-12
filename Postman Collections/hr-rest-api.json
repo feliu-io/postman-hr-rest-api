@@ -4543,7 +4543,7 @@
         },
         {
           "_postman_id": "e437130d-a8af-4614-8486-a4ad694bdc18",
-          "name": "/activate_creditor/<int:creditor_id>",
+          "name": "/activate_creditor/<int:id>",
           "event": [
             {
               "listen": "test",
