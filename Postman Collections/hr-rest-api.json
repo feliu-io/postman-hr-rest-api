@@ -5008,12 +5008,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "28aaf6b6-6ea5-411a-a129-acec9415f24e",
+                "id": "2ff93e33-ad01-48df-8c0f-84a298f3834d",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Schedule details list contains one item\", function() {",
+                  "pm.test(\"Payments list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
@@ -5036,7 +5036,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/schedule_details/{{scheduleId}}"
+            "url": "{{url}}/payments/{{employeeId}}"
           },
           "response": []
         },
