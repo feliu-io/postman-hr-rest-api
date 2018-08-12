@@ -5539,6 +5539,43 @@
           "response": []
         },
         {
+          "_postman_id": "106769d3-6df3-456b-b36c-367b1e40d284",
+          "name": "/sick_note Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8496be67-b034-4ffc-a226-07cab1660092",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"sickNoteId\", jsonData.record.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"sick_note_date\": \"2018-01-01\",\r\n\t\"number_of_hours_requested\": 8,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-02\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+            },
+            "url": "{{url}}/sick_note"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "e5ea87b1-abbe-49f5-9fc6-5f7dc5602a6e",
           "name": "/sick_note/<int:id>",
           "event": [
@@ -5684,43 +5721,6 @@
               "raw": ""
             },
             "url": "{{url}}/sick_note/{{sickNoteId}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "106769d3-6df3-456b-b36c-367b1e40d284",
-          "name": "/sick_note Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "8496be67-b034-4ffc-a226-07cab1660092",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.environment.set(\"sickNoteId\", jsonData.record.id);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"sick_note_date\": \"2018-01-01\",\r\n\t\"number_of_hours_requested\": 8,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-02\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
-            },
-            "url": "{{url}}/sick_note"
           },
           "response": []
         }
