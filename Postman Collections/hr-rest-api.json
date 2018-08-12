@@ -5689,7 +5689,7 @@
         },
         {
           "_postman_id": "106769d3-6df3-456b-b36c-367b1e40d284",
-          "name": "/sick_note Copy",
+          "name": "/sick_note",
           "event": [
             {
               "listen": "test",
