@@ -4656,12 +4656,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "6edb8ccf-1602-4628-ac14-d21e3800b14b",
+                "id": "28aaf6b6-6ea5-411a-a129-acec9415f24e",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Schedules list contains one item\", function() {",
+                  "pm.test(\"Schedule details list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
@@ -4684,7 +4684,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/schedules/{{departmentId}}"
+            "url": "{{url}}/schedule_details/{{scheduleId}}"
           },
           "response": []
         },
