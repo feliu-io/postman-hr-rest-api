@@ -1106,44 +1106,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "aa40d4e2-2c73-49d4-ae16-cbfa1c9b7ba4",
+                "id": "b417fd9d-fd1f-4b23-b2ba-23cfaedb2021",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"shift_r_id\", jsonData.shift.id);",
-                  "",
-                  "tests[\"shift_name is test_s_r\"] = jsonData.shift.shift_name === \"test_s_r\";",
-                  "",
-                  "tests[\"weekly_hours is 48\"] = jsonData.shift.weekly_hours === \"48.0\";",
-                  "",
-                  "tests[\"is_rotating is true\"] = jsonData.shift.is_rotating;",
-                  "",
-                  "tests[\"payment_period is Quincenal\"] = jsonData.shift.payment_period === \"Quincenal\";",
-                  "",
-                  "tests[\"break_length is 00:30:00\"] = jsonData.shift.break_length === \"00:30:00\";",
-                  "",
-                  "tests[\"is_break_included_in_shift is false\"] = !jsonData.shift.is_break_included_in_shift;",
-                  "",
-                  "tests[\"rotation_start_hour is 06:00:00\"] = jsonData.shift.rotation_start_hour === \"06:00:00\";",
-                  "",
-                  "tests[\"rotation_end_hour is 21:00:00\"] = jsonData.shift.rotation_end_hour === \"21:00:00\";",
-                  "",
-                  "tests[\"is_active is true\"] = jsonData.shift.is_active;",
-                  "",
-                  "tests[\"organization_id is correct\"] = jsonData.shift.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests['employees is empty list'] = jsonData.shift.employees.length === 0;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Shift created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"shiftRotatingId\", jsonData.record.id);"
                 ]
               }
             }
