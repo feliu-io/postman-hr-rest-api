@@ -376,7 +376,7 @@
         },
         {
           "_postman_id": "00cc6e10-c74f-4fef-8abe-8b4d4c946cd8",
-          "name": "/organizations Copy",
+          "name": "/users",
           "event": [
             {
               "listen": "test",
