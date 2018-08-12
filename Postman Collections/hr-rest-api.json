@@ -898,12 +898,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "c73c3e5b-9457-4b71-bc05-a39119ca590d",
+                "id": "d3328a61-618e-421f-b9f6-2a0c8f67e18f",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Departments list contains one item\", function() {",
+                  "pm.test(\"Employment positions list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
@@ -926,7 +926,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/departments"
+            "url": "{{url}}/employment_positions"
           },
           "response": []
         },
