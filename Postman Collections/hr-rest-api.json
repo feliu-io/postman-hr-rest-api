@@ -4787,28 +4787,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "bb2735c1-5172-406b-9f81-d656cd1e132d",
+                "id": "34fa1cd7-fcd0-4e5b-8520-cec69000404b",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"payment_id\", jsonData.payment.id);",
-                  "",
-                  "tests['payment_date is 2018-01-01'] = jsonData.payment.payment_date === \"2018-01-01\";",
-                  "",
-                  "tests['document_number is 1234-abc'] = jsonData.payment.document_number === \"1234-abc\";",
-                  "",
-                  "tests['employee_id is correct'] = jsonData.payment.employee_id === parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Payment created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"paymentId\", jsonData.record.id);"
                 ]
               }
             }
@@ -4827,7 +4811,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"payment_date\": \"2018-01-01\",\r\n    \"document_number\": \"1234-abc\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
+              "raw": "{\r\n    \"payment_date\": \"2018-01-01\",\r\n    \"document_number\": \"1234-abc\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
             },
             "url": "{{url}}/payment"
           },
