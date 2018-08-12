@@ -3354,20 +3354,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "5aeb0f8f-d21a-4d1d-95aa-628d76760e0f",
+                "id": "481cf12e-ba82-4f48-a990-fcfbd4e20119",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Bank account is now active.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -3386,9 +3376,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\n\t\"is_active\": true\n}"
             },
-            "url": "{{url}}/activate_bank_account/{{account_id}}"
+            "url": "{{url}}/activate_bank_account/{{accountId}}"
           },
           "response": []
         }
