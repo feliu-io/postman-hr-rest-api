@@ -1312,20 +1312,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "435eed19-eba1-4908-a7b6-ac2ac76d2ee7",
+                "id": "78aed220-3c53-4e77-85da-157db4ddcf64",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Shift is now inactive.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -1346,7 +1336,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/shift/{{shift_r_id}}"
+            "url": "{{url}}/shift/{{shiftRotatingId}}"
           },
           "response": []
         },
