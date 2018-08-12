@@ -777,20 +777,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "a2535077-dc17-4391-b254-f2f4ab543067",
+                "id": "7ea96736-92c3-49ea-9855-ec72590613e7",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"marital_statuses contains 5 items\"] = jsonData.marital_statuses.length === 5;",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 300 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Marital statuses list contains five item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(5);",
+                  "});"
                 ]
               }
             }
