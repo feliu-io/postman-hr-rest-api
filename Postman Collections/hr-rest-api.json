@@ -2549,10 +2549,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "65323cb4-36f2-4f26-86b4-2ac0afe4c472",
+                "id": "b22be4c9-fd70-44c2-93dd-6f5fb1fa4f42",
                 "type": "text/javascript",
                 "exec": [
-                  ""
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"itemId\", jsonData.record.id);"
                 ]
               }
             }
