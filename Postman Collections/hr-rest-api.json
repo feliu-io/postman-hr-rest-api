@@ -3274,30 +3274,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "253dc49b-1898-4668-95d2-cda3e0b1a7bf",
+                "id": "199e0302-24a8-4c2f-a4e9-1ea15f7f33d1",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests['is_active is true'] = jsonData.bank_account.is_active;",
-                  "",
-                  "tests['account_number is 4321'] = jsonData.bank_account.account_number === \"4321\";",
-                  "",
-                  "tests['account_type is Ahorro'] = jsonData.bank_account.account_type === \"Ahorro\";",
-                  "",
-                  "tests['employee_id is correct'] = jsonData.bank_account.employee_id === parseInt(environment.employee_id);",
-                  "",
-                  "tests['bank_id is correct'] = jsonData.bank_account.bank_id === 2;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Bank account updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
@@ -3319,7 +3298,7 @@
               "mode": "raw",
               "raw": "{\n  \"account_number\": \"4321\",\n  \"account_type\": \"Ahorro\",\n  \"is_active\": true,\n  \"employee_id\": {{employeeId}},\n  \"bank_id\": 2\n}"
             },
-            "url": "{{url}}/bank_account/{{account_id}}"
+            "url": "{{url}}/bank_account/{{accountId}}"
           },
           "response": []
         },
