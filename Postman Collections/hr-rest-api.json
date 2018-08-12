@@ -5646,9 +5646,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"work_day\": \"2018-01-03\",\r\n\t\"day_start\": \"2018-01-03T06:15:00\",\r\n\t\"break_start\": \"2018-01-03T10:30:00\",\r\n\t\"break_end\": \"2018-01-03T11:00:00\",\r\n\t\"day_end\": \"2018-01-03T13:59:00\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+              "raw": "{\r\n\t\"sick_note_date\": \"2018-01-02\",\r\n\t\"number_of_hours_requested\": 6,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-04\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
             },
-            "url": "{{url}}/attendance/{{attendanceId}}"
+            "url": "{{url}}/sick_note/{{sickNoteId}}"
           },
           "response": []
         },
