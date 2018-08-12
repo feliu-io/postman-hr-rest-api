@@ -5223,7 +5223,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/deduction_detail/{{deductionDetailId}}"
+            "url": "{{url}}/payment_detail/{{paymentDetailId}}"
           },
           "response": []
         },
