@@ -3343,7 +3343,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/bank_account/{{account_id}}"
+            "url": "{{url}}/bank_account/{{accountId}}"
           },
           "response": []
         },
