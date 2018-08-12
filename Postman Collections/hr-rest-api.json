@@ -5125,12 +5125,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "93648ce9-c414-4acc-8754-2764051f9042",
+                "id": "01da69f9-c8ba-4ccb-8df6-722bd9cd7457",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Deduction details list contains one item\", function() {",
+                  "pm.test(\"Payments details list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
@@ -5153,7 +5153,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/deduction_details/{{paymentId}}"
+            "url": "{{url}}/payment_details/{{paymentId}}"
           },
           "response": []
         },
