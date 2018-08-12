@@ -3165,24 +3165,15 @@
             {
               "listen": "test",
               "script": {
-                "id": "946292fe-040f-4a54-8306-3457ce1e5681",
+                "id": "8970f748-8074-45b3-9079-7d992bd49885",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var requirementId = pm.environment.get(\"requirementId\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests['employee_id is correct'] = jsonData.employee_id === parseInt(environment.employee_id);",
-                  "",
-                  "tests['uniform_item_id is correct'] = jsonData.uniform_item_id === parseInt(environment.item_id);",
-                  "",
-                  "tests['uniform_size_id is correct'] = jsonData.uniform_size_id === parseInt(environment.size_id);",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Requirement returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(requirementId);",
+                  "});"
                 ]
               }
             }
@@ -3203,7 +3194,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/uniform_requirement/{{requirement_id}}",
+            "url": "{{url}}/uniform_requirement/{{requirementId}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
