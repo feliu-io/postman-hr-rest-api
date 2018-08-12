@@ -4296,6 +4296,45 @@
             "url": "{{url}}/dependent"
           },
           "response": []
+        },
+        {
+          "_postman_id": "b3d26bf0-6783-40d8-ac2f-64aad791934a",
+          "name": "/dependents/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7c48aaad-2ae0-4070-ae5a-68c570910145",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Dependents list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/dependents/{{employeeId}}"
+          },
+          "response": []
         }
       ]
     },
@@ -4378,45 +4417,6 @@
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
             "url": "{{url}}/schedule/{{scheduleId}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b3d26bf0-6783-40d8-ac2f-64aad791934a",
-          "name": "/dependents/<int:id> Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7c48aaad-2ae0-4070-ae5a-68c570910145",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Dependents list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(2);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/dependents/{{employeeId}}"
           },
           "response": []
         },
