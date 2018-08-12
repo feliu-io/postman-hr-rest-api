@@ -1963,28 +1963,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "f30a4d8c-3d34-4518-a9f2-174c2ac85960",
+                "id": "c5eef461-21d5-4ada-b550-ee884340d9ae",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"health_permit_type is Blanco\"] = jsonData.health_permit.health_permit_type === \"Blanco\";",
-                  "",
-                  "tests[\"issue_date is 2018-01-31\"] = jsonData.health_permit.issue_date === \"2018-01-31\";",
-                  "",
-                  "tests[\"expiration_date is 2019-01-31\"] = jsonData.health_permit.expiration_date === \"2019-01-31\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.health_permit.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Health permit updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
@@ -2006,7 +1987,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"health_permit_type\": \"Blanco\",\r\n    \"issue_date\": \"2018-01-31\",\r\n    \"expiration_date\": \"2019-01-31\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
             },
-            "url": "{{url}}/health_permit/{{permit_id}}"
+            "url": "{{url}}/health_permit/{{permitId}}"
           },
           "response": []
         },
