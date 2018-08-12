@@ -2395,28 +2395,15 @@
             {
               "listen": "test",
               "script": {
-                "id": "28f43fd1-a746-4d2d-bf42-af377d6634ad",
+                "id": "951238b7-25af-4772-917c-a25f5ec9073a",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var passportId = pm.environment.get(\"passportId\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"passport_number is 123456\"] = jsonData.passport_number === \"123456\";",
-                  "",
-                  "tests[\"issue_date is 2018-01-01\"] = jsonData.issue_date === \"2018-01-01\";",
-                  "",
-                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.expiration_date === \"2019-01-01\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"country_id is correct\"] = jsonData.country_id ===  1;",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Passport returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(passportId);",
+                  "});"
                 ]
               }
             }
@@ -2437,7 +2424,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/passport/{{passport_id}}",
+            "url": "{{url}}/passport/{{passportId}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
