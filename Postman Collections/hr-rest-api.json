@@ -5919,7 +5919,7 @@
         },
         {
           "_postman_id": "edeef691-54eb-4296-a109-40cfbed1ef2e",
-          "name": "/absence_authorization Copy",
+          "name": "/absence_authorization",
           "event": [
             {
               "listen": "test",
