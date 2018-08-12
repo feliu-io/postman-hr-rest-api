@@ -4548,20 +4548,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "11b4bb94-c501-4641-b068-a089dc60125c",
+                "id": "84060fcc-f81e-4b8b-9742-da639abf8510",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Creditor is now active.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -4580,9 +4570,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\n  \"is_active\": true\n}"
             },
-            "url": "{{url}}/activate_creditor/{{creditor_id}}"
+            "url": "{{url}}/activate_creditor/{{creditorId}}"
           },
           "response": []
         }
