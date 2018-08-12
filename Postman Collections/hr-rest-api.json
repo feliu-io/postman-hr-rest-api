@@ -4768,14 +4768,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "39b2f1f2-a164-44a4-a459-007f662d2700",
+                "id": "939dfc10-6d54-44d6-afcc-1b86d2d2009a",
                 "type": "text/javascript",
                 "exec": [
-                  "var paymentId = pm.environment.get(\"paymentId\");",
+                  "var creditorId = pm.environment.get(\"creditorId\");",
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Payment returned is the one requested\", function() {",
-                  "    pm.expect(jsonData.record.id).to.eql(paymentId);",
+                  "pm.test(\"Creditor returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(creditorId);",
                   "});"
                 ]
               }
