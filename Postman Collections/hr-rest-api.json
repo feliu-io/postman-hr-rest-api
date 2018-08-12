@@ -3447,7 +3447,7 @@
         },
         {
           "_postman_id": "0e9d64ae-b648-ee11-5e2b-70417dd2dd14",
-          "name": "/bank_account/<int:account_id>",
+          "name": "/bank_account/<int:id>",
           "event": [
             {
               "listen": "test",
