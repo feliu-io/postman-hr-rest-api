@@ -2853,7 +2853,7 @@
         },
         {
           "_postman_id": "d2450fb1-0999-47ef-b592-b75dee4c77e8",
-          "name": "/uniform_items/<int:id>",
+          "name": "/uniform_items/",
           "event": [
             {
               "listen": "test",
