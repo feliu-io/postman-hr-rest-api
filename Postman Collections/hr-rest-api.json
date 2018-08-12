@@ -3033,20 +3033,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "550b87b7-ad00-411d-b102-17839bf730be",
+                "id": "8345110d-e7de-40b7-a544-358cb94d77b4",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform requirement deleted.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -3067,7 +3057,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/uniform_requirement/{{requirement_id}}"
+            "url": "{{url}}/uniform_requirement/{{requirementId}}"
           },
           "response": []
         },
