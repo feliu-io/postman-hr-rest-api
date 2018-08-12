@@ -5683,7 +5683,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/attendance/{{attendanceId}}"
+            "url": "{{url}}/sick_note/{{sickNoteId}}"
           },
           "response": []
         }
