@@ -1541,13 +1541,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "3d6bc52b-89e9-4ebb-8aef-fb2189bc2cd5",
+                "id": "e2d0b330-ff3b-4ff5-89ae-69ec2701b4ef",
                 "type": "text/javascript",
                 "exec": [
                   "var employeeId = pm.environment.get(\"employeeId\");",
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Shift returned is the one requested\", function() {",
+                  "pm.test(\"Employee returned is the one requested\", function() {",
                   "    pm.expect(jsonData.record.id).to.eql(employeeId);",
                   "});"
                 ]
