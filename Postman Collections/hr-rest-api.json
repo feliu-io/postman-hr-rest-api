@@ -1648,45 +1648,6 @@
           "response": []
         },
         {
-          "_postman_id": "c9410e47-614a-4d4c-91d1-b52eecc64bcf",
-          "name": "/employees Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c73c3e5b-9457-4b71-bc05-a39119ca590d",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Departments list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/departments"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "7e4a7d43-5042-d645-9099-00311afba277",
           "name": "/employee/<id:employee_id>",
           "event": [
@@ -2115,6 +2076,45 @@
               "raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employee_id}}\r\n}"
             },
             "url": "{{url}}/emergency_contact"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c9410e47-614a-4d4c-91d1-b52eecc64bcf",
+          "name": "/employees Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c73c3e5b-9457-4b71-bc05-a39119ca590d",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Departments list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/departments"
           },
           "response": []
         }
