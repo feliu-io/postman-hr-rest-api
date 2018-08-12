@@ -1768,20 +1768,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "71d09c42-9212-4c32-a971-260332c8aa26",
+                "id": "e22a9c36-b5d3-4614-b5db-15da349818a2",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Emergency contact deleted.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -1802,7 +1792,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/emergency_contact/{{contact_id}}"
+            "url": "{{url}}/emergency_contact/{{contactId}}"
           },
           "response": []
         },
