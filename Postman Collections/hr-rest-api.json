@@ -5315,14 +5315,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "0ae6965c-4629-43ce-b1ca-f6a3051b6e65",
+                "id": "e52141eb-f416-4cae-b73d-116bb6c80be5",
                 "type": "text/javascript",
                 "exec": [
-                  "var dependentId = pm.environment.get(\"dependentId\");",
+                  "var attendanceId = pm.environment.get(\"attendanceId\");",
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Dependent returned is the one requested\", function() {",
-                  "    pm.expect(jsonData.record.id).to.eql(dependentId);",
+                  "pm.test(\"Attendance returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(attendanceId);",
                   "});"
                 ]
               }
@@ -5344,7 +5344,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/dependent/{{dependentId}}"
+            "url": "{{url}}/attendance/{{attendanceId}}"
           },
           "response": []
         },
