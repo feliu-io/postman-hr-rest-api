@@ -3780,12 +3780,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "4c12327e-d890-4bd5-9485-94d8f26ae595",
+                "id": "e92b321e-bc13-4443-83ec-015c249bdee4",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Uniform requirements list contains one item\", function() {",
+                  "pm.test(\"Bank accounts list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
@@ -3808,7 +3808,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/uniform_requirements/{{employeeId}}"
+            "url": "{{url}}/bank_accounts/{{employeeId}}"
           },
           "response": []
         },
