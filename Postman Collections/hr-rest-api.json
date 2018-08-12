@@ -3751,7 +3751,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"account_number\": \"4321\",\n  \"account_type\": \"Ahorro\",\n  \"is_active\": true,\n  \"employee_id\": {{employee_id}},\n  \"bank_id\": 2\n}"
+              "raw": "{\n  \"account_number\": \"4321\",\n  \"account_type\": \"Ahorro\",\n  \"is_active\": true,\n  \"employee_id\": {{employeeId}},\n  \"bank_id\": 2\n}"
             },
             "url": "{{url}}/bank_account/{{account_id}}"
           },
