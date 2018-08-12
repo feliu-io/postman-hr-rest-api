@@ -2088,51 +2088,6 @@
           "response": []
         },
         {
-          "_postman_id": "76121e34-afcc-c53c-0591-a3ebc24fc78a",
-          "name": "/health_permit/<int:permit_id>",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a9d1f807-3168-4ae1-a6da-c132d572ee6a",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Health permit deleted.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/health_permit/{{permit_id}}"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "37291dc4-cf18-18f9-133f-8fab22f4aad3",
           "name": "/health_permit",
           "event": [
