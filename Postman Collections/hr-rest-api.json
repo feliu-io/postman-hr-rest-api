@@ -1763,7 +1763,7 @@
         },
         {
           "_postman_id": "5f9e319e-8b57-eaf8-4c79-d9edd8fe0325",
-          "name": "/emergency_contact/<int:contact_id>",
+          "name": "/emergency_contact/<int:id>",
           "event": [
             {
               "listen": "test",
