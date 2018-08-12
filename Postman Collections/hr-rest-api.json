@@ -3593,20 +3593,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "030d98aa-a814-4c43-b7c0-f21eac1943ff",
+                "id": "f7b429ce-9f50-4c68-a6d8-6fa6dd5216f4",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Dependent deleted.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -3627,7 +3617,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/dependent/{{dependent_id}}"
+            "url": "{{url}}/dependent/{{dependentId}}"
           },
           "response": []
         },
