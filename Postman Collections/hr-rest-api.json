@@ -548,30 +548,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "0a831ca8-4ac1-463e-8c20-16a85108321d",
+                "id": "1148dccd-b397-45ca-b5e0-e2bb72fe8239",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"department_id\", jsonData.department.id);",
-                  "",
-                  "tests['is_active is true'] = jsonData.department.is_active;",
-                  "",
-                  "tests['department_name is test_d'] = jsonData.department.department_name === \"test_d\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.department.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department created successfully.\";",
-                  "",
-                  "tests['employees is empty list'] = jsonData.department.employees.length === 0;",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"departmentId\", jsonData.record.id);"
                 ]
               }
             }
