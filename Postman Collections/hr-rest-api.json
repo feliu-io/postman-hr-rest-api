@@ -4248,26 +4248,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "bbd98e36-eba0-48ff-a4cf-93027f2114db",
+                "id": "4c8bf535-17e1-4b20-b4fb-bfc51d7bba13",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests['payment_date is 2018-02-01'] = jsonData.payment.payment_date === \"2018-02-01\";",
-                  "",
-                  "tests['document_number is 1234-def'] = jsonData.payment.document_number === \"1234-def\";",
-                  "",
-                  "tests['employee_id is correct'] = jsonData.payment.employee_id === parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Payment updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -4288,7 +4272,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"payment_date\": \"2018-02-01\",\r\n    \"document_number\": \"1234-def\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
             },
-            "url": "{{url}}/payment/{{payment_id}}"
+            "url": "{{url}}/payment/{{paymentId}}"
           },
           "response": []
         },
