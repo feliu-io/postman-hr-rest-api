@@ -3698,12 +3698,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "21f395e1-ee97-4d8d-b3f8-74f9984fcde0",
+                "id": "39d691a9-ffd7-4734-a146-410fbfd94a57",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.environment.set(\"departmentId\", jsonData.record.id);"
+                  "pm.environment.set(\"dependentId\", jsonData.record.id);"
                 ]
               }
             }
