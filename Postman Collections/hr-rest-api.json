@@ -1728,7 +1728,7 @@
         },
         {
           "_postman_id": "c4ed860c-d647-cffe-ab33-deeca57db56e",
-          "name": "/emergency_contact/<id:contact_id>",
+          "name": "/emergency_contact/<int:_id>",
           "event": [
             {
               "listen": "test",
