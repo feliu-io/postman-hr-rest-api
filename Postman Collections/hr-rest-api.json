@@ -381,13 +381,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "d7107b87-a452-4b1e-b212-0750c1038a4d",
+                "id": "b6123e92-fbd6-4b79-a4ea-1166328730d1",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Organizations list contains two items\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(2);",
+                  "pm.test(\"Users list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
               }
@@ -409,7 +409,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/organizations"
+            "url": "{{url}}/users"
           },
           "response": []
         },
