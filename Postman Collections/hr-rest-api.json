@@ -5236,24 +5236,15 @@
             {
               "listen": "test",
               "script": {
-                "id": "e9813513-cd22-46bd-9540-d7a854af421a",
+                "id": "75dbbe56-6886-464d-a5a5-e37bb76474ad",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var deductionDetailId = pm.environment.get(\"deductionDetailId\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"deducted_amount is 67.89\"] = jsonData.deducted_amount === \"67.89\";",
-                  "",
-                  "tests[\"payment_id is correct\"] = jsonData.payment_id ===  parseInt(environment.payment_id);",
-                  "",
-                  "tests[\"deduction_id is correct\"] = jsonData.deduction_id ===  parseInt(environment.deduction_id);",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Deduction detail returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(deductionDetailId);",
+                  "});"
                 ]
               }
             }
@@ -5274,7 +5265,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/deduction_detail/{{deduction_detail_id}}",
+            "url": "{{url}}/deduction_detail/{{deductionDetailId}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
