@@ -4999,34 +4999,15 @@
             {
               "listen": "test",
               "script": {
-                "id": "fd68c16e-7b30-4aa2-9685-53c7c450156a",
+                "id": "f3b38cb5-2ff7-46f8-88d2-0a8d19b5529b",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var creditorId = pm.environment.get(\"creditorId\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"start_date is 2018-01-01\"] = jsonData.start_date === \"2018-01-01\";",
-                  "",
-                  "tests[\"end_date is 2018-01-31\"] = jsonData.end_date === \"2018-01-31\";",
-                  "",
-                  "tests[\"deduction_per_payment_period is 123.45\"] = jsonData.deduction_per_payment_period === \"123.45\";",
-                  "",
-                  "tests[\"payment_method is Cheque\"] = jsonData.payment_method === \"Cheque\";",
-                  "",
-                  "tests[\"deduct_in_december is true\"] = jsonData.deduct_in_december;",
-                  "",
-                  "tests[\"is_active is true\"] = jsonData.is_active;",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"creditor_id is correct\"] = jsonData.creditor_id ===  parseInt(environment.creditor_id);",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Creditor returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(creditorId);",
+                  "});"
                 ]
               }
             }
