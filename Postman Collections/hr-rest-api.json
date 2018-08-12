@@ -5459,7 +5459,7 @@
         },
         {
           "_postman_id": "6e7b38fc-2d6b-43d1-8745-5358fd3bd619",
-          "name": "/attendance Copy",
+          "name": "/attendance",
           "event": [
             {
               "listen": "test",
