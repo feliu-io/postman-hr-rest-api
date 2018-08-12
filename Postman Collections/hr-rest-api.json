@@ -2239,30 +2239,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "2fd331cb-a729-4001-96da-da5ea7f1b41a",
+                "id": "46c2c5c6-ed65-4c27-afdf-7ea940e1d420",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"passport_number is 654321\"] = jsonData.passport.passport_number === \"654321\";",
-                  "",
-                  "tests[\"issue_date is 2018-01-31\"] = jsonData.passport.issue_date === \"2018-01-31\";",
-                  "",
-                  "tests[\"expiration_date is 2019-01-31\"] = jsonData.passport.expiration_date === \"2019-01-31\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.passport.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"country_id is correct\"] = jsonData.passport.country_id ===  2;",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Passport updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
@@ -2284,7 +2263,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"passport_number\": \"654321\",\r\n    \"issue_date\": \"2018-01-31\",\r\n    \"expiration_date\": \"2019-01-31\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"country_id\": 2\r\n}"
             },
-            "url": "{{url}}/passport/{{passport_id}}"
+            "url": "{{url}}/passport/{{passportId}}"
           },
           "response": []
         },
