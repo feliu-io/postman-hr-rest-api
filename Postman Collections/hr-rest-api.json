@@ -996,7 +996,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"position_name_feminine\": \"new_test_e_p_f\",\n  \"position_name_masculine\": \"new_test_e_p_m\",\n  \"minimum_hourly_wage\": 2.00,\n  \"organization_id\": {{organization_id}},\n  \"is_active\": true\n}"
+              "raw": "{\n  \"position_name_feminine\": \"new_test_e_p_f\",\n  \"position_name_masculine\": \"new_test_e_p_m\",\n  \"minimum_hourly_wage\": 2.00,\n  \"organization_id\": {{organizationId}},\n  \"is_active\": true\n}"
             },
             "url": "{{url}}/employment_position/{{position_id}}"
           },
