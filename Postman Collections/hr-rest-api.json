@@ -2853,7 +2853,7 @@
         },
         {
           "_postman_id": "d2450fb1-0999-47ef-b592-b75dee4c77e8",
-          "name": "/passports/<int:id> Copy",
+          "name": "/uniform_items/<int:id>",
           "event": [
             {
               "listen": "test",
