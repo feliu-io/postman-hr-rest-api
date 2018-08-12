@@ -3181,7 +3181,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"size_description\": \"new_test_u_s\", \n  \"uniform_item_id\": {{item_id}}\n}"
+              "raw": "{\n  \"size_description\": \"new_test_u_s\", \n  \"uniform_item_id\": {{itemId}}\n}"
             },
             "url": "{{url}}/uniform_size/{{size_id}}"
           },
