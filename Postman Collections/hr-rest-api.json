@@ -1075,6 +1075,45 @@
             "url": "{{url}}/activate_employment_position/{{position_id}}"
           },
           "response": []
+        },
+        {
+          "_postman_id": "8bb73929-099d-4dff-92c6-19efc201eca4",
+          "name": "/departments Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c73c3e5b-9457-4b71-bc05-a39119ca590d",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Departments list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/departments"
+          },
+          "response": []
         }
       ]
     },
