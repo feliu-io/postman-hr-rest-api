@@ -5884,7 +5884,7 @@
         },
         {
           "_postman_id": "bb28a7c1-627b-474f-bd43-7dce83c69637",
-          "name": "/sick_note/<int:id>",
+          "name": "/absence_authorization/<int:id>",
           "event": [
             {
               "listen": "test",
