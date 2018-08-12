@@ -5263,43 +5263,6 @@
             "url": "{{url}}/payment_detail"
           },
           "response": []
-        },
-        {
-          "_postman_id": "14eca572-a891-4012-9039-18b3c828f6e2",
-          "name": "/deduction_detail",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "85094df3-5c46-4a1a-bd45-d916606477d6",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.environment.set(\"deductionDetailId\", jsonData.record.id);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
-            },
-            "url": "{{url}}/deduction_detail"
-          },
-          "response": []
         }
       ]
     }
