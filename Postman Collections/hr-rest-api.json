@@ -1615,12 +1615,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "c73c3e5b-9457-4b71-bc05-a39119ca590d",
+                "id": "3adbc020-cef4-4bf0-8b92-a269b01562fa",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Departments list contains one item\", function() {",
+                  "pm.test(\"Employees list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
@@ -1643,7 +1643,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/departments"
+            "url": "{{url}}/employees"
           },
           "response": []
         },
