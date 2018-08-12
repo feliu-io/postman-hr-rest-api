@@ -1347,20 +1347,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "76acf46d-77d3-4c0a-b6b8-8fd0878a8ad8",
+                "id": "1191dbef-9d66-45f1-8e21-21be6714f793",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Shift is now active.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -1379,7 +1369,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\n\t\"is_active\": true\n}"
             },
             "url": "{{url}}/activate_shift/{{shift_r_id}}"
           },
