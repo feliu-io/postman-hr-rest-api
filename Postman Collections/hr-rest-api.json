@@ -4650,45 +4650,6 @@
           "response": []
         },
         {
-          "_postman_id": "5a84b9d3-aa2c-487d-b553-500bf22346cb",
-          "name": "/schedules/<int:id> Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6edb8ccf-1602-4628-ac14-d21e3800b14b",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Schedules list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
-            },
-            "url": "{{url}}/schedules/{{departmentId}}"
-          },
-          "response": []
-        },
-        {
           "_postman_id": "58b18112-60e3-4050-a193-4dbf6eb3b313",
           "name": "/schedule_detail/<int:detail_id>",
           "event": [
@@ -4914,6 +4875,45 @@
               "raw": "{\r\n    \"day_1_start\": \"2018-01-01T06:00:00\",\r\n    \"day_1_end\": \"2018-01-01T14:00:00\",\r\n    \"day_1_comment\": \"comment 1\",\r\n    \"day_2_start\": \"2018-01-02T06:00:00\",\r\n    \"day_2_end\": \"2018-01-02T14:00:00\",\r\n    \"day_2_comment\": \"comment 2\",\r\n    \"day_3_start\": \"2018-01-03T06:00:00\",\r\n    \"day_3_end\": \"2018-01-03T14:00:00\",\r\n    \"day_3_comment\": \"comment 3\",\r\n    \"day_4_start\": \"2018-01-04T06:00:00\",\r\n    \"day_4_end\": \"2018-01-04T14:00:00\",\r\n    \"day_4_comment\": \"comment 4\",\r\n    \"day_5_start\": null,\r\n    \"day_5_end\": null,\r\n    \"day_5_comment\": null,\r\n    \"day_6_start\": \"2018-01-06T22:00:00\",\r\n    \"day_6_end\": \"2018-01-07T06:00:00\",\r\n    \"day_6_comment\": \"comment 6\",\r\n    \"day_7_start\": \"2018-01-07T22:00:00\",\r\n    \"day_7_end\": \"2018-01-08T06:00:00\",\r\n    \"day_7_comment\": \"comment 7\",\r\n    \"employee_id\": {{employee_id}},\r\n    \"schedule_id\": {{schedule_id}}\r\n}"
             },
             "url": "{{url}}/schedule_detail"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5a84b9d3-aa2c-487d-b553-500bf22346cb",
+          "name": "/schedules/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6edb8ccf-1602-4628-ac14-d21e3800b14b",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Schedules list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/schedules/{{departmentId}}"
           },
           "response": []
         }
