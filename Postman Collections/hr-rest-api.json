@@ -2117,6 +2117,45 @@
             "url": "{{url}}/emergency_contact"
           },
           "response": []
+        },
+        {
+          "_postman_id": "65e9b8f9-1fe5-48ed-b078-db3734797d45",
+          "name": "/emergency_contacts/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "327eb813-e661-40d2-9bba-7aad3cad822d",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Contact list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/emergency_contacts/{{employeeId}}"
+          },
+          "response": []
         }
       ]
     },
