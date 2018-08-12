@@ -3519,12 +3519,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "7c48aaad-2ae0-4070-ae5a-68c570910145",
+                "id": "0d318d72-65da-4a8b-9cee-e384e323c726",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Dependents list contains one item\", function() {",
+                  "pm.test(\"Dependents list contains two item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
