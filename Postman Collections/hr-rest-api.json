@@ -4090,7 +4090,7 @@
         },
         {
           "_postman_id": "e55c8cae-2142-4a6f-bb81-7613d52149b9",
-          "name": "/uniform_requirements/<int:id> Copy",
+          "name": "/dependents/<int:id> Copy",
           "event": [
             {
               "listen": "test",
