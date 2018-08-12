@@ -1012,7 +1012,7 @@
         },
         {
           "_postman_id": "0e435f79-f0d6-e414-e353-a417eafe82c1",
-          "name": "/activate_employment_position/<int:position_id>",
+          "name": "/activate_employment_position/<int:id>",
           "event": [
             {
               "listen": "test",
