@@ -5274,38 +5274,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "029d8406-5a3e-4332-9ac6-654dba83fb9f",
+                "id": "79f7b906-3729-4400-ab4c-a14d9ac09d86",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"deduction_id\", jsonData.deduction.id);",
-                  "",
-                  "tests[\"start_date is 2018-01-01\"] = jsonData.deduction.start_date === \"2018-01-01\";",
-                  "",
-                  "tests[\"end_date is 2018-01-31\"] = jsonData.deduction.end_date === \"2018-01-31\";",
-                  "",
-                  "tests[\"deduction_per_payment_period is 123.45\"] = jsonData.deduction.deduction_per_payment_period === \"123.45\";",
-                  "",
-                  "tests[\"payment_method is Cheque\"] = jsonData.deduction.payment_method === \"Cheque\";",
-                  "",
-                  "tests[\"deduct_in_december is true\"] = jsonData.deduction.deduct_in_december;",
-                  "",
-                  "tests[\"is_active is true\"] = jsonData.deduction.is_active;",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.deduction.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"creditor_id is correct\"] = jsonData.deduction.creditor_id ===  parseInt(environment.creditor_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Deduction created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"deductionId\", jsonData.record.id);"
                 ]
               }
             }
@@ -5324,7 +5298,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"start_date\": \"2018-01-01\",\r\n\t\"end_date\": \"2018-01-31\",\r\n\t\"deduction_per_payment_period\": \"123.45\",\r\n\t\"payment_method\": \"Cheque\",\r\n\t\"deduct_in_december\": true,\r\n\t\"is_active\": true,\r\n\t\"employee_id\": {{employee_id}},\r\n\t\"creditor_id\": {{creditor_id}}\r\n}"
+              "raw": "{\r\n\t\"start_date\": \"2018-01-01\",\r\n\t\"end_date\": \"2018-01-31\",\r\n\t\"deduction_per_payment_period\": \"123.45\",\r\n\t\"payment_method\": \"Cheque\",\r\n\t\"deduct_in_december\": true,\r\n\t\"is_active\": true,\r\n\t\"employee_id\": {{employeeId}},\r\n\t\"creditor_id\": {{creditorId}}\r\n}"
             },
             "url": "{{url}}/deduction"
           },
