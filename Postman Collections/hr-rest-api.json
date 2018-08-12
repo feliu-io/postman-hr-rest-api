@@ -4564,6 +4564,45 @@
             "url": "{{url}}/schedule"
           },
           "response": []
+        },
+        {
+          "_postman_id": "5a84b9d3-aa2c-487d-b553-500bf22346cb",
+          "name": "/schedules/<int:id> Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6edb8ccf-1602-4628-ac14-d21e3800b14b",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.test(\"Schedules list contains one item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"root\", \n  \"is_active\": True\n}"
+            },
+            "url": "{{url}}/schedules/{{departmentId}}"
+          },
+          "response": []
         }
       ]
     },
