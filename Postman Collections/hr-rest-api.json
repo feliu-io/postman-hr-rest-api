@@ -2059,26 +2059,15 @@
             {
               "listen": "test",
               "script": {
-                "id": "3626d836-e00a-47c1-b8a1-55067dccd616",
+                "id": "7ee04d82-4152-484a-b7a0-5b4a35021277",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var permitId = pm.environment.get(\"permitId\");",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"health_permit_type is Verde\"] = jsonData.health_permit_type === \"Verde\";",
-                  "",
-                  "tests[\"issue_date is 2018-01-01\"] = jsonData.issue_date === \"2018-01-01\";",
-                  "",
-                  "tests[\"expiration_date is 2019-01-01\"] = jsonData.expiration_date === \"2019-01-01\";",
-                  "",
-                  "tests[\"employee_id is correct\"] = jsonData.employee_id ===  parseInt(environment.employee_id);",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Shift returned is the one requested\", function() {",
+                  "    pm.expect(jsonData.record.id).to.eql(permitId);",
+                  "});"
                 ]
               }
             }
@@ -2099,7 +2088,7 @@
               "mode": "raw",
               "raw": "{\n  \"username\": \"jfeliu\", \n  \"password\": \"1234\",\n  \"organization_id\": 1\n  \"is_super\": True,\n  \"is_owner\": True,\n  \"is_active\": True\n}"
             },
-            "url": "{{url}}/health_permit/{{permit_id}}",
+            "url": "{{url}}/health_permit/{{permitId}}",
             "description": "Register a new user supplying a \"username\" and \"password\""
           },
           "response": []
