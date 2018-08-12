@@ -3972,20 +3972,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "46c9ac83-d9b0-42b3-9db4-f48b37a48f20",
+                "id": "91385285-2c6c-417b-a08c-86a01e45acc1",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "tests[\"family_relations contains 5 items\"] = jsonData.family_relations.length === 6;",
-                  "",
-                  "tests[\"Successful GET request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < 500;",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.test(\"Family relations accounts list contains six item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(6);",
+                  "});"
                 ]
               }
             }
