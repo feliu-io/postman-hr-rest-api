@@ -2479,24 +2479,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "7bde2373-e939-4e8c-b514-92acc17f02ac",
+                "id": "c6c462fe-86f2-4689-bce3-91559a3bcbe4",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests['item_name is new_test_u_i'] = jsonData.uniform_item.item_name === \"new_test_u_i\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.uniform_item.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform item updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
@@ -2518,7 +2503,7 @@
               "mode": "raw",
               "raw": "{\n  \"item_name\": \"new_test_u_i\", \n  \"organization_id\": {{organizationId}}\n}"
             },
-            "url": "{{url}}/uniform_item/{{item_id}}"
+            "url": "{{url}}/uniform_item/{{itemId}}"
           },
           "response": []
         },
