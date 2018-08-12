@@ -2900,7 +2900,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"item_name\": \"new_test_u_i\", \n  \"organization_id\": {{organization_id}}\n}"
+              "raw": "{\n  \"item_name\": \"new_test_u_i\", \n  \"organization_id\": {{organizationId}}\n}"
             },
             "url": "{{url}}/uniform_item/{{item_id}}"
           },
