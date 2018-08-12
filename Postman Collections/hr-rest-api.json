@@ -5309,6 +5309,43 @@
           "response": []
         },
         {
+          "_postman_id": "6e7b38fc-2d6b-43d1-8745-5358fd3bd619",
+          "name": "/attendance Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2976156d-0ece-41b4-847e-e8d3b7008408",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"attendanceId\", jsonData.record.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"work_day\": \"2018-01-01\",\r\n\t\"day_start\": \"2018-01-01T06:00:00\",\r\n\t\"break_start\": \"2018-01-01T10:00:00\",\r\n\t\"break_end\": \"2018-01-01T10:30:00\",\r\n\t\"day_end\": \"2018-01-01T14:00:00\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+            },
+            "url": "{{url}}/attendance"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "488dbf5c-1cf4-488a-85d6-3fb41d430d6b",
           "name": "/attendance/<int:id>",
           "event": [
@@ -5454,43 +5491,6 @@
               "raw": ""
             },
             "url": "{{url}}/attendance/{{attendanceId}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "6e7b38fc-2d6b-43d1-8745-5358fd3bd619",
-          "name": "/attendance Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2976156d-0ece-41b4-847e-e8d3b7008408",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.environment.set(\"attendanceId\", jsonData.record.id);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"work_day\": \"2018-01-01\",\r\n\t\"day_start\": \"2018-01-01T06:00:00\",\r\n\t\"break_start\": \"2018-01-01T10:00:00\",\r\n\t\"break_end\": \"2018-01-01T10:30:00\",\r\n\t\"day_end\": \"2018-01-01T14:00:00\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
-            },
-            "url": "{{url}}/attendance"
           },
           "response": []
         }
