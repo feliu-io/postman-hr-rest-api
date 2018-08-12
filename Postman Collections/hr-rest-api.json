@@ -4243,7 +4243,7 @@
         },
         {
           "_postman_id": "4911b125-9ab5-409d-8e16-3713cd88d0ac",
-          "name": "/payment/<int:payment_id>",
+          "name": "/payment/<int:id>",
           "event": [
             {
               "listen": "test",
