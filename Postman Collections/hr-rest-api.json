@@ -5273,7 +5273,7 @@
       "item": [
         {
           "_postman_id": "f1a94287-2466-4bb3-b8e6-6314637e3475",
-          "name": "/dependent",
+          "name": "/attendance",
           "event": [
             {
               "listen": "test",
