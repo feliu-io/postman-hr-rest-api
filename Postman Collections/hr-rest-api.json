@@ -893,7 +893,7 @@
         },
         {
           "_postman_id": "1ca5b64c-c9cd-4ec1-bfb8-c599a7c9cb64",
-          "name": "/departments",
+          "name": "/employment_position",
           "event": [
             {
               "listen": "test",
