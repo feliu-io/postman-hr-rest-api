@@ -5913,7 +5913,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/sick_note/{{sickNoteId}}"
+            "url": "{{url}}/absence_authorization/{{absenceAuthorizationId}}"
           },
           "response": []
         }
