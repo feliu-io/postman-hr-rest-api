@@ -1812,13 +1812,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "c428d0b7-130f-401c-8b41-3267472abf43",
+                "id": "5af6b8c8-55b5-4cff-8267-62bb46d1cc57",
                 "type": "text/javascript",
                 "exec": [
                   "var contactId = pm.environment.get(\"contactId\");",
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Shift returned is the one requested\", function() {",
+                  "pm.test(\"Contact returned is the one requested\", function() {",
                   "    pm.expect(jsonData.record.id).to.eql(contactId);",
                   "});"
                 ]
