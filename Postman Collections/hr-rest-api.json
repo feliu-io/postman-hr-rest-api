@@ -107,7 +107,7 @@
         },
         {
           "_postman_id": "0f3d3798-cebb-1222-4777-fc1e63574fbc",
-          "name": "/organization/<int:organization_id>",
+          "name": "/organization/<int:id>",
           "event": [
             {
               "listen": "test",
