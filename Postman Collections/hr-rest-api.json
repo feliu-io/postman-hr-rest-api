@@ -847,8 +847,7 @@
               "mode": "raw",
               "raw": "{\n  \"position_name_feminine\": \"test_e_p_f\",\n  \"position_name_masculine\": \"test_e_p_m\",\n  \"minimum_hourly_wage\": 1.00,\n  \"organization_id\": {{organizationId}},\n  \"is_active\": true\n}"
             },
-            "url": "{{url}}/employment_position",
-            "description": "Register a new user supplying a \"username\" and \"password\""
+            "url": "{{url}}/employment_position"
           },
           "response": []
         },
