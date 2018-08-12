@@ -3321,28 +3321,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "451a4501-1c40-4d64-b64c-3e7184c776d3",
+                "id": "4f1ebbf5-3f03-4f77-a566-f97255cc4c9c",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
+                  "var jsonData = pm.response.json();",
                   "",
-                  "postman.setEnvironmentVariable(\"requirement_id\", jsonData.uniform_requirement.id);",
-                  "",
-                  "tests['employee_id is correct'] = jsonData.uniform_requirement.employee_id === parseInt(environment.employee_id);",
-                  "",
-                  "tests['uniform_item_id is correct'] = jsonData.uniform_requirement.uniform_item_id === parseInt(environment.item_id);",
-                  "",
-                  "tests['uniform_size_id is correct'] = jsonData.uniform_requirement.uniform_size_id === parseInt(environment.size_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Uniform requirement created successfully.\";",
-                  "",
-                  "tests[\"Successful POST request\"] = responseCode.code === 201;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  "pm.environment.set(\"requirementId\", jsonData.record.id);"
                 ]
               }
             }
@@ -3361,7 +3345,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"employee_id\": {{employee_id}},\n  \"uniform_item_id\": {{item_id}},\n  \"uniform_size_id\": {{size_id}}\n}"
+              "raw": "{\n  \"employee_id\": {{employeeId}},\n  \"uniform_item_id\": {{itemId}},\n  \"uniform_size_id\": {{sizeId}}\n}"
             },
             "url": "{{url}}/uniform_requirement"
           },
