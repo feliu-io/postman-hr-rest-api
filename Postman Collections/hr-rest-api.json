@@ -5738,12 +5738,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "8496be67-b034-4ffc-a226-07cab1660092",
+                "id": "7e683c05-b5a9-40d5-9c20-3ec0f3efb89d",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.environment.set(\"sickNoteId\", jsonData.record.id);"
+                  "pm.environment.set(\"absenceAuthorizationId\", jsonData.record.id);"
                 ]
               }
             }
@@ -5762,9 +5762,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"sick_note_date\": \"2018-01-01\",\r\n\t\"number_of_hours_requested\": 8,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-02\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+              "raw": "{\r\n\t\"absence_date\": \"2018-01-02\",\r\n\t\"absence_reason\": \"test absence reason 0\",\r\n\t\"is_payment_authorized\": true,\r\n\t\"authorization_request_date\": \"2018-01-01\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
             },
-            "url": "{{url}}/sick_note"
+            "url": "{{url}}/absence_authorization"
           },
           "response": []
         },
