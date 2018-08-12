@@ -4478,30 +4478,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "ea928767-c202-4637-ba4d-e891f5484a17",
+                "id": "dbb73616-7eb6-4338-8178-6e2f54fd2ad9",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests['is_active is true'] = jsonData.creditor.is_active;",
-                  "",
-                  "tests['creditor_name is new_test_cr'] = jsonData.creditor.creditor_name === \"new_test_cr\";",
-                  "",
-                  "tests['phone_number is 456-7890'] = jsonData.creditor.phone_number === \"456-7890\";",
-                  "",
-                  "tests['eamil is test@new_test_cr.com'] = jsonData.creditor.email === \"test@new_test_cr.com\";",
-                  "",
-                  "tests['organization_id is correct'] = jsonData.creditor.organization_id === parseInt(environment.organization_id);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Creditor updated successfully.\";",
-                  "",
-                  "tests[\"Successful PUT request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";",
                   ""
                 ]
               }
@@ -4523,7 +4502,7 @@
               "mode": "raw",
               "raw": "{\n  \"creditor_name\": \"new_test_cr\",\n  \"phone_number\": \"456-7890\",\n  \"email\": \"test@new_test_cr.com\",\n  \"organization_id\": {{organizationId}}\n}"
             },
-            "url": "{{url}}/creditor/{{creditor_id}}"
+            "url": "{{url}}/creditor/{{creditorId}}"
           },
           "response": []
         },
