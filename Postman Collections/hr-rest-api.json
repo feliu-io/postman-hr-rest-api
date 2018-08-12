@@ -1609,7 +1609,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/activate_employee/{{employee_id}}"
+            "url": "{{url}}/activate_employee/{{employeeId}}"
           },
           "response": []
         }
