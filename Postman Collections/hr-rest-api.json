@@ -744,20 +744,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "24c7c7c9-788d-4407-b391-517169d5af0a",
+                "id": "b15fea53-10bf-4f77-a625-d04adee8db56",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Department is now inactive.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -778,7 +768,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{url}}/department/{{department_id}}"
+            "url": "{{url}}/department/{{departmentId}}"
           },
           "response": []
         },
