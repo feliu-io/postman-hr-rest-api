@@ -5769,6 +5769,43 @@
           "response": []
         },
         {
+          "_postman_id": "edeef691-54eb-4296-a109-40cfbed1ef2e",
+          "name": "/absence_authorization Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7e683c05-b5a9-40d5-9c20-3ec0f3efb89d",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "pm.environment.set(\"absenceAuthorizationId\", jsonData.record.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"absence_date\": \"2018-01-02\",\r\n\t\"absence_reason\": \"test absence reason 0\",\r\n\t\"is_payment_authorized\": true,\r\n\t\"authorization_request_date\": \"2018-01-01\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+            },
+            "url": "{{url}}/absence_authorization"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "f4ae9171-06fe-47dd-91ed-8deae1f3b5a2",
           "name": "/absence_authorization/<int:id>",
           "event": [
@@ -5914,43 +5951,6 @@
               "raw": ""
             },
             "url": "{{url}}/absence_authorization/{{absenceAuthorizationId}}"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "edeef691-54eb-4296-a109-40cfbed1ef2e",
-          "name": "/absence_authorization Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7e683c05-b5a9-40d5-9c20-3ec0f3efb89d",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.environment.set(\"absenceAuthorizationId\", jsonData.record.id);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"absence_date\": \"2018-01-02\",\r\n\t\"absence_reason\": \"test absence reason 0\",\r\n\t\"is_payment_authorized\": true,\r\n\t\"authorization_request_date\": \"2018-01-01\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
-            },
-            "url": "{{url}}/absence_authorization"
           },
           "response": []
         }
