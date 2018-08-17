@@ -775,12 +775,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "125ec9ea-17ca-4638-bb01-caa7de26a5ed",
+                "id": "7ea96736-92c3-49ea-9855-ec72590613e7",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Marital statuses list contains five items\", function() {",
+                  "pm.test(\"Marital statuses list contains five item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(5);",
                   "});"
                 ]
@@ -1203,12 +1203,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "5d21684c-0246-4a10-8682-387acba0178e",
+                "id": "2ce79a9c-38ef-42c6-b4ee-914f53b38de8",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Shifts list contains two items\", function() {",
+                  "pm.test(\"Shifts list contains two item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
@@ -2200,13 +2200,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "fa3638cc-1ccb-4426-a3f9-8c657860c8fc",
+                "id": "b2d81d81-379a-4745-adb4-d20ad4890d0f",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
                   "pm.test(\"Passport list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
               }
@@ -2274,10 +2274,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "2dc835c8-3046-451b-a641-5df6cceeefea",
+                "id": "af377f9d-b6e3-4e30-ae2a-c8961e672acd",
                 "type": "text/javascript",
                 "exec": [
-                  ""
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Passport deleted.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -2697,12 +2707,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "e6c4e037-3813-4855-8a5b-f53b11a56ce6",
+                "id": "cc2e2c74-c24d-40e9-93da-0e83b89045dc",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Uniform sizes list contains two items\", function() {",
+                  "pm.test(\"Uniform sizes list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
@@ -3299,10 +3309,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "ea83ed70-63ba-4c34-99f2-0fb6b9c0ec26",
+                "id": "f01f6d45-7754-474c-ac0e-d27e1456d53b",
                 "type": "text/javascript",
                 "exec": [
-                  ""
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Bank account is now inactive.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -3376,12 +3396,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "f62f467c-ffe8-477a-8dac-ebfa8fbd4953",
+                "id": "91385285-2c6c-417b-a08c-86a01e45acc1",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Family relations list contains six items\", function() {",
+                  "pm.test(\"Family relations accounts list contains six item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(6);",
                   "});"
                 ]
