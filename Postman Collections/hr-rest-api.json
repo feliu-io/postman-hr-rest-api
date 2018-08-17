@@ -1203,12 +1203,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "2ce79a9c-38ef-42c6-b4ee-914f53b38de8",
+                "id": "5d21684c-0246-4a10-8682-387acba0178e",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Shifts list contains two item\", function() {",
+                  "pm.test(\"Shifts list contains two items\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
@@ -2200,13 +2200,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "b2d81d81-379a-4745-adb4-d20ad4890d0f",
+                "id": "fa3638cc-1ccb-4426-a3f9-8c657860c8fc",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
                   "pm.test(\"Passport list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(2);",
+                  "    pm.expect(jsonData.list.length).to.eql(1);",
                   "});"
                 ]
               }
