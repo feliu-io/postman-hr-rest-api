@@ -2697,12 +2697,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "cc2e2c74-c24d-40e9-93da-0e83b89045dc",
+                "id": "e6c4e037-3813-4855-8a5b-f53b11a56ce6",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Uniform sizes list contains one item\", function() {",
+                  "pm.test(\"Uniform sizes list contains two items\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
@@ -3299,20 +3299,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "f01f6d45-7754-474c-ac0e-d27e1456d53b",
+                "id": "ea83ed70-63ba-4c34-99f2-0fb6b9c0ec26",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Bank account is now inactive.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
