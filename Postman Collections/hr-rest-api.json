@@ -3299,20 +3299,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "f01f6d45-7754-474c-ac0e-d27e1456d53b",
+                "id": "ea83ed70-63ba-4c34-99f2-0fb6b9c0ec26",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Bank account is now inactive.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -3386,12 +3376,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "91385285-2c6c-417b-a08c-86a01e45acc1",
+                "id": "f62f467c-ffe8-477a-8dac-ebfa8fbd4953",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Family relations accounts list contains six item\", function() {",
+                  "pm.test(\"Family relations list contains six items\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(6);",
                   "});"
                 ]
