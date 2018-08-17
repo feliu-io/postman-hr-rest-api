@@ -2077,12 +2077,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "212048c5-db38-4308-80fa-f43ebaaefcdb",
+                "id": "2929d6ef-fe4a-4c23-aaed-5553ec9a830a",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Countries list contains one item\", function() {",
+                  "pm.test(\"Countries list contains 17 items\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(17);",
                   "});"
                 ]
