@@ -775,12 +775,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "7ea96736-92c3-49ea-9855-ec72590613e7",
+                "id": "125ec9ea-17ca-4638-bb01-caa7de26a5ed",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Marital statuses list contains five item\", function() {",
+                  "pm.test(\"Marital statuses list contains five items\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(5);",
                   "});"
                 ]
