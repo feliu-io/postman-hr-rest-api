@@ -38,7 +38,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"username\": \"nuvanz\",\n  \"password\": \"1234\"\n}"
+              "raw": "{\n  \"username\": \"jfeliu\",\n  \"password\": \"1234\"\n}"
             },
             "url": "{{url}}/auth"
           },
@@ -2200,13 +2200,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "fa3638cc-1ccb-4426-a3f9-8c657860c8fc",
+                "id": "b2d81d81-379a-4745-adb4-d20ad4890d0f",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
                   "pm.test(\"Passport list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
               }
@@ -2274,10 +2274,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "2dc835c8-3046-451b-a641-5df6cceeefea",
+                "id": "af377f9d-b6e3-4e30-ae2a-c8961e672acd",
                 "type": "text/javascript",
                 "exec": [
-                  ""
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Passport deleted.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -2697,12 +2707,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "e6c4e037-3813-4855-8a5b-f53b11a56ce6",
+                "id": "cc2e2c74-c24d-40e9-93da-0e83b89045dc",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Uniform sizes list contains two items\", function() {",
+                  "pm.test(\"Uniform sizes list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
@@ -3299,10 +3309,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "ea83ed70-63ba-4c34-99f2-0fb6b9c0ec26",
+                "id": "f01f6d45-7754-474c-ac0e-d27e1456d53b",
                 "type": "text/javascript",
                 "exec": [
-                  ""
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Bank account is now inactive.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -3376,12 +3396,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "f62f467c-ffe8-477a-8dac-ebfa8fbd4953",
+                "id": "91385285-2c6c-417b-a08c-86a01e45acc1",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Family relations list contains six items\", function() {",
+                  "pm.test(\"Family relations accounts list contains six item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(6);",
                   "});"
                 ]
@@ -3499,13 +3519,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "01f2ea28-0842-4e61-b15e-8885ae786da4",
+                "id": "0d318d72-65da-4a8b-9cee-e384e323c726",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Dependents list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "pm.test(\"Dependents list contains two item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
               }
@@ -5931,91 +5951,6 @@
               "raw": "{\r\n\t\"absence_date\": \"2018-01-02\",\r\n\t\"absence_reason\": \"test absence reason 0\",\r\n\t\"is_payment_authorized\": true,\r\n\t\"authorization_request_date\": \"2018-01-01\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
             },
             "url": "{{url}}/absence_authorization"
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "_postman_id": "bb4104cd-3c72-4349-a8ff-bdc5541281c4",
-      "name": "RawAttendance Resource",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "c6ff58cc-6668-4fad-8800-02beba173378",
-          "name": "/raw_attendance",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d9a6081f-7d51-4371-a19e-abcda8a9dbf1",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              },
-              {
-                "key": "Accept",
-                "value": "application/text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/raw_attendance"
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "6c901632-6ada-4077-99f5-cbd71cd29b45",
-          "name": "/raw_attendances",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a119e814-9379-4506-9efe-d753470fc20e",
-                "type": "text/javascript",
-                "exec": [
-                  "var jsonData = pm.response.json();",
-                  "",
-                  "pm.test(\"Raw attendances list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
-                  "});"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "JWT {{access_token}}"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{url}}/raw_attendances"
           },
           "response": []
         }
