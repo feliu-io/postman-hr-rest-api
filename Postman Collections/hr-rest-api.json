@@ -2274,20 +2274,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "af377f9d-b6e3-4e30-ae2a-c8961e672acd",
+                "id": "2dc835c8-3046-451b-a641-5df6cceeefea",
                 "type": "text/javascript",
                 "exec": [
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"Success message returned\"] = jsonData.message === \"Passport deleted.\";",
-                  "",
-                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
-                  "",
-                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
-                  "",
-                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-                  "",
-                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
+                  ""
                 ]
               }
             }
@@ -2707,12 +2697,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "cc2e2c74-c24d-40e9-93da-0e83b89045dc",
+                "id": "e6c4e037-3813-4855-8a5b-f53b11a56ce6",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Uniform sizes list contains one item\", function() {",
+                  "pm.test(\"Uniform sizes list contains two items\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
