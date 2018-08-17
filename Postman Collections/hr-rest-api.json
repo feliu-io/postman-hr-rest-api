@@ -2697,12 +2697,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "e6c4e037-3813-4855-8a5b-f53b11a56ce6",
+                "id": "cc2e2c74-c24d-40e9-93da-0e83b89045dc",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Uniform sizes list contains two items\", function() {",
+                  "pm.test(\"Uniform sizes list contains one item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
@@ -3299,10 +3299,20 @@
             {
               "listen": "test",
               "script": {
-                "id": "ea83ed70-63ba-4c34-99f2-0fb6b9c0ec26",
+                "id": "f01f6d45-7754-474c-ac0e-d27e1456d53b",
                 "type": "text/javascript",
                 "exec": [
-                  ""
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Success message returned\"] = jsonData.message === \"Bank account is now inactive.\";",
+                  "",
+                  "tests[\"Successful DELETE request\"] = responseCode.code === 200;",
+                  "",
+                  "tests[\"Response time is less than 500 ms\"] = responseTime < parseInt(environment.responseTime);",
+                  "",
+                  "tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+                  "",
+                  "tests[\"Content-Type is application/json\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json\";"
                 ]
               }
             }
@@ -3376,12 +3386,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "f62f467c-ffe8-477a-8dac-ebfa8fbd4953",
+                "id": "91385285-2c6c-417b-a08c-86a01e45acc1",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Family relations list contains six items\", function() {",
+                  "pm.test(\"Family relations accounts list contains six item\", function() {",
                   "    pm.expect(jsonData.list.length).to.eql(6);",
                   "});"
                 ]
@@ -3499,13 +3509,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "01f2ea28-0842-4e61-b15e-8885ae786da4",
+                "id": "0d318d72-65da-4a8b-9cee-e384e323c726",
                 "type": "text/javascript",
                 "exec": [
                   "var jsonData = pm.response.json();",
                   "",
-                  "pm.test(\"Dependents list contains one item\", function() {",
-                  "    pm.expect(jsonData.list.length).to.eql(1);",
+                  "pm.test(\"Dependents list contains two item\", function() {",
+                  "    pm.expect(jsonData.list.length).to.eql(2);",
                   "});"
                 ]
               }
