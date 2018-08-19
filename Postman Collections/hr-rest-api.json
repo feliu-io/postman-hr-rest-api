@@ -5974,9 +5974,9 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\r\n\t\"stgid\": \"ST-KY18002070\",\r\n\t\"userid\": 117,\r\n\t\"att_time\": 1534747896,\r\n\t\"att_type\": \"in\",\r\n\t\"auth_token\": \"tRXPVhxRTbw6\"\r\n}"
             },
-            "url": "{{url}}/raw_attendance"
+            "url": "http://hr.nuvanz.com/raw_attendance"
           },
           "response": []
         },
