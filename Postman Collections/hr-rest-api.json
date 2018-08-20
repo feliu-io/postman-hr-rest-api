@@ -5943,7 +5943,7 @@
       "item": [
         {
           "_postman_id": "c6ff58cc-6668-4fad-8800-02beba173378",
-          "name": "hr.nuvanz.com/raw_attendance",
+          "name": "/raw_attendance",
           "event": [
             {
               "listen": "test",
