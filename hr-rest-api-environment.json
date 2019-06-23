@@ -1,0 +1,154 @@
+{
+	"id": "b2a5b037-6b93-0c86-c6f2-063315a2feeb",
+	"name": "hr-rest-api",
+	"values": [
+		{
+			"key": "url",
+			"value": "http://localhost:5002",
+			"enabled": true
+		},
+		{
+			"key": "access_token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzQ1NDU3NjIsImlhdCI6MTUzNDU0Mzk2MiwibmJmIjoxNTM0NTQzOTYyLCJpZGVudGl0eSI6MX0.AfSpX_4XHekyuvU31cFvYgsKH79Z0cm64Ag6BhJ54Ow",
+			"enabled": true
+		},
+		{
+			"key": "responseTime",
+			"value": "1000",
+			"enabled": true
+		},
+		{
+			"key": "organizationId",
+			"value": 2,
+			"enabled": true
+		},
+		{
+			"key": "userId",
+			"value": 3,
+			"enabled": true
+		},
+		{
+			"key": "departmentId",
+			"value": "2",
+			"enabled": true
+		},
+		{
+			"key": "positionId",
+			"value": 1,
+			"enabled": true
+		},
+		{
+			"key": "shiftRotatingId",
+			"value": 1,
+			"enabled": true
+		},
+		{
+			"key": "shiftFixedId",
+			"value": 2,
+			"enabled": true
+		},
+		{
+			"key": "employeeId",
+			"value": 2,
+			"enabled": true
+		},
+		{
+			"key": "contactId",
+			"value": 2,
+			"enabled": true
+		},
+		{
+			"key": "permitId",
+			"value": 3,
+			"enabled": true
+		},
+		{
+			"key": "itemId",
+			"value": 1,
+			"enabled": true
+		},
+		{
+			"key": "sizeId",
+			"value": 3,
+			"enabled": true
+		},
+		{
+			"key": "sizeId2",
+			"value": 2,
+			"enabled": true
+		},
+		{
+			"key": "requirementId",
+			"value": 2,
+			"enabled": true
+		},
+		{
+			"key": "accountId",
+			"value": 1,
+			"enabled": true
+		},
+		{
+			"key": "scheduleId",
+			"value": 3,
+			"enabled": true
+		},
+		{
+			"key": "scheduleDetailId",
+			"value": 2,
+			"enabled": true
+		},
+		{
+			"key": "paymentId",
+			"value": 2,
+			"enabled": true
+		},
+		{
+			"key": "creditorId",
+			"value": 1,
+			"enabled": true
+		},
+		{
+			"key": "deductionId",
+			"value": 1,
+			"enabled": true
+		},
+		{
+			"key": "deductionDetailId",
+			"value": 2,
+			"enabled": true
+		},
+		{
+			"key": "passportId",
+			"value": 3,
+			"enabled": true
+		},
+		{
+			"key": "dependentId",
+			"value": 3,
+			"enabled": true
+		},
+		{
+			"key": "paymentDetailId",
+			"value": 2,
+			"enabled": true
+		},
+		{
+			"key": "attendanceId",
+			"value": 1,
+			"enabled": true
+		},
+		{
+			"key": "sickNoteId",
+			"value": 2,
+			"enabled": true
+		},
+		{
+			"key": "absenceAuthorizationId",
+			"value": 2,
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2019-06-23T13:47:03.497Z",
+	"_postman_exported_using": "Postman/6.7.4"
+}

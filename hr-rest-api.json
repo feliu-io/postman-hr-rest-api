@@ -1,0 +1,7191 @@
+{
+	"info": {
+		"_postman_id": "a4a73626-d959-0177-81ec-a8b83907436b",
+		"name": "hr-rest-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "/auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a767abd-ffb3-4894-8e9a-494426e27ddb",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"nuvanz\",\n  \"password\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/auth",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organization Resource",
+			"item": [
+				{
+					"name": "/organization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fbc087f5-58d5-4010-bcc6-063de4e77b15",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"organizationId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"organization_name\": \"test_o\", \n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/organization",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"organization"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/organization/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "76aa8c17-13fe-44f7-ae06-62fb6ac031b5",
+								"type": "text/javascript",
+								"exec": [
+									"var organizationId = pm.environment.get(\"organizationId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Organization returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(organizationId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/organization/{{organizationId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"organization",
+								"{{organizationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/organizations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d7107b87-a452-4b1e-b212-0750c1038a4d",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Organizations list contains two items\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(2);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/organizations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"organizations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/organization/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a0835049-41bf-4c4b-bfa8-5bf8740f27a7",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"organization_name\": \"new_test_o\",\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/organization/{{organizationId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"organization",
+								"{{organizationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/organization/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9c4646eb-2555-40df-9003-e1ce9d8fb75b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/organization/{{organizationId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"organization",
+								"{{organizationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/activate_organization/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5f6a59c7-6ad5-4bba-8d92-8785affd9da9",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/activate_organization/{{organizationId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activate_organization",
+								"{{organizationId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Resource",
+			"item": [
+				{
+					"name": "/user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bcee1432-ad49-4a4b-825a-60476bd88fcd",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"userId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"test_u\", \n  \"password\": \"test_p\",\n  \"email\": \"test_u@test_o.com\",\n  \"organization_id\": {{organizationId}},\n  \"is_super\": true,\n  \"is_owner\": true,\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/user/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1b945b9c-3537-4078-a572-745d03445797",
+								"type": "text/javascript",
+								"exec": [
+									"var userId = pm.environment.get(\"userId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"User returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(userId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/user/{{userId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6123e92-fbd6-4b79-a4ea-1166328730d1",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Users list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/user/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "55d46f6e-8e8f-481f-b6c2-3c071fc4475c",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"new_test_u\", \n  \"password\": \"1234\",\n  \"email\": \"new_test_u@test_o.com\",\n  \"organization_id\": {{organizationId}},\n  \"is_super\": true,\n  \"is_owner\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/user/{{userId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/user/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f4559d65-31f8-45f6-9cbe-dd54728095a7",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/user/{{userId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/activate_user/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7aad97e-af7b-4abc-a76f-67d0cd189071",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/activate_user/{{userId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activate_user",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth (new_test_u)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a89025e8-65b4-437d-836d-707c4599d3e3",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"access_token\", jsonData.access_token);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"new_test_u\",\n  \"password\": \"1234\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/auth",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Department Resource",
+			"item": [
+				{
+					"name": "/department",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1148dccd-b397-45ca-b5e0-e2bb72fe8239",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"departmentId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"department_name\": \"test_d\",\n  \"organization_id\": {{organizationId}},\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/department",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"department"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/department/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "79ebf473-c7dd-4dde-8adc-3a2802d92bc2",
+								"type": "text/javascript",
+								"exec": [
+									"var departmentId = pm.environment.get(\"departmentId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Department returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(departmentId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/department/{{departmentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"department",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/departments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c73c3e5b-9457-4b71-bc05-a39119ca590d",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Departments list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/departments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/department/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3211fc38-77f9-4566-8328-8ecbd6158220",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"department_name\": \"new_test_d\", \n  \"organization_id\": {{organizationId}},\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/department/{{departmentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"department",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/department/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b15fea53-10bf-4f77-a625-d04adee8db56",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/department/{{departmentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"department",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/activate_department/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f687fd7b-06a4-418b-a7c2-374910455dbc",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/activate_department/{{departmentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activate_department",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MaritalStatus Resource",
+			"item": [
+				{
+					"name": "/marital_statuses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "125ec9ea-17ca-4638-bb01-caa7de26a5ed",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Marital statuses list contains five items\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(5);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/marital_statuses",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"marital_statuses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EmploymentPosition Resource",
+			"item": [
+				{
+					"name": "/employment_position",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "19eeca04-dee5-4ec3-92dd-0a3153e9dd37",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"positionId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"position_name_feminine\": \"test_e_p_f\",\n  \"position_name_masculine\": \"test_e_p_m\",\n  \"minimum_hourly_wage\": 1.00,\n  \"organization_id\": {{organizationId}},\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/employment_position",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"employment_position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/employment_position/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e38949a8-4914-434b-a5ec-06cf998407ef",
+								"type": "text/javascript",
+								"exec": [
+									"var positionId = pm.environment.get(\"positionId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Position returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(positionId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/employment_position/{{positionId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"employment_position",
+								"{{positionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/employment_positions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d3328a61-618e-421f-b9f6-2a0c8f67e18f",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Employment positions list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/employment_positions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"employment_positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/employment_position/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3a8b4cc1-533b-44d8-bc8e-08de551bc625",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"position_name_feminine\": \"new_test_e_p_f\",\n  \"position_name_masculine\": \"new_test_e_p_m\",\n  \"minimum_hourly_wage\": 2.00,\n  \"organization_id\": {{organizationId}},\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/employment_position/{{positionId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"employment_position",
+								"{{positionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/employment_position/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ed58d561-47c4-4b7d-b2d0-744c5b0ebe02",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/employment_position/{{positionId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"employment_position",
+								"{{positionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/activate_employment_position/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2b76f45c-7dac-4f99-96ba-d5939a887efd",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/activate_employment_position/{{positionId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activate_employment_position",
+								"{{positionId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shift Resource",
+			"item": [
+				{
+					"name": "/shift (rotating)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b417fd9d-fd1f-4b23-b2ba-23cfaedb2021",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"shiftRotatingId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"shift_name\": \"test_s_r\",\n  \"weekly_hours\": 48,\n  \"is_rotating\": true,\n  \"payment_period\": \"Quincenal\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organizationId}},\n  \"rotation_start_hour\": \"06:00:00\",\n  \"rotation_end_hour\": \"21:00:00\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/shift",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"shift"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/shift (fixed)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9824e895-21cd-44ec-b983-c7358bc3f0b4",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"shiftFixedId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"shift_name\": \"test_s_f\",\n  \"weekly_hours\": 44,\n  \"is_rotating\": false,\n  \"payment_period\": \"Quincenal\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organizationId}},\n  \"fixed_start_hour_monday\": \"08:00:00\",\n  \"fixed_start_break_hour_monday\": \"12:00:00\",\n  \"fixed_end_break_hour_monday\": \"12:30:00\",\n  \"fixed_end_hour_monday\": \"16:30:00\",\n  \"fixed_start_hour_tuesday\": \"08:00:00\",\n  \"fixed_start_break_hour_tuesday\": \"12:00:00\",\n  \"fixed_end_break_hour_tuesday\": \"12:30:00\",\n  \"fixed_end_hour_tuesday\": \"16:30:00\",\n  \"fixed_start_hour_wednesday\": \"08:00:00\",\n  \"fixed_start_break_hour_wednesday\": \"12:00:00\",\n  \"fixed_end_break_hour_wednesday\": \"12:30:00\",\n  \"fixed_end_hour_wednesday\": \"16:30:00\",\n  \"fixed_start_hour_thursday\": \"08:00:00\",\n  \"fixed_start_break_hour_thursday\": \"12:00:00\",\n  \"fixed_end_break_hour_thursday\": \"12:30:00\",\n  \"fixed_end_hour_thursday\": \"16:30:00\",\n  \"fixed_start_hour_friday\": \"08:00:00\",\n  \"fixed_start_break_hour_friday\": \"12:00:00\",\n  \"fixed_end_break_hour_friday\": \"12:30:00\",\n  \"fixed_end_hour_friday\": \"16:30:00\",\n  \"fixed_start_hour_saturday\": \"08:00:00\",\n  \"fixed_end_hour_saturday\": \"12:00:00\",\n  \"rest_day\": \"Domingo\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/shift",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"shift"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/shift/<int:id> (rotating)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "371b046a-a979-4fee-8986-ed6200f037b2",
+								"type": "text/javascript",
+								"exec": [
+									"var shiftId = pm.environment.get(\"shiftRotatingId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Shift returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(shiftId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/shift/{{shiftRotatingId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"shift",
+								"{{shiftRotatingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/shift/<int:id> (fixed)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "324a846e-e8ca-4c3b-bd7b-054d5235201a",
+								"type": "text/javascript",
+								"exec": [
+									"var shiftId = pm.environment.get(\"shiftFixedId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Shift returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(shiftId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/shift/{{shiftFixedId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"shift",
+								"{{shiftFixedId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/shifts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5d21684c-0246-4a10-8682-387acba0178e",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Shifts list contains two items\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(2);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/shifts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"shifts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/shift/<int:id> (rotating)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4d2518c-2ffe-4522-a147-784d62394228",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"shift_name\": \"new_test_s_r\",\n  \"weekly_hours\": 44,\n  \"is_rotating\": true,\n  \"payment_period\": \"Semanal\",\n  \"break_length\": \"01:00:00\",\n  \"is_break_included_in_shift\": true,\n  \"is_active\": true,\n  \"organization_id\": {{organizationId}},\n  \"rotation_start_hour\": \"00:00:00\",\n  \"rotation_end_hour\": \"15:00:00\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/shift/{{shiftRotatingId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"shift",
+								"{{shiftRotatingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/shift/<int:id> (fixed)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "78f02cc7-ad8d-4341-8730-b44fc804737d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"shift_name\": \"test_s_f\",\n  \"weekly_hours\": 48,\n  \"is_rotating\": false,\n  \"payment_period\": \"Diario\",\n  \"break_length\": \"00:30:00\",\n  \"is_break_included_in_shift\": false,\n  \"is_active\": true,\n  \"organization_id\": {{organizationId}},\n  \"fixed_start_hour_sunday\": \"09:00:00\",\n  \"fixed_start_break_hour_sunday\": \"13:00:00\",\n  \"fixed_end_break_hour_sunday\": \"13:30:00\",\n  \"fixed_end_hour_sunday\": \"17:30:00\",\n  \"fixed_start_hour_monday\": \"09:00:00\",\n  \"fixed_start_break_hour_monday\": \"13:00:00\",\n  \"fixed_end_break_hour_monday\": \"13:30:00\",\n  \"fixed_end_hour_monday\": \"17:30:00\",\n  \"fixed_start_hour_tuesday\": \"09:00:00\",\n  \"fixed_start_break_hour_tuesday\": \"13:00:00\",\n  \"fixed_end_break_hour_tuesday\": \"13:30:00\",\n  \"fixed_end_hour_tuesday\": \"17:30:00\",\n  \"fixed_start_hour_wednesday\": \"09:00:00\",\n  \"fixed_start_break_hour_wednesday\": \"13:00:00\",\n  \"fixed_end_break_hour_wednesday\": \"13:30:00\",\n  \"fixed_end_hour_wednesday\": \"17:30:00\",\n  \"fixed_start_hour_thursday\": \"09:00:00\",\n  \"fixed_start_break_hour_thursday\": \"13:00:00\",\n  \"fixed_end_break_hour_thursday\": \"13:30:00\",\n  \"fixed_end_hour_thursday\": \"17:30:00\",\n  \"fixed_start_hour_friday\": \"09:00:00\",\n  \"fixed_start_break_hour_friday\": \"13:00:00\",\n  \"fixed_end_break_hour_friday\": \"13:30:00\",\n  \"fixed_end_hour_friday\": \"17:30:00\",\n  \"fixed_start_hour_saturday\": null,\n  \"fixed_end_hour_saturday\": null,\n  \"rest_day\": \"Sábado\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/shift/{{shiftFixedId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"shift",
+								"{{shiftFixedId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/shift/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "78aed220-3c53-4e77-85da-157db4ddcf64",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/shift/{{shiftRotatingId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"shift",
+								"{{shiftRotatingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/activate_shift/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1191dbef-9d66-45f1-8e21-21be6714f793",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/activate_shift/{{shiftRotatingId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activate_shift",
+								"{{shiftRotatingId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee Resource",
+			"item": [
+				{
+					"name": "/employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8e48a085-359e-4a46-9637-75efb8d1f649",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"employeeId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"first_name\": \"f_n\",\n  \"second_name\": \"s_n\",\n  \"first_surname\": \"f_sn\",\n  \"second_surname\": \"s_sn\",\n  \"national_id_number\": \"1-11-111\",\n  \"is_panamanian\": true,\n  \"date_of_birth\": \"01-31-2000\",\n  \"gender\": \"Hombre\",\n  \"address\": \"Panamá\",\n  \"home_phone\": \"222-2222\",\n  \"mobile_phone\": \"6666-6666\",\n  \"email\": \"f_n@f_sn.com\",\n  \"type_of_contract\": \"Definido\",\n  \"employment_date\": \"01-01-2018\",\n  \"contract_expiration_date\": \"01-31-2018\",\n  \"termination_date\": \"01-15-2018\",\n  \"termination_reason\": \"Período de Prueba\",\n  \"salary_per_payment_period\": \"104.00\",\n  \"representation_expenses_per_payment_period\": \"0\",\n  \"payment_method\": \"ACH\",\n  \"is_active\": true,\n  \"marital_status_id\": 1,\n  \"department_id\": {{departmentId}},\n  \"position_id\": {{positionId}},\n  \"shift_id\": {{shiftRotatingId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/employee",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/employee/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e2d0b330-ff3b-4ff5-89ae-69ec2701b4ef",
+								"type": "text/javascript",
+								"exec": [
+									"var employeeId = pm.environment.get(\"employeeId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Employee returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(employeeId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/employee/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"employee",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/employees",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3adbc020-cef4-4bf0-8b92-a269b01562fa",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Employees list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/employees",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/employee/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8f9310a8-7539-449e-a0f7-be2f222b46a1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"first_name\": \"new_f_n\",\n  \"second_name\": \"new_s_n\",\n  \"first_surname\": \"new_f_sn\",\n  \"second_surname\": \"new_s_sn\",\n  \"national_id_number\": \"N-1-11-111\",\n  \"is_panamanian\": false,\n  \"date_of_birth\": \"01-31-2001\",\n  \"gender\": \"Mujer\",\n  \"address\": \"Chiriquí\",\n  \"home_phone\": \"333-3333\",\n  \"mobile_phone\": \"6666-7777\",\n  \"email\": \"new_f_n@new_f_sn.com\",\n  \"type_of_contract\": \"Indefinido\",\n  \"employment_date\": \"01-01-2019\",\n  \"contract_expiration_date\": \"01-31-2019\",\n  \"termination_date\": \"01-15-2019\",\n  \"termination_reason\": \"Renuncia\",\n  \"salary_per_payment_period\": \"208.00\",\n  \"representation_expenses_per_payment_period\": \"100\",\n  \"payment_method\": \"Cheque\",\n  \"is_active\": true,\n  \"marital_status_id\": 2,\n  \"department_id\": {{departmentId}},\n  \"position_id\": {{positionId}},\n  \"shift_id\": {{shiftFixedId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/employee/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"employee",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/employee/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c0ad28a1-2c2a-4039-9f28-8d49b75860d8",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/employee/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"employee",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/activate_employee/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9060f206-e2af-4c53-bbbc-c34347fa9bfd",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/activate_employee/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activate_employee",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EmergencyContact Resource",
+			"item": [
+				{
+					"name": "/emergency_contact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f86ffec6-ed92-4a11-8160-7e883ecc6051",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"contactId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/emergency_contact",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"emergency_contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/emergency_contact/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5af6b8c8-55b5-4cff-8267-62bb46d1cc57",
+								"type": "text/javascript",
+								"exec": [
+									"var contactId = pm.environment.get(\"contactId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Contact returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(contactId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/emergency_contact/{{contactId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"emergency_contact",
+								"{{contactId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/emergency_contacts/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "327eb813-e661-40d2-9bba-7aad3cad822d",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Contact list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/emergency_contacts/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"emergency_contacts",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/emergency_contact/<int:_id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "68b47a76-0d49-47f0-8677-ff898f2b5f96",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"last_name\": \"new_l_n\",\r\n    \"home_phone\": \"333-3333\",\r\n    \"work_phone\": \"444-4444\",\r\n    \"mobile_phone\": \"6666-7777\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/emergency_contact/{{contactId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"emergency_contact",
+								"{{contactId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/emergency_contact/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e22a9c36-b5d3-4614-b5db-15da349818a2",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/emergency_contact/{{contactId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"emergency_contact",
+								"{{contactId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/emergency_contact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "618ed58d-665c-4aff-b20f-a2956f6b8e16",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"contactId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"last_name\": \"l_n\",\r\n    \"home_phone\": \"111-1111\",\r\n    \"work_phone\": \"222-2222\",\r\n    \"mobile_phone\": \"6666-6666\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/emergency_contact",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"emergency_contact"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HealthPermit Resource",
+			"item": [
+				{
+					"name": "/health_permit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d5fbde06-c7c0-4780-a7af-574c6b2c901f",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"permitId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"health_permit_type\": \"Verde\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/health_permit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"health_permit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/health_permit/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "55259dd1-f97f-4ce0-8d7c-3a1e9eb50d97",
+								"type": "text/javascript",
+								"exec": [
+									"var permitId = pm.environment.get(\"permitId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Permit returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(permitId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/health_permit/{{permitId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"health_permit",
+								"{{permitId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/health_permits/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f22c16b4-2210-4802-a1d8-3dfd1f1b4f7b",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Permit list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/health_permits/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"health_permits",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/health_permit/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c5eef461-21d5-4ada-b550-ee884340d9ae",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"health_permit_type\": \"Blanco\",\r\n    \"issue_date\": \"2018-01-31\",\r\n    \"expiration_date\": \"2019-01-31\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/health_permit/{{permitId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"health_permit",
+								"{{permitId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/health_permit/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bf961efa-2640-4d20-be62-65ffdc462ec2",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/health_permit/{{permitId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"health_permit",
+								"{{permitId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/health_permit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1de5dcd6-84bd-4071-894a-5d9c7c91c6c3",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"permitId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"health_permit_type\": \"Verde\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/health_permit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"health_permit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Country Resource",
+			"item": [
+				{
+					"name": "/countries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2929d6ef-fe4a-4c23-aaed-5553ec9a830a",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Countries list contains 17 items\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(17);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/countries",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"countries"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Passport Resource",
+			"item": [
+				{
+					"name": "/passport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bf29cacf-dd86-4ff4-99f8-48299ea7b0dd",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"passportId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"passport_number\": \"123456\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"country_id\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/passport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"passport"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/passport/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "951238b7-25af-4772-917c-a25f5ec9073a",
+								"type": "text/javascript",
+								"exec": [
+									"var passportId = pm.environment.get(\"passportId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Passport returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(passportId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/passport/{{passportId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"passport",
+								"{{passportId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/passports/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fa3638cc-1ccb-4426-a3f9-8c657860c8fc",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Passport list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/passports/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"passports",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/passport/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46c2c5c6-ed65-4c27-afdf-7ea940e1d420",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"passport_number\": \"654321\",\r\n    \"issue_date\": \"2018-01-31\",\r\n    \"expiration_date\": \"2019-01-31\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"country_id\": 2\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/passport/{{passportId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"passport",
+								"{{passportId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/passport/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2dc835c8-3046-451b-a641-5df6cceeefea",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/passport/{{passportId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"passport",
+								"{{passportId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/passport",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5e87c96f-34fc-4a64-8d0d-46df97b95143",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"passportId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"passport_number\": \"123456\",\r\n    \"issue_date\": \"2018-01-01\",\r\n    \"expiration_date\": \"2019-01-01\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"country_id\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/passport",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"passport"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UniformItem Resource",
+			"item": [
+				{
+					"name": "/uniform_item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "90b62228-46d8-4767-afe5-e71ad1e792cf",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"itemId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"item_name\": \"test_u_i\",\n  \"organization_id\": {{organizationId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/uniform_item",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_item/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ebed8ba0-f605-4cc2-9932-e42574201f30",
+								"type": "text/javascript",
+								"exec": [
+									"var itemId = pm.environment.get(\"itemId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Item returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(itemId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/uniform_item/{{itemId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_item",
+								"{{itemId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_items/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d57712cf-4c5c-4094-9dcf-34ba9fb12bfa",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Uniform items list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/uniform_items",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_item/<id:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c6c462fe-86f2-4689-bce3-91559a3bcbe4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"item_name\": \"new_test_u_i\", \n  \"organization_id\": {{organizationId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/uniform_item/{{itemId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_item",
+								"{{itemId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_item/<id:itemId>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "658bc286-c7b9-4d1c-819e-1aa770a83a0b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/uniform_item/{{itemId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_item",
+								"{{itemId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b22be4c9-fd70-44c2-93dd-6f5fb1fa4f42",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"itemId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"item_name\": \"test_u_i\",\n  \"organization_id\": {{organizationId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/uniform_item",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_item"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UniformSize Resource",
+			"item": [
+				{
+					"name": "/uniform_size",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1207ad76-9e37-4a56-a812-af5ec4df4863",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"sizeId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"size_description\": \"test_u_s\",\n  \"uniform_item_id\": {{itemId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/uniform_size",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_size"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_size (second size)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "68a649a8-e318-49c7-bbbe-51cba5d972ba",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"sizeId2\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"size_description\": \"test_u_s_2\",\n  \"uniform_item_id\": {{itemId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/uniform_size",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_size"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_size/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "902acd1d-c86b-4226-be47-e26b15f7348a",
+								"type": "text/javascript",
+								"exec": [
+									"var sizeId = pm.environment.get(\"sizeId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Size returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(sizeId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/uniform_size/{{sizeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_size",
+								"{{sizeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_sizes/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e6c4e037-3813-4855-8a5b-f53b11a56ce6",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Uniform sizes list contains two items\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(2);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/uniform_sizes/{{itemId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_sizes",
+								"{{itemId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_size/<id:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "655eb1b9-e8f6-44dc-a4e6-af7af527c59f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"size_description\": \"new_test_u_s\", \n  \"uniform_item_id\": {{itemId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/uniform_size/{{sizeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_size",
+								"{{sizeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_size/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "677040e7-4947-469f-b9c3-d23daacb3778",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/uniform_size/{{sizeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_size",
+								"{{sizeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_size",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7785b414-be0a-4ffd-a57e-97dc785fed87",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"sizeId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"size_description\": \"test_u_s\",\n  \"uniform_item_id\": {{itemId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/uniform_size",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_size"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"id": "50e417ec-5d2c-4eba-b213-29ff642dbf1c",
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"id": "df7cf08c-11af-4cba-9882-be890289158c",
+						"type": "text/javascript"
+					}
+				}
+			]
+		},
+		{
+			"name": "UniformRequirement Resource",
+			"item": [
+				{
+					"name": "/uniform_requirement",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f1ebbf5-3f03-4f77-a566-f97255cc4c9c",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"requirementId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"employee_id\": {{employeeId}},\n  \"uniform_item_id\": {{itemId}},\n  \"uniform_size_id\": {{sizeId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/uniform_requirement",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_requirement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_requirement/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8970f748-8074-45b3-9079-7d992bd49885",
+								"type": "text/javascript",
+								"exec": [
+									"var requirementId = pm.environment.get(\"requirementId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Requirement returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(requirementId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/uniform_requirement/{{requirementId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_requirement",
+								"{{requirementId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_requirements/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4c12327e-d890-4bd5-9485-94d8f26ae595",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Uniform requirements list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/uniform_requirements/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_requirements",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_requirement/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "93c40199-60ca-4675-876a-af48ba0a8256",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"employee_id\": {{employeeId}},\n  \"uniform_item_id\": {{itemId}},\n  \"uniform_size_id\": {{sizeId2}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/uniform_requirement/{{requirementId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_requirement",
+								"{{requirementId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_requirement/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8345110d-e7de-40b7-a544-358cb94d77b4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/uniform_requirement/{{requirementId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_requirement",
+								"{{requirementId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/uniform_requirement",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "be508810-6eeb-47a3-a714-3b15b702d3dc",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"requirementId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"employee_id\": {{employeeId}},\n  \"uniform_item_id\": {{itemId}},\n  \"uniform_size_id\": {{sizeId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/uniform_requirement",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"uniform_requirement"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bank Resource",
+			"item": [
+				{
+					"name": "/banks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4ea2b6a9-bc6a-4881-839c-cf423c4a9811",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Banks list contains 46 items\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(46);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/banks",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"banks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BankAccount Resource",
+			"item": [
+				{
+					"name": "/bank_account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5d80980e-b892-42ab-9975-66f2b8d2cb12",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"accountId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"account_number\": \"1234\",\n  \"account_type\": \"Corriente\",\n  \"is_active\": true,\n  \"employee_id\": {{employeeId}},\n  \"bank_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{url}}/bank_account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bank_account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/bank_account/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f3b745b4-cd87-4040-9a66-b82a3471d3c0",
+								"type": "text/javascript",
+								"exec": [
+									"var accountId = pm.environment.get(\"accountId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Account returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(accountId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/bank_account/{{accountId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bank_account",
+								"{{accountId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/bank_accounts/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e92b321e-bc13-4443-83ec-015c249bdee4",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Bank accounts list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/bank_accounts/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bank_accounts",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/bank_account/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "199e0302-24a8-4c2f-a4e9-1ea15f7f33d1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"account_number\": \"4321\",\n  \"account_type\": \"Ahorro\",\n  \"is_active\": true,\n  \"employee_id\": {{employeeId}},\n  \"bank_id\": 2\n}"
+						},
+						"url": {
+							"raw": "{{url}}/bank_account/{{accountId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bank_account",
+								"{{accountId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/bank_account/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea83ed70-63ba-4c34-99f2-0fb6b9c0ec26",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/bank_account/{{accountId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bank_account",
+								"{{accountId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/activate_bank_account/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "481cf12e-ba82-4f48-a990-fcfbd4e20119",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/activate_bank_account/{{accountId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activate_bank_account",
+								"{{accountId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FamilyRelation Resource",
+			"item": [
+				{
+					"name": "/family_relations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f62f467c-ffe8-477a-8dac-ebfa8fbd4953",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Family relations list contains six items\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(6);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/family_relations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"family_relations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dependent Resource",
+			"item": [
+				{
+					"name": "/dependent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "39d691a9-ffd7-4734-a146-410fbfd94a57",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"dependentId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"second_name\": \"s_n\",\r\n    \"first_surname\": \"f_sn\",\r\n    \"second_surname\": \"s_sn\",\r\n    \"gender\": \"Mujer\",\r\n    \"date_of_birth\": \"2018-01-01\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/dependent",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dependent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/dependent/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0ae6965c-4629-43ce-b1ca-f6a3051b6e65",
+								"type": "text/javascript",
+								"exec": [
+									"var dependentId = pm.environment.get(\"dependentId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Dependent returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(dependentId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/dependent/{{dependentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dependent",
+								"{{dependentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/dependents/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "01f2ea28-0842-4e61-b15e-8885ae786da4",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Dependents list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/dependents/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dependents",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/dependent/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b4552dba-d613-4a99-a5bd-386fdcea8f40",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"new_f_n\",\r\n    \"second_name\": \"new_s_n\",\r\n    \"first_surname\": \"new_f_sn\",\r\n    \"second_surname\": \"new_s_sn\",\r\n    \"gender\": \"Hombre\",\r\n    \"date_of_birth\": \"2018-01-31\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 2\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/dependent/{{dependentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dependent",
+								"{{dependentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/dependent/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7b429ce-9f50-4c68-a6d8-6fa6dd5216f4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/dependent/{{dependentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dependent",
+								"{{dependentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/dependent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "83ccc470-27ef-4d3d-aff5-25e5b39bf665",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"dependentId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"f_n\",\r\n    \"second_name\": \"s_n\",\r\n    \"first_surname\": \"f_sn\",\r\n    \"second_surname\": \"s_sn\",\r\n    \"gender\": \"Mujer\",\r\n    \"date_of_birth\": \"2018-01-01\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"family_relation_id\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/dependent",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dependent"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Schedule Resource",
+			"item": [
+				{
+					"name": "/schedule",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4dce7045-c666-4f92-a77a-3fa01255121a",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"scheduleId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"start_date\": \"2018-01-01\",\n  \"department_id\": {{departmentId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/schedule",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/schedule/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3a297608-adcb-4b50-948b-0d0534eec941",
+								"type": "text/javascript",
+								"exec": [
+									"var scheduleId = pm.environment.get(\"scheduleId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Schedule returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(scheduleId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/schedule/{{scheduleId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"schedule",
+								"{{scheduleId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/schedules/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6edb8ccf-1602-4628-ac14-d21e3800b14b",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Schedules list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/schedules/{{departmentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"schedules",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/schedule/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "52c3bd80-e822-45b0-a3ea-910264539820",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"start_date\": \"2018-01-31\",\n  \"department_id\": {{departmentId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/schedule/{{scheduleId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"schedule",
+								"{{scheduleId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/schedule/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d8c9fdd2-fc8a-40b9-9133-8bbd02927731",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/schedule/{{scheduleId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"schedule",
+								"{{scheduleId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/schedule",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "484f64f6-140f-4931-b84b-0e9e48a01b82",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"scheduleId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"start_date\": \"2018-01-01\",\n  \"department_id\": {{departmentId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/schedule",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"schedule"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ScheduleDetail Resource",
+			"item": [
+				{
+					"name": "/schedule_detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d2d1739-2513-4570-9842-69bf84be134c",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"scheduleDetailId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"day_1_start\": \"2018-01-01 06:00:00\",\r\n    \"day_1_end\": \"2018-01-01 14:00:00\",\r\n    \"day_1_comment\": \"comment 1\",\r\n    \"day_2_start\": \"2018-01-02 06:00:00\",\r\n    \"day_2_end\": \"2018-01-02 14:00:00\",\r\n    \"day_2_comment\": \"comment 2\",\r\n    \"day_3_start\": \"2018-01-03 06:00:00\",\r\n    \"day_3_end\": \"2018-01-03 14:00:00\",\r\n    \"day_3_comment\": \"comment 3\",\r\n    \"day_4_start\": \"2018-01-04 06:00:00\",\r\n    \"day_4_end\": \"2018-01-04 14:00:00\",\r\n    \"day_4_comment\": \"comment 4\",\r\n    \"day_5_start\": null,\r\n    \"day_5_end\": null,\r\n    \"day_5_comment\": null,\r\n    \"day_6_start\": \"2018-01-06 22:00:00\",\r\n    \"day_6_end\": \"2018-01-07 06:00:00\",\r\n    \"day_6_comment\": \"comment 6\",\r\n    \"day_7_start\": \"2018-01-07 22:00:00\",\r\n    \"day_7_end\": \"2018-01-08 06:00:00\",\r\n    \"day_7_comment\": \"comment 7\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"schedule_id\": {{scheduleId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/schedule_detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"schedule_detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/schedule_detail/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fb3359a1-3f58-43f1-b804-8ceb59338967",
+								"type": "text/javascript",
+								"exec": [
+									"var scheduleDetailId = pm.environment.get(\"scheduleDetailId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Schedule detail returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(scheduleDetailId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/schedule_detail/{{scheduleDetailId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"schedule_detail",
+								"{{scheduleDetailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/schedule_details/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28aaf6b6-6ea5-411a-a129-acec9415f24e",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Schedule details list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/schedule_details/{{scheduleId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"schedule_details",
+								"{{scheduleId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/schedule_detail/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "60171b8d-54eb-424b-afaa-f87dd626d2ea",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"day_1_start\": \"2018-02-01T06:00:00\",\r\n    \"day_1_end\": \"2018-02-01T14:00:00\",\r\n    \"day_1_comment\": \"comment 1\",\r\n    \"day_2_start\": \"2018-02-02T06:00:00\",\r\n    \"day_2_end\": \"2018-02-02T14:00:00\",\r\n    \"day_2_comment\": \"comment 2\",\r\n    \"day_3_start\": \"2018-02-03T06:00:00\",\r\n    \"day_3_end\": \"2018-02-03T14:00:00\",\r\n    \"day_3_comment\": \"comment 3\",\r\n    \"day_4_start\": \"2018-02-04T06:00:00\",\r\n    \"day_4_end\": \"2018-02-04T14:00:00\",\r\n    \"day_4_comment\": \"comment 4\",\r\n    \"day_5_start\": null,\r\n    \"day_5_end\": null,\r\n    \"day_5_comment\": null,\r\n    \"day_6_start\": \"2018-02-06T22:00:00\",\r\n    \"day_6_end\": \"2018-02-07T06:00:00\",\r\n    \"day_6_comment\": \"comment 6\",\r\n    \"day_7_start\": \"2018-02-07T22:00:00\",\r\n    \"day_7_end\": \"2018-02-08T06:00:00\",\r\n    \"day_7_comment\": \"comment 7\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"schedule_id\": {{scheduleId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/schedule_detail/{{scheduleDetailId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"schedule_detail",
+								"{{scheduleDetailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/schedule_detail/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8b975fe6-cf33-4e28-b3f1-4d3786b612e1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/schedule_detail/{{scheduleDetailId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"schedule_detail",
+								"{{scheduleDetailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/schedule_detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7e10bed3-dad5-4d79-8a51-1a88acb7dba5",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"scheduleDetailId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"day_1_start\": \"2018-01-01T06:00:00\",\r\n    \"day_1_end\": \"2018-01-01T14:00:00\",\r\n    \"day_1_comment\": \"comment 1\",\r\n    \"day_2_start\": \"2018-01-02T06:00:00\",\r\n    \"day_2_end\": \"2018-01-02T14:00:00\",\r\n    \"day_2_comment\": \"comment 2\",\r\n    \"day_3_start\": \"2018-01-03T06:00:00\",\r\n    \"day_3_end\": \"2018-01-03T14:00:00\",\r\n    \"day_3_comment\": \"comment 3\",\r\n    \"day_4_start\": \"2018-01-04T06:00:00\",\r\n    \"day_4_end\": \"2018-01-04T14:00:00\",\r\n    \"day_4_comment\": \"comment 4\",\r\n    \"day_5_start\": null,\r\n    \"day_5_end\": null,\r\n    \"day_5_comment\": null,\r\n    \"day_6_start\": \"2018-01-06T22:00:00\",\r\n    \"day_6_end\": \"2018-01-07T06:00:00\",\r\n    \"day_6_comment\": \"comment 6\",\r\n    \"day_7_start\": \"2018-01-07T22:00:00\",\r\n    \"day_7_end\": \"2018-01-08T06:00:00\",\r\n    \"day_7_comment\": \"comment 7\",\r\n    \"employee_id\": {{employeeId}},\r\n    \"schedule_id\": {{scheduleId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/schedule_detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"schedule_detail"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment Resource",
+			"item": [
+				{
+					"name": "/payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "34fa1cd7-fcd0-4e5b-8520-cec69000404b",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"paymentId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_date\": \"2018-01-01\",\r\n    \"document_number\": \"1234-abc\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/payment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/payment/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "66050d5e-ba52-48d6-b0e6-6820da007de1",
+								"type": "text/javascript",
+								"exec": [
+									"var paymentId = pm.environment.get(\"paymentId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Payment returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(paymentId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/payment/{{paymentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment",
+								"{{paymentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/payments/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ff93e33-ad01-48df-8c0f-84a298f3834d",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Payments list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/payments/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payments",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/payment/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4c8bf535-17e1-4b20-b4fb-bfc51d7bba13",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_date\": \"2018-02-01\",\r\n    \"document_number\": \"1234-def\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/payment/{{paymentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment",
+								"{{paymentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/payment/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ec261853-83c8-48e3-ab51-3cce5fbb2049",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/payment/{{paymentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment",
+								"{{paymentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1e7a1e9d-e8a6-4db5-89d2-7f724ae89a0a",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"paymentId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_date\": \"2018-01-01\",\r\n    \"document_number\": \"1234-abc\",\r\n    \"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/payment",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PaymentDetail Resource",
+			"item": [
+				{
+					"name": "/payment_detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4022a5b5-4819-4bc4-8e75-3204210a82d2",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"paymentDetailId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"payment_type\": \"Salario Regular\",\r\n\t\"gross_payment\": 1234.56,\r\n\t\"ss_deduction\": 123.45,\r\n\t\"se_deduction\": 12.34,\r\n\t\"isr_deduction\": 1.23,\r\n\t\"payment_id\": {{paymentId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/payment_detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment_detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/payment_detail/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "30177649-0d50-41b5-93f9-f5d1bf8ce83e",
+								"type": "text/javascript",
+								"exec": [
+									"var paymentDetailId = pm.environment.get(\"paymentDetailId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Payment detail returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(paymentDetailId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/payment_detail/{{paymentDetailId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment_detail",
+								"{{paymentDetailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/payment_details/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "01da69f9-c8ba-4ccb-8df6-722bd9cd7457",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Payments details list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/payment_details/{{paymentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment_details",
+								"{{paymentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/payment_detail/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "44f035f6-4f0b-4b5a-b0fd-3c81f7f5d8f1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"payment_type\": \"Vacación\",\r\n\t\"gross_payment\": 2345.67,\r\n\t\"ss_deduction\": 234.56,\r\n\t\"se_deduction\": 23.45,\r\n\t\"isr_deduction\": 2.34,\r\n\t\"payment_id\": {{paymentId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/payment_detail/{{paymentDetailId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment_detail",
+								"{{paymentDetailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/payment_detail/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c30272b-b575-4687-a901-3953968b9abb",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/payment_detail/{{paymentDetailId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment_detail",
+								"{{paymentDetailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/payment_detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4022a5b5-4819-4bc4-8e75-3204210a82d2",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"paymentDetailId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"payment_type\": \"Salario Regular\",\r\n\t\"gross_payment\": 1234.56,\r\n\t\"ss_deduction\": 123.45,\r\n\t\"se_deduction\": 12.34,\r\n\t\"isr_deduction\": 1.23,\r\n\t\"payment_id\": {{paymentId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/payment_detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"payment_detail"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Creditor Resource",
+			"item": [
+				{
+					"name": "/creditor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "810e72cc-afbd-4ece-8ba9-190d7debcaea",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"creditorId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"creditor_name\": \"test_cr\",\n  \"phone_number\": \"123-4567\",\n  \"email\": \"test@test_cr.com\",\n  \"organization_id\": {{organizationId}},\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/creditor",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"creditor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/creditor/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "939dfc10-6d54-44d6-afcc-1b86d2d2009a",
+								"type": "text/javascript",
+								"exec": [
+									"var creditorId = pm.environment.get(\"creditorId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Creditor returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(creditorId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/creditor/{{creditorId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"creditor",
+								"{{creditorId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/creditors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2cbef3cf-1d8d-4611-b635-b21288576f9f",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Creditors list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/creditors",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"creditors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/creditor/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dbb73616-7eb6-4338-8178-6e2f54fd2ad9",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"creditor_name\": \"new_test_cr\",\n  \"phone_number\": \"456-7890\",\n  \"email\": \"test@new_test_cr.com\",\n  \"is_active\": true,\n  \"organization_id\": {{organizationId}}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/creditor/{{creditorId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"creditor",
+								"{{creditorId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/creditor/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5771046b-8af0-4003-9390-1d489e55a281",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/creditor/{{creditorId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"creditor",
+								"{{creditorId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/activate_creditor/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "84060fcc-f81e-4b8b-9742-da639abf8510",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/activate_creditor/{{creditorId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activate_creditor",
+								"{{creditorId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Deduction Resource",
+			"item": [
+				{
+					"name": "/deduction",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "79f7b906-3729-4400-ab4c-a14d9ac09d86",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"deductionId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"start_date\": \"2018-01-01\",\r\n\t\"end_date\": \"2018-01-31\",\r\n\t\"deduction_per_payment_period\": \"123.45\",\r\n\t\"payment_method\": \"Cheque\",\r\n\t\"deduct_in_december\": true,\r\n\t\"is_active\": true,\r\n\t\"employee_id\": {{employeeId}},\r\n\t\"creditor_id\": {{creditorId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/deduction",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deduction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deduction/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b1fe992e-e276-4417-9ca4-c6fa2eeeebfe",
+								"type": "text/javascript",
+								"exec": [
+									"var deductionId = pm.environment.get(\"deductionId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Deduction returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(deductionId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/deduction/{{deductionId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deduction",
+								"{{deductionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deductions/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0f08f29c-e876-4721-87f3-17ca236ac9cc",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Deductions list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/deductions/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deductions",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deduction/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7711578e-4efc-44f9-8a38-35cd4651c5d4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"start_date\": \"2018-02-01\",\r\n\t\"end_date\": \"2018-02-28\",\r\n\t\"deduction_per_payment_period\": 45.67,\r\n\t\"payment_method\": \"Efectivo\",\r\n\t\"deduct_in_december\": false,\r\n\t\"is_active\": true,\r\n\t\"employee_id\": {{employeeId}},\r\n\t\"creditor_id\": {{creditorId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/deduction/{{deductionId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deduction",
+								"{{deductionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deduction/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0e8a780b-2b2c-4ed9-b91e-10d72588a1d5",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/deduction/{{deductionId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deduction",
+								"{{deductionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/activate_deduction/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cffe9daf-c376-4f28-b5f9-bc7f5617fddb",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"is_active\": true\n}"
+						},
+						"url": {
+							"raw": "{{url}}/activate_deduction/{{deductionId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"activate_deduction",
+								"{{deductionId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DeductionDetail Resource",
+			"item": [
+				{
+					"name": "/deduction_detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "85094df3-5c46-4a1a-bd45-d916606477d6",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"deductionDetailId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/deduction_detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deduction_detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deduction_detail/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "75dbbe56-6886-464d-a5a5-e37bb76474ad",
+								"type": "text/javascript",
+								"exec": [
+									"var deductionDetailId = pm.environment.get(\"deductionDetailId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Deduction detail returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(deductionDetailId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/deduction_detail/{{deductionDetailId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deduction_detail",
+								"{{deductionDetailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deduction_details/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "93648ce9-c414-4acc-8754-2764051f9042",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Deduction details list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/deduction_details/{{paymentId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deduction_details",
+								"{{paymentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deduction_detail/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "44f035f6-4f0b-4b5a-b0fd-3c81f7f5d8f1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"deducted_amount\": \"89.01\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/deduction_detail/{{deductionDetailId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deduction_detail",
+								"{{deductionDetailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deduction_detail/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c30272b-b575-4687-a901-3953968b9abb",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/deduction_detail/{{deductionDetailId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deduction_detail",
+								"{{deductionDetailId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/deduction_detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "85094df3-5c46-4a1a-bd45-d916606477d6",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"deductionDetailId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"deducted_amount\": \"67.89\",\r\n\t\"payment_id\": {{paymentId}},\r\n\t\"deduction_id\": {{deductionId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/deduction_detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"deduction_detail"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Attendance Resource",
+			"item": [
+				{
+					"name": "/attendance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2976156d-0ece-41b4-847e-e8d3b7008408",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"attendanceId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"work_day\": \"2018-01-01\",\r\n\t\"day_start\": \"2018-01-01T06:00:00\",\r\n\t\"break_start\": \"2018-01-01T10:00:00\",\r\n\t\"break_end\": \"2018-01-01T10:30:00\",\r\n\t\"day_end\": \"2018-01-01T14:00:00\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/attendance",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attendance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendance/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e52141eb-f416-4cae-b73d-116bb6c80be5",
+								"type": "text/javascript",
+								"exec": [
+									"var attendanceId = pm.environment.get(\"attendanceId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Attendance returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(attendanceId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/attendance/{{attendanceId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attendance",
+								"{{attendanceId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendances/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d3688704-4e9f-4388-a95e-63b05995a221",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Attendances list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/attendances/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attendances",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendance/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6c3e488-e0ad-4ca3-80a8-7bf3d435b65d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"work_day\": \"2018-01-03\",\r\n\t\"day_start\": \"2018-01-03T06:15:00\",\r\n\t\"break_start\": \"2018-01-03T10:30:00\",\r\n\t\"break_end\": \"2018-01-03T11:00:00\",\r\n\t\"day_end\": \"2018-01-03T13:59:00\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/attendance/{{attendanceId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attendance",
+								"{{attendanceId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendance/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7b429ce-9f50-4c68-a6d8-6fa6dd5216f4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/attendance/{{attendanceId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attendance",
+								"{{attendanceId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/attendance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2976156d-0ece-41b4-847e-e8d3b7008408",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"attendanceId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"work_day\": \"2018-01-01\",\r\n\t\"day_start\": \"2018-01-01T06:00:00\",\r\n\t\"break_start\": \"2018-01-01T10:00:00\",\r\n\t\"break_end\": \"2018-01-01T10:30:00\",\r\n\t\"day_end\": \"2018-01-01T14:00:00\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/attendance",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attendance"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RawAttendance Resource",
+			"item": [
+				{
+					"name": "/raw_attendance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d9a6081f-7d51-4371-a19e-abcda8a9dbf1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"stgid\": \"abc12345\",\r\n\t\"userid\": 1,\r\n\t\"att_time\": 1534747896,\r\n\t\"att_type\": \"in\",\r\n\t\"auth_token\": \"TmsDxTm53ViWecv9k6sCNuwS\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/raw_attendance",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"raw_attendance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/raw_attendances",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a119e814-9379-4506-9efe-d753470fc20e",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Raw attendances list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/raw_attendances",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"raw_attendances"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SickNote Resource",
+			"item": [
+				{
+					"name": "/sick_note",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8496be67-b034-4ffc-a226-07cab1660092",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"sickNoteId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"sick_note_date\": \"2018-01-01\",\r\n\t\"number_of_hours_requested\": 8,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-02\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/sick_note",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sick_note"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/sick_note/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6f8d30a-01d0-4e5a-b952-c9d49a2e22fa",
+								"type": "text/javascript",
+								"exec": [
+									"var sickNoteId = pm.environment.get(\"sickNoteId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Sick note returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(sickNoteId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sick_note/{{sickNoteId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sick_note",
+								"{{sickNoteId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/sick_notes/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "40d7f230-8677-4c7a-a100-57a85f976c1d",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Sick note list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sick_notes/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sick_notes",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/sick_note/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6c3e488-e0ad-4ca3-80a8-7bf3d435b65d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"sick_note_date\": \"2018-01-02\",\r\n\t\"number_of_hours_requested\": 6,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-04\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/sick_note/{{sickNoteId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sick_note",
+								"{{sickNoteId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/sick_note/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7b429ce-9f50-4c68-a6d8-6fa6dd5216f4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/sick_note/{{sickNoteId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sick_note",
+								"{{sickNoteId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/sick_note",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8496be67-b034-4ffc-a226-07cab1660092",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"sickNoteId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"sick_note_date\": \"2018-01-01\",\r\n\t\"number_of_hours_requested\": 8,\r\n\t\"number_of_hours_approved\": 6,\r\n\t\"date_received\": \"2018-01-02\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/sick_note",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sick_note"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AbsenceAuthorization Resource",
+			"item": [
+				{
+					"name": "/absence_authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7e683c05-b5a9-40d5-9c20-3ec0f3efb89d",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"absenceAuthorizationId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"absence_date\": \"2018-01-02\",\r\n\t\"absence_reason\": \"test absence reason 0\",\r\n\t\"is_payment_authorized\": true,\r\n\t\"authorization_request_date\": \"2018-01-01\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/absence_authorization",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"absence_authorization"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/absence_authorization/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "607d9e32-8bd0-4593-938a-e6fd2f8603f7",
+								"type": "text/javascript",
+								"exec": [
+									"var absenceAuthorizationId = pm.environment.get(\"absenceAuthorizationId\");",
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Absence authorization returned is the one requested\", function() {",
+									"    pm.expect(jsonData.record.id).to.eql(absenceAuthorizationId);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/absence_authorization/{{absenceAuthorizationId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"absence_authorization",
+								"{{absenceAuthorizationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/absence_authorizations/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "45e8e668-28bc-43f2-a5ec-024805f09279",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Absence authorizations list contains one item\", function() {",
+									"    pm.expect(jsonData.list.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/absence_authorizations/{{employeeId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"absence_authorizations",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/absence_authorization/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6c3e488-e0ad-4ca3-80a8-7bf3d435b65d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"absence_date\": \"2018-01-05\",\r\n\t\"absence_reason\": \"new test absence reason 0\",\r\n\t\"is_payment_authorized\": false,\r\n\t\"authorization_request_date\": \"2018-01-02\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/absence_authorization/{{absenceAuthorizationId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"absence_authorization",
+								"{{absenceAuthorizationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/absence_authorization/<int:id>",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f7b429ce-9f50-4c68-a6d8-6fa6dd5216f4",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/absence_authorization/{{absenceAuthorizationId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"absence_authorization",
+								"{{absenceAuthorizationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/absence_authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7e683c05-b5a9-40d5-9c20-3ec0f3efb89d",
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"absenceAuthorizationId\", jsonData.record.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"absence_date\": \"2018-01-02\",\r\n\t\"absence_reason\": \"test absence reason 0\",\r\n\t\"is_payment_authorized\": true,\r\n\t\"authorization_request_date\": \"2018-01-01\",\r\n\t\"employee_id\": {{employeeId}}\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/absence_authorization",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"absence_authorization"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "179262d0-7211-46b7-8637-f3d6e044ffc5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "af2021d8-1822-459a-b58a-ad33773adef0",
+				"type": "text/javascript",
+				"exec": [
+					"var responseTime = pm.environment.get(\"responseTime\");",
+					"",
+					"pm.test(\"Response time is less than \" + responseTime, function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(parseInt(responseTime));",
+					"});",
+					"",
+					"pm.test(\"Successful request\", function() {",
+					"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+					"});",
+					"",
+					"pm.test(\"Content-Type is present\", function () {",
+					"    pm.response.to.have.header(\"Content-Type\");",
+					"});",
+					"",
+					"if (pm.request.url.path != \"raw_attendance\") {",
+					"    pm.test(\"Content-Type is application/json\", function () {",
+					"        pm.response.to.be.header(\"Content-Type\", \"application/json\");",
+					"    });",
+					"}"
+				]
+			}
+		}
+	]
+}
