@@ -47,7 +47,7 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2019 [Javier Feliu](https://github.com/wanderindev).<br />
 
-This project is [MIT](https://github.com/wanderindev/hr-rest-api/blob/master/LICENSE.md) licensed.
+This project is [MIT](https://github.com/wanderindev/postman-hr-rest-api/blob/master/LICENSE.md) licensed.
 
 ***
 _I based this README on a template generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
