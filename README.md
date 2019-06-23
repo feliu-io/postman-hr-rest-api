@@ -21,7 +21,7 @@ of the [hr-rest-api](https://github.com/wanderindev/hr-rest-api) project.
 ## How to use
 Clone the repository:
 ```sh
-$ git clone https://github.com/wanderindev/postman-hr-rest-api.git
+git clone https://github.com/wanderindev/postman-hr-rest-api.git
 ``` 
 Open Postman and import `hr-rest-api.json` and `hr-rest-api-environment.json`.
 
